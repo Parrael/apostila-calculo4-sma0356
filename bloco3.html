@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloco 3: Fundamentos e Cálculos de Séries de Fourier — Apostila Cálculo IV (SMA0356)</title>
+  <meta name="description" content="Bloco 3 da Apostila Interativa de Cálculo IV (ICMC/USP): Periodicidade e Paridade (Aula 19), Coeficientes de Fourier e Ortogonalidade (Aula 20), Teorema de Fourier (Aula 21) e Parseval/Bessel (Aula 22).">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body data-block-id="bloco3">
+  <div class="reading-progress-track" aria-hidden="true">
+    <div class="reading-progress-fill"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-left">
+      <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-label="Abrir menu lateral" aria-expanded="false">☰</button>
+      <a href="index.html" class="brand-link">
+        <span class="brand-title">Cálculo IV · Apostila P2</span>
+        <span class="brand-code">SMA0356</span>
+      </a>
+      <span class="header-breadcrumb">/ Bloco 3 · Séries de Fourier</span>
+    </div>
+    <div class="header-right">
+      <div class="header-progress-pill" title="Seu progresso neste bloco">
+        <span>Bloco 3:</span>
+        <strong data-block-progress-pct>0%</strong>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">☾</span>
+        <span class="theme-label">Modo Escuro</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <div class="page-shell">
+    <aside class="sidebar" aria-label="Sumário e Navegação">
+      <div class="sidebar-progress-box">
+        <div class="sidebar-progress-top">
+          <span>Progresso no Bloco 3</span>
+          <strong data-block-progress-pct>0%</strong>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" data-block-progress-bar></div>
+        </div>
+        <div class="sidebar-progress-meta" data-block-progress-detail>0/4 tópicos · 0/14 exercícios</div>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Sumário do Bloco 3</p>
+        <ul class="toc-list">
+          <li>
+            <a href="#topico-3-1" class="toc-link active">
+              <span>3.1 Aula 19 · Periodicidade e Paridade</span>
+              <span class="nav-status-tag" data-toc-track="b3-t1" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#exemplos-3-1" class="toc-link sub-item">Exemplos 3.1 e 3.2</a></li>
+          <li><a href="#exercicios-3-1" class="toc-link sub-item">Exercícios 1 a 3</a></li>
+          <li>
+            <a href="#topico-3-2" class="toc-link">
+              <span>3.2 Aula 20 · Coeficientes de Fourier</span>
+              <span class="nav-status-tag" data-toc-track="b3-t2" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#ortogonalidade" class="toc-link sub-item"><span>Produto Interno $\langle f,g \rangle$</span></a></li>
+          <li><a href="#exemplos-3-2" class="toc-link sub-item">Exemplos 3.3 a 3.5</a></li>
+          <li><a href="#exercicios-3-2" class="toc-link sub-item">Exercícios 4 a 7</a></li>
+          <li>
+            <a href="#topico-3-3" class="toc-link">
+              <span>3.3 Aula 21 · Teorema de Fourier</span>
+              <span class="nav-status-tag" data-toc-track="b3-t3" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#simulador-fourier" class="toc-link sub-item"><span>Simulador: Harmônicos $S_N(x)$</span></a></li>
+          <li><a href="#exemplos-3-3" class="toc-link sub-item">Exemplos 3.6 e 3.7</a></li>
+          <li><a href="#exercicios-3-3" class="toc-link sub-item">Exercícios 8 a 11</a></li>
+          <li>
+            <a href="#topico-3-4" class="toc-link">
+              <span>3.4 Aula 22 · Bessel, Parseval e Apêndice</span>
+              <span class="nav-status-tag" data-toc-track="b3-t4" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#exemplos-3-4" class="toc-link sub-item">Exemplos 3.8 e 3.9 (Parseval)</a></li>
+          <li><a href="#forma-complexa" class="toc-link sub-item">Complementar: Forma Complexa</a></li>
+          <li><a href="#exercicios-3-4" class="toc-link sub-item">Exercícios 12 a 14</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Todos os Blocos</p>
+        <ul class="block-nav-list">
+          <li><a href="index.html" class="block-nav-link"><span>← Painel Inicial</span></a></li>
+          <li><a href="bloco0.html" class="block-nav-link"><span>Bloco 0 · Nivelamento</span></a></li>
+          <li><a href="bloco1.html" class="block-nav-link"><span>Bloco 1 · Séries de Potências</span></a></li>
+          <li><a href="bloco2.html" class="block-nav-link"><span>Bloco 2 · Taylor, Binomial e EDOs</span></a></li>
+          <li><a href="bloco3.html" class="block-nav-link active"><span>Bloco 3 · Séries de Fourier</span></a></li>
+          <li><a href="bloco4.html" class="block-nav-link"><span>Bloco 4 · Extensões Par/Ímpar</span></a></li>
+          <li><a href="bloco5.html" class="block-nav-link"><span>Bloco 5 · EDPs (Calor e Onda)</span></a></li>
+          <li><a href="formulario.html" class="block-nav-link"><span>Formulário de Bolso</span></a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <article class="article-container">
+        <header class="chapter-header">
+          <p class="chapter-kicker">Bloco 3 · Prioridade Máxima na P2 · Aulas 19, 20, 21 e 22 (SMA0356)</p>
+          <h1>Fundamentos e Cálculos de Séries de Fourier</h1>
+          <p class="chapter-lead">
+            Bem-vindo ao Capítulo III! Em Taylor, aproximávamos funções muito suaves usando polinômios ($1, x, x^2, \dots$). Mas e se a função tiver <strong>degraus, bicos ou saltos</strong> (como uma onda quadrada de circuito elétrico ou o perfil inicial de temperatura de uma barra)? A ideia revolucionária de Joseph Fourier foi trocar os polinômios por uma "orquestra" de <strong>senos e cossenos</strong>! Aqui vamos dominar paridade, ortogonalidade, os coeficientes $a_0, a_n, b_n$, o Teorema de Fourier nos saltos e a mágica Identidade de Parseval.
+          </p>
+          <div class="chapter-meta-row">
+            <span class="badge badge-max">Prioridade Máxima na P2</span>
+            <span class="badge badge-neutral">Aulas 19, 20, 21 e 22</span>
+            <span class="badge badge-neutral">9 Exemplos Completos</span>
+            <span class="badge badge-neutral">14 Exercícios Passo a Passo</span>
+            <span class="badge badge-done">1 Simulador de Harmônicos de Fourier</span>
+          </div>
+        </header>
+
+        <!-- ================================================================
+             TÓPICO 3.1 — AULA 19: PERIODICIDADE E PARIDADE
+             ================================================================ -->
+        <section id="topico-3-1">
+          <div class="topic-header-bar">
+            <h2>3.1 Aula 19 — Periodicidade e Paridade (O Cortador de Contas!)</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b3-t1" data-track-type="topic" data-block="bloco3">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — Por que checar paridade ANTES de integrar?</p>
+            <p>
+              Antes de sair calculando três integrais gigantes ($a_0, a_n, b_n$) numa questão de Fourier, olhar a <strong>simetria (paridade)</strong> da função em $[-L, L]$ pode <strong>cortar o seu trabalho pela metade (ou por dois terços!)</strong> em 5 segundos!
+            </p>
+            <ul>
+              <li>Se $f(x)$ for <strong>ÍMPAR</strong>, $a_0 = 0$ e $a_n = 0$ na hora — você só calcula $b_n$ (e integrando só de $0$ até $L$)!</li>
+              <li>Se $f(x)$ for <strong>PAR</strong>, $b_n = 0$ na hora — você só calcula $a_0$ e $a_n$ (também integrando só de $0$ até $L$)!</li>
+            </ul>
+          </div>
+
+          <h3>1. Funções $P$-Periódicas</h3>
+          <div class="callout box-teorema">
+            <p class="callout-title">Definição (Aula 19) — Função Periódica e Período Fundamental</p>
+            <p>
+              Uma função $f : \mathbb{R} \to \mathbb{R}$ é dita <strong>$P$-periódica</strong> (ou periódica de período $P > 0$) se
+              $$f(x + P) = f(x) \qquad \forall\, x \in \mathbb{R}.$$
+            </p>
+            <ul>
+              <li>Se $P$ é período, então qualquer múltiplo inteiro $k P$ ($k \in \mathbb{Z}$) também satisfaz $f(x + kP) = f(x)$.</li>
+              <li>O <strong>menor período positivo</strong> (quando existe) é chamado de <em>período fundamental</em>. (Ex.: $\cos x$ e $\operatorname{sen} x$ têm período fundamental $2\pi$; já $\cos\left(\frac{n\pi x}{L}\right)$ e $\operatorname{sen}\left(\frac{n\pi x}{L}\right)$ têm período $\frac{2L}{n}$, logo <strong>todas são $2L$-periódicas</strong>!)</li>
+              <li><strong>Propriedade de ouro da integral periódica:</strong> Se $f$ é $P$-periódica, sua integral sobre <em>qualquer</em> intervalo de comprimento $P$ tem exatamente o mesmo valor: $\displaystyle \int_{a}^{a+P} f(x)\,dx = \int_{0}^{P} f(x)\,dx = \int_{-P/2}^{P/2} f(x)\,dx$.</li>
+            </ul>
+          </div>
+
+          <h3>2. Funções Pares, Ímpares e a Regra dos Sinais do Produto</h3>
+          <div class="callout box-teorema">
+            <p class="callout-title">Definição e Propriedades de Paridade (Aula 19)</p>
+            <p>Seja $f$ definida em um intervalo simétrico $[-L, L]$ (ou em $\mathbb{R}$):</p>
+            <ul>
+              <li><strong>Função PAR:</strong> $f(-x) = f(x)$ para todo $x$. <em>Visualmente:</em> o gráfico é um <strong>espelho perfeito no eixo $y$</strong>! Exemplos: $1$, $x^2$, $x^4$, $|x|$, $\cos(\omega x)$.</li>
+              <li><strong>Função ÍMPAR:</strong> $f(-x) = -f(x)$ para todo $x$. <em>Visualmente:</em> o gráfico tem <strong>simetria em torno da origem $(0, 0)$</strong> (gire 180° e ele coincide consigo mesmo!). Exemplos: $x$, $x^3$, $\operatorname{sen}(\omega x)$, onda quadrada simétrica ($-1$ em $(-L,0)$ e $+1$ em $(0,L)$).</li>
+              <li><strong>Nem par, nem ímpar:</strong> Quando não vale nenhuma das duas! Exemplos: $e^x$, $x + 1$, $x^2 + x$.</li>
+            </ul>
+            <p><strong>Regra do Produto (funciona IGUAL à regra de sinais $+$ e $-$!):</strong></p>
+            <ul>
+              <li>$\text{PAR} \times \text{PAR} = \textbf{PAR}$ &nbsp; ($+ \cdot + = +$)</li>
+              <li>$\text{ÍMPAR} \times \text{ÍMPAR} = \textbf{PAR}$ &nbsp; ($- \cdot - = +$)</li>
+              <li>$\text{PAR} \times \text{ÍMPAR} = \textbf{ÍMPAR}$ &nbsp; ($+ \cdot - = -$)</li>
+            </ul>
+            <p><strong>Teorema da Integral em Intervalo Simétrico $[-L, L]$:</strong></p>
+            $$\int_{-L}^{L} g(x)\,dx = \begin{cases} 0, & \text{se } g \text{ é \textbf{ÍMPAR}}, \\[6pt] \displaystyle 2\int_{0}^{L} g(x)\,dx, & \text{se } g \text{ é \textbf{PAR}}. \end{cases}$$
+          </div>
+
+          <div class="callout box-receita">
+            <p class="callout-title">Receita de Bolo — Teste Algébrico de Paridade em 3 Passos</p>
+            <ol>
+              <li>Troque todo $x$ por $(-x)$ na expressão de $f(x)$ (usando parênteses!).</li>
+              <li>Simplifique lembrando que $(-x)^{2k} = x^{2k}$, $(-x)^{2k+1} = -x^{2k+1}$, $\cos(-u) = \cos(u)$ e $\operatorname{sen}(-u) = -\operatorname{sen}(u)$.</li>
+              <li>Compare o resultado com $f(x)$ e com $-f(x)$: igual a $f(x)$ $\implies$ <strong>PAR</strong>; igual a $-f(x)$ $\implies$ <strong>ÍMPAR</strong>; diferente de ambos $\implies$ <strong>nem par, nem ímpar</strong>.</li>
+            </ol>
+          </div>
+
+          <h3 id="exemplos-3-1">Exemplos Resolvidos (Aula 19)</h3>
+
+          <!-- EXEMPLO 3.1 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 3.1 — Classificação de Paridade e Integrais Instantâneas</h4>
+              <span class="badge badge-base">Nível Básico</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Classifique como par, ímpar ou nem par/nem ímpar e calcule $\displaystyle \int_{-\pi}^{\pi} g(x)\,dx$ sem fazer conta desnecessária:
+                <br><strong>(a)</strong> $g(x) = x^3 \cos(5x)$ &qquad
+                <strong>(b)</strong> $g(x) = x \operatorname{sen}(2x)$ &qquad
+                <strong>(c)</strong> $g(x) = (x^2 + 3x)\cos(x)$
+              </p>
+              <div class="math-step">
+                <span class="step-label">Item (a) · $g(x) = x^3 \cos(5x)$</span>
+                <p>Testando $g(-x)$: $g(-x) = (-x)^3 \cos(-5x) = (-x^3)\cdot(\cos 5x) = -x^3\cos(5x) = -g(x)$ (ou direto: $\text{ÍMPAR} \times \text{PAR} = \text{ÍMPAR}$).</p>
+                <p>Como $g$ é ímpar e o intervalo $[-\pi, \pi]$ é simétrico: $\displaystyle \int_{-\pi}^{\pi} x^3 \cos(5x)\,dx = \mathbf{0}$ em 1 segundo!</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Item (b) · $g(x) = x \operatorname{sen}(2x)$</span>
+                <p>$g(-x) = (-x)\operatorname{sen}(-2x) = (-x)(-\operatorname{sen} 2x) = +x\operatorname{sen}(2x) = g(x)$ ($\text{ÍMPAR} \times \text{ÍMPAR} = \text{PAR}$). Logo:</p>
+                $$\int_{-\pi}^{\pi} x\operatorname{sen}(2x)\,dx = 2\int_{0}^{\pi} x\operatorname{sen}(2x)\,dx.$$
+                <p>Pelo Exemplo 0.7 do Bloco 0 ($\int_0^\pi x\operatorname{sen}(nx)\,dx = \frac{(-1)^{n+1}\pi}{n}$ com $n = 2$): $2\cdot\frac{(-1)^3 \pi}{2} = -\pi$!</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Item (c) · Truque de quebrar soma em parte par + parte ímpar!</span>
+                <p>$g(x) = \underbrace{x^2 \cos(x)}_{\text{PAR}} + \underbrace{3x\cos(x)}_{\text{ÍMPAR}}$ (nem par, nem ímpar!). Mas na integral em $[-\pi, \pi]$, a parte ímpar zera na hora:</p>
+                $$\int_{-\pi}^{\pi} (x^2 + 3x)\cos(x)\,dx = 2\int_{0}^{\pi} x^2\cos(x)\,dx + 0.$$
+                <p>Pelo Exemplo 0.8 do Bloco 0 ($L = \pi, n = 1 \implies \frac{2\pi^3(-1)^1}{1^2\pi^2} = -2\pi$): $2(-2\pi) = -4\pi$!</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 3.2 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 3.2 — Testando Paridade de Funções Definidas por Partes</h4>
+              <span class="badge badge-high">Nível de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Decida a paridade em $(-L, L)$ de:
+                <strong>(a)</strong> $f(x) = \begin{cases} -1, & -L < x < 0, \\ +1, & 0 < x < L; \end{cases}$ &nbsp; e &nbsp;
+                <strong>(b)</strong> $h(x) = \begin{cases} L, & -L < x < 0, \\ x, & 0 \le x \le L. \end{cases}$
+              </p>
+              <div class="math-step">
+                <span class="step-label">Item (a) · Onda Quadrada Simétrica</span>
+                <p>Pegue um $x \in (0, L)$: então $f(x) = +1$, e $-x \in (-L, 0)$, logo $f(-x) = -1 = -f(x)$. E para $x \in (-L, 0)$, $f(x) = -1$ e $f(-x) = +1 = -f(x)$. Portanto $f$ é <strong>ÍMPAR</strong>!</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Item (b) · Função por Partes (Exemplo III.8 da Profa. Janete)</span>
+                <p>Teste um ponto simples, ex.: $x = \frac{L}{2}$! Temos $h\!\left(\frac{L}{2}\right) = \frac{L}{2}$, mas $h\!\left(-\frac{L}{2}\right) = L$. Como $L \neq \frac{L}{2}$ e $L \neq -\frac{L}{2}$, $h$ não é par nem ímpar — teremos que calcular $a_0$, $a_n$ e $b_n$!</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Alertas de Pegadinha — Aula 19</p>
+            <ul>
+              <li><strong>Achar que $f(x) = x + 1$ é ímpar:</strong> A constante $+1$ é <em>par</em>! Soma de ímpar ($x$) com par ($1$) é <strong>nem par, nem ímpar</strong>! (Na prática, você pode quebrar: o "$1$" só contribui para $a_0$ e o "$x$" só contribui para $b_n$!)</li>
+              <li><strong>Zerar integral em $[0, L]$ achando que é simétrico:</strong> $\int_0^L x\,dx \neq 0$! O cancelamento de função ímpar SÓ vale em intervalo <strong>simétrico $[-L, L]$</strong>!</li>
+            </ul>
+          </div>
+
+          <h3 id="exercicios-3-1">Exercícios de Fixação (Aula 19)</h3>
+
+          <!-- EXERCÍCIO 1 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 1 — Período Fundamental de Funções Trigonométricas</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b3-ex1" data-track-type="exercise" data-block="bloco3">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre o menor período positivo (período fundamental) de:
+                <strong>(a)</strong> $\cos(3x)$; &nbsp;
+                <strong>(b)</strong> $\operatorname{sen}\!\left(\dfrac{\pi x}{4}\right)$; &nbsp;
+                <strong>(c)</strong> $\cos(2x) + \operatorname{sen}(3x)$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (a) · Fórmula $P = \frac{2\pi}{\omega}$</span>
+                  <p>Para $\cos(\omega x)$ com $\omega = 3$: $P = \dfrac{2\pi}{3}$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b) · $\omega = \frac{\pi}{4}$</span>
+                  <p>$P = \dfrac{2\pi}{\pi/4} = 2\pi \cdot \dfrac{4}{\pi} = 8$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (c) · Soma de duas periódicas = MMC dos períodos!</span>
+                  <p>$\cos(2x)$ tem período $P_1 = \frac{2\pi}{2} = \pi$ (múltiplos: $\pi, 2\pi, 3\pi, \dots$). $\operatorname{sen}(3x)$ tem período $P_2 = \frac{2\pi}{3}$ (múltiplos: $\frac{2\pi}{3}, \frac{4\pi}{3}, 2\pi, \dots$). O menor múltiplo comum positivo é <strong>$P = 2\pi$</strong>!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 2 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 2 — Paridade e Simplificação de Integrais</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b3-ex2" data-track-type="exercise" data-block="bloco3">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Sem calcular a primitiva de funções ímpares, calcule:
+                <br><strong>(a)</strong> $\displaystyle \int_{-5}^{5} (x^5 - 2x^3 + 7x)\cos(4x)\,dx$ &qquad
+                <strong>(b)</strong> $\displaystyle \int_{-2}^{2} \big(3 + x\operatorname{sen}(x^2)\big)\,dx$
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (a)</span>
+                  <p>$x^5 - 2x^3 + 7x$ é ÍMPAR e $\cos(4x)$ é PAR $\implies$ produto é ÍMPAR! Em $[-5, 5]$, a integral é <strong>$0$</strong>!</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b)</span>
+                  <p>$x$ é ÍMPAR e $\operatorname{sen}(x^2)$ é PAR (pois $(-x)^2 = x^2$), logo $x\operatorname{sen}(x^2)$ é ÍMPAR e sua integral em $[-2, 2]$ é $0$! Sobra apenas $\displaystyle \int_{-2}^{2} 3\,dx = 3 \cdot (2 - (-2)) = \mathbf{12}$.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 3 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 3 — Quais Coeficientes de Fourier Zeram?</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b3-ex3" data-track-type="exercise" data-block="bloco3">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Para cada função $2L$-periódica definida em $(-L, L)$ abaixo, diga quais coeficientes ($a_0, a_n, b_n$) são garantidamente zero por paridade:
+                <br><strong>(a)</strong> $f(x) = |x|$ &qquad
+                <strong>(b)</strong> $f(x) = x^3 - L^2 x$ &qquad
+                <strong>(c)</strong> $f(x) = e^x$
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (a) · $f(x) = |x|$ é PAR</span>
+                  <p>Logo $f(x)\operatorname{sen}\frac{n\pi x}{L}$ é ímpar $\implies$ <strong>$b_n = 0$</strong> para todo $n \ge 1$. (Só precisamos calcular $a_0$ e $a_n$!)</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b) · $f(x) = x^3 - L^2 x$ é ÍMPAR</span>
+                  <p>Logo $f(x)$ e $f(x)\cos\frac{n\pi x}{L}$ são ímpares $\implies$ <strong>$a_0 = 0$ e $a_n = 0$</strong> para todo $n \ge 1$. (Só precisamos calcular $b_n$!)</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (c) · $f(x) = e^x$ não é par nem ímpar</span>
+                  <p>Como $e^{-x} \neq e^x$ e $e^{-x} \neq -e^x$, <strong>nenhum</strong> coeficiente zera automaticamente por paridade — calculamos $a_0, a_n$ e $b_n$.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr>
+
+        <!-- ================================================================
+             TÓPICO 3.2 — AULA 20: COEFICIENTES DE SÉRIES DE FOURIER
+             ================================================================ -->
+        <section id="topico-3-2">
+          <div class="topic-header-bar">
+            <h2>3.2 Aula 20 — Ortogonalidade e Coeficientes de Séries de Fourier</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b3-t2" data-track-type="topic" data-block="bloco3">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — A "Álgebra Linear das Funções"</p>
+            <p>
+              Lembra de Geometria Analítica / Álgebra Linear? Se você tem uma base ortogonal de vetores $\{v_1, v_2, v_3\}$ e quer achar a coordenada $a_k$ de um vetor $v = a_1 v_1 + a_2 v_2 + a_3 v_3$, você faz o produto interno com $v_k$ — todos os outros vetores zeram por ortogonalidade e sobra exatamente $a_k = \dfrac{\langle v, v_k \rangle}{\|v_k\|^2}$!
+            </p>
+            <p>
+              A Série de Fourier faz <strong>exatamente a mesma coisa</strong>, só que os "vetores" agora são funções $2L$-periódicas, o produto interno é uma integral $\langle f, g \rangle = \int_{-L}^{L} f(x)g(x)\,dx$, e a nossa base ortogonal infinita é $\mathcal{O} = \left\{1,\; \cos\!\left(\frac{n\pi x}{L}\right),\; \operatorname{sen}\!\left(\frac{n\pi x}{L}\right)\right\}_{n \ge 1}$!
+            </p>
+          </div>
+
+          <h3 id="ortogonalidade">1. Produto Interno e Relações de Ortogonalidade</h3>
+          <div class="callout box-teorema">
+            <p class="callout-title">Produto Interno e Base Ortogonal $\mathcal{O}$ em $[-L, L]$ (Aula 20)</p>
+            <p>Definimos o <strong>produto interno</strong> entre duas funções contínuas por partes em $[-L, L]$ por:</p>
+            $$\langle f, g \rangle = \int_{-L}^{L} f(x)\,g(x)\,dx, \qquad \|f\|^2 = \langle f, f \rangle = \int_{-L}^{L} [f(x)]^2\,dx.$$
+            <p><strong>Relações de Ortogonalidade (para inteiros $m, n \ge 1$):</strong></p>
+            <ol>
+              <li>$\displaystyle \langle 1, 1 \rangle = \int_{-L}^{L} 1\,dx = \mathbf{2L}$ &nbsp; <em>(É daqui que nasce o famoso $\dfrac{a_0}{2}$!)</em></li>
+              <li>$\displaystyle \left\langle 1, \cos\!\left(\frac{n\pi x}{L}\right) \right\rangle = 0$ &nbsp; e &nbsp; $\displaystyle \left\langle 1, \operatorname{sen}\!\left(\frac{n\pi x}{L}\right) \right\rangle = 0$.</li>
+              <li>$\displaystyle \left\langle \cos\!\left(\frac{m\pi x}{L}\right), \operatorname{sen}\!\left(\frac{n\pi x}{L}\right) \right\rangle = 0$ &nbsp; (para <em>quaisquer</em> $m, n$, pois $\cos\cdot\operatorname{sen}$ é função ímpar!).</li>
+              <li>$\displaystyle \left\langle \cos\!\left(\frac{m\pi x}{L}\right), \cos\!\left(\frac{n\pi x}{L}\right) \right\rangle = \begin{cases} 0, & m \neq n, \\ \mathbf{L}, & m = n. \end{cases}$ &nbsp; <em>(Você já provou o caso $m = n$ no Exercício 12 do Bloco 0!)</em></li>
+              <li>$\displaystyle \left\langle \operatorname{sen}\!\left(\frac{m\pi x}{L}\right), \operatorname{sen}\!\left(\frac{n\pi x}{L}\right) \right\rangle = \begin{cases} 0, & m \neq n, \\ \mathbf{L}, & m = n. \end{cases}$</li>
+            </ol>
+          </div>
+
+          <h3>2. As Fórmulas Sagradas dos Coeficientes de Fourier (Definição III.2.4)</h3>
+          <p>
+            Por que escrevemos $\dfrac{a_0}{2}$ na frente da série? Olhe a projeção ortogonal da constante $1$: como $\|1\|^2 = 2L$, o coeficiente real da constante $1$ é $\dfrac{\langle f, 1 \rangle}{2L} = \dfrac{1}{2L}\int_{-L}^{L} f(x)\,dx$. Para deixar a integral de $a_0$ com o <strong>mesmo fator $\dfrac{1}{L}$</strong> na frente que $a_n$ e $b_n$, definimos $a_0 = \dfrac{1}{L}\int_{-L}^{L} f(x)\,dx$ e colocamos $\dfrac{a_0}{2}$ na série! Assim, o termo constante $\dfrac{a_0}{2}$ é simplesmente o <strong>valor médio de $f(x)$ em um período $[-L, L]$</strong>!
+          </p>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Definição III.2.4 — Série de Fourier de Período $2L$ (e Caso Particular $2\pi$)</p>
+            <p>Seja $f$ uma função $2L$-periódica e contínua por partes ($C_{pp}$). Sua <strong>Série de Fourier</strong> (notação: $S_f(x)$) é:</p>
+            $$S_f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \left[ a_n \cos\!\left(\frac{n\pi x}{L}\right) + b_n \operatorname{sen}\!\left(\frac{n\pi x}{L}\right) \right],$$
+            <p>onde os <strong>coeficientes de Fourier</strong> são dados por:</p>
+            $$a_0 = \frac{1}{L}\int_{-L}^{L} f(x)\,dx, \qquad a_n = \frac{1}{L}\int_{-L}^{L} f(x)\cos\!\left(\frac{n\pi x}{L}\right) dx, \qquad b_n = \frac{1}{L}\int_{-L}^{L} f(x)\operatorname{sen}\!\left(\frac{n\pi x}{L}\right) dx.$$
+            <p><strong>Caso particular período $2\pi$ (basta substituir $L = \pi$, onde $\frac{n\pi x}{\pi} = nx$!):</strong></p>
+            $$S_f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} \big(a_n \cos(nx) + b_n \operatorname{sen}(nx)\big),$$
+            $$a_0 = \frac{1}{\pi}\int_{-\pi}^{\pi} f(x)\,dx, \qquad a_n = \frac{1}{\pi}\int_{-\pi}^{\pi} f(x)\cos(nx)\,dx, \qquad b_n = \frac{1}{\pi}\int_{-\pi}^{\pi} f(x)\operatorname{sen}(nx)\,dx.$$
+            <p><strong>Atalhos de Paridade (já economizando metade do trabalho!):</strong></p>
+            <ul>
+              <li><strong>$f$ PAR:</strong> $b_n = 0$; &nbsp; $a_0 = \dfrac{2}{L}\displaystyle \int_{0}^{L} f(x)\,dx$; &nbsp; $a_n = \dfrac{2}{L}\displaystyle \int_{0}^{L} f(x)\cos\!\left(\frac{n\pi x}{L}\right) dx$.</li>
+              <li><strong>$f$ ÍMPAR:</strong> $a_0 = 0$, $a_n = 0$; &nbsp; $b_n = \dfrac{2}{L}\displaystyle \int_{0}^{L} f(x)\operatorname{sen}\!\left(\frac{n\pi x}{L}\right) dx$.</li>
+            </ul>
+          </div>
+
+          <div class="callout box-receita">
+            <p class="callout-title">Receita de Bolo — Calcular Qualquer Série de Fourier sem Errar Sinal</p>
+            <ol>
+              <li><strong>Passo 1 (Identificar $L$):</strong> Olhe o período total $P$ e divida por $2$: <strong>$L = \dfrac{P}{2}$</strong>! (Ex.: intervalo $[-2, 2]$ tem período $P = 4 \implies L = 2$; intervalo $[-\pi, \pi]$ tem $L = \pi$.)</li>
+              <li><strong>Passo 2 (Checar Paridade!):</strong> Esboce $f(x)$ em $[-L, L]$. É par? Zere $b_n$ e use $\frac{2}{L}\int_0^L$. É ímpar? Zere $a_0, a_n$ e use $\frac{2}{L}\int_0^L$. Nem par nem ímpar? Quebre a integral $\int_{-L}^{L} = \int_{-L}^{0} + \int_{0}^{L}$ se for definida por partes!</li>
+              <li><strong>Passo 3 (Calcular $a_0$ SEPARADO primeiro!):</strong> Nunca jogue $n = 0$ na fórmula de $a_n$! E confira geometricamente se $\frac{a_0}{2}$ bate com a altura média do gráfico!</li>
+              <li><strong>Passo 4 (Calcular $a_n$ e $b_n$ usando o Kit do Bloco 0):</strong> Use $\omega = \frac{n\pi}{L}$ e o Método Tabular (DI). Troque $\operatorname{sen}(n\pi) = 0$, $\cos(n\pi) = (-1)^n$ e lembre que $\cos(0) = 1$!</li>
+              <li><strong>Passo 5 (Simplificar $1 - (-1)^n$ e montar $S_f(x)$):</strong> Se aparecer $1 - (-1)^n$, note que vale $0$ para $n$ par e $2$ para $n$ ímpar ($n = 2k - 1$, $k \ge 1$). Escreva $S_f(x)$ sem esquecer o <strong>$\dfrac{a_0}{2}$</strong>!</li>
+            </ol>
+          </div>
+
+          <h3 id="exemplos-3-2">Exemplos Resolvidos (Aula 20)</h3>
+
+          <!-- EXEMPLO 3.3 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 3.3 (Aquecimento Clássico) — A Onda Quadrada Simétrica ($L = \pi$)</h4>
+              <span class="badge badge-base">Nível Básico</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre a série de Fourier da função $2\pi$-periódica definida em $(-\pi, \pi)$ por $f(x) = \begin{cases} -1, & -\pi < x < 0, \\ +1, & 0 < x < \pi. \end{cases}$
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Identificar $L$ e checar paridade</span>
+                <p>Período $2\pi \implies L = \pi$. Como vimos no Exemplo 3.2(a), $f$ é <strong>ÍMPAR</strong>! Portanto, imediatamente <strong>$a_0 = 0$ e $a_n = 0$</strong> para todo $n \ge 1$!</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Calcular $b_n$ usando o atalho $\frac{2}{\pi}\int_0^\pi$</span>
+                <p>No intervalo $(0, \pi)$, temos $f(x) = 1$:</p>
+                $$b_n = \frac{2}{\pi}\int_{0}^{\pi} 1 \cdot \operatorname{sen}(nx)\,dx = \frac{2}{\pi}\left[-\frac{\cos(nx)}{n}\right]_{0}^{\pi} = \frac{2}{\pi}\left(-\frac{\cos(n\pi)}{n} - \left(-\frac{\cos(0)}{n}\right)\right).$$
+                <p>Substituindo $\cos(n\pi) = (-1)^n$ e $\cos(0) = 1$ (atenção aos dois sinais de menos!):</p>
+                $$b_n = \frac{2}{n\pi}\big(1 - (-1)^n\big).$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Separar $n$ par e $n$ ímpar ($1 - (-1)^n$)</span>
+                <ul>
+                  <li>Se $n$ é <strong>par</strong>: $1 - (+1) = 0 \implies b_{2k} = 0$.</li>
+                  <li>Se $n$ é <strong>ímpar</strong> ($n = 2k - 1$, $k = 1, 2, 3, \dots$): $1 - (-1) = 2 \implies b_{2k-1} = \dfrac{2\cdot 2}{(2k-1)\pi} = \dfrac{4}{(2k-1)\pi}$.</li>
+                </ul>
+                <div class="result-highlight">
+                  $$S_f(x) = \frac{4}{\pi}\sum_{k=1}^{\infty} \frac{\operatorname{sen}\big((2k - 1)x\big)}{2k - 1} = \frac{4}{\pi}\left(\operatorname{sen} x + \frac{\operatorname{sen}(3x)}{3} + \frac{\operatorname{sen}(5x)}{5} + \cdots\right).$$
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 3.4 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 3.4 (Período $2L$ Genérico) — Onda Dente de Serra $f(x) = x$ em $(-L, L)$</h4>
+              <span class="badge badge-high">Essencial</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre a série de Fourier da função $2L$-periódica dada por $f(x) = x$ para $x \in (-L, L)$.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Paridade</span>
+                <p>$f(x) = x$ é <strong>ÍMPAR</strong> em $(-L, L)$, logo <strong>$a_0 = 0$ e $a_n = 0$</strong>!</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Calcular $b_n$ com $\omega = \frac{n\pi}{L}$ (Integração por Partes)</span>
+                $$b_n = \frac{2}{L}\int_{0}^{L} x\operatorname{sen}(\omega x)\,dx = \frac{2}{L}\left[-\frac{x\cos(\omega x)}{\omega} + \frac{\operatorname{sen}(\omega x)}{\omega^2}\right]_{0}^{L}.$$
+                <p>Avaliando nos limites (lembrando $\omega L = n\pi$, $\operatorname{sen}(n\pi) = 0$, $\cos(n\pi) = (-1)^n$, $0\cdot\cos(0)=0$):</p>
+                $$b_n = \frac{2}{L}\left(-\frac{L(-1)^n}{\omega} + 0 - 0\right) = -\frac{2(-1)^n}{\frac{n\pi}{L}} = \frac{2L(-1)^{n+1}}{n\pi}.$$
+              </div>
+              <div class="result-highlight">
+                $$S_f(x) = \frac{2L}{\pi}\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n}\operatorname{sen}\!\left(\frac{n\pi x}{L}\right) = \frac{2L}{\pi}\left(\operatorname{sen}\frac{\pi x}{L} - \frac{1}{2}\operatorname{sen}\frac{2\pi x}{L} + \frac{1}{3}\operatorname{sen}\frac{3\pi x}{L} - \cdots\right).$$
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 3.5 (EXEMPLO III.8 DA PROFA. JANETE — RECOLHÍVEL) -->
+          <div class="box-exemplo" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 3.5 (Direto do Exemplo III.8 da Profa. Janete!) — Função por Partes Sem Simetria</h4>
+              <span class="badge badge-max">Clássico SMA0356</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Calcule a série de Fourier da função $2L$-periódica definida em $(-L, L]$ por:
+                $$f(x) = \begin{cases} L, & -L < x < 0, \\ x, & 0 \le x \le L. \end{cases}$$
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 4</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Calcular $a_0$ (quebrando em $[-L, 0]$ e $[0, L]$)</span>
+                  <p>Como $f$ não é par nem ímpar, integramos os dois trechos separadamente:</p>
+                  $$a_0 = \frac{1}{L}\left(\int_{-L}^{0} L\,dx + \int_{0}^{L} x\,dx\right) = \frac{1}{L}\left(\Big[Lx\Big]_{-L}^{0} + \left[\frac{x^2}{2}\right]_{0}^{L}\right) = \frac{1}{L}\left((0 - (-L^2)) + \frac{L^2}{2}\right) = \frac{1}{L}\cdot\frac{3L^2}{2} = \frac{3L}{2}.$$
+                  <p><em>Conferência visual da média:</em> $\dfrac{a_0}{2} = \dfrac{3L}{4}$ (metade esquerda tem altura média $L$, metade direita tem média $\frac{L}{2}$, média global $= \frac{L + L/2}{2} = \frac{3L}{4}$ ✓!).</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Calcular $a_n$ (com $\omega = \frac{n\pi}{L}$)</span>
+                  $$a_n = \frac{1}{L}\int_{-L}^{0} L\cos(\omega x)\,dx + \frac{1}{L}\int_{0}^{L} x\cos(\omega x)\,dx.$$
+                  <ul>
+                    <li><strong>1ª parcela:</strong> $\displaystyle \left[\frac{\operatorname{sen}(\omega x)}{\omega}\right]_{-L}^{0} = \frac{\operatorname{sen}(0) - \operatorname{sen}(-n\pi)}{\omega} = 0$.</li>
+                    <li><strong>2ª parcela (Partes):</strong>
+                      $$\frac{1}{L}\left[\frac{x\operatorname{sen}(\omega x)}{\omega} + \frac{\cos(\omega x)}{\omega^2}\right]_{0}^{L} = \frac{1}{L}\left(\frac{\cos(n\pi)}{\omega^2} - \frac{\cos(0)}{\omega^2}\right) = \frac{(-1)^n - 1}{L\,\omega^2} = \frac{(-1)^n - 1}{L \cdot \frac{n^2\pi^2}{L^2}} = \frac{L\big((-1)^n - 1\big)}{n^2\pi^2}.$$
+                    </li>
+                  </ul>
+                  <p>Logo $a_{2k} = 0$ (pares zeram!) e $a_{2k-1} = -\dfrac{2L}{(2k-1)^2\pi^2}$ (ímpares sobrevivem!).</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Calcular $b_n$ (note o cancelamento lindo entre os dois pedaços!)</span>
+                  $$b_n = \frac{1}{L}\int_{-L}^{0} L\operatorname{sen}(\omega x)\,dx + \frac{1}{L}\int_{0}^{L} x\operatorname{sen}(\omega x)\,dx.$$
+                  <ul>
+                    <li><strong>1ª parcela:</strong> $\displaystyle \left[-\frac{\cos(\omega x)}{\omega}\right]_{-L}^{0} = -\frac{\cos(0)}{\omega} - \left(-\frac{\cos(-n\pi)}{\omega}\right) = \frac{(-1)^n - 1}{\omega} = \frac{L\big((-1)^n - 1\big)}{n\pi}$.</li>
+                    <li><strong>2ª parcela:</strong> $\displaystyle \frac{1}{L}\left[-\frac{x\cos(\omega x)}{\omega} + \frac{\operatorname{sen}(\omega x)}{\omega^2}\right]_{0}^{L} = -\frac{(-1)^n}{\omega} = -\frac{L(-1)^n}{n\pi}$.</li>
+                  </ul>
+                  <p>Somando as duas parcelas (o $L(-1)^n$ cancela perfeitamente!):</p>
+                  $$b_n = \frac{\cancel{L(-1)^n} - L - \cancel{L(-1)^n}}{n\pi} = -\frac{L}{n\pi}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 4 · Montar $S_f(x)$ (lembrando $\frac{a_0}{2} = \frac{3L}{4}$!)</span>
+                  <div class="result-highlight">
+                    $$S_f(x) = \frac{3L}{4} + \sum_{k=1}^{\infty} \frac{-2L}{(2k - 1)^2\pi^2}\cos\!\left(\frac{(2k - 1)\pi x}{L}\right) - \sum_{n=1}^{\infty} \frac{L}{n\pi}\operatorname{sen}\!\left(\frac{n\pi x}{L}\right).$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Alertas de Pegadinha — Aula 20</p>
+            <ul>
+              <li><strong>ESQUECER DE DIVIDIR $a_0$ POR $2$:</strong> A fórmula da série tem <strong>$\dfrac{a_0}{2}$</strong>! Se você achou $a_0 = \frac{3L}{2}$ usando $\frac{1}{L}\int_{-L}^{L} f(x)\,dx$, o termo que vai na série é $\frac{3L}{4}$! (Dica: cheque mentalmente se o termo constante é igual à altura média da função no gráfico!)</li>
+              <li><strong>Trocar $\frac{1}{L}$ por $\frac{2}{L}$ sem função par/ímpar:</strong> Só multiplique por $2$ (virando $\frac{2}{L}\int_0^L$) quando o integrando inteiro for uma função <strong>PAR</strong> em $[-L, L]$!</li>
+              <li><strong>Esquecer de escrever $L$ no lugar de $\pi$:</strong> Se o período é $4$ (ou seja, $L = 2$), o argumento é $\dfrac{n\pi x}{2}$, e NÃO $nx$!</li>
+            </ul>
+          </div>
+
+          <h3 id="exercicios-3-2">Exercícios de Fixação (Aula 20)</h3>
+
+          <!-- EXERCÍCIO 4 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 4 (Clássico!) — Parábola $f(x) = x^2$ em $[-\pi, \pi]$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b3-ex4" data-track-type="exercise" data-block="bloco3">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre a série de Fourier da função $2\pi$-periódica dada por $f(x) = x^2$ para $x \in [-\pi, \pi]$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Paridade e $a_0$</span>
+                  <p>$f(x) = x^2$ é <strong>PAR</strong> $\implies$ <strong>$b_n = 0$</strong>! Calculando $a_0$:</p>
+                  $$a_0 = \frac{2}{\pi}\int_{0}^{\pi} x^2\,dx = \frac{2}{\pi}\left[\frac{x^3}{3}\right]_{0}^{\pi} = \frac{2\pi^2}{3} \implies \frac{a_0}{2} = \frac{\pi^2}{3}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Calcular $a_n$ (usando o Método Tabular do Bloco 0!)</span>
+                  <p>Do Exemplo 0.8 (com $L = \pi$), $\displaystyle \int_{0}^{\pi} x^2\cos(nx)\,dx = \left[\frac{x^2\operatorname{sen}(nx)}{n} + \frac{2x\cos(nx)}{n^2} - \frac{2\operatorname{sen}(nx)}{n^3}\right]_{0}^{\pi} = \frac{2\pi(-1)^n}{n^2}$.</p>
+                  <p>Multiplicando por $\dfrac{2}{\pi}$:</p>
+                  $$a_n = \frac{2}{\cancel{\pi}} \cdot \frac{2\cancel{\pi}(-1)^n}{n^2} = \frac{4(-1)^n}{n^2}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Série de Fourier final</span>
+                  <div class="result-highlight">
+                    $$S_f(x) = \frac{\pi^2}{3} + 4\sum_{n=1}^{\infty} \frac{(-1)^n}{n^2}\cos(nx).$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 5 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 5 — Onda Triangular $f(x) = |x|$ em $[-L, L]$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b3-ex5" data-track-type="exercise" data-block="bloco3">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Determine a série de Fourier da função $2L$-periódica definida por $f(x) = |x|$ em $[-L, L]$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Paridade e $a_0$</span>
+                  <p>$f(x) = |x|$ é <strong>PAR</strong> $\implies b_n = 0$. Em $[0, L]$, temos $|x| = x$!</p>
+                  $$a_0 = \frac{2}{L}\int_{0}^{L} x\,dx = \frac{2}{L}\cdot\frac{L^2}{2} = L \implies \frac{a_0}{2} = \frac{L}{2}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Calcular $a_n$ com $\omega = \frac{n\pi}{L}$</span>
+                  $$a_n = \frac{2}{L}\int_{0}^{L} x\cos(\omega x)\,dx = \frac{2}{L}\left[\frac{x\operatorname{sen}(\omega x)}{\omega} + \frac{\cos(\omega x)}{\omega^2}\right]_{0}^{L} = \frac{2}{L}\cdot\frac{(-1)^n - 1}{\omega^2} = \frac{2L\big((-1)^n - 1\big)}{n^2\pi^2}.$$
+                  <p>Para $n$ par: $a_{2k} = 0$. Para $n = 2k - 1$ ímpar: $a_{2k-1} = -\dfrac{4L}{(2k - 1)^2\pi^2}$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Resposta Final</span>
+                  <div class="result-highlight">
+                    $$S_f(x) = \frac{L}{2} - \frac{4L}{\pi^2}\sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2}\cos\!\left(\frac{(2k - 1)\pi x}{L}\right).$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 6 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 6 — Degrau $0 / 1$ em $(-\pi, \pi)$ (Truque de Deslocamento Vertical!)</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b3-ex6" data-track-type="exercise" data-block="bloco3">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre a série de Fourier da função $2\pi$-periódica $f(x) = \begin{cases} 0, & -\pi < x < 0, \\ 1, & 0 < x < \pi. \end{cases}$
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · $a_0$ e $a_n$ (a integral em $(-\pi, 0)$ é zero!)</span>
+                  $$a_0 = \frac{1}{\pi}\int_{0}^{\pi} 1\,dx = 1 \implies \frac{a_0}{2} = \frac{1}{2}.$$
+                  $$a_n = \frac{1}{\pi}\int_{0}^{\pi} \cos(nx)\,dx = \frac{1}{\pi}\left[\frac{\operatorname{sen}(nx)}{n}\right]_{0}^{\pi} = 0.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Calcular $b_n$</span>
+                  $$b_n = \frac{1}{\pi}\int_{0}^{\pi} \operatorname{sen}(nx)\,dx = \frac{1}{\pi}\left[-\frac{\cos(nx)}{n}\right]_{0}^{\pi} = \frac{1 - (-1)^n}{n\pi}.$$
+                  <p>Para $n = 2k - 1$ ímpar, $b_{2k-1} = \dfrac{2}{(2k - 1)\pi}$; para $n$ par, $b_{2k} = 0$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Resposta (e truque visual!)</span>
+                  <div class="result-highlight">
+                    $$S_f(x) = \frac{1}{2} + \frac{2}{\pi}\sum_{k=1}^{\infty} \frac{\operatorname{sen}\big((2k - 1)x\big)}{2k - 1}.$$
+                    <em>(Repare: $f(x) = \frac{1}{2} + \frac{1}{2}\cdot(\text{Onda Quadrada } \pm 1)$! Bateu perfeitamente com o Exemplo 3.3!)</em>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 7 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 7 — Rampa por Partes com $L = 2$ (Período $4$)</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b3-ex7" data-track-type="exercise" data-block="bloco3">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre a série de Fourier da função $4$-periódica dada em $(-2, 2)$ por $f(x) = \begin{cases} 0, & -2 < x < 0, \\ x, & 0 \le x < 2. \end{cases}$
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Identificar $L = 2$ e calcular $a_0$</span>
+                  $$a_0 = \frac{1}{2}\int_{0}^{2} x\,dx = \frac{1}{2}\left[\frac{x^2}{2}\right]_{0}^{2} = \frac{1}{2}\cdot 2 = 1 \implies \frac{a_0}{2} = \frac{1}{2}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Calcular $a_n$ e $b_n$ com $\omega = \frac{n\pi}{2}$</span>
+                  $$a_n = \frac{1}{2}\int_{0}^{2} x\cos(\omega x)\,dx = \frac{1}{2}\left[\frac{x\operatorname{sen}(\omega x)}{\omega} + \frac{\cos(\omega x)}{\omega^2}\right]_{0}^{2} = \frac{(-1)^n - 1}{2\cdot\frac{n^2\pi^2}{4}} = \frac{2\big((-1)^n - 1\big)}{n^2\pi^2}.$$
+                  $$b_n = \frac{1}{2}\int_{0}^{2} x\operatorname{sen}(\omega x)\,dx = \frac{1}{2}\left[-\frac{x\cos(\omega x)}{\omega} + \frac{\operatorname{sen}(\omega x)}{\omega^2}\right]_{0}^{2} = \frac{1}{2}\left(-\frac{2(-1)^n}{\frac{n\pi}{2}}\right) = \frac{2(-1)^{n+1}}{n\pi}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Série de Fourier Final</span>
+                  <div class="result-highlight">
+                    $$S_f(x) = \frac{1}{2} - \frac{4}{\pi^2}\sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2}\cos\!\left(\frac{(2k - 1)\pi x}{2}\right) + \frac{2}{\pi}\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n}\operatorname{sen}\!\left(\frac{n\pi x}{2}\right).$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr>
+
+        <!-- ================================================================
+             TÓPICO 3.3 — AULA 21: TEOREMA DE FOURIER (CONVERGÊNCIA PONTUAL)
+             ================================================================ -->
+        <section id="topico-3-3">
+          <div class="topic-header-bar">
+            <h2>3.3 Aula 21 — Teorema de Fourier (Convergência Pontual e Somas Numéricas)</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b3-t3" data-track-type="topic" data-block="bloco3">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — O que a Série de Fourier faz nos Saltos?</p>
+            <p>
+              Você calculou os coeficientes $a_0, a_n, b_n$ e montou a série $S_f(x)$. Mas para <strong>qual valor exato</strong> essa soma infinita converge em cada ponto $x$?
+            </p>
+            <p>
+              O Teorema de Fourier dá uma resposta incrivelmente democrática: onde $f$ é contínua, a série converge para o próprio $f(x)$; onde $f$ dá um <strong>salto</strong> (descontinuidade), a série <em>não escolhe nem o lado esquerdo nem o lado direito</em> — ela converge exatamente para o <strong>meio do caminho (a média aritmética dos limites laterais)</strong>!
+            </p>
+          </div>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Teorema III.3.1 (Aula 21) — Teorema de Fourier (Convergência Pontual)</p>
+            <p>
+              Seja $f$ uma função $2L$-periódica tal que <strong>$f$ e sua derivada $f'$ sejam contínuas por partes ($C_{pp}$)</strong> em $\mathbb{R}$ (isto é, em $[-L, L]$ têm no máximo finitos pontos de descontinuidade, todos do tipo salto finito). Então, para <strong>todo $x \in \mathbb{R}$</strong>, a série de Fourier $S_f(x)$ converge para:
+            </p>
+            $$S_f(x) = \begin{cases} f(x), & \text{se } f \text{ é \textbf{contínua} em } x, \\[8pt] \dfrac{f(x^+) + f(x^-)}{2}, & \text{se } f \text{ é \textbf{descontínua} em } x, \end{cases}$$
+            <p>onde $f(x^+) = \lim_{t \to x^+} f(t)$ (limite pela direita) e $f(x^-) = \lim_{t \to x^-} f(t)$ (limite pela esquerda).</p>
+            <p><strong>Atenção especial nos extremos $x = \pm L$:</strong> Pela periodicidade $2L$, o limite à direita de $+L$ é igual ao limite à direita de $-L$! Portanto, nos extremos $\pm L$, a série converge SEMPRE para:</p>
+            $$S_f(L) = S_f(-L) = \frac{f(-L^+) + f(L^-)}{2}.$$
+          </div>
+
+          <!-- SIMULADOR INTERATIVO 3.1: HARMÔNICOS DE FOURIER -->
+          <div class="simulator-card" id="simulador-fourier">
+            <div class="simulator-header">
+              <div>
+                <h3 class="simulator-title">Simulador Interativo 3.1 — Aproximação de Fourier $S_N(x)$ e Convergência nos Saltos</h3>
+                <p class="simulator-subtitle">Arraste o número de harmônicos $N$ e veja os senos e cossenos reconstruindo ondas com saltos, cravando as <strong>bolinhas verdes na média dos saltos</strong> (Teorema de Fourier) e derrubando o erro quadrático (Parseval)!</p>
+              </div>
+              <span class="badge badge-done">Simulador Interativo</span>
+            </div>
+
+            <div class="sim-controls">
+              <div class="sim-control-group">
+                <label for="sim31-wave"><span>Escolha a Onda $2\pi$-Periódica</span></label>
+                <select id="sim31-wave" class="sim-select">
+                  <option value="square">Onda Quadrada (−1 / +1) — Saltos em 0, ±π</option>
+                  <option value="sawtooth">Dente de Serra f(x) = x — Saltos em ±π</option>
+                  <option value="triangle">Onda Triangular f(x) = |x| — Contínua (sem Gibbs!)</option>
+                  <option value="janete">Ex. III.8 Profa. Janete (π em (−π,0), x em [0,π])</option>
+                </select>
+              </div>
+
+              <div class="sim-control-group">
+                <label for="sim31-n">
+                  <span>Número de harmônicos (N)</span>
+                  <span class="sim-val" id="sim31-n-val">5</span>
+                </label>
+                <input id="sim31-n" class="sim-range" type="range" min="1" max="40" step="1" value="5">
+              </div>
+            </div>
+
+            <div class="canvas-stage">
+              <canvas id="canvas-sim31" aria-label="Gráfico interativo da soma parcial de Fourier S_N(x)"></canvas>
+            </div>
+
+            <div class="sim-readout">
+              <div class="readout-metric">
+                <div class="readout-label">Harmônicos $N$</div>
+                <div class="readout-value" id="sim31-n-out">5</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label">Média nos saltos</div>
+                <div class="readout-value" id="sim31-jump">—</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label">Erro Quadrático $E_N$</div>
+                <div class="readout-value" id="sim31-err">—</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label">Energia Capturada</div>
+                <div class="readout-value" id="sim31-energy">—</div>
+              </div>
+            </div>
+
+            <div class="sim-explanation" id="sim31-msg">
+              Carregando simulador de Fourier...
+            </div>
+          </div>
+
+          <div class="callout box-receita">
+            <p class="callout-title">Receita de Bolo — Usando o Teorema de Fourier na Prova (2 Aplicações Clássicas)</p>
+            <p><strong>Aplicação A — Achar $S_f(x^*)$ para um $x^*$ gigante (ex.: $x^* = 27{,}2 L$ ou $x^* = 101\pi$):</strong></p>
+            <ol>
+              <li>Subtraia (ou some) múltiplos inteiros do período total $2L$ até trazer $x^*$ para dentro de $[-L, L]$!</li>
+              <li>Verifique se esse ponto é de continuidade ($S_f = f$) ou de salto ($S_f = \frac{f^+ + f^-}{2}$).</li>
+            </ol>
+            <p><strong>Aplicação B — Achar a soma exata de uma série numérica usando $S_f(x)$:</strong></p>
+            <ol>
+              <li>Escolha um ponto estratégico $x_0$ (quase sempre $x_0 = 0$, $x_0 = L$, ou $x_0 = \frac{L}{2}$) que transforme $\cos\frac{n\pi x_0}{L}$ em $1$ ou $(-1)^n$ (e zere os senos, se quiser só os cossenos!).</li>
+              <li>Calcule o valor de $S_f(x_0)$ pelo <strong>Teorema de Fourier</strong> ($f(x_0)$ ou média do salto).</li>
+              <li>Iguale esse número à fórmula da série avaliada em $x_0$ e isole o somatório pedido!</li>
+            </ol>
+          </div>
+
+          <h3 id="exemplos-3-3">Exemplos Resolvidos (Aula 21)</h3>
+
+          <!-- EXEMPLO 3.6 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 3.6 — Usando a Parábola $x^2$ para Provar $\sum \frac{1}{n^2} = \frac{\pi^2}{6}$ e $\sum \frac{(-1)^{n+1}}{n^2} = \frac{\pi^2}{12}$</h4>
+              <span class="badge badge-max">Clássico de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                No Exercício 4, obtivemos a série de Fourier da função $2\pi$-periódica $f(x) = x^2$ em $[-\pi, \pi]$:
+                $$S_f(x) = \frac{\pi^2}{3} + 4\sum_{n=1}^{\infty} \frac{(-1)^n}{n^2}\cos(nx).$$
+                Use o Teorema de Fourier em $x = \pi$ e $x = 0$ para calcular $\displaystyle \sum_{n=1}^{\infty} \frac{1}{n^2}$ e $\displaystyle \sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n^2}$.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Verificar continuidade de $f$ (e $f' \in C_{pp}$)</span>
+                <p>Nos extremos $x = \pm\pi$, temos $f(-\pi^+) = (-\pi)^2 = \pi^2$ e $f(\pi^-) = \pi^2$. Como os limites laterais são iguais, a extensão $2\pi$-periódica de $x^2$ é <strong>contínua em todo $\mathbb{R}$</strong>! Logo $S_f(x) = f(x)$ para todo $x \in [-\pi, \pi]$!</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Avaliar em $x = \pi$ (note: $(-1)^n \cos(n\pi) = (-1)^n(-1)^n = +1$!)</span>
+                $$\pi^2 = f(\pi) = S_f(\pi) = \frac{\pi^2}{3} + 4\sum_{n=1}^{\infty} \frac{(-1)^n (-1)^n}{n^2} = \frac{\pi^2}{3} + 4\sum_{n=1}^{\infty} \frac{1}{n^2}.$$
+                <p>Subtraindo $\frac{\pi^2}{3}$ e dividindo por $4$:</p>
+                $$\pi^2 - \frac{\pi^2}{3} = \frac{2\pi^2}{3} = 4\sum_{n=1}^{\infty} \frac{1}{n^2} \implies \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{2\pi^2}{12} = \frac{\pi^2}{6}!$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Avaliar em $x = 0$ (pois $\cos(0) = 1$)</span>
+                $$0 = f(0) = S_f(0) = \frac{\pi^2}{3} + 4\sum_{n=1}^{\infty} \frac{(-1)^n}{n^2} \implies -4\sum_{n=1}^{\infty} \frac{(-1)^n}{n^2} = \frac{\pi^2}{3}.$$
+                <p>Lembrando que $-(-1)^n = (-1)^{n+1}$ e dividindo por $4$:</p>
+                $$\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n^2} = \frac{\pi^2}{12}.$$
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 3.7 (AVANÇADO RECOLHÍVEL) -->
+          <div class="box-exemplo" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 3.7 (Estilo Exemplo III.9 da Profa. Janete!) — Pontos de Salto e Periodicidade</h4>
+              <span class="badge badge-high">Nível de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Retome a função $2L$-periódica do Exemplo 3.5 ($f(x) = L$ em $(-L, 0)$ e $f(x) = x$ em $[0, L]$), cuja série é
+                $$S_f(x) = \frac{3L}{4} - \frac{2L}{\pi^2}\sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2}\cos\!\left(\frac{(2k - 1)\pi x}{L}\right) - \frac{L}{\pi}\sum_{n=1}^{\infty} \frac{1}{n}\operatorname{sen}\!\left(\frac{n\pi x}{L}\right).$$
+                Determine: <strong>(a)</strong> $S_f(0)$, $S_f(L)$ e $S_f(27{,}2L)$; &nbsp; <strong>(b)</strong> use $x = 0$ para provar que $\displaystyle \sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2} = \frac{\pi^2}{8}$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · $S_f(0)$ e $S_f(L)$ pelos limites laterais</span>
+                  <ul>
+                    <li><strong>Em $x = 0$:</strong> pela esquerda $f(0^-) = L$, pela direita $f(0^+) = 0$. Há salto! Logo:
+                    $$S_f(0) = \frac{f(0^+) + f(0^-)}{2} = \frac{0 + L}{2} = \frac{L}{2}.$$</li>
+                    <li><strong>Em $x = L$:</strong> pela esquerda $f(L^-) = L$, pela direita (usando periodicidade!) $f(L^+) = f(-L^+) = L$. São iguais — é <strong>contínua</strong> em $x = L$! Logo $S_f(L) = L$.</li>
+                  </ul>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · $S_f(27{,}2L)$ via periodicidade $2L$</span>
+                  <p>Subtraímos $14$ períodos completos ($14 \times 2L = 28L$) para cair dentro de $(-L, L)$:</p>
+                  $$S_f(27{,}2L) = S_f(27{,}2L - 28L) = S_f(-0{,}8L).$$
+                  <p>Como $-0{,}8L \in (-L, 0)$ é ponto de continuidade onde $f(x) = L$, temos <strong>$S_f(27{,}2L) = L$</strong>!</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Item (b) — Avaliar $S_f(0) = \frac{L}{2}$</span>
+                  <p>Em $x = 0$, todos os senos zeram ($\operatorname{sen} 0 = 0$) e todos os cossenos valem $1$ ($\cos 0 = 1$):</p>
+                  $$\frac{L}{2} = \frac{3L}{4} - \frac{2L}{\pi^2}\sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2} \implies \frac{2L}{\pi^2}\sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2} = \frac{3L}{4} - \frac{L}{2} = \frac{L}{4}.$$
+                  <p>Cancelando $L > 0$ e multiplicando por $\frac{\pi^2}{2}$:</p>
+                  <div class="result-highlight">
+                    $$\sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2} = \frac{\pi^2}{8}.$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Alertas de Pegadinha — Aula 21</p>
+            <ul>
+              <li><strong>Usar $f(x_0)$ em vez da média no ponto de salto:</strong> No Exemplo 3.7, embora a definição dissesse $f(0) = 0$, a série <strong>NÃO</strong> converge para $0$ em $x = 0$ — converge para $\dfrac{0 + L}{2} = \dfrac{L}{2}$! O valor pontual definido em um único ponto nunca altera as integrais nem a série de Fourier!</li>
+              <li><strong>Esquecer de checar os extremos $\pm L$:</strong> Mesmo que $f$ seja contínua em todo $(-L, L)$ (como $f(x) = x$), quando você repete a função periodicamente ela pode dar um <em>salto nas emendas $\pm L$</em>! Sempre compare $f(-L^+)$ com $f(L^-)$!</li>
+            </ul>
+          </div>
+
+          <h3 id="exercicios-3-3">Exercícios de Fixação (Aula 21)</h3>
+
+          <!-- EXERCÍCIO 8 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 8 — Convergência da Onda Dente de Serra e Periodicidade</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b3-ex8" data-track-type="exercise" data-block="bloco3">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Seja $f$ a função $2\pi$-periódica definida por $f(x) = x$ em $(-\pi, \pi)$. Sem somar nenhum termo da série, encontre $S_f(\pi)$, $S_f(3\pi)$, $S_f\!\left(\dfrac{9\pi}{2}\right)$ e $S_f(-5\pi + 1)$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · $S_f(\pi)$ e $S_f(3\pi)$ (extremos / saltos)</span>
+                  <p>Em $x = \pi$, $f(\pi^-) = \pi$ e $f(\pi^+) = f(-\pi^+) = -\pi$, logo $S_f(\pi) = \dfrac{\pi + (-\pi)}{2} = \mathbf{0}$. Como $3\pi = \pi + 2\pi$, por periodicidade $S_f(3\pi) = S_f(\pi) = \mathbf{0}$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · $S_f(9\pi/2)$</span>
+                  <p>Subtraindo $2$ períodos ($4\pi = \frac{8\pi}{2}$): $\dfrac{9\pi}{2} - 4\pi = \dfrac{\pi}{2} \in (-\pi, \pi)$ (ponto de continuidade!). Logo $S_f\!\left(\frac{9\pi}{2}\right) = f\!\left(\frac{\pi}{2}\right) = \mathbf{\dfrac{\pi}{2}}$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · $S_f(-5\pi + 1)$</span>
+                  <p>Somamos $3$ períodos ($6\pi$): $(-5\pi + 1) + 6\pi = \pi + 1$ (passou de $\pi$!). Então somamos apenas $2$ períodos ($4\pi$): $-5\pi + 1 + 4\pi = 1 - \pi \approx -2{,}14 \in (-\pi, \pi)$ (ponto de continuidade!). Logo $S_f(-5\pi + 1) = \mathbf{1 - \pi}$.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 9 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 9 — Fórmula de Leibniz para $\frac{\pi}{4}$ via Onda Quadrada</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b3-ex9" data-track-type="exercise" data-block="bloco3">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Usando a série da Onda Quadrada (Exemplo 3.3), $S_f(x) = \dfrac{4}{\pi}\displaystyle \sum_{k=1}^{\infty} \frac{\operatorname{sen}((2k-1)x)}{2k - 1}$, avalie em $x = \dfrac{\pi}{2}$ pelo Teorema de Fourier para deduzir a soma de $1 - \dfrac{1}{3} + \dfrac{1}{5} - \dfrac{1}{7} + \cdots$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Avaliar $S_f(\pi/2)$</span>
+                  <p>Em $x = \frac{\pi}{2} \in (0, \pi)$, $f$ é contínua e vale $+1$. Logo $S_f\!\left(\frac{\pi}{2}\right) = 1$! Além disso, pela tabela trigonométrica do Bloco 0, $\operatorname{sen}\!\left(\frac{(2k-1)\pi}{2}\right) = (-1)^{k-1}$:</p>
+                  $$1 = \frac{4}{\pi}\sum_{k=1}^{\infty} \frac{(-1)^{k-1}}{2k - 1}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Isolar o somatório</span>
+                  <div class="result-highlight">
+                    $$\sum_{k=1}^{\infty} \frac{(-1)^{k-1}}{2k - 1} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \cdots = \frac{\pi}{4}.$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 10 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 10 — Soma via Onda Triangular $|x|$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b3-ex10" data-track-type="exercise" data-block="bloco3">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Usando a série de $f(x) = |x|$ em $[-L, L]$ do Exercício 5, avalie em $x = 0$ e em $x = L$ para verificar que ambos os pontos fornecem $\displaystyle \sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2} = \frac{\pi^2}{8}$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Em $x = 0$ ($f$ é contínua, $f(0) = 0$)</span>
+                  $$0 = \frac{L}{2} - \frac{4L}{\pi^2}\sum_{k=1}^{\infty} \frac{\cos(0)}{(2k - 1)^2} \implies \frac{4L}{\pi^2}\sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2} = \frac{L}{2} \implies \sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2} = \frac{\pi^2}{8}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Em $x = L$ ($f$ é contínua, $f(L) = f(-L) = L$, e $\cos((2k-1)\pi) = -1$)</span>
+                  $$L = \frac{L}{2} - \frac{4L}{\pi^2}\sum_{k=1}^{\infty} \frac{-1}{(2k - 1)^2} = \frac{L}{2} + \frac{4L}{\pi^2}\sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2} \implies \frac{L}{2} = \frac{4L}{\pi^2}\sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2} \implies \frac{\pi^2}{8}\;\checkmark!$$
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 11 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 11 — Qual função NÃO satisfaz o Teorema de Fourier?</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b3-ex11" data-track-type="exercise" data-block="bloco3">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Explique por que as funções $f(x) = \tan(x)$ e $g(x) = \dfrac{1}{x}$ (em $[-\pi, \pi]$) <strong>NÃO</strong> são contínuas por partes ($C_{pp}$), enquanto a onda degrau do Exercício 6 <strong>É</strong> contínua por partes.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Por que $\tan(x)$ e $1/x$ falham</span>
+                  <p>Para ser $C_{pp}$, as descontinuidades precisam ser do tipo <strong>salto finito</strong> (ambos os limites laterais finitos!). Em $g(x) = 1/x$, $\lim_{x \to 0^+} \frac{1}{x} = +\infty$ (não existe limite finito); em $\tan(x)$, $\lim_{x \to (\pi/2)^-} \tan(x) = +\infty$. Logo nenhuma das duas é $C_{pp}$!</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Por que a onda degrau é $C_{pp}$</span>
+                  <p>Em $(-\pi, \pi)$ ela tem apenas um ponto de descontinuidade ($x = 0$), onde $f(0^-) = 0$ e $f(0^+) = 1$ são finitos, e nos extremos $f(-\pi^+) = 0$ e $f(\pi^-) = 1$ também são finitos. Além disso $f'(x) = 0$ em ambos os subintervalos (também $C_{pp}$!). Logo o Teorema de Fourier se aplica perfeitamente!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr>
+
+        <!-- ================================================================
+             TÓPICO 3.4 — AULA 22: ERRO QUADRÁTICO, BESSEL E PARSEVAL
+             ================================================================ -->
+        <section id="topico-3-4">
+          <div class="topic-header-bar">
+            <h2>3.4 Aula 22 — Erro Quadrático, Desigualdade de Bessel e Identidade de Parseval</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b3-t4" data-track-type="topic" data-block="bloco3">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — O "Teorema de Pitágoras" das Ondas!</p>
+            <p>
+              Lembra do Teorema de Pitágoras em $\mathbb{R}^3$? Se um vetor $v$ tem coordenadas $(c_1, c_2, c_3)$ numa base ortonormal, então o quadrado do tamanho dele é $\|v\|^2 = c_1^2 + c_2^2 + c_3^2$.
+            </p>
+            <p>
+              A <strong>Identidade de Parseval</strong> é exatamente o Teorema de Pitágoras para Séries de Fourier: a "energia total" do sinal no tempo ($\frac{1}{L}\int_{-L}^L [f(x)]^2\,dx$) é igual à soma das energias de cada harmônico individual ($\frac{a_0^2}{2} + \sum_{n=1}^{\infty}(a_n^2 + b_n^2)$)! E na P2 ela tem um uso sensacional: como os coeficientes ficam <strong>elevados ao quadrado</strong>, ela dobra os expoentes no denominador — transformando $b_n \sim \frac{1}{n}$ em $\sum \frac{1}{n^2}$, $a_n \sim \frac{1}{n^2}$ em $\sum \frac{1}{n^4}$, e $b_n \sim \frac{1}{n^3}$ em $\sum \frac{1}{n^6}$!
+            </p>
+          </div>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Teoremas III.4.4 e III.4.5 (Aula 22) — Erro Quadrático, Bessel e Parseval</p>
+            <p>Seja $f$ $2L$-periódica e contínua por partes, com soma parcial de Fourier $S_N(x) = \dfrac{a_0}{2} + \displaystyle \sum_{n=1}^{N}\left(a_n\cos\frac{n\pi x}{L} + b_n\operatorname{sen}\frac{n\pi x}{L}\right)$.</p>
+            <ol>
+              <li><strong>Erro Quadrático Médio (mínimo dentre todos os polinômios trigonométricos de grau $N$):</strong>
+                $$E(f, S_N) = \int_{-L}^{L} \big(f(x) - S_N(x)\big)^2 dx = \int_{-L}^{L} [f(x)]^2\,dx - L\left[\frac{a_0^2}{2} + \sum_{n=1}^{N} (a_n^2 + b_n^2)\right] \ge 0.$$
+              </li>
+              <li><strong>Desigualdade de Bessel (Teorema III.4.4):</strong>
+                $$\frac{a_0^2}{2} + \sum_{n=1}^{\infty} (a_n^2 + b_n^2) \le \frac{1}{L}\int_{-L}^{L} [f(x)]^2\,dx \quad \Longrightarrow \quad \lim_{n \to \infty} a_n = 0 \;\text{ e }\; \lim_{n \to \infty} b_n = 0.$$
+              </li>
+              <li><strong>Identidade de Parseval (Teorema III.4.5 — DECORAR!):</strong> Como $E(f, S_N) \to 0$ quando $N \to \infty$:
+                $$\frac{a_0^2}{2} + \sum_{n=1}^{\infty} \big(a_n^2 + b_n^2\big) = \frac{1}{L}\int_{-L}^{L} [f(x)]^2\,dx.$$
+              </li>
+            </ol>
+          </div>
+
+          <div class="callout box-receita">
+            <p class="callout-title">Receita de Bolo — Aplicando Parseval para Achar Somas ($\sum \frac{1}{n^2}, \sum \frac{1}{n^4}, \sum \frac{1}{n^6}$)</p>
+            <ol>
+              <li><strong>Passo 1:</strong> Liste $a_0$, $a_n$ e $b_n$ da função $f(x)$ já encontrada (atenção: <strong>$a_0$ é o valor ANTES de dividir por $2$</strong>!).</li>
+              <li><strong>Passo 2 (Lado esquerdo de Parseval):</strong> Calcule $\dfrac{a_0^2}{2}$ (cuidado: é $\frac{a_0^2}{2}$, e NÃO $\frac{a_0^2}{4}$!) e eleve $a_n$ e $b_n$ ao quadrado (note que $[(-1)^n]^2 = +1$ some com todos os sinais alternados!).</li>
+              <li><strong>Passo 3 (Lado direito de Parseval):</strong> Calcule a integral simples $\dfrac{1}{L}\displaystyle \int_{-L}^{L} [f(x)]^2\,dx$ (como $[f(x)]^2$ é sempre par quando $f$ é par ou ímpar, use $\frac{2}{L}\int_0^L [f(x)]^2\,dx$!).</li>
+              <li><strong>Passo 4:</strong> Iguale os dois lados e isole o somatório $\sum \frac{1}{n^p}$ desejado!</li>
+            </ol>
+          </div>
+
+          <h3 id="exemplos-3-4">Exemplos Resolvidos (Aula 22 — Identidade de Parseval)</h3>
+
+          <!-- EXEMPLO 3.8 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 3.8 (Clássico!) — Calculando $\sum \frac{1}{n^4} = \frac{\pi^4}{90}$ via Parseval</h4>
+              <span class="badge badge-max">Clássico de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Aplique a Identidade de Parseval à função $2\pi$-periódica $f(x) = x^2$ em $[-\pi, \pi]$ (Exercício 4) para provar que $\displaystyle \sum_{n=1}^{\infty} \frac{1}{n^4} = \frac{\pi^4}{90}$.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Coeficientes do Exercício 4 (atenção ao $a_0$!)</span>
+                <p>Com $L = \pi$, tínhamos: $\mathbf{a_0 = \dfrac{2\pi^2}{3}}$ (lembre que $\frac{a_0}{2} = \frac{\pi^2}{3}$, logo $a_0 = \frac{2\pi^2}{3}$!), $a_n = \dfrac{4(-1)^n}{n^2}$ e $b_n = 0$.</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Lado esquerdo de Parseval</span>
+                $$\frac{a_0^2}{2} + \sum_{n=1}^{\infty} (a_n^2 + b_n^2) = \frac{\left(\frac{2\pi^2}{3}\right)^2}{2} + \sum_{n=1}^{\infty} \left(\frac{4(-1)^n}{n^2}\right)^2 = \frac{4\pi^4}{18} + 16\sum_{n=1}^{\infty} \frac{1}{n^4} = \frac{2\pi^4}{9} + 16\sum_{n=1}^{\infty} \frac{1}{n^4}.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Lado direito de Parseval</span>
+                $$\frac{1}{\pi}\int_{-\pi}^{\pi} (x^2)^2\,dx = \frac{2}{\pi}\int_{0}^{\pi} x^4\,dx = \frac{2}{\pi}\left[\frac{x^5}{5}\right]_{0}^{\pi} = \frac{2\pi^4}{5}.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 4 · Igualar e isolar $\sum \frac{1}{n^4}$</span>
+                $$\frac{2\pi^4}{9} + 16\sum_{n=1}^{\infty} \frac{1}{n^4} = \frac{2\pi^4}{5} \implies 16\sum_{n=1}^{\infty} \frac{1}{n^4} = \left(\frac{2}{5} - \frac{2}{9}\right)\pi^4 = \frac{18 - 10}{45}\pi^4 = \frac{8}{45}\pi^4.$$
+                <p>Dividindo ambos os lados por $16$ ($\frac{8}{45 \cdot 16} = \frac{1}{45 \cdot 2} = \frac{1}{90}$):</p>
+                <div class="result-highlight">
+                  $$\sum_{n=1}^{\infty} \frac{1}{n^4} = \frac{\pi^4}{90}.$$
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 3.9 (EXERCÍCIO III.6 DA PROFA. JANETE — RECOLHÍVEL) -->
+          <div class="box-exemplo" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 3.9 (Direto do Exercício III.6 da Profa. Janete!) — $\sum \frac{1}{n^6} = \frac{\pi^6}{945}$</h4>
+              <span class="badge badge-max">Desafio SMA0356</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Considere a função $2L$-periódica ímpar $f(x) = x^3 - L^2 x$ em $[-L, L]$, cuja série de Fourier tem $a_0 = a_n = 0$ e $b_n = \dfrac{(-1)^n \,12L^3}{\pi^3 n^3}$. Use a Identidade de Parseval para deduzir que $\displaystyle \sum_{n=1}^{\infty} \frac{1}{n^6} = \frac{\pi^6}{945}$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Lado esquerdo de Parseval</span>
+                  $$0 + \sum_{n=1}^{\infty} b_n^2 = \sum_{n=1}^{\infty} \left(\frac{(-1)^n \,12L^3}{\pi^3 n^3}\right)^2 = \frac{144 L^6}{\pi^6}\sum_{n=1}^{\infty} \frac{1}{n^6}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Lado direito de Parseval (abrindo o produto notável!)</span>
+                  <p>Como $(x^3 - L^2 x)^2 = x^6 - 2L^2 x^4 + L^4 x^2$ é função par:</p>
+                  $$\frac{1}{L}\int_{-L}^{L} (x^3 - L^2 x)^2\,dx = \frac{2}{L}\int_{0}^{L} \big(x^6 - 2L^2 x^4 + L^4 x^2\big)\,dx = \frac{2}{L}\left[\frac{x^7}{7} - \frac{2L^2 x^5}{5} + \frac{L^4 x^3}{3}\right]_{0}^{L}$$
+                  $$= 2L^6\left(\frac{1}{7} - \frac{2}{5} + \frac{1}{3}\right) = 2L^6\left(\frac{15 - 42 + 35}{105}\right) = 2L^6 \cdot \frac{8}{105} = \frac{16 L^6}{105}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Igualar e cancelar $L^6$ e $16$!</span>
+                  $$\frac{144 \cancel{L^6}}{\pi^6}\sum_{n=1}^{\infty} \frac{1}{n^6} = \frac{16 \cancel{L^6}}{105} \implies \sum_{n=1}^{\infty} \frac{1}{n^6} = \frac{16\,\pi^6}{105 \cdot 144} = \frac{\pi^6}{105 \cdot 9} = \frac{\pi^6}{945}.$$
+                  <div class="result-highlight">
+                    $$\sum_{n=1}^{\infty} \frac{1}{n^6} = \frac{\pi^6}{945}.$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Alertas de Pegadinha — Identidade de Parseval (Aula 22)</p>
+            <ul>
+              <li><strong>A pegadinha #1 de Parseval — $\frac{a_0^2}{2}$ vs. $\left(\frac{a_0}{2}\right)^2$:</strong> Na fórmula de Parseval entra <strong>$\dfrac{a_0^2}{2}$</strong> (com $2$ embaixo, e NÃO $4$!). Se você chamou o termo constante da série de $c_0 = \frac{a_0}{2}$, então $\frac{a_0^2}{2} = 2 c_0^2$! Conferência rápida: teste com a função constante $f(x) = 1$ ($a_0 = 2, a_n = b_n = 0$): lado direito $\frac{1}{L}\int_{-L}^L 1^2\,dx = 2$; lado esquerdo $\frac{2^2}{2} = 2$ ✓! (Com $4$ embaixo daria $1 \neq 2$!)</li>
+              <li><strong>Esquecer de elevar o fator $\frac{1}{\pi}$ ou $2$ ao quadrado</strong> ao calcular $a_n^2$ ou $b_n^2$.</li>
+            </ul>
+          </div>
+
+          <!-- SEÇÃO COMPLEMENTAR / OPCIONAL: FORMA COMPLEXA -->
+          <div class="callout box-intuicao" id="forma-complexa">
+            <p class="callout-title">Seção Complementar / Opcional (Apêndice III da Aula 22) — Forma Complexa da Série de Fourier</p>
+            <p>
+              Usando a <strong>Fórmula de Euler</strong> do Bloco 1 ($e^{i\theta} = \cos\theta + i\operatorname{sen}\theta$, de onde $\cos\theta = \frac{e^{i\theta} + e^{-i\theta}}{2}$ e $\operatorname{sen}\theta = \frac{e^{i\theta} - e^{-i\theta}}{2i}$), podemos unificar os três coeficientes ($a_0, a_n, b_n$) em <strong>uma única fórmula compacta</strong> com índices de $-\infty$ a $+\infty$:
+            </p>
+            $$S_f(x) = \sum_{n=-\infty}^{\infty} c_n\, e^{i\frac{n\pi x}{L}}, \qquad \text{onde } \quad c_n = \frac{1}{2L}\int_{-L}^{L} f(x)\,e^{-i\frac{n\pi x}{L}}\,dx \quad (n \in \mathbb{Z}).$$
+            <p>
+              <strong>Relação direta com a forma real:</strong> $c_0 = \dfrac{a_0}{2}$ e, para $n \ge 1$, $c_n = \dfrac{a_n - i\,b_n}{2}$ e $c_{-n} = \dfrac{a_n + i\,b_n}{2}$. <em>(Na SMA0356, o foco principal da P2 é a forma real com senos e cossenos — mas vale conhecer essa fórmula caso apareça em algum item conceitual!)</em>
+            </p>
+          </div>
+
+          <h3 id="exercicios-3-4">Exercícios de Fixação (Aula 22 — Parseval)</h3>
+
+          <!-- EXERCÍCIO 12 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 12 — Parseval no Dente de Serra: $\sum \frac{1}{n^2} = \frac{\pi^2}{6}$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b3-ex12" data-track-type="exercise" data-block="bloco3">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Aplique a Identidade de Parseval à função $f(x) = x$ em $(-L, L)$ (Exemplo 3.4: $a_0 = a_n = 0$ e $b_n = \dfrac{2L(-1)^{n+1}}{n\pi}$) para provar novamente que $\displaystyle \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{\pi^2}{6}$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Montar os dois lados de Parseval</span>
+                  <p>Lado esquerdo: $\displaystyle \sum_{n=1}^{\infty} \left(\frac{2L(-1)^{n+1}}{n\pi}\right)^2 = \frac{4L^2}{\pi^2}\sum_{n=1}^{\infty} \frac{1}{n^2}$.</p>
+                  <p>Lado direito: $\displaystyle \frac{1}{L}\int_{-L}^{L} x^2\,dx = \frac{2}{L}\left[\frac{x^3}{3}\right]_{0}^{L} = \frac{2L^2}{3}$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Isolar o somatório</span>
+                  $$\frac{4\cancel{L^2}}{\pi^2}\sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{2\cancel{L^2}}{3} \implies \sum_{n=1}^{\infty} \frac{1}{n^2} = \frac{2\pi^2}{12} = \frac{\pi^2}{6}.$$
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 13 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 13 — Parseval na Onda Triangular: $\sum \frac{1}{(2k-1)^4} = \frac{\pi^4}{96}$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b3-ex13" data-track-type="exercise" data-block="bloco3">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Aplique a Identidade de Parseval à onda triangular $f(x) = |x|$ em $[-L, L]$ (Exercício 5: $a_0 = L$, $a_{2k-1} = -\dfrac{4L}{(2k-1)^2\pi^2}$, $a_{2k} = 0$, $b_n = 0$) para calcular $\displaystyle \sum_{k=1}^{\infty} \frac{1}{(2k - 1)^4}$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Lado esquerdo (lembrando $\frac{a_0^2}{2} = \frac{L^2}{2}$!)</span>
+                  $$\frac{L^2}{2} + \sum_{k=1}^{\infty} \left(-\frac{4L}{(2k - 1)^2\pi^2}\right)^2 = \frac{L^2}{2} + \frac{16L^2}{\pi^4}\sum_{k=1}^{\infty} \frac{1}{(2k - 1)^4}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Lado direito</span>
+                  $$\frac{1}{L}\int_{-L}^{L} |x|^2\,dx = \frac{2}{L}\int_{0}^{L} x^2\,dx = \frac{2L^2}{3}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Igualar e isolar</span>
+                  $$\frac{16L^2}{\pi^4}\sum_{k=1}^{\infty} \frac{1}{(2k - 1)^4} = \frac{2L^2}{3} - \frac{L^2}{2} = \frac{L^2}{6} \implies \sum_{k=1}^{\infty} \frac{1}{(2k - 1)^4} = \frac{\pi^4}{6 \cdot 16} = \frac{\pi^4}{96}.$$
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 14 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 14 — Parseval na Onda Quadrada: $\sum \frac{1}{(2k-1)^2} = \frac{\pi^2}{8}$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b3-ex14" data-track-type="exercise" data-block="bloco3">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Aplique a Identidade de Parseval à Onda Quadrada do Exemplo 3.3 ($a_0 = a_n = 0$, $b_{2k-1} = \dfrac{4}{(2k-1)\pi}$, $b_{2k} = 0$, com $L = \pi$) para mostrar em 3 linhas que $\displaystyle \sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2} = \frac{\pi^2}{8}$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Lado esquerdo e lado direito (note que $[f(x)]^2 = (\pm 1)^2 = 1$ em todo $(-\pi, \pi)$!)</span>
+                  <p>Lado esquerdo: $\displaystyle \sum_{k=1}^{\infty} \frac{16}{(2k - 1)^2 \pi^2}$. &nbsp; Lado direito: $\displaystyle \frac{1}{\pi}\int_{-\pi}^{\pi} 1\,dx = \frac{2\pi}{\pi} = 2$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Isolar</span>
+                  $$\frac{16}{\pi^2}\sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2} = 2 \implies \sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2} = \frac{2\pi^2}{16} = \frac{\pi^2}{8}.$$
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <nav class="chapter-footer-nav" aria-label="Navegação entre blocos">
+          <a href="bloco2.html" class="chapter-nav-btn">
+            <span class="chapter-nav-dir">← Bloco Anterior</span>
+            <span class="chapter-nav-label">Bloco 2 · Taylor, Binomiais e EDOs</span>
+          </a>
+          <a href="bloco4.html" class="chapter-nav-btn">
+            <span class="chapter-nav-dir">Próximo Bloco →</span>
+            <span class="chapter-nav-label">Bloco 4 · Extensões Par, Ímpar e Periódica</span>
+          </a>
+        </nav>
+      </article>
+    </main>
+  </div>
+
+  <!-- ======================================================================
+       SIMULADOR INTERATIVO 3.1: HARMÔNICOS DE FOURIER S_N(x)
+       ====================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const P = window.Calc4Plot;
+      if (!P) return;
+
+      const selWave = document.getElementById('sim31-wave');
+      const nSlider = document.getElementById('sim31-n');
+      const nVal = document.getElementById('sim31-n-val');
+      const canvas = document.getElementById('canvas-sim31');
+      const outN = document.getElementById('sim31-n-out');
+      const outJump = document.getElementById('sim31-jump');
+      const outErr = document.getElementById('sim31-err');
+      const outEnergy = document.getElementById('sim31-energy');
+      const outMsg = document.getElementById('sim31-msg');
+
+      function wrapPi(x) {
+        const twoPi = 2 * Math.PI;
+        let r = ((x + Math.PI) % twoPi + twoPi) % twoPi - Math.PI;
+        return r;
+      }
+
+      const WAVES = {
+        square: {
+          yMin: -1.55, yMax: 1.55,
+          exact: (x) => {
+            const t = wrapPi(x);
+            if (Math.abs(t) < 1e-4 || Math.abs(Math.abs(t) - Math.PI) < 1e-4) return NaN;
+            return t > 0 ? 1 : -1;
+          },
+          a0: 0,
+          an: () => 0,
+          bn: (n) => (n % 2 === 1 ? 4 / (n * Math.PI) : 0),
+          totalEnergy: 2.0, /* (1/pi) int_{-pi}^pi 1^2 dx = 2 */
+          jumps: [-2 * Math.PI, -Math.PI, 0, Math.PI, 2 * Math.PI].map((x) => ({ x, y: 0 })),
+          jumpText: '0.00 (média de −1 e +1)',
+          note: 'Onda Quadrada (ímpar): só existem senos de frequência ímpar! As bolinhas verdes em 0, ±π, ±2π ficam exatamente na média 0. Repare nos pequenos "chifres" junto aos saltos (Fenômeno de Gibbs).'
+        },
+        sawtooth: {
+          yMin: -3.9, yMax: 3.9,
+          exact: (x) => {
+            const t = wrapPi(x);
+            if (Math.abs(Math.abs(t) - Math.PI) < 1e-4) return NaN;
+            return t;
+          },
+          a0: 0,
+          an: () => 0,
+          bn: (n) => (2 * (n % 2 === 1 ? 1 : -1)) / n,
+          totalEnergy: (2 * Math.PI * Math.PI) / 3,
+          jumps: [-Math.PI, Math.PI].map((x) => ({ x, y: 0 })),
+          jumpText: '0.00 (em x = ±π)',
+          note: 'Dente de Serra f(x) = x (ímpar): nos saltos em x = ±π, a função salta de +π para −π, e a Série de Fourier crava exatamente a média 0!'
+        },
+        triangle: {
+          yMin: -0.4, yMax: 3.7,
+          exact: (x) => Math.abs(wrapPi(x)),
+          a0: Math.PI,
+          an: (n) => (n % 2 === 1 ? -4 / (n * n * Math.PI) : 0),
+          bn: () => 0,
+          totalEnergy: (2 * Math.PI * Math.PI) / 3,
+          jumps: [],
+          jumpText: 'Sem saltos (contínua!)',
+          note: 'Onda Triangular f(x) = |x| (par e contínua!): como não há saltos e os coeficientes decaem como 1/n², com apenas N = 5 harmônicos a aproximação já fica quase indistinguível da curva real!'
+        },
+        janete: {
+          yMin: -0.5, yMax: 3.9,
+          exact: (x) => {
+            const t = wrapPi(x);
+            if (Math.abs(t) < 1e-4) return NaN;
+            return t < 0 ? Math.PI : t;
+          },
+          a0: 1.5 * Math.PI,
+          an: (n) => (n % 2 === 1 ? -2 / (n * n * Math.PI) : 0),
+          bn: (n) => -1 / n,
+          totalEnergy: (4 * Math.PI * Math.PI) / 3, /* (1/pi)*(pi^3 + pi^3/3) */
+          jumps: [-2 * Math.PI, 0, 2 * Math.PI].map((x) => ({ x, y: Math.PI / 2 })),
+          jumpText: 'π/2 ≈ 1.57 (em x = 0, ±2π)',
+          note: 'Exemplo III.8 da Profa. Janete (L = π): em x = ±π a função é CONTÍNUA (vale π), mas em x = 0 e ±2π há salto de π para 0 — veja a bolinha verde exatamente na média π/2 ≈ 1.57!'
+        }
+      };
+
+      function drawSim31() {
+        const w = WAVES[selWave.value];
+        const N = parseInt(nSlider.value, 10);
+        nVal.textContent = String(N);
+        outN.textContent = String(N);
+        outJump.textContent = w.jumpText;
+
+        /* Precompute coefficients up to N and Parseval energy */
+        const a = [];
+        const b = [];
+        let captured = (w.a0 * w.a0) / 2;
+        for (let n = 1; n <= N; n++) {
+          const an = w.an(n);
+          const bn = w.bn(n);
+          a.push(an);
+          b.push(bn);
+          captured += an * an + bn * bn;
+        }
+        const remEnergy = Math.max(0, w.totalEnergy - captured);
+        const mse = remEnergy * Math.PI; /* E(f, S_N) = L * (Total - Captured) */
+        const pctEnergy = Math.min(100, (captured / w.totalEnergy) * 100);
+
+        outErr.textContent = mse.toFixed(4);
+        outEnergy.textContent = `${pctEnergy.toFixed(2)}%`;
+        outMsg.textContent = w.note;
+
+        function evalSN(x) {
+          let s = w.a0 / 2;
+          for (let n = 1; n <= N; n++) {
+            const an = a[n - 1];
+            const bn = b[n - 1];
+            if (an !== 0) s += an * Math.cos(n * x);
+            if (bn !== 0) s += bn * Math.sin(n * x);
+          }
+          return s;
+        }
+
+        const { ctx, width, height } = P.setupCanvas(canvas, 330);
+        const colors = P.getThemeColors();
+        const xMin = -2 * Math.PI;
+        const xMax = 2 * Math.PI;
+        const map = P.createMapper(width, height, xMin, xMax, w.yMin, w.yMax);
+
+        P.drawGridAndAxes(ctx, map, colors, {
+          xTicks: 8, yTicks: 5,
+          xLabel: 'x (de −2π a +2π)', yLabel: `f(x) vs. S_${N}(x)`
+        });
+
+        /* Exact periodic wave */
+        P.plotCurve(ctx, map, w.exact, {
+          color: colors.primary, lineWidth: 2.3, samples: 650
+        });
+
+        /* Fourier partial sum S_N(x) */
+        P.plotCurve(ctx, map, evalSN, {
+          color: colors.secondary, lineWidth: 2.3, samples: 650
+        });
+
+        /* Highlight jump midpoints (Teorema de Fourier) */
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(map.pad.left, map.pad.top, map.plotW, map.plotH);
+        ctx.clip();
+        w.jumps.forEach((pt) => {
+          const px = map.toX(pt.x);
+          const py = map.toY(pt.y);
+          ctx.beginPath();
+          ctx.arc(px, py, 5.5, 0, Math.PI * 2);
+          ctx.fillStyle = colors.success;
+          ctx.fill();
+          ctx.strokeStyle = colors.bg;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        });
+        ctx.restore();
+
+        /* Legend */
+        const legX = map.pad.left + map.plotW - 178;
+        const legY = map.pad.top + 10;
+        ctx.save();
+        ctx.fillStyle = colors.bg;
+        ctx.globalAlpha = 0.92;
+        ctx.fillRect(legX - 8, legY - 6, 180, w.jumps.length > 0 ? 64 : 46);
+        ctx.globalAlpha = 1;
+        ctx.strokeStyle = colors.grid;
+        ctx.strokeRect(legX - 8, legY - 6, 180, w.jumps.length > 0 ? 64 : 46);
+
+        ctx.font = `600 11px ${colors.sansFont}`;
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+
+        ctx.strokeStyle = colors.primary;
+        ctx.lineWidth = 2.3;
+        ctx.beginPath(); ctx.moveTo(legX, legY + 6); ctx.lineTo(legX + 22, legY + 6); ctx.stroke();
+        ctx.fillStyle = colors.text;
+        ctx.fillText('Função original f(x)', legX + 28, legY + 6);
+
+        ctx.strokeStyle = colors.secondary;
+        ctx.beginPath(); ctx.moveTo(legX, legY + 25); ctx.lineTo(legX + 22, legY + 25); ctx.stroke();
+        ctx.fillText(`Soma de Fourier S_${N}(x)`, legX + 28, legY + 25);
+
+        if (w.jumps.length > 0) {
+          ctx.beginPath();
+          ctx.arc(legX + 11, legY + 44, 4.5, 0, Math.PI * 2);
+          ctx.fillStyle = colors.success;
+          ctx.fill();
+          ctx.fillStyle = colors.text;
+          ctx.fillText('Média nos saltos', legX + 28, legY + 44);
+        }
+        ctx.restore();
+      }
+
+      selWave.addEventListener('change', drawSim31);
+      nSlider.addEventListener('input', drawSim31);
+      P.registerChart(drawSim31);
+    });
+  </script>
+</body>
+</html>

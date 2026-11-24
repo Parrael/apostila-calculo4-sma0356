@@ -1,0 +1,1618 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloco 1: O Motor das Séries de Potências — Apostila Cálculo IV (SMA0356)</title>
+  <meta name="description" content="Bloco 1 da Apostila Interativa de Cálculo IV (ICMC/USP): derivação e integração de séries de potências (Aula 13), séries de Taylor e Maclaurin (Aula 14) e construção rápida de séries + Fórmula de Euler (Aula 16).">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body data-block-id="bloco1">
+  <div class="reading-progress-track" aria-hidden="true">
+    <div class="reading-progress-fill"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-left">
+      <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-label="Abrir menu lateral" aria-expanded="false">☰</button>
+      <a href="index.html" class="brand-link">
+        <span class="brand-title">Cálculo IV · Apostila P2</span>
+        <span class="brand-code">SMA0356</span>
+      </a>
+      <span class="header-breadcrumb">/ Bloco 1 · Motor das Séries de Potências</span>
+    </div>
+    <div class="header-right">
+      <div class="header-progress-pill" title="Seu progresso neste bloco">
+        <span>Bloco 1:</span>
+        <strong data-block-progress-pct>0%</strong>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">☾</span>
+        <span class="theme-label">Modo Escuro</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <div class="page-shell">
+    <aside class="sidebar" aria-label="Sumário e Navegação">
+      <div class="sidebar-progress-box">
+        <div class="sidebar-progress-top">
+          <span>Progresso no Bloco 1</span>
+          <strong data-block-progress-pct>0%</strong>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" data-block-progress-bar></div>
+        </div>
+        <div class="sidebar-progress-meta" data-block-progress-detail>0/3 tópicos · 0/12 exercícios</div>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Sumário do Bloco 1</p>
+        <ul class="toc-list">
+          <li>
+            <a href="#topico-1-1" class="toc-link active">
+              <span>1.1 Aula 13 · Derivação e Integração</span>
+              <span class="nav-status-tag" data-toc-track="b1-t1" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#deducoes-classicas" class="toc-link sub-item"><span>Deduções: $\ln(1+x)$ e $\arctan x$</span></a></li>
+          <li><a href="#exemplos-1-1" class="toc-link sub-item">Exemplos 1.1 a 1.3</a></li>
+          <li><a href="#exercicios-1-1" class="toc-link sub-item">Exercícios 1 a 4</a></li>
+          <li>
+            <a href="#topico-1-2" class="toc-link">
+              <span>1.2 Aula 14 · Taylor e Maclaurin</span>
+              <span class="nav-status-tag" data-toc-track="b1-t2" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#simulador-taylor" class="toc-link sub-item"><span>Simulador: Polinômio $P_N(x)$</span></a></li>
+          <li><a href="#exemplos-1-2" class="toc-link sub-item">Exemplos 1.4 a 1.6</a></li>
+          <li><a href="#exercicios-1-2" class="toc-link sub-item">Exercícios 5 a 8</a></li>
+          <li>
+            <a href="#topico-1-3" class="toc-link">
+              <span>1.3 Aula 16 · As 4 Séries Fundamentais</span>
+              <span class="nav-status-tag" data-toc-track="b1-t3" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#tabela-fundamentais" class="toc-link sub-item">Tabela Mestra de Maclaurin</a></li>
+          <li><a href="#formula-euler" class="toc-link sub-item"><span>Fórmula de Euler ($e^{ix}$)</span></a></li>
+          <li><a href="#exemplos-1-3" class="toc-link sub-item">Exemplos 1.7 a 1.9</a></li>
+          <li><a href="#exercicios-1-3" class="toc-link sub-item">Exercícios 9 a 12</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Todos os Blocos</p>
+        <ul class="block-nav-list">
+          <li><a href="index.html" class="block-nav-link"><span>← Painel Inicial</span></a></li>
+          <li><a href="bloco0.html" class="block-nav-link"><span>Bloco 0 · Nivelamento</span></a></li>
+          <li><a href="bloco1.html" class="block-nav-link active"><span>Bloco 1 · Séries de Potências</span></a></li>
+          <li><a href="bloco2.html" class="block-nav-link"><span>Bloco 2 · Taylor, Binomial e EDOs</span></a></li>
+          <li><a href="bloco3.html" class="block-nav-link"><span>Bloco 3 · Séries de Fourier</span></a></li>
+          <li><a href="bloco4.html" class="block-nav-link"><span>Bloco 4 · Extensões Par/Ímpar</span></a></li>
+          <li><a href="bloco5.html" class="block-nav-link"><span>Bloco 5 · EDPs (Calor e Onda)</span></a></li>
+          <li><a href="formulario.html" class="block-nav-link"><span>Formulário de Bolso</span></a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <article class="article-container">
+        <header class="chapter-header">
+          <p class="chapter-kicker">Bloco 1 · Prioridade Alta · Aulas 13, 14 e 16 (SMA0356)</p>
+          <h1>O Motor das Séries de Potências</h1>
+          <p class="chapter-lead">
+            Agora que você domina raio e intervalo de convergência do Bloco 0, vamos ligar o motor principal da primeira metade da P2! Vamos aprender a derivar e integrar séries como se fossem polinômios (Aula 13), fazer a "radiografia" de qualquer função via Séries de Taylor e Maclaurin (Aula 14) e — trazendo a <strong>Aula 16</strong> estrategicamente para logo depois — dominar as <strong>4 séries fundamentais</strong> para construir séries novas e somar séries numéricas em segundos.
+          </p>
+          <div class="chapter-meta-row">
+            <span class="badge badge-high">Prioridade Alta na P2</span>
+            <span class="badge badge-neutral">Aulas 13, 14 e 16</span>
+            <span class="badge badge-neutral">9 Exemplos Comentados</span>
+            <span class="badge badge-neutral">12 Exercícios Passo a Passo</span>
+            <span class="badge badge-done">1 Simulador de Taylor Interativo</span>
+          </div>
+        </header>
+
+        <!-- ================================================================
+             TÓPICO 1.1 — AULA 13: DERIVAÇÃO E INTEGRAÇÃO DE SÉRIES DE POTÊNCIAS
+             ================================================================ -->
+        <section id="topico-1-1">
+          <div class="topic-header-bar">
+            <h2>1.1 Aula 13 — Derivação e Integração de Séries de Potências</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b1-t1" data-track-type="topic" data-block="bloco1">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — Polinômios com Superpoderes</p>
+            <p>
+              Você lembra como é ridiculamente fácil derivar e integrar um polinômio como $a_0 + a_1 x + a_2 x^2 + a_3 x^3$? Basta aplicar a regra do tombo em cada parcela!
+            </p>
+            <p>
+              A grande notícia da Aula 13 é que, <strong>dentro do intervalo aberto de convergência $(x_0 - R,\, x_0 + R)$</strong>, uma série de potências se comporta <em>exatamente</em> como um polinômio gigante: ela é contínua, infinitamente derivável, e você pode trocar a ordem entre derivada/integral e somatório sem medo!
+            </p>
+            <p>
+              E por que isso muda tudo? Porque, partindo de UMA única série que você já conhece do Bloco 0 — a geométrica $\dfrac{1}{1-x} = \sum_{n=0}^{\infty} x^n$ —, vamos conseguir "fabricar" as séries de $\dfrac{1}{(1-x)^2}$, $\ln(1+x)$, $\arctan(x)$ e dezenas de outras funções!
+            </p>
+          </div>
+
+          <h3>1. Os Teoremas de Derivação e Integração Termo a Termo</h3>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Teoremas II.3.1, II.3.2 e II.3.3 (Aula 13) — Cálculo Termo a Termo</p>
+            <p>
+              Seja $\displaystyle f(x) = \sum_{n=0}^{\infty} a_n (x - x_0)^n = a_0 + a_1(x - x_0) + a_2(x - x_0)^2 + \cdots$ uma série de potências com raio de convergência $R > 0$ (ou $R = \infty$). Então, para todo $x \in (x_0 - R,\, x_0 + R)$:
+            </p>
+            <ol>
+              <li><strong>Continuidade:</strong> $f(x)$ é contínua em $(x_0 - R,\, x_0 + R)$.</li>
+              <li><strong>Derivação termo a termo:</strong> $f(x)$ é infinitamente derivável em $(x_0 - R,\, x_0 + R)$ e
+                $$f'(x) = \sum_{n=1}^{\infty} n\,a_n (x - x_0)^{n-1} = a_1 + 2a_2(x - x_0) + 3a_3(x - x_0)^2 + \cdots$$
+                <em>(Note que o índice passa de $n = 0$ para $n = 1$ porque a derivada da constante $a_0$ é $0$!)</em>
+              </li>
+              <li><strong>Integração termo a termo:</strong> Para qualquer $x \in (x_0 - R,\, x_0 + R)$, uma primitiva é obtida integrando de $x_0$ até $x$:
+                $$F(x) = \int_{x_0}^{x} f(t)\,dt = \sum_{n=0}^{\infty} \frac{a_n}{n + 1}(x - x_0)^{n+1} = a_0(x - x_0) + \frac{a_1}{2}(x - x_0)^2 + \cdots$$
+                (ou, na forma de integral indefinida, $\displaystyle \int f(x)\,dx = C + \sum_{n=0}^{\infty} \frac{a_n}{n + 1}(x - x_0)^{n+1}$).
+              </li>
+              <li><strong>Regra de Ouro do Raio vs. Extremos:</strong> Tanto a série derivada quanto a série integrada preservam <strong>exatamente o mesmo raio de convergência $R$</strong>! <strong>PORÉM, o comportamento nos extremos $x_0 - R$ e $x_0 + R$ PODE MUDAR</strong> — você é <em>obrigado</em> a retestar os dois extremos!</li>
+            </ol>
+          </div>
+
+          <p>
+            <strong>Intuição sobre por que os extremos mudam:</strong>
+          </p>
+          <ul>
+            <li>Quando você <strong>deriva</strong>, aparece um fator $n$ multiplicando no numerador — os termos ficam "maiores", então a série pode <strong>perder</strong> convergência nos extremos!</li>
+            <li>Quando você <strong>integra</strong>, aparece um fator $n + 1$ dividindo no denominador — os termos ficam "menores", então a série pode <strong>ganhar</strong> convergência nos extremos!</li>
+          </ul>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Teorema II.3.5 (Teorema de Abel — Continuidade até o Extremo)</p>
+            <p>
+              Se $f(x) = \displaystyle \sum_{n=0}^{\infty} a_n x^n$ para $|x| < R$, $f$ é contínua no extremo $x = R$ e a série numérica $\displaystyle \sum_{n=0}^{\infty} a_n R^n$ converge, então a igualdade continua valendo no extremo:
+              $$f(R) = \sum_{n=0}^{\infty} a_n R^n \qquad (\text{e analogamente para } x = -R).$$
+            </p>
+          </div>
+
+          <h3 id="deducoes-classicas">2. As 3 Deduções Clássicas da Aula 13 (Passo a Passo, Zero Saltos!)</h3>
+          <p>
+            Todas nascem da nossa mãe geométrica:
+            $$\frac{1}{1 - x} = \sum_{n=0}^{\infty} x^n = 1 + x + x^2 + x^3 + \cdots, \qquad I = (-1,\, 1).$$
+          </p>
+
+          <h4>Dedução A — Série de $\dfrac{1}{(1 - x)^2}$ (via Derivação)</h4>
+          <div class="math-step">
+            <span class="step-label">Passo a passo completo</span>
+            <p><strong>1. Derivar o lado esquerdo (Regra da Cadeia com calma!):</strong> Escreva $\dfrac{1}{1 - x} = (1 - x)^{-1}$. Derivando:</p>
+            $$\frac{d}{dx}\Big[(1 - x)^{-1}\Big] = (-1)\cdot(1 - x)^{-2} \cdot \underbrace{\frac{d}{dx}(1 - x)}_{=\,-1} = (-1)(-1)(1 - x)^{-2} = +\frac{1}{(1 - x)^2}.$$
+            <p><strong>2. Derivar o lado direito termo a termo:</strong></p>
+            $$\frac{d}{dx}\left(\sum_{n=0}^{\infty} x^n\right) = \frac{d}{dx}\big(1 + x + x^2 + x^3 + \cdots\big) = 0 + 1 + 2x + 3x^2 + \cdots = \sum_{n=1}^{\infty} n\,x^{n-1}.$$
+            <p><em>(Dica de escrita: fazendo a troca de índice $k = n - 1$, quando $n = 1$ temos $k = 0$ e $n = k + 1$, então também podemos escrever $\displaystyle \sum_{k=0}^{\infty} (k + 1)x^k$ — as duas formas representam exatamente a mesma soma $1 + 2x + 3x^2 + \cdots$!)</em></p>
+            <p><strong>3. Conferir Raio e Retestar Extremos:</strong> O raio continua $R = 1$. Em $x = 1$: $\sum_{n=1}^{\infty} n$ (termo geral $n \to \infty \neq 0$, diverge!). Em $x = -1$: $\sum_{n=1}^{\infty} n(-1)^{n-1}$ (termo geral não tende a $0$, diverge!).</p>
+            <div class="result-highlight">
+              $$\frac{1}{(1 - x)^2} = \sum_{n=1}^{\infty} n\,x^{n-1} = \sum_{k=0}^{\infty} (k + 1)x^k = 1 + 2x + 3x^2 + 4x^3 + \cdots, \qquad I = (-1,\, 1).$$
+            </div>
+          </div>
+
+          <h4>Dedução B — Série de $\ln(1 + x)$ (via Integração)</h4>
+          <div class="math-step">
+            <span class="step-label">Passo a passo completo</span>
+            <p><strong>1. Obter $\dfrac{1}{1 + t}$ a partir da geométrica:</strong> Na fórmula $\dfrac{1}{1 - u} = \sum_{n=0}^{\infty} u^n$ (para $|u| < 1$), trocamos $u$ por $-t$:</p>
+            $$\frac{1}{1 + t} = \frac{1}{1 - (-t)} = \sum_{n=0}^{\infty} (-t)^n = \sum_{n=0}^{\infty} (-1)^n t^n, \qquad |-t| = |t| < 1.$$
+            <p><strong>2. Integrar ambos os lados de $t = 0$ até $t = x$ (para $|x| < 1$):</strong></p>
+            <p>Lado esquerdo (como $|x| < 1$, temos $1 + x > 0$, então $|1 + x| = 1 + x$):</p>
+            $$\int_{0}^{x} \frac{1}{1 + t}\,dt = \Big[\ln(1 + t)\Big]_{0}^{x} = \ln(1 + x) - \underbrace{\ln(1)}_{=\,0} = \ln(1 + x).$$
+            <p>Lado direito (integrando cada potência $t^n$ termo a termo):</p>
+            $$\int_{0}^{x} \left(\sum_{n=0}^{\infty} (-1)^n t^n\right) dt = \sum_{n=0}^{\infty} (-1)^n \int_{0}^{x} t^n\,dt = \sum_{n=0}^{\infty} (-1)^n \left[\frac{t^{n+1}}{n+1}\right]_{0}^{x} = \sum_{n=0}^{\infty} \frac{(-1)^n x^{n+1}}{n + 1}.$$
+            <p><em>(Fazendo $k = n + 1$, também é super comum escrever $\displaystyle \sum_{k=1}^{\infty} \frac{(-1)^{k-1} x^k}{k} = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots$!)</em></p>
+            <p><strong>3. Retestar os Extremos $x = 1$ e $x = -1$ (OBRIGATÓRIO!):</strong> O raio continua $R = 1$, mas veja o que acontece nas pontas:</p>
+            <ul>
+              <li><strong>Em $x = 1$:</strong> $\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n \cdot 1^{n+1}}{n+1} = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots$ $\implies$ <strong>CONVERGE por Leibniz!</strong> E pelo Teorema II.3.5 (Abel), essa soma vale exatamente $\ln(1 + 1) = \ln(2)$!</li>
+              <li><strong>Em $x = -1$:</strong> $\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n (-1)^{n+1}}{n+1} = \sum_{n=0}^{\infty} \frac{(-1)^{2n+1}}{n+1} = -\sum_{n=0}^{\infty} \frac{1}{n+1} = -\sum_{k=1}^{\infty} \frac{1}{k}$ (série harmônica, $p = 1 \le 1$) $\implies$ <strong>DIVERGE!</strong></li>
+            </ul>
+            <div class="result-highlight">
+              $$\ln(1 + x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{n+1}}{n + 1} = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots, \qquad I = (-1,\, 1].$$
+              $$\text{Bônus famoso (em } x = 1\text{):} \quad \ln 2 = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots$$
+            </div>
+          </div>
+
+          <h4>Dedução C — Série de $\arctan(x)$ (via Integração)</h4>
+          <div class="math-step">
+            <span class="step-label">Passo a passo completo</span>
+            <p><strong>1. Lembrar a derivada de $\arctan(t)$:</strong> $\dfrac{d}{dt}\big(\arctan t\big) = \dfrac{1}{1 + t^2}$. Para gerar $\dfrac{1}{1 + t^2}$, trocamos $u$ por $-t^2$ na geométrica $\dfrac{1}{1 - u} = \sum_{n=0}^{\infty} u^n$:</p>
+            $$\frac{1}{1 + t^2} = \frac{1}{1 - (-t^2)} = \sum_{n=0}^{\infty} (-t^2)^n = \sum_{n=0}^{\infty} (-1)^n t^{2n}, \qquad |-t^2| < 1 \iff |t| < 1.$$
+            <p><strong>2. Integrar de $0$ até $x$ (para $|x| < 1$):</strong></p>
+            $$\arctan(x) = \int_{0}^{x} \frac{1}{1 + t^2}\,dt = \sum_{n=0}^{\infty} (-1)^n \int_{0}^{x} t^{2n}\,dt = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{2n + 1}.$$
+            <p><strong>3. Retestar os Extremos $x = 1$ e $x = -1$:</strong></p>
+            <ul>
+              <li><strong>Em $x = 1$:</strong> $\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n}{2n + 1} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \cdots$ $\implies$ <strong>CONVERGE por Leibniz!</strong> ($a_n = \frac{1}{2n+1} > 0$, decresce e tende a $0$).</li>
+              <li><strong>Em $x = -1$:</strong> Como $2n+1$ é ímpar, $(-1)^{2n+1} = -1$, logo $\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n (-1)}{2n + 1} = -\sum_{n=0}^{\infty} \frac{(-1)^n}{2n + 1}$ $\implies$ também <strong>CONVERGE por Leibniz!</strong></li>
+            </ul>
+            <p>Note que a série original $\frac{1}{1+x^2}$ tinha $I = (-1, 1)$, e após integrar ela <strong>ganhou OS DOIS extremos</strong>: $I = [-1, 1]$! E avaliando em $x = 1$ pelo Teorema II.3.5:</p>
+            $$\arctan(1) = \frac{\pi}{4} = 1 - \frac{1}{3} + \frac{1}{5} - \frac{1}{7} + \cdots \qquad (\text{Fórmula de Leibniz para } \pi!).$$
+            <div class="result-highlight">
+              $$\arctan(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{2n + 1} = x - \frac{x^3}{3} + \frac{x^5}{5} - \frac{x^7}{7} + \cdots, \qquad I = [-1,\, 1].$$
+            </div>
+          </div>
+
+          <div class="callout box-receita">
+            <p class="callout-title">Receita de Bolo — Aula 13 (Usando Derivação/Integração de Séries)</p>
+            <ol>
+              <li><strong>Olhe para a função $f(x)$ pedida:</strong> Ela parece a <em>derivada</em> ou a <em>integral</em> de algo tipo $\dfrac{1}{1 - u}$? (Se tiver $\ln(\text{linear})$ ou $\arctan(\text{linear})$, derive $f(x)$ primeiro para enxergar a fração racional!).</li>
+              <li><strong>Ajuste para a forma $\dfrac{c}{1 - u}$:</strong> Coloque a constante do denominador em evidência até aparecer um "$1$" na frente (ex.: $\dfrac{1}{5 - x} = \dfrac{1}{5}\cdot\dfrac{1}{1 - \frac{x}{5}}$).</li>
+              <li><strong>Expanda na geométrica $\sum_{n=0}^{\infty} u^n$</strong> e anote imediatamente a condição $|u| < 1$ para achar o raio $R$.</li>
+              <li><strong>Derive ou integre termo a termo</strong> para voltar à função $f(x)$ desejada. Se integrou de forma indefinida, <strong>substitua $x = x_0$ nos dois lados para descobrir a constante $C$!</strong> (Melhor ainda: use integral definida $\int_{x_0}^{x}$, que já elimina $C$ automaticamente!)</li>
+              <li><strong>Reteste os dois extremos $x_0 - R$ e $x_0 + R$</strong> na série FINAL obtida.</li>
+            </ol>
+          </div>
+
+          <h3 id="exemplos-1-1">Exemplos Resolvidos (Aula 13)</h3>
+
+          <!-- EXEMPLO 1.1 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 1.1 (Aquecimento) — Derivando Duas Vezes: $\dfrac{x^2}{(1 - x)^3}$</h4>
+              <span class="badge badge-base">Nível Básico</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre a representação em série de potências centrada em $x_0 = 0$ e o intervalo de convergência de $f(x) = \dfrac{x^2}{(1 - x)^3}$.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Partir de $\frac{1}{(1-x)^2}$ e derivar mais uma vez</span>
+                <p>Já deduzimos acima que, para $|x| < 1$:</p>
+                $$\frac{1}{(1 - x)^2} = \sum_{n=1}^{\infty} n\,x^{n-1}.$$
+                <p>Derivando o lado esquerdo (lembrando $(1-x)^{-2}$ pela regra da cadeia):</p>
+                $$\frac{d}{dx}\Big[(1 - x)^{-2}\Big] = (-2)(1 - x)^{-3} \cdot (-1) = \frac{2}{(1 - x)^3}.$$
+                <p>Derivando o lado direito termo a termo (o termo $n = 1$ é a constante $1$, cuja derivada é $0$, então o índice sobe para $n = 2$!):</p>
+                $$\frac{2}{(1 - x)^3} = \sum_{n=2}^{\infty} n(n - 1)\,x^{n-2}, \qquad |x| < 1.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Dividir por $2$ e multiplicar por $x^2$</span>
+                <p>Dividindo ambos os lados por $2$:</p>
+                $$\frac{1}{(1 - x)^3} = \sum_{n=2}^{\infty} \frac{n(n - 1)}{2}\,x^{n-2}.$$
+                <p>Agora multiplicamos os dois lados por $x^2$ (multiplicar por $x^2$ soma $+2$ no expoente: $x^{n-2}\cdot x^2 = x^n$!):</p>
+                $$\frac{x^2}{(1 - x)^3} = \sum_{n=2}^{\infty} \frac{n(n - 1)}{2}\,x^{n} = x^2 + 3x^3 + 6x^4 + 10x^5 + \cdots$$
+                <p><em>(Conferindo com $n=2$: $\frac{2\cdot 1}{2}x^2 = x^2$; com $n=3$: $\frac{3\cdot 2}{2}x^3 = 3x^3$!)</em></p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Conferir os extremos $x = \pm 1$</span>
+                <p>Para $x = 1$ ou $x = -1$, o módulo do termo geral é $\dfrac{n(n-1)}{2} \to +\infty \neq 0$, logo <strong>diverge</strong> em ambos os extremos pelo Teste do Termo Geral.</p>
+              </div>
+              <div class="result-highlight">
+                <strong>Resposta:</strong> $\displaystyle \frac{x^2}{(1 - x)^3} = \sum_{n=2}^{\infty} \frac{n(n - 1)}{2}\,x^{n}$, com $R = 1$ e $I = (-1,\, 1)$.
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 1.2 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 1.2 (Clássico de Prova) — $f(x) = \ln(5 - x)$ e a Constante de Integração $C$</h4>
+              <span class="badge badge-high">Nível de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Represente $f(x) = \ln(5 - x)$ como uma série de potências centrada em $x_0 = 0$ e determine seu raio e intervalo de convergência.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Derivar $f(x)$ para fazer surgir uma série geométrica</span>
+                <p>Usando a regra da cadeia em $\ln(5 - x)$ (cuidado com o sinal de menos da derivada de $5 - x$!):</p>
+                $$f'(x) = \frac{1}{5 - x} \cdot (-1) = -\frac{1}{5 - x}.$$
+                <p>Agora fatoramos o $5$ do denominador para aparecer o "$1$" da geométrica:</p>
+                $$f'(x) = -\frac{1}{5\left(1 - \frac{x}{5}\right)} = -\frac{1}{5} \cdot \frac{1}{1 - \frac{x}{5}}.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Expandir $f'(x)$ na geométrica com $u = \frac{x}{5}$</span>
+                <p>A expansão vale para $\left|\dfrac{x}{5}\right| < 1 \iff |x| < 5$ (logo $R = 5$):</p>
+                $$f'(x) = -\frac{1}{5} \sum_{n=0}^{\infty} \left(\frac{x}{5}\right)^n = -\frac{1}{5} \sum_{n=0}^{\infty} \frac{x^n}{5^n} = -\sum_{n=0}^{\infty} \frac{x^n}{5^{n+1}}, \qquad |x| < 5.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Integrar termo a termo de $0$ até $x$ (assim $f(0) = \ln 5$ aparece sozinho!)</span>
+                <p>Pelo Teorema Fundamental do Cálculo, $\displaystyle \int_{0}^{x} f'(t)\,dt = f(x) - f(0) = \ln(5 - x) - \ln(5)$:</p>
+                $$\ln(5 - x) - \ln(5) = -\sum_{n=0}^{\infty} \frac{1}{5^{n+1}} \int_{0}^{x} t^n\,dt = -\sum_{n=0}^{\infty} \frac{x^{n+1}}{(n + 1)\cdot 5^{n+1}}.$$
+                <p>Passando $\ln(5)$ para o lado direito (e, se quiser deixar ainda mais bonito, fazendo $k = n + 1$):</p>
+                $$\ln(5 - x) = \ln(5) - \sum_{n=0}^{\infty} \frac{x^{n+1}}{(n + 1)\cdot 5^{n+1}} = \ln(5) - \sum_{k=1}^{\infty} \frac{x^k}{k \cdot 5^k}, \qquad |x| < 5.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 4 · Retestar os extremos $x = -5$ e $x = 5$</span>
+                <ul>
+                  <li><strong>Em $x = 5$:</strong> $-\displaystyle \sum_{k=1}^{\infty} \frac{5^k}{k \cdot 5^k} = -\sum_{k=1}^{\infty} \frac{1}{k}$ (harmônica, $p = 1$) $\implies$ <strong>DIVERGE!</strong> (Faz total sentido: $\ln(5 - 5) = \ln(0)$ não existe!)</li>
+                  <li><strong>Em $x = -5$:</strong> $-\displaystyle \sum_{k=1}^{\infty} \frac{(-5)^k}{k \cdot 5^k} = -\sum_{k=1}^{\infty} \frac{(-1)^k}{k}$ $\implies$ <strong>CONVERGE por Leibniz!</strong></li>
+                </ul>
+              </div>
+              <div class="result-highlight">
+                <strong>Resposta:</strong> $\displaystyle \ln(5 - x) = \ln(5) - \sum_{k=1}^{\infty} \frac{x^k}{k \cdot 5^k}$, com $R = 5$ e $I = [-5,\, 5)$.
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 1.3 (AVANÇADO COM RESOLUÇÃO RECOLHÍVEL) -->
+          <div class="box-exemplo" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 1.3 (Truque Ninja de Prova) — Somar $\sum_{n=1}^{\infty} \frac{n}{2^n}$ via Derivação</h4>
+              <span class="badge badge-max">Clássico de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Calcule a soma exata da série numérica $\displaystyle S = \sum_{n=1}^{\infty} \frac{n}{2^n}$. <em>(Dica: ela NÃO é geométrica pura por causa do "$n$" no numerador — mas você consegue fabricar um "$n$" multiplicando derivando a geométrica!)</em>
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Partir da derivada da série geométrica</span>
+                  <p>Na Dedução A vimos que, para todo $|x| < 1$:</p>
+                  $$\sum_{n=1}^{\infty} n\,x^{n-1} = \frac{1}{(1 - x)^2}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Multiplicar ambos os lados por $x$ para igualar os expoentes!</span>
+                  <p>Queremos $n \cdot x^n$ (expoente $n$, e não $n - 1$). Multiplicando tudo por $x$:</p>
+                  $$\sum_{n=1}^{\infty} n\,x^{n} = \frac{x}{(1 - x)^2}, \qquad |x| < 1.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Substituir $x = \frac{1}{2}$ (conferindo que $\left|\frac{1}{2}\right| < 1$!)</span>
+                  <p>Como $x = \dfrac{1}{2} \in (-1, 1)$, a igualdade é 100% válida:</p>
+                  $$\sum_{n=1}^{\infty} \frac{n}{2^n} = \sum_{n=1}^{\infty} n\left(\frac{1}{2}\right)^n = \frac{\frac{1}{2}}{\left(1 - \frac{1}{2}\right)^2} = \frac{\frac{1}{2}}{\left(\frac{1}{2}\right)^2} = \frac{\frac{1}{2}}{\frac{1}{4}} = \frac{1}{2} \cdot \frac{4}{1} = 2.$$
+                  <div class="result-highlight">
+                    <strong>Resposta:</strong> $\displaystyle \sum_{n=1}^{\infty} \frac{n}{2^n} = 2$.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Alertas de Pegadinha — Aula 13</p>
+            <ul>
+              <li><strong>Esquecer a constante $C$ na integração:</strong> Em $\ln(5 - x)$, muita gente integra $-\sum \frac{x^n}{5^{n+1}}$ e esquece o $+\ln(5)$! Sempre teste $x = x_0$ (em geral $x = 0$) nos dois lados da igualdade final para checar se o termo constante bate!</li>
+              <li><strong>Esquecer de retestar extremos:</strong> O raio $R$ não muda ao derivar/integrar, mas o intervalo $I$ frequentemente muda (como vimos em $\arctan(x)$, que foi de $(-1, 1)$ para $[-1, 1]$).</li>
+              <li><strong>Esquecer de multiplicar por $x$ em $\sum n x^n$:</strong> A derivada de $\sum x^n$ é $\sum n x^{n-1}$, e <strong>NÃO</strong> $\sum n x^n$! Se você jogar $x = \frac{1}{2}$ direto em $\frac{1}{(1-x)^2}$, acha $4$ em vez de $2$!</li>
+            </ul>
+          </div>
+
+          <h3 id="exercicios-1-1">Exercícios de Fixação (Aula 13)</h3>
+
+          <!-- EXERCÍCIO 1 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 1 — Derivação com Regra da Cadeia: $\dfrac{1}{(1 + 2x)^2}$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b1-ex1" data-track-type="exercise" data-block="bloco1">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Determine a série de potências centrada em $x_0 = 0$ e o intervalo de convergência de $f(x) = \dfrac{1}{(1 + 2x)^2}$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Partir da geométrica com $u = -2x$</span>
+                  <p>Para $|-2x| < 1 \iff |x| < \dfrac{1}{2}$:</p>
+                  $$\frac{1}{1 + 2x} = \frac{1}{1 - (-2x)} = \sum_{n=0}^{\infty} (-2x)^n = \sum_{n=0}^{\infty} (-1)^n 2^n x^n.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Derivar os dois lados (atenção ao fator $-2$ da regra da cadeia!)</span>
+                  <p>Lado esquerdo: $\dfrac{d}{dx}\Big[(1 + 2x)^{-1}\Big] = (-1)(1 + 2x)^{-2}\cdot 2 = -\dfrac{2}{(1 + 2x)^2}$.</p>
+                  <p>Lado direito: $\displaystyle \sum_{n=1}^{\infty} (-1)^n 2^n \cdot n\,x^{n-1}$.</p>
+                  <p>Dividindo ambos os lados por $-2$ (note que $\frac{(-1)^n}{-1} = (-1)^{n-1}$ e $\frac{2^n}{2} = 2^{n-1}$):</p>
+                  $$\frac{1}{(1 + 2x)^2} = \sum_{n=1}^{\infty} (-1)^{n-1} n\, 2^{n-1} x^{n-1} = \sum_{k=0}^{\infty} (-1)^k (k + 1)\,2^k x^k.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Testar extremos $x = \pm \frac{1}{2}$</span>
+                  <p>Em $x = \pm \frac{1}{2}$, temos $|2^k x^k| = 1$, logo o módulo do termo geral é $k + 1 \to +\infty \neq 0$ $\implies$ diverge em ambos os extremos!</p>
+                  <div class="result-highlight">
+                    <strong>Resposta:</strong> $\displaystyle \frac{1}{(1 + 2x)^2} = \sum_{k=0}^{\infty} (-1)^k (k + 1)\,2^k x^k$, com $R = \dfrac{1}{2}$ e $I = \left(-\dfrac{1}{2},\, \dfrac{1}{2}\right)$.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 2 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 2 — Integração Termo a Termo: $\ln(1 + x^2)$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b1-ex2" data-track-type="exercise" data-block="bloco1">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre a série de potências em $x_0 = 0$ e o intervalo de convergência de $f(x) = \ln(1 + x^2)$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Derivar $f(x)$ e expandir na geométrica</span>
+                  <p>Derivando pela regra da cadeia: $f'(x) = \dfrac{2x}{1 + x^2}$. Como $\dfrac{1}{1 + t^2} = \displaystyle \sum_{n=0}^{\infty} (-1)^n t^{2n}$ para $|t| < 1$, multiplicando por $2t$:</p>
+                  $$\frac{2t}{1 + t^2} = \sum_{n=0}^{\infty} 2(-1)^n t^{2n+1}, \qquad |t| < 1.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Integrar de $0$ até $x$</span>
+                  <p>Como $f(0) = \ln(1 + 0) = 0$:</p>
+                  $$\ln(1 + x^2) = \int_{0}^{x} \frac{2t}{1 + t^2}\,dt = \sum_{n=0}^{\infty} 2(-1)^n \frac{x^{2n+2}}{2n + 2} = \sum_{n=0}^{\infty} \frac{\cancel{2}(-1)^n x^{2n+2}}{\cancel{2}(n + 1)} = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+2}}{n + 1}.$$
+                  <p><em>(Conferência ninja: é exatamente a série de $\ln(1+u)$ trocando $u$ por $x^2$!)</em></p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Testar extremos $x = 1$ e $x = -1$</span>
+                  <p>Como o expoente $2n + 2$ é sempre par, tanto em $x = 1$ quanto em $x = -1$ temos $x^{2n+2} = 1$. A série vira $\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n}{n + 1}$, que <strong>converge pelo Critério de Leibniz</strong> em ambos os extremos!</p>
+                  <div class="result-highlight">
+                    <strong>Resposta:</strong> $\displaystyle \ln(1 + x^2) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+2}}{n + 1}$, com $R = 1$ e $I = [-1,\, 1]$.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 3 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 3 — Arco-Tangente com Escala: $\arctan(2x)$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b1-ex3" data-track-type="exercise" data-block="bloco1">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Obtenha a série de potências centrada em $0$ e o intervalo de convergência de $f(x) = \arctan(2x)$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Derivar ou substituir diretamente na série de $\arctan(u)$</span>
+                  <p>Pelo caminho direto (substituindo $u = 2x$ em $\arctan(u) = \sum_{n=0}^{\infty} \frac{(-1)^n u^{2n+1}}{2n+1}$, válida para $u \in [-1, 1]$):</p>
+                  $$\arctan(2x) = \sum_{n=0}^{\infty} \frac{(-1)^n (2x)^{2n+1}}{2n + 1} = \sum_{n=0}^{\infty} \frac{(-1)^n 2^{2n+1} x^{2n+1}}{2n + 1}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Conferência via derivação e integração (Aula 13)</span>
+                  <p>$f'(t) = \dfrac{2}{1 + (2t)^2} = \dfrac{2}{1 + 4t^2} = 2\sum_{n=0}^{\infty} (-4t^2)^n = \sum_{n=0}^{\infty} (-1)^n 2 \cdot 2^{2n} t^{2n} = \sum_{n=0}^{\infty} (-1)^n 2^{2n+1} t^{2n}$, para $|4t^2| < 1 \iff |t| < \frac{1}{2}$. Integrando de $0$ a $x$ obtemos exatamente a mesma série!</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Intervalo de convergência (testando $x = \pm \frac{1}{2}$)</span>
+                  <p>Em $x = \pm\frac{1}{2}$, temos $2x = \pm 1$, logo a série vira $\pm \sum_{n=0}^{\infty} \frac{(-1)^n}{2n + 1}$, que <strong>converge por Leibniz</strong> em ambos os extremos!</p>
+                  <div class="result-highlight">
+                    <strong>Resposta:</strong> $\displaystyle \arctan(2x) = \sum_{n=0}^{\infty} \frac{(-1)^n 2^{2n+1} x^{2n+1}}{2n + 1}$, com $R = \dfrac{1}{2}$ e $I = \left[-\dfrac{1}{2},\, \dfrac{1}{2}\right]$.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 4 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 4 — Soma Exata via Derivação de Séries</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b1-ex4" data-track-type="exercise" data-block="bloco1">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Calcule a soma exata da série numérica $\displaystyle \sum_{n=1}^{\infty} \frac{n}{3^n}$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Usar a identidade $\sum_{n=1}^{\infty} n x^n = \frac{x}{(1-x)^2}$ para $|x| < 1$</span>
+                  <p>Partindo de $\sum_{n=0}^{\infty} x^n = \frac{1}{1-x}$, derivamos ($\sum_{n=1}^{\infty} n x^{n-1} = \frac{1}{(1-x)^2}$) e multiplicamos por $x$:</p>
+                  $$\sum_{n=1}^{\infty} n\,x^n = \frac{x}{(1 - x)^2}, \qquad |x| < 1.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Avaliar em $x = \frac{1}{3}$ (pois $\left|\frac{1}{3}\right| < 1$)</span>
+                  $$\sum_{n=1}^{\infty} \frac{n}{3^n} = \frac{\frac{1}{3}}{\left(1 - \frac{1}{3}\right)^2} = \frac{\frac{1}{3}}{\left(\frac{2}{3}\right)^2} = \frac{\frac{1}{3}}{\frac{4}{9}} = \frac{1}{3} \cdot \frac{9}{4} = \frac{3}{4}.$$
+                  <div class="result-highlight">
+                    <strong>Resposta:</strong> $\displaystyle \sum_{n=1}^{\infty} \frac{n}{3^n} = \frac{3}{4}$.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr>
+
+        <!-- ================================================================
+             TÓPICO 1.2 — AULA 14: SÉRIES DE TAYLOR E MACLAURIN
+             ================================================================ -->
+        <section id="topico-1-2">
+          <div class="topic-header-bar">
+            <h2>1.2 Aula 14 — Séries de Taylor e Maclaurin (A "Radiografia" da Função)</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b1-t2" data-track-type="topic" data-block="bloco1">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — Como descobrir os coeficientes $a_n$?</p>
+            <p>
+              Suponha que uma função $f(x)$ (como $\operatorname{sen} x$ ou $e^x$) possa ser escrita como uma série de potências centrada em $x_0$:
+              $$f(x) = a_0 + a_1(x - x_0) + a_2(x - x_0)^2 + a_3(x - x_0)^3 + a_4(x - x_0)^4 + \cdots$$
+            </p>
+            <p>
+              Como descobrimos quem são os números $a_0, a_1, a_2, a_3, \dots$? Basta fazer uma sequência de "interrogatórios" no ponto $x = x_0$!
+            </p>
+            <ul>
+              <li>Substituindo $x = x_0$: todos os $(x - x_0)^k$ viram zero, sobrando $f(x_0) = a_0$.</li>
+              <li>Derivando 1 vez ($f'(x) = a_1 + 2a_2(x - x_0) + 3a_3(x - x_0)^2 + \cdots$) e substituindo $x = x_0$: $f'(x_0) = a_1$.</li>
+              <li>Derivando 2 vezes ($f''(x) = 2\cdot 1\,a_2 + 3\cdot 2\,a_3(x - x_0) + \cdots$) e substituindo $x = x_0$: $f''(x_0) = 2!\,a_2 \implies a_2 = \dfrac{f''(x_0)}{2!}$.</li>
+              <li>Derivando 3 vezes ($f'''(x) = 3\cdot 2\cdot 1\,a_3 + 4\cdot 3\cdot 2\,a_4(x - x_0) + \cdots$) e substituindo $x = x_0$: $f'''(x_0) = 3!\,a_3 \implies a_3 = \dfrac{f'''(x_0)}{3!}$.</li>
+            </ul>
+            <p>
+              Em geral, cada derivada desce um expoente até formar exatamente $n!$, dando a fórmula mais famosa do semestre: $a_n = \dfrac{f^{(n)}(x_0)}{n!}$! Como diz a Profa. Janete na Observação II.10, a série de potências é a <strong>radiografia completa</strong> de $f$ no ponto $x_0$: ela guarda todas as derivadas de todas as ordens dentro dos coeficientes $a_n$!
+            </p>
+          </div>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Teorema II.4.1 &amp; Definições II.4.2–II.4.3 — Série e Polinômio de Taylor</p>
+            <p><strong>1. Relação Coeficiente ↔ Derivada (Teorema II.4.1):</strong> Se $f(x) = \displaystyle \sum_{n=0}^{\infty} a_n (x - x_0)^n$ em $(x_0 - R, x_0 + R)$ com $R > 0$, então:</p>
+            $$a_n = \frac{f^{(n)}(x_0)}{n!} \qquad \Longleftrightarrow \qquad f^{(n)}(x_0) = n!\,a_n \qquad (n = 0, 1, 2, \dots).$$
+            <p><strong>2. Série de Taylor de $f$ centrada em $x_0$ (notação da disciplina: $s_f(x)$):</strong></p>
+            $$s_f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n = f(x_0) + f'(x_0)(x - x_0) + \frac{f''(x_0)}{2!}(x - x_0)^2 + \cdots$$
+            <p>Quando o centro é $x_0 = 0$, chamamos de <strong>Série de Maclaurin</strong>:</p>
+            $$s_f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(0)}{n!}\,x^n = f(0) + f'(0)x + \frac{f''(0)}{2!}x^2 + \frac{f'''(0)}{3!}x^3 + \cdots$$
+            <p><strong>3. Polinômio de Taylor de grau $N$ (notação: $P_N(x)$):</strong> É a soma truncada até a potência $N$:</p>
+            $$P_N(x) = \sum_{n=0}^{N} \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n.$$
+            <p><em>Nota importante (Exemplo II.15 da Profa. Janete):</em> Em $f(x) = \cos x$, como $f'''(0) = 0$, temos $P_2(x) = P_3(x) = 1 - \frac{x^2}{2!}$ — mesmo sem termo $x^3$, ele ainda é chamado de polinômio de Maclaurin de grau $3$!</p>
+          </div>
+
+          <h3>Propriedade de Paridade (Atalho de Ouro da Aula 14)</h3>
+          <p>
+            No Exercício II.3 das Notas de Aula, a Profa. Janete destaca um fato que economiza muito tempo na prova:
+          </p>
+          <ul>
+            <li>Se $f(x)$ é <strong>função par</strong> ($f(-x) = f(x)$, como $\cos x$ ou $\frac{1}{1+4x^2}$), então sua série de Maclaurin <strong>só tem potências pares</strong> ($a_{2n+1} = 0$, logo <strong>todas as derivadas ímpares em $0$ são zero</strong>!).</li>
+            <li>Se $f(x)$ é <strong>função ímpar</strong> ($f(-x) = -f(x)$, como $\operatorname{sen} x$ ou $\arctan x$), então sua série de Maclaurin <strong>só tem potências ímpares</strong> ($a_{2n} = 0$, logo <strong>todas as derivadas pares em $0$ são zero</strong>!).</li>
+          </ul>
+
+          <!-- SIMULADOR INTERATIVO 1.1: POLINÔMIO DE TAYLOR -->
+          <div class="simulator-card" id="simulador-taylor">
+            <div class="simulator-header">
+              <div>
+                <h3 class="simulator-title">Simulador Interativo 1.1 — Polinômio de Taylor $P_N(x)$ em Tempo Real</h3>
+                <p class="simulator-subtitle">Arraste o grau $N$ e veja o polinômio $P_N(x)$ "abraçar" a função real $f(x)$ em torno de $x_0 = 0$ — e teste também $\ln(1+x)$ para enxergar a parede do raio $R = 1$!</p>
+              </div>
+              <span class="badge badge-done">Simulador Interativo</span>
+            </div>
+
+            <div class="sim-controls">
+              <div class="sim-control-group">
+                <label for="sim11-fn"><span>Escolha a Função $f(x)$</span></label>
+                <select id="sim11-fn" class="sim-select">
+                  <option value="sin">f(x) = sen(x)   [R = ∞]</option>
+                  <option value="cos">f(x) = cos(x)   [R = ∞]</option>
+                  <option value="exp">f(x) = eˣ   [R = ∞]</option>
+                  <option value="ln1x">f(x) = ln(1 + x)   [I = (−1, 1]]</option>
+                </select>
+              </div>
+
+              <div class="sim-control-group">
+                <label for="sim11-n">
+                  <span>Grau do Polinômio (N)</span>
+                  <span class="sim-val" id="sim11-n-val">3</span>
+                </label>
+                <input id="sim11-n" class="sim-range" type="range" min="0" max="15" step="1" value="3">
+              </div>
+
+              <div class="sim-control-group">
+                <label for="sim11-xp">
+                  <span>Ponto de comparação $x$</span>
+                  <span class="sim-val" id="sim11-xp-val">1.50</span>
+                </label>
+                <input id="sim11-xp" class="sim-range" type="range" min="-4" max="4" step="0.1" value="1.5">
+              </div>
+            </div>
+
+            <div class="canvas-stage">
+              <canvas id="canvas-sim11" aria-label="Gráfico comparando f(x) e seu Polinômio de Taylor P_N(x)"></canvas>
+            </div>
+
+            <div class="sim-readout">
+              <div class="readout-metric">
+                <div class="readout-label">Valor real $f(x)$</div>
+                <div class="readout-value" id="sim11-fx">—</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label">Aproximação $P_N(x)$</div>
+                <div class="readout-value" id="sim11-pn">—</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label">Erro $|f(x) - P_N(x)|$</div>
+                <div class="readout-value" id="sim11-err">—</div>
+              </div>
+            </div>
+
+            <div class="sim-explanation" id="sim11-poly-display">
+              Carregando polinômio...
+            </div>
+          </div>
+
+          <div class="callout box-receita">
+            <p class="callout-title">Receita de Bolo — Aula 14 (Dois Roteiros Clássicos de Prova)</p>
+            <p><strong>Roteiro A — Montar a Série de Taylor de $f$ centrada em $x_0$ pela definição:</strong></p>
+            <ol>
+              <li>Faça uma tabela de 4 colunas: $n \mid f^{(n)}(x) \mid f^{(n)}(x_0) \mid a_n = \frac{f^{(n)}(x_0)}{n!}$ para $n = 0, 1, 2, 3, 4$.</li>
+              <li>Identifique o padrão geral de $f^{(n)}(x_0)$ (sinais alternados $(-1)^n$, potências $c^n$, cancelamento de $(n-1)!$ com $n!$, etc.).</li>
+              <li>Escreva $\displaystyle s_f(x) = \sum a_n (x - x_0)^n$ e confirme se os 3 primeiros termos do somatório batem exatamente com sua tabela!</li>
+            </ol>
+            <p><strong>Roteiro B — Achar uma derivada gigante $f^{(k)}(0)$ (ex.: $f^{(20)}(0)$) SEM derivar $k$ vezes:</strong></p>
+            <ol>
+              <li>Encontre a série de Maclaurin de $f(x)$ usando manipulações simples (geométrica / Aula 16).</li>
+              <li>Olhe para o <strong>expoente geral de $x$</strong> na série (por exemplo, $x^{2n+2}$) e resolva a equação $\text{expoente} = k$ para achar o índice $n$ correspondente.</li>
+              <li>Se não houver solução inteira $n \ge 0$, então o termo $x^k$ não existe na série $\implies$ <strong>$f^{(k)}(0) = 0$</strong>!</li>
+              <li>Se houver solução inteira $n$, leia o coeficiente $a_k$ que multiplica $x^k$ e multiplique por $k!$: <strong>$f^{(k)}(0) = k! \cdot a_k$</strong>!</li>
+            </ol>
+          </div>
+
+          <h3 id="exemplos-1-2">Exemplos Resolvidos (Aula 14)</h3>
+
+          <!-- EXEMPLO 1.4 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 1.4 (Pela Definição em $x_0 = 0$) — Dedução Completa de $\operatorname{sen}(x)$</h4>
+              <span class="badge badge-base">Nível Básico</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Determine pela definição a Série de Maclaurin $s_f(x)$ de $f(x) = \operatorname{sen}(x)$ e seu raio de convergência.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Tabela de derivadas em $x_0 = 0$</span>
+                <div class="table-wrap">
+                  <table>
+                    <thead>
+                      <tr><th>$n$</th><th>$f^{(n)}(x)$</th><th>$f^{(n)}(0)$</th><th>$a_n = \frac{f^{(n)}(0)}{n!}$</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td>$0$</td><td>$\operatorname{sen}(x)$</td><td>$\operatorname{sen}(0) = 0$</td><td>$0$</td></tr>
+                      <tr><td>$1$</td><td>$\cos(x)$</td><td>$\cos(0) = +1$</td><td>$+\dfrac{1}{1!}$</td></tr>
+                      <tr><td>$2$</td><td>$-\operatorname{sen}(x)$</td><td>$0$</td><td>$0$</td></tr>
+                      <tr><td>$3$</td><td>$-\cos(x)$</td><td>$-1$</td><td>$-\dfrac{1}{3!}$</td></tr>
+                      <tr><td>$4$</td><td>$\operatorname{sen}(x)$ (ciclo recomeça!)</td><td>$0$</td><td>$0$</td></tr>
+                      <tr><td>$5$</td><td>$\cos(x)$</td><td>$+1$</td><td>$+\dfrac{1}{5!}$</td></tr>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Montar a série compacta usando índice $n$ para os ímpares $2n + 1$</span>
+                <p>Somente as potências ímpares $x^1, x^3, x^5, \dots$ sobrevivem (como esperado, pois $\operatorname{sen} x$ é ímpar!), com sinais $+, -, +, -, \dots$:</p>
+                $$s_f(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} - \frac{x^7}{7!} + \cdots = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n + 1)!}.$$
+                <p><em>Conferência rápida:</em> $n=0 \implies \frac{+1 \cdot x^1}{1!} = x$; $n=1 \implies \frac{-1 \cdot x^3}{3!} = -\frac{x^3}{3!}$; $n=2 \implies +\frac{x^5}{5!}$ ✓!</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Raio de convergência (Teste da Razão Direto)</span>
+                $$\left|\frac{u_{n+1}(x)}{u_n(x)}\right| = \frac{|x|^{2n+3}}{(2n+3)!} \cdot \frac{(2n+1)!}{|x|^{2n+1}} = \frac{x^2}{(2n+3)(2n+2)} \xrightarrow{n \to \infty} 0 < 1 \quad (\forall\, x \in \mathbb{R}).$$
+                <p>Portanto, $R = \infty$ e $I = \mathbb{R}$. <em>(Na Aula 15 provaremos rigorosamente que $s_f(x) = \operatorname{sen}(x)$ para todo $x \in \mathbb{R}$.)</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 1.5 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 1.5 (Taylor com $x_0 \neq 0$) — $f(x) = \ln(x)$ centrada em $x_0 = 2$</h4>
+              <span class="badge badge-high">Nível de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre a série de Taylor de $f(x) = \ln(x)$ centrada em $x_0 = 2$ pela definição (e encontre seu intervalo de convergência).
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Calcular as primeiras derivadas e avaliar em $x_0 = 2$</span>
+                <p>Escrevemos as derivadas como potências negativas para não errar a regra do tombo:</p>
+                <ul>
+                  <li>$n = 0$: $f(x) = \ln(x) \implies f(2) = \ln(2)$</li>
+                  <li>$n = 1$: $f'(x) = x^{-1} \implies f'(2) = 2^{-1} = \dfrac{1}{2}$</li>
+                  <li>$n = 2$: $f''(x) = (-1)\,x^{-2} \implies f''(2) = -\dfrac{1}{2^2}$</li>
+                  <li>$n = 3$: $f'''(x) = (-1)(-2)\,x^{-3} = +2!\,x^{-3} \implies f'''(2) = +\dfrac{2!}{2^3}$</li>
+                  <li>$n = 4$: $f^{(4)}(x) = (-1)(-2)(-3)\,x^{-4} = -3!\,x^{-4} \implies f^{(4)}(2) = -\dfrac{3!}{2^4}$</li>
+                </ul>
+                <p>Enxergou o padrão para $n \ge 1$? O sinal é $(-1)^{n-1}$ (pois em $n=1$ é $+$, em $n=2$ é $-$, em $n=3$ é $+$), o numerador tem $(n - 1)!$ e o denominador tem $2^n$:</p>
+                $$f^{(n)}(2) = \frac{(-1)^{n-1} (n - 1)!}{2^n} \qquad (\text{para } n \ge 1).$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Dividir por $n!$ e simplificar o fatorial!</span>
+                <p>Para $n \ge 1$, o coeficiente de $(x - 2)^n$ é:</p>
+                $$a_n = \frac{f^{(n)}(2)}{n!} = \frac{(-1)^{n-1} \cancel{(n - 1)!}}{2^n \cdot n \cdot \cancel{(n - 1)!}} = \frac{(-1)^{n-1}}{n \cdot 2^n}.$$
+                <p>Juntando o termo isolado $a_0 = \ln(2)$ com o somatório a partir de $n = 1$:</p>
+                $$s_f(x) = \ln(2) + \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n \cdot 2^n}(x - 2)^n.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Raio e Intervalo de Convergência</span>
+                <p>Pelo Teste da Razão Direto no somatório, $\left|\dfrac{u_{n+1}}{u_n}\right| = \dfrac{n}{n+1}\cdot\dfrac{|x - 2|}{2} \to \dfrac{|x - 2|}{2} < 1 \iff |x - 2| < 2 \iff 0 < x < 4$ ($R = 2$).</p>
+                <ul>
+                  <li>Em $x = 0$: $x - 2 = -2 \implies (-1)^{n-1}(-2)^n = (-1)^{2n-1}2^n = -2^n \implies -\sum \frac{1}{n}$ (harmônica, <strong>diverge</strong>!).</li>
+                  <li>Em $x = 4$: $x - 2 = +2 \implies \sum \frac{(-1)^{n-1}}{n}$ (<strong>converge por Leibniz</strong>!).</li>
+                </ul>
+              </div>
+              <div class="result-highlight">
+                <strong>Resposta:</strong> $\displaystyle \ln(x) = \ln(2) + \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n \cdot 2^n}(x - 2)^n$, com $R = 2$ e $I = (0,\, 4]$.
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 1.6 (AVANÇADO RECOLHÍVEL) -->
+          <div class="box-exemplo" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 1.6 (Clássico SMA0356) — Derivadas de Ordem Alta $f^{(20)}(0)$ e $f^{(21)}(0)$</h4>
+              <span class="badge badge-max">Cai Muito na P2</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Dada a função $f(x) = \dfrac{x^2}{1 + 4x^2}$, determine os valores exatos de $f^{(20)}(0)$ e $f^{(21)}(0)$ <strong>sem derivar $f$ nenhuma vez</strong>!
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Expandir $f(x)$ em série de Maclaurin via geométrica</span>
+                  <p>Usando $\dfrac{1}{1 - u} = \sum_{n=0}^{\infty} u^n$ com $u = -4x^2$ (válido para $|-4x^2| < 1 \iff |x| < \frac{1}{2}$):</p>
+                  $$f(x) = x^2 \cdot \frac{1}{1 - (-4x^2)} = x^2 \sum_{n=0}^{\infty} (-4x^2)^n = x^2 \sum_{n=0}^{\infty} (-4)^n x^{2n} = \sum_{n=0}^{\infty} (-4)^n x^{2n+2}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Achar $f^{(21)}(0)$ (olhando a paridade do expoente!)</span>
+                  <p>Todo expoente que aparece na série tem a forma $2n + 2$ (sempre <strong>PAR</strong>!). A equação $2n + 2 = 21$ dá $2n = 19 \implies n = 9{,}5 \notin \mathbb{Z}$. Logo, o coeficiente de $x^{21}$ é $a_{21} = 0$, e portanto:</p>
+                  $$f^{(21)}(0) = 21!\,a_{21} = 0.$$
+                  <p><em>(Faz sentido: $f(-x) = f(x)$ é função par!)</em></p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Achar $f^{(20)}(0)$ igualando o expoente a $20$ (NUNCA troque $n$ por $20$!)</span>
+                  <p>Igualamos o expoente geral $2n + 2$ à ordem desejada $20$:</p>
+                  $$2n + 2 = 20 \implies 2n = 18 \implies n = 9.$$
+                  <p>Substituindo $n = 9$ no coeficiente $(-4)^n$, encontramos o coeficiente que multiplica $x^{20}$:</p>
+                  $$a_{20} = (-4)^9 = -4^9.$$
+                  <p>Finalmente, aplicando a fórmula $f^{(20)}(0) = 20!\,a_{20}$:</p>
+                  <div class="result-highlight">
+                    $$f^{(20)}(0) = 20!\cdot(-4)^9 = -20!\cdot 4^9, \qquad f^{(21)}(0) = 0.$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Alertas de Pegadinha — Aula 14</p>
+            <ul>
+              <li><strong>Confundir o índice $n$ com a ordem $k$ da derivada:</strong> No Exemplo 1.6, o erro #1 é jogar $n = 20$ em $(-4)^n$ e responder $20!(-4)^{20}$! Errado: quando $n = 20$, o expoente é $2(20)+2 = 42$ (seria $a_{42}$, não $a_{20}$!). <strong>Sempre iguale o EXPOENTE de $x$ à ordem pedida!</strong></li>
+              <li><strong>Esquecer de multiplicar por $k!$ (ou dividir por $k!$):</strong> A relação é $a_k = \dfrac{f^{(k)}(0)}{k!}$, portanto para isolar a derivada você <strong>MULTIPLICA</strong> por $k!$: $f^{(k)}(0) = k!\,a_k$.</li>
+              <li><strong>Esquecer o deslocamento $(x - x_0)^n$:</strong> Quando a questão pede Taylor centrada em $x_0 = 2$, a série tem potências de $(x - 2)^n$, e nunca de $x^n$!</li>
+            </ul>
+          </div>
+
+          <h3 id="exercicios-1-2">Exercícios de Fixação (Aula 14)</h3>
+
+          <!-- EXERCÍCIO 5 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 5 — Taylor de $e^x$ centrada em $x_0 = 3$ (Dois Jeitos!)</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b1-ex5" data-track-type="exercise" data-block="bloco1">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre a série de Taylor de $f(x) = e^x$ centrada em $x_0 = 3$ usando a definição e depois confira pelo truque algébrico $e^x = e^3 \cdot e^{x-3}$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Jeito 1 · Pela Definição em $x_0 = 3$</span>
+                  <p>Como todas as derivadas de $e^x$ são o próprio $e^x$, temos $f^{(n)}(x) = e^x$ para todo $n \ge 0$, logo $f^{(n)}(3) = e^3$. Substituindo na definição de Taylor:</p>
+                  $$s_f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(3)}{n!}(x - 3)^n = \sum_{n=0}^{\infty} \frac{e^3}{n!}(x - 3)^n = e^3 \sum_{n=0}^{\infty} \frac{(x - 3)^n}{n!}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Jeito 2 · Conferência algébrica ultrarrápida</span>
+                  <p>Escrevemos $x = 3 + (x - 3) \implies e^x = e^{3 + (x-3)} = e^3 \cdot e^{x - 3}$. Aplicando $e^u = \sum_{n=0}^{\infty} \frac{u^n}{n!}$ com $u = x - 3$ (válida para todo $u \in \mathbb{R}$):</p>
+                  $$e^x = e^3 \sum_{n=0}^{\infty} \frac{(x - 3)^n}{n!}, \qquad I = \mathbb{R}.$$
+                  <p>Os dois caminhos batem 100%!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 6 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 6 — Taylor de $\cos(x)$ centrada em $x_0 = \frac{\pi}{2}$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b1-ex6" data-track-type="exercise" data-block="bloco1">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre pela definição a série de Taylor de $f(x) = \cos(x)$ centrada em $x_0 = \dfrac{\pi}{2}$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Calcular as derivadas em $x_0 = \frac{\pi}{2}$</span>
+                  <ul>
+                    <li>$n = 0$: $f(x) = \cos x \implies f\!\left(\frac{\pi}{2}\right) = 0$</li>
+                    <li>$n = 1$: $f'(x) = -\operatorname{sen} x \implies f'\!\left(\frac{\pi}{2}\right) = -1$</li>
+                    <li>$n = 2$: $f''(x) = -\cos x \implies f''\!\left(\frac{\pi}{2}\right) = 0$</li>
+                    <li>$n = 3$: $f'''(x) = +\operatorname{sen} x \implies f'''\!\left(\frac{\pi}{2}\right) = +1$</li>
+                    <li>$n = 4$: $f^{(4)}(x) = \cos x \implies f^{(4)}\!\left(\frac{\pi}{2}\right) = 0$</li>
+                    <li>$n = 5$: $f^{(5)}(x) = -\operatorname{sen} x \implies f^{(5)}\!\left(\frac{\pi}{2}\right) = -1$</li>
+                  </ul>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Montar o somatório com potências ímpares e sinal alternado</span>
+                  <p>A série começa com sinal <strong>negativo</strong> nos ímpares:</p>
+                  $$s_f(x) = -\left(x - \frac{\pi}{2}\right) + \frac{\left(x - \frac{\pi}{2}\right)^3}{3!} - \frac{\left(x - \frac{\pi}{2}\right)^5}{5!} + \cdots = \sum_{n=0}^{\infty} \frac{(-1)^{n+1}}{(2n + 1)!}\left(x - \frac{\pi}{2}\right)^{2n+1}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Conferência trigonométrica de ouro</span>
+                  <p>Note que $\cos(x) = -\operatorname{sen}\!\left(x - \frac{\pi}{2}\right)$! Multiplicar a série de $\operatorname{sen}(u)$ por $-1$ dá exatamente $(-1)^{n+1}$ com $u = x - \frac{\pi}{2}$, válido para todo $x \in \mathbb{R}$!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 7 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 7 — Derivadas de Ordem Alta: $f(x) = \dfrac{1}{1 - 2x^3}$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b1-ex7" data-track-type="exercise" data-block="bloco1">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Para $f(x) = \dfrac{1}{1 - 2x^3}$, encontre $f^{(12)}(0)$ e $f^{(10)}(0)$ sem calcular derivadas diretamente.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Série de Maclaurin via geométrica ($u = 2x^3$)</span>
+                  $$f(x) = \frac{1}{1 - 2x^3} = \sum_{n=0}^{\infty} (2x^3)^n = \sum_{n=0}^{\infty} 2^n x^{3n}, \qquad |2x^3| < 1 \iff |x| < \frac{1}{\sqrt[3]{2}}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Achar $f^{(10)}(0)$</span>
+                  <p>Só existem potências múltiplas de $3$ ($x^0, x^3, x^6, x^9, x^{12}, \dots$). Como $3n = 10$ não tem solução inteira, $a_{10} = 0 \implies f^{(10)}(0) = 0$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Achar $f^{(12)}(0)$</span>
+                  <p>Igualando o expoente: $3n = 12 \implies n = 4$. Logo $a_{12} = 2^4 = 16$. Multiplicando por $12!$:</p>
+                  <div class="result-highlight">
+                    $$f^{(12)}(0) = 12!\cdot a_{12} = 16 \cdot 12!, \qquad f^{(10)}(0) = 0.$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 8 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 8 — Derivadas de Ordem Alta com $\arctan$: $f(x) = x\arctan(x^2)$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b1-ex8" data-track-type="exercise" data-block="bloco1">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Dada $f(x) = x\arctan(x^2)$, escreva sua série de Maclaurin e calcule $f^{(11)}(0)$ e $f^{(15)}(0)$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Montar a série de Maclaurin</span>
+                  <p>Usando $\arctan(u) = \sum_{n=0}^{\infty} \frac{(-1)^n u^{2n+1}}{2n+1}$ ($u \in [-1, 1]$) com $u = x^2$ e multiplicando por $x$:</p>
+                  $$f(x) = x \sum_{n=0}^{\infty} \frac{(-1)^n (x^2)^{2n+1}}{2n + 1} = x \sum_{n=0}^{\infty} \frac{(-1)^n x^{4n+2}}{2n + 1} = \sum_{n=0}^{\infty} \frac{(-1)^n}{2n + 1}\,x^{4n+3}, \qquad x \in [-1,\, 1].$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Calcular $f^{(11)}(0)$</span>
+                  <p>Igualamos o expoente $4n + 3 = 11 \implies 4n = 8 \implies n = 2$. Substituindo $n = 2$ no coeficiente:</p>
+                  $$a_{11} = \frac{(-1)^2}{2(2) + 1} = \frac{1}{5} \implies f^{(11)}(0) = 11!\cdot a_{11} = \frac{11!}{5}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Calcular $f^{(15)}(0)$</span>
+                  <p>Igualamos o expoente $4n + 3 = 15 \implies 4n = 12 \implies n = 3$. Substituindo $n = 3$:</p>
+                  $$a_{15} = \frac{(-1)^3}{2(3) + 1} = -\frac{1}{7} \implies f^{(15)}(0) = 15!\cdot a_{15} = -\frac{15!}{7}.$$
+                  <div class="result-highlight">
+                    <strong>Resposta:</strong> $f^{(11)}(0) = \dfrac{11!}{5}$ &nbsp; e &nbsp; $f^{(15)}(0) = -\dfrac{15!}{7}$.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr>
+
+        <!-- ================================================================
+             TÓPICO 1.3 — AULA 16: CONSTRUINDO SÉRIES SEM USAR A DEFINIÇÃO
+             ================================================================ -->
+        <section id="topico-1-3">
+          <div class="topic-header-bar">
+            <h2>1.3 Aula 16 — Construindo Séries de Maclaurin sem usar a Definição</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b1-t3" data-track-type="topic" data-block="bloco1">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — As 4 Peças de LEGO da P2</p>
+            <p>
+              Na vida real (e na prova!), quase nunca calculamos séries de Maclaurin derivando $f(x)$ cinquenta vezes pela definição. Em vez disso, nós <strong>memorizamos com 100% de segurança 4 séries-mãe</strong> (mais as 2 filhas da Aula 13) e usamos quatro movimentos simples — <strong>substituição, multiplicação/divisão por $x^k$, derivação e integração</strong> — para montar qualquer série em 30 segundos!
+            </p>
+            <p>
+              E ainda ganhamos dois superpoderes de brinde: (1) integrar funções "impossíveis" de Cálculo I (como $\int e^{x^3}dx$ ou $\int \frac{\operatorname{sen}(x)}{x}dx$) e (2) ler a tabela de trás para frente para achar a soma exata de séries numéricas assustadoras!
+            </p>
+          </div>
+
+          <h3 id="tabela-fundamentais">1. A Tabela Mestra de Maclaurin (Para Ter na Ponta da Língua!)</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Função</th>
+                  <th>Série de Maclaurin (Compacta)</th>
+                  <th>Primeiros Termos Expandidos</th>
+                  <th>Intervalo $I$</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1. $e^x$</strong></td>
+                  <td>$\displaystyle \sum_{n=0}^{\infty} \frac{x^n}{n!}$</td>
+                  <td>$1 + x + \dfrac{x^2}{2!} + \dfrac{x^3}{3!} + \cdots$</td>
+                  <td>$\mathbb{R}$ ($R = \infty$)</td>
+                </tr>
+                <tr>
+                  <td><strong>2. $\operatorname{sen}(x)$</strong></td>
+                  <td>$\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n + 1)!}$</td>
+                  <td>$x - \dfrac{x^3}{3!} + \dfrac{x^5}{5!} - \dfrac{x^7}{7!} + \cdots$</td>
+                  <td>$\mathbb{R}$ ($R = \infty$)</td>
+                </tr>
+                <tr>
+                  <td><strong>3. $\cos(x)$</strong></td>
+                  <td>$\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!}$</td>
+                  <td>$1 - \dfrac{x^2}{2!} + \dfrac{x^4}{4!} - \dfrac{x^6}{6!} + \cdots$</td>
+                  <td>$\mathbb{R}$ ($R = \infty$)</td>
+                </tr>
+                <tr>
+                  <td><strong>4. $\dfrac{1}{1 - x}$</strong></td>
+                  <td>$\displaystyle \sum_{n=0}^{\infty} x^n$</td>
+                  <td>$1 + x + x^2 + x^3 + \cdots$</td>
+                  <td>$(-1,\, 1)$ ($R = 1$)</td>
+                </tr>
+                <tr>
+                  <td><em>Bônus: $\ln(1 + x)$</em></td>
+                  <td>$\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n x^{n+1}}{n + 1}$</td>
+                  <td>$x - \dfrac{x^2}{2} + \dfrac{x^3}{3} - \dfrac{x^4}{4} + \cdots$</td>
+                  <td>$(-1,\, 1]$ ($R = 1$)</td>
+                </tr>
+                <tr>
+                  <td><em>Bônus: $\arctan(x)$</em></td>
+                  <td>$\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{2n + 1}$</td>
+                  <td>$x - \dfrac{x^3}{3} + \dfrac{x^5}{5} - \dfrac{x^7}{7} + \cdots$</td>
+                  <td>$[-1,\, 1]$ ($R = 1$)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <strong>Truque de memorização instantânea:</strong>
+          </p>
+          <ul>
+            <li>$e^x$ tem <em>todas</em> as potências com todos os sinais positivos e $n!$ embaixo.</li>
+            <li>$\operatorname{sen}(x)$ é função <strong>ímpar</strong> $\implies$ só potências <strong>ímpares</strong> ($2n+1$), sinais alternados, $(2n+1)!$ embaixo.</li>
+            <li>$\cos(x)$ é função <strong>par</strong> $\implies$ só potências <strong>pares</strong> ($2n$), sinais alternados, $(2n)!$ embaixo.</li>
+            <li>$\ln(1+x)$ e $\arctan(x)$ parecem $e^x$ / $\operatorname{sen} x$, mas <strong>SEM fatorial</strong> no denominador (por isso convergem só até $|x| = 1$, e não em toda a reta $\mathbb{R}$!).</li>
+          </ul>
+
+          <h3 id="formula-euler">2. Aplicação Espetacular: A Fórmula de Euler ($e^{ix} = \cos x + i\operatorname{sen} x$)</h3>
+          <p>
+            Você já se perguntou por que as séries de $e^x$, $\cos x$ e $\operatorname{sen} x$ são tão parecidas? Substitua o número complexo $ix$ (onde $i^2 = -1$) na série de $e^u$ e observe a mágica acontecer passo a passo!
+          </p>
+          <div class="math-step">
+            <span class="step-label">Dedução Intuitiva da Fórmula de Euler</span>
+            <p><strong>1. Lembre o ciclo das potências de $i$:</strong></p>
+            $$i^0 = 1, \quad i^1 = i, \quad i^2 = -1, \quad i^3 = i^2\cdot i = -i, \quad i^4 = (i^2)^2 = +1, \quad i^5 = i, \quad i^6 = -1, \dots$$
+            <p><strong>2. Substitua $u = ix$ na série de $e^u = 1 + u + \frac{u^2}{2!} + \frac{u^3}{3!} + \cdots$:</strong></p>
+            $$e^{ix} = 1 + (ix) + \frac{(ix)^2}{2!} + \frac{(ix)^3}{3!} + \frac{(ix)^4}{4!} + \frac{(ix)^5}{5!} + \frac{(ix)^6}{6!} + \cdots$$
+            <p><strong>3. Calcule cada potência de $i$:</strong></p>
+            $$e^{ix} = 1 + i\,x - \frac{x^2}{2!} - i\,\frac{x^3}{3!} + \frac{x^4}{4!} + i\,\frac{x^5}{5!} - \frac{x^6}{6!} - \cdots$$
+            <p><strong>4. Agrupe os termos SEM $i$ (pares) e os termos COM $i$ (ímpares, colocando $i$ em evidência):</strong></p>
+            $$e^{ix} = \underbrace{\left(1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots\right)}_{=\,\cos(x)} + i\underbrace{\left(x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots\right)}_{=\,\operatorname{sen}(x)}.$$
+            <div class="result-highlight">
+              $$e^{ix} = \cos(x) + i\operatorname{sen}(x) \qquad \text{(Fórmula de Euler!)}$$
+              <p style="margin-top: 0.45rem; font-weight: 400;">Em particular, colocando $x = \pi$ ($\cos\pi = -1$ e $\operatorname{sen}\pi = 0$), obtemos a famosa <strong>Identidade de Euler</strong>: $e^{i\pi} + 1 = 0$! E no Bloco 3 veremos que $e^{ix}$ também liga a forma real e a forma complexa das Séries de Fourier.</p>
+            </div>
+          </div>
+
+          <div class="callout box-receita">
+            <p class="callout-title">Receita de Bolo — Engenharia Reversa: Como Achar a Soma de uma Série Numérica</p>
+            <p>Quando a prova te der uma série numérica estranha e pedir <em>"calcule sua soma exata"</em>, olhe primeiro para o <strong>denominador</strong>:</p>
+            <ol>
+              <li><strong>Sem denominador em $n$ (só potências $r^n$):</strong> É uma <strong>Série Geométrica</strong> $\frac{1}{1-r}$ (ou sua derivada $\frac{x}{(1-x)^2}$ se houver $n$ no numerador).</li>
+              <li><strong>Denominador $n!$:</strong> É a série de <strong>$e^x$</strong> avaliada em algum $x$!</li>
+              <li><strong>Denominador $(2n)!$ com sinal alternado $(-1)^n$:</strong> É <strong>$\cos(x)$</strong>!</li>
+              <li><strong>Denominador $(2n+1)!$ com sinal alternado $(-1)^n$:</strong> É <strong>$\operatorname{sen}(x)$</strong>!</li>
+              <li><strong>Denominador $n$ (ou $n+1$) com sinal alternado:</strong> É <strong>$\ln(1+x)$</strong>!</li>
+              <li><strong>Denominador $2n+1$ com sinal alternado:</strong> É <strong>$\arctan(x)$</strong>!</li>
+              <li><strong>Conferência obrigatória do índice inicial:</strong> Verifique se falta o termo $n = 0$ (ou $n = 1$)! Se faltar, some e subtraia o termo que faltou!</li>
+            </ol>
+          </div>
+
+          <h3 id="exemplos-1-3">Exemplos Resolvidos (Aula 16)</h3>
+
+          <!-- EXEMPLO 1.7 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 1.7 (Direto da Aula 16 da Profa. Janete!) — Manipulações LEGO e Primitiva de $e^{t^3}$</h4>
+              <span class="badge badge-base">Essencial</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Usando a Tabela Mestra (sem derivar pela definição), determine a série de Maclaurin e o intervalo de convergência de:
+                <br><strong>(a)</strong> $f(x) = x^3 \operatorname{sen}(x^2)$ &qquad
+                <strong>(b)</strong> $g(x) = \dfrac{\operatorname{sen}(x)}{x}$ (para $x \neq 0$) &qquad
+                <strong>(c)</strong> $F(x) = \displaystyle \int_{0}^{x} e^{t^3}\,dt$.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Item (a) · Substituição + Multiplicação por $x^3$</span>
+                <p>Partimos de $\operatorname{sen}(u) = \displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n u^{2n+1}}{(2n+1)!}$ (válido para todo $u \in \mathbb{R}$). Trocamos $u$ por $x^2$:</p>
+                $$\operatorname{sen}(x^2) = \sum_{n=0}^{\infty} \frac{(-1)^n (x^2)^{2n+1}}{(2n + 1)!} = \sum_{n=0}^{\infty} \frac{(-1)^n x^{4n+2}}{(2n + 1)!}, \qquad \forall\, x \in \mathbb{R}.$$
+                <p>Agora multiplicamos por $x^3$ (somando $+3$ no expoente: $x^{4n+2}\cdot x^3 = x^{4n+5}$):</p>
+                $$x^3 \operatorname{sen}(x^2) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{4n+5}}{(2n + 1)!}, \qquad I = \mathbb{R}.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Item (b) · Divisão por $x$ (removendo a indeterminação $0/0$!)</span>
+                <p>Dividimos cada termo de $\operatorname{sen}(x)$ por $x$ (subtraindo $1$ do expoente $2n+1 \to 2n$):</p>
+                $$\frac{\operatorname{sen}(x)}{x} = \frac{1}{x}\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n + 1)!} = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n + 1)!} = 1 - \frac{x^2}{3!} + \frac{x^4}{5!} - \cdots, \qquad I = \mathbb{R}.$$
+                <p><em>Observação linda da Aula 16:</em> A série converge em toda a reta $\mathbb{R}$ (inclusive em $x = 0$, onde vale $a_0 = 1$, exatamente o limite fundamental $\lim_{x\to 0}\frac{\operatorname{sen} x}{x} = 1$!).</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Item (c) · Primitiva de $e^{t^3}$ (que NÃO existe em funções elementares!)</span>
+                <p>Trocamos $u = t^3$ na série de $e^u = \sum_{n=0}^{\infty} \frac{u^n}{n!}$ ($\forall\, u \in \mathbb{R}$):</p>
+                $$e^{t^3} = \sum_{n=0}^{\infty} \frac{(t^3)^n}{n!} = \sum_{n=0}^{\infty} \frac{t^{3n}}{n!}, \qquad \forall\, t \in \mathbb{R}.$$
+                <p>Agora integramos termo a termo de $0$ até $x$ (pelo Teorema II.3.2 da Aula 13, $R = \infty$ se mantém!):</p>
+                $$F(x) = \int_{0}^{x} e^{t^3}\,dt = \sum_{n=0}^{\infty} \frac{1}{n!} \int_{0}^{x} t^{3n}\,dt = \sum_{n=0}^{\infty} \frac{x^{3n+1}}{(3n + 1)\,n!}, \qquad I = \mathbb{R}.$$
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 1.8 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 1.8 (Conexão Bloco 0 + Bloco 1) — Série de Maclaurin de $\cos^2(x)$</h4>
+              <span class="badge badge-high">Nível de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre a série de Maclaurin de $f(x) = \cos^2(x)$ e seu intervalo de convergência.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · NUNCA eleve o termo geral da série ao quadrado! Use a identidade do Bloco 0!</span>
+                <p>Lembra da identidade de redução de potência que revisamos na Seção 0.3? Ela salva você aqui:</p>
+                $$\cos^2(x) = \frac{1 + \cos(2x)}{2} = \frac{1}{2} + \frac{1}{2}\cos(2x).$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Substituir $u = 2x$ na série de $\cos(u)$</span>
+                $$\cos(2x) = \sum_{n=0}^{\infty} \frac{(-1)^n (2x)^{2n}}{(2n)!} = \sum_{n=0}^{\infty} \frac{(-1)^n 2^{2n} x^{2n}}{(2n)!} = 1 + \sum_{n=1}^{\infty} \frac{(-1)^n 2^{2n} x^{2n}}{(2n)!}, \qquad \forall\, x \in \mathbb{R}.$$
+                <p><em>(Separamos o termo $n = 0$, que vale $1$, para somá-lo com o outro $\frac{1}{2}$!)</em></p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Juntar os termos constantes e simplificar $\frac{2^{2n}}{2} = 2^{2n-1}$</span>
+                $$\cos^2(x) = \frac{1}{2} + \frac{1}{2}\left(1 + \sum_{n=1}^{\infty} \frac{(-1)^n 2^{2n} x^{2n}}{(2n)!}\right) = \underbrace{\frac{1}{2} + \frac{1}{2}}_{=\,1} + \sum_{n=1}^{\infty} \frac{(-1)^n 2^{2n-1} x^{2n}}{(2n)!}.$$
+              </div>
+              <div class="result-highlight">
+                <strong>Resposta:</strong> $\displaystyle \cos^2(x) = 1 + \sum_{n=1}^{\infty} \frac{(-1)^n 2^{2n-1} x^{2n}}{(2n)!} = 1 - x^2 + \frac{x^4}{3} - \frac{2x^6}{45} + \cdots$, válida para todo $x \in \mathbb{R}$.
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 1.9 (AVANÇADO RECOLHÍVEL) -->
+          <div class="box-exemplo" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 1.9 (Engenharia Reversa de Somas) — 3 Clássicos de Prova</h4>
+              <span class="badge badge-max">Clássico de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Calcule a soma exata de cada série numérica reconhecendo-a na Tabela Mestra:
+                <br><strong>(a)</strong> $\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n \pi^{2n}}{9^n (2n)!}$ &qquad
+                <strong>(b)</strong> $\displaystyle \sum_{n=1}^{\infty} \frac{3^n}{n!}$ &qquad
+                <strong>(c)</strong> $\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n}{3^n (2n + 1)}$
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (a) · Denominador $(2n)!$ alternado $\implies \cos(x)$!</span>
+                  <p>Reescrevemos $9^n = (3^2)^n = 3^{2n}$ para juntar tudo sob o expoente $2n$:</p>
+                  $$\sum_{n=0}^{\infty} \frac{(-1)^n \pi^{2n}}{3^{2n} (2n)!} = \sum_{n=0}^{\infty} \frac{(-1)^n \left(\frac{\pi}{3}\right)^{2n}}{(2n)!} = \cos\!\left(\frac{\pi}{3}\right) = \frac{1}{2}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b) · Denominador $n!$ $\implies e^x$ (CUIDADO com o índice $n = 1$!)</span>
+                  <p>Sabemos que $\displaystyle e^3 = \sum_{n=0}^{\infty} \frac{3^n}{n!} = \underbrace{\frac{3^0}{0!}}_{=\,1} + \sum_{n=1}^{\infty} \frac{3^n}{n!}$.</p>
+                  <p>Isolando a soma a partir de $n = 1$:</p>
+                  $$\sum_{n=1}^{\infty} \frac{3^n}{n!} = e^3 - 1.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (c) · Denominador $(2n+1)$ alternado (sem fatorial!) $\implies \arctan(x)$!</span>
+                  <p>Para encaixar em $\arctan(x) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{2n+1}$, precisamos de uma potência com expoente $2n + 1$! Note que $\dfrac{1}{3^n} = \left(\dfrac{1}{\sqrt{3}}\right)^{2n}$. Falta apenas multiplicar e dividir por $\dfrac{1}{\sqrt{3}}$ (isto é, multiplicar fora por $\sqrt{3}$ e dentro por $\frac{1}{\sqrt{3}}$):</p>
+                  $$\sum_{n=0}^{\infty} \frac{(-1)^n}{3^n (2n + 1)} = \sqrt{3}\sum_{n=0}^{\infty} \frac{(-1)^n \left(\frac{1}{\sqrt{3}}\right)^{2n+1}}{2n + 1} = \sqrt{3}\,\arctan\!\left(\frac{1}{\sqrt{3}}\right).$$
+                  <p>Como $\left|\frac{1}{\sqrt{3}}\right| \approx 0{,}577 \le 1$ (está dentro de $[-1, 1]$!) e $\tan\!\left(\frac{\pi}{6}\right) = \frac{1}{\sqrt{3}}$:</p>
+                  <div class="result-highlight">
+                    $$\sum_{n=0}^{\infty} \frac{(-1)^n}{3^n (2n + 1)} = \sqrt{3} \cdot \frac{\pi}{6} = \frac{\pi\sqrt{3}}{6}.$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Alertas de Pegadinha — Aula 16</p>
+            <ul>
+              <li><strong>Esquecer termos faltantes no começo da soma:</strong> $\sum_{n=1}^{\infty} \frac{x^n}{n!} = e^x - 1$, e $\sum_{n=2}^{\infty} \frac{x^n}{n!} = e^x - 1 - x$! Olhe SEMPRE o número embaixo do $\Sigma$!</li>
+              <li><strong>Usar $\arctan(x)$ ou $\ln(1+x)$ fora do intervalo de convergência:</strong> Nunca diga que $\sum_{n=0}^{\infty} \frac{(-1)^n 2^{2n+1}}{2n+1} = \arctan(2)$ — para $x = 2$, a série DIVERGE (pois $2 \notin [-1, 1]$)!</li>
+              <li><strong>Falso produto de séries:</strong> $\left(\sum a_n x^n\right)^2 \neq \sum a_n^2 x^{2n}$! Nunca distribua um quadrado para dentro de um somatório.</li>
+            </ul>
+          </div>
+
+          <h3 id="exercicios-1-3">Exercícios de Fixação (Aula 16)</h3>
+
+          <!-- EXERCÍCIO 9 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 9 — Série de $x^2 e^{-3x}$ e Derivada $f^{(10)}(0)$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b1-ex9" data-track-type="exercise" data-block="bloco1">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre a série de Maclaurin e o intervalo de convergência de $f(x) = x^2 e^{-3x}$, e use-a para calcular $f^{(10)}(0)$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Substituir $u = -3x$ em $e^u$ e multiplicar por $x^2$</span>
+                  $$e^{-3x} = \sum_{n=0}^{\infty} \frac{(-3x)^n}{n!} = \sum_{n=0}^{\infty} \frac{(-3)^n x^n}{n!}, \qquad \forall\, x \in \mathbb{R}.$$
+                  $$f(x) = x^2 e^{-3x} = \sum_{n=0}^{\infty} \frac{(-3)^n}{n!}\,x^{n+2}, \qquad I = \mathbb{R}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Igualar o expoente a $10$ para achar $a_{10}$</span>
+                  <p>Resolvemos $n + 2 = 10 \implies n = 8$. Substituindo $n = 8$ no coeficiente:</p>
+                  $$a_{10} = \frac{(-3)^8}{8!} = \frac{3^8}{8!}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Multiplicar por $10!$ e simplificar o fatorial</span>
+                  $$f^{(10)}(0) = 10!\cdot a_{10} = 10!\cdot \frac{3^8}{8!} = \frac{10 \cdot 9 \cdot \cancel{8!}}{\cancel{8!}} \cdot 3^8 = 90 \cdot 3^8 = 90 \cdot 6561 = 590\,490.$$
+                  <div class="result-highlight">
+                    <strong>Resposta:</strong> $f(x) = \displaystyle \sum_{n=0}^{\infty} \frac{(-3)^n}{n!}\,x^{n+2}$ ($I = \mathbb{R}$) e $f^{(10)}(0) = 90 \cdot 3^8 = 590\,490$.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 10 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 10 — Removendo Indeterminação: $\dfrac{1 - \cos(x)}{x^2}$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b1-ex10" data-track-type="exercise" data-block="bloco1">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre a série de Maclaurin de $f(x) = \dfrac{1 - \cos(x)}{x^2}$ (para $x \neq 0$) e use-a para calcular $\displaystyle \lim_{x \to 0} \frac{1 - \cos(x)}{x^2}$ instantaneamente.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Subtrair $\cos(x)$ de $1$ (o termo $n = 0$ cancela!)</span>
+                  $$1 - \cos(x) = 1 - \left(1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \frac{x^6}{6!} + \cdots\right) = \frac{x^2}{2!} - \frac{x^4}{4!} + \frac{x^6}{6!} - \cdots$$
+                  <p>Em forma de somatório (começando em $n = 1$, invertendo o sinal por causa do "$-$"): $\displaystyle 1 - \cos(x) = \sum_{n=1}^{\infty} \frac{(-1)^{n-1} x^{2n}}{(2n)!}$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Dividir por $x^2$ (para $x \neq 0$)</span>
+                  $$\frac{1 - \cos(x)}{x^2} = \sum_{n=1}^{\infty} \frac{(-1)^{n-1} x^{2n-2}}{(2n)!} = \frac{1}{2!} - \frac{x^2}{4!} + \frac{x^4}{6!} - \cdots, \qquad \forall\, x \in \mathbb{R}.$$
+                  <p><em>(Com troca $k = n - 1$: $\displaystyle \sum_{k=0}^{\infty} \frac{(-1)^k x^{2k}}{(2k + 2)!}$.)</em></p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Tomar o limite quando $x \to 0$ (pela continuidade de séries de potências!)</span>
+                  $$\lim_{x \to 0} \frac{1 - \cos(x)}{x^2} = \lim_{x \to 0}\left(\frac{1}{2} - \frac{x^2}{24} + \frac{x^4}{720} - \cdots\right) = \frac{1}{2}.$$
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 11 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 11 — Integral Não Elementar: $\int_{0}^{x} \frac{\operatorname{sen}(t^2)}{t}\,dt$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b1-ex11" data-track-type="exercise" data-block="bloco1">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre uma representação em série de potências para $F(x) = \displaystyle \int_{0}^{x} \frac{\operatorname{sen}(t^2)}{t}\,dt$ e determine seu raio de convergência.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Expandir $\operatorname{sen}(t^2)$</span>
+                  $$\operatorname{sen}(t^2) = \sum_{n=0}^{\infty} \frac{(-1)^n (t^2)^{2n+1}}{(2n + 1)!} = \sum_{n=0}^{\infty} \frac{(-1)^n t^{4n+2}}{(2n + 1)!}, \qquad \forall\, t \in \mathbb{R}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Dividir por $t$ (o expoente cai de $4n+2$ para $4n+1$)</span>
+                  $$\frac{\operatorname{sen}(t^2)}{t} = \sum_{n=0}^{\infty} \frac{(-1)^n t^{4n+1}}{(2n + 1)!}, \qquad \forall\, t \in \mathbb{R}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Integrar termo a termo de $0$ até $x$</span>
+                  $$F(x) = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n + 1)!}\int_{0}^{x} t^{4n+1}\,dt = \sum_{n=0}^{\infty} \frac{(-1)^n x^{4n+2}}{(4n + 2)(2n + 1)!}.$$
+                  <div class="result-highlight">
+                    <strong>Resposta:</strong> $F(x) = \displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n x^{4n+2}}{(4n + 2)(2n + 1)!}$, com raio de convergência $R = \infty$ ($I = \mathbb{R}$).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 12 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 12 — Desafio de Somas Numéricas por Reconhecimento</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b1-ex12" data-track-type="exercise" data-block="bloco1">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Calcule a soma exata de cada série numérica abaixo usando a Tabela Mestra:
+                <br><strong>(a)</strong> $\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n (\ln 2)^n}{n!}$ &qquad
+                <strong>(b)</strong> $\displaystyle \sum_{n=1}^{\infty} \frac{(-1)^n \pi^{2n+1}}{4^{2n+1}(2n + 1)!}$ &qquad
+                <strong>(c)</strong> $\displaystyle \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n \cdot 2^n}$
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (a) · Reconhecendo $e^x$ com $x = -\ln 2$</span>
+                  $$\sum_{n=0}^{\infty} \frac{(-\ln 2)^n}{n!} = e^{-\ln 2} = e^{\ln(2^{-1})} = 2^{-1} = \frac{1}{2}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b) · Reconhecendo $\operatorname{sen}\!\left(\frac{\pi}{4}\right)$ — ATENÇÃO ao índice $n = 1$!</span>
+                  <p>Agrupando $\dfrac{\pi^{2n+1}}{4^{2n+1}} = \left(\dfrac{\pi}{4}\right)^{2n+1}$, vemos a série de $\operatorname{sen}\!\left(\dfrac{\pi}{4}\right)$ <em>sem</em> o primeiro termo ($n = 0$, que vale $\frac{\pi}{4}$):</p>
+                  $$\operatorname{sen}\!\left(\frac{\pi}{4}\right) = \frac{\pi}{4} + \sum_{n=1}^{\infty} \frac{(-1)^n \left(\frac{\pi}{4}\right)^{2n+1}}{(2n + 1)!} \implies \sum_{n=1}^{\infty} \frac{(-1)^n \pi^{2n+1}}{4^{2n+1}(2n + 1)!} = \frac{\sqrt{2}}{2} - \frac{\pi}{4}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (c) · Reconhecendo $\ln(1 + x)$ com $x = \frac{1}{2}$</span>
+                  <p>Lembre que $\ln(1 + x) = \displaystyle \sum_{n=1}^{\infty} \frac{(-1)^{n-1} x^n}{n}$ para $x \in (-1, 1]$. Como $x = \dfrac{1}{2} \in (-1, 1]$:</p>
+                  $$\sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n \cdot 2^n} = \sum_{n=1}^{\infty} \frac{(-1)^{n-1} \left(\frac{1}{2}\right)^n}{n} = \ln\!\left(1 + \frac{1}{2}\right) = \ln\!\left(\frac{3}{2}\right).$$
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <nav class="chapter-footer-nav" aria-label="Navegação entre blocos">
+          <a href="bloco0.html" class="chapter-nav-btn">
+            <span class="chapter-nav-dir">← Bloco Anterior</span>
+            <span class="chapter-nav-label">Bloco 0 · Nivelamento Obrigatório</span>
+          </a>
+          <a href="bloco2.html" class="chapter-nav-btn">
+            <span class="chapter-nav-dir">Próximo Bloco →</span>
+            <span class="chapter-nav-label">Bloco 2 · Taylor, Binomiais e EDOs</span>
+          </a>
+        </nav>
+      </article>
+    </main>
+  </div>
+
+  <!-- ======================================================================
+       SIMULADOR INTERATIVO 1.1: POLINÔMIO DE TAYLOR P_N(x)
+       ====================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const P = window.Calc4Plot;
+      if (!P) return;
+
+      const selFn = document.getElementById('sim11-fn');
+      const nSlider = document.getElementById('sim11-n');
+      const nVal = document.getElementById('sim11-n-val');
+      const xpSlider = document.getElementById('sim11-xp');
+      const xpVal = document.getElementById('sim11-xp-val');
+      const canvas = document.getElementById('canvas-sim11');
+      const outFx = document.getElementById('sim11-fx');
+      const outPn = document.getElementById('sim11-pn');
+      const outErr = document.getElementById('sim11-err');
+      const outPoly = document.getElementById('sim11-poly-display');
+
+      function factorial(k) {
+        let f = 1;
+        for (let i = 2; i <= k; i++) f *= i;
+        return f;
+      }
+
+      const FN_CONFIG = {
+        sin: {
+          name: 'sen(x)',
+          f: (x) => Math.sin(x),
+          coeff: (k) => (k % 2 === 1 ? ((k - 1) % 4 === 0 ? 1 : -1) / factorial(k) : 0),
+          termStr: (k) => (k === 1 ? 'x' : `x<sup>${k}</sup>/${k}!`),
+          xMin: -6.5, xMax: 6.5, yMin: -2.4, yMax: 2.4,
+          xpMin: -5, xpMax: 5, defaultXp: 2.0, radius: Infinity
+        },
+        cos: {
+          name: 'cos(x)',
+          f: (x) => Math.cos(x),
+          coeff: (k) => (k % 2 === 0 ? (k % 4 === 0 ? 1 : -1) / factorial(k) : 0),
+          termStr: (k) => (k === 0 ? '1' : `x<sup>${k}</sup>/${k}!`),
+          xMin: -6.5, xMax: 6.5, yMin: -2.4, yMax: 2.4,
+          xpMin: -5, xpMax: 5, defaultXp: 2.0, radius: Infinity
+        },
+        exp: {
+          name: 'eˣ',
+          f: (x) => Math.exp(x),
+          coeff: (k) => 1 / factorial(k),
+          termStr: (k) => (k === 0 ? '1' : k === 1 ? 'x' : `x<sup>${k}</sup>/${k}!`),
+          xMin: -4.2, xMax: 3.2, yMin: -2.0, yMax: 12.0,
+          xpMin: -3.5, xpMax: 2.5, defaultXp: 1.5, radius: Infinity
+        },
+        ln1x: {
+          name: 'ln(1 + x)',
+          f: (x) => (x > -0.9999 ? Math.log(1 + x) : NaN),
+          coeff: (k) => (k === 0 ? 0 : (k % 2 === 1 ? 1 : -1) / k),
+          termStr: (k) => (k === 1 ? 'x' : `x<sup>${k}</sup>/${k}`),
+          xMin: -1.6, xMax: 2.4, yMin: -3.0, yMax: 2.0,
+          xpMin: -0.9, xpMax: 1.8, defaultXp: 0.8, radius: 1
+        }
+      };
+
+      function evalTaylor(cfg, N, x) {
+        let s = 0;
+        let xPow = 1;
+        for (let k = 0; k <= N; k++) {
+          const c = cfg.coeff(k);
+          if (c !== 0) s += c * xPow;
+          xPow *= x;
+        }
+        return s;
+      }
+
+      function formatPolyHtml(cfg, N) {
+        const terms = [];
+        for (let k = 0; k <= N; k++) {
+          const c = cfg.coeff(k);
+          if (c === 0) continue;
+          const sign = c > 0 ? '+' : '−';
+          const body = cfg.termStr(k);
+          if (terms.length === 0) {
+            terms.push((c < 0 ? '−' : '') + body);
+          } else {
+            terms.push(` ${sign} ${body}`);
+          }
+        }
+        if (terms.length === 0) return `<strong>P<sub>${N}</sub>(x)</strong> = 0`;
+        const shown = terms.length > 7 ? terms.slice(0, 6).join('') + ' + … + ' + terms[terms.length - 1].trim() : terms.join('');
+        let note = '';
+        if (cfg.radius === 1) {
+          note = ' <br><span style="opacity:0.85;">Observe as linhas verticais em x = −1 e x = +1: fora de (−1, 1], o polinômio <strong>explode</strong> mesmo aumentando N!</span>';
+        }
+        return `<strong>P<sub>${N}</sub>(x)</strong> = ${shown}${note}`;
+      }
+
+      function syncFunctionBounds() {
+        const cfg = FN_CONFIG[selFn.value];
+        xpSlider.min = String(cfg.xpMin);
+        xpSlider.max = String(cfg.xpMax);
+        xpSlider.value = String(cfg.defaultXp);
+      }
+
+      function drawSim11() {
+        const cfg = FN_CONFIG[selFn.value];
+        const N = parseInt(nSlider.value, 10);
+        const xp = parseFloat(xpSlider.value);
+
+        nVal.textContent = String(N);
+        xpVal.textContent = xp.toFixed(2);
+
+        const fxVal = cfg.f(xp);
+        const pnVal = evalTaylor(cfg, N, xp);
+        const errVal = Number.isFinite(fxVal) ? Math.abs(fxVal - pnVal) : NaN;
+
+        outFx.textContent = Number.isFinite(fxVal) ? fxVal.toFixed(5) : 'Indefinido';
+        outPn.textContent = Number.isFinite(pnVal) ? pnVal.toFixed(5) : '∞';
+        outErr.textContent = Number.isFinite(errVal) ? errVal.toFixed(5) : '—';
+        outPoly.innerHTML = formatPolyHtml(cfg, N);
+
+        const { ctx, width, height } = P.setupCanvas(canvas, 320);
+        const colors = P.getThemeColors();
+        const map = P.createMapper(width, height, cfg.xMin, cfg.xMax, cfg.yMin, cfg.yMax);
+
+        P.drawGridAndAxes(ctx, map, colors, {
+          xTicks: 8,
+          yTicks: 6,
+          xLabel: 'x',
+          yLabel: `f(x) = ${cfg.name}  vs.  P_${N}(x)`
+        });
+
+        /* Highlight convergence interval band for finite radius (ln(1+x)) */
+        if (Number.isFinite(cfg.radius)) {
+          const lx = map.toX(-cfg.radius);
+          const rx = map.toX(cfg.radius);
+          ctx.save();
+          ctx.beginPath();
+          ctx.rect(map.pad.left, map.pad.top, map.plotW, map.plotH);
+          ctx.clip();
+          ctx.fillStyle = colors.band;
+          ctx.fillRect(lx, map.pad.top, rx - lx, map.plotH);
+
+          ctx.strokeStyle = colors.danger;
+          ctx.lineWidth = 1.4;
+          ctx.setLineDash([5, 4]);
+          [lx, rx].forEach((vx) => {
+            ctx.beginPath();
+            ctx.moveTo(vx, map.pad.top);
+            ctx.lineTo(vx, map.pad.top + map.plotH);
+            ctx.stroke();
+          });
+          ctx.restore();
+        }
+
+        /* Plot exact f(x) */
+        P.plotCurve(ctx, map, cfg.f, {
+          color: colors.primary,
+          lineWidth: 2.5,
+          samples: 500
+        });
+
+        /* Plot Taylor polynomial P_N(x) */
+        P.plotCurve(ctx, map, (x) => evalTaylor(cfg, N, x), {
+          color: colors.secondary,
+          lineWidth: 2.4,
+          dash: [7, 4],
+          samples: 500
+        });
+
+        /* Vertical error segment & markers at x = xp */
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(map.pad.left, map.pad.top, map.plotW, map.plotH);
+        ctx.clip();
+
+        const px = map.toX(xp);
+        if (Number.isFinite(fxVal)) {
+          const pyF = map.toY(fxVal);
+          const pyP = map.toY(pnVal);
+
+          ctx.strokeStyle = colors.danger;
+          ctx.lineWidth = 1.6;
+          ctx.setLineDash([3, 3]);
+          ctx.beginPath();
+          ctx.moveTo(px, pyF);
+          ctx.lineTo(px, pyP);
+          ctx.stroke();
+          ctx.setLineDash([]);
+
+          ctx.beginPath();
+          ctx.arc(px, pyF, 5, 0, Math.PI * 2);
+          ctx.fillStyle = colors.primary;
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.arc(px, pyP, 5, 0, Math.PI * 2);
+          ctx.fillStyle = colors.secondary;
+          ctx.fill();
+        }
+        ctx.restore();
+
+        /* Legend in top-right corner */
+        const legX = map.pad.left + map.plotW - 154;
+        const legY = map.pad.top + 10;
+        ctx.save();
+        ctx.fillStyle = colors.bg;
+        ctx.globalAlpha = 0.9;
+        ctx.fillRect(legX - 8, legY - 6, 156, 46);
+        ctx.globalAlpha = 1;
+        ctx.strokeStyle = colors.grid;
+        ctx.lineWidth = 1;
+        ctx.strokeRect(legX - 8, legY - 6, 156, 46);
+
+        ctx.strokeStyle = colors.primary;
+        ctx.lineWidth = 2.5;
+        ctx.beginPath();
+        ctx.moveTo(legX, legY + 6);
+        ctx.lineTo(legX + 24, legY + 6);
+        ctx.stroke();
+        ctx.fillStyle = colors.text;
+        ctx.font = `600 11px ${colors.sansFont}`;
+        ctx.textAlign = 'left';
+        ctx.textBaseline = 'middle';
+        ctx.fillText(`f(x) = ${cfg.name}`, legX + 30, legY + 6);
+
+        ctx.strokeStyle = colors.secondary;
+        ctx.lineWidth = 2.4;
+        ctx.setLineDash([6, 3]);
+        ctx.beginPath();
+        ctx.moveTo(legX, legY + 26);
+        ctx.lineTo(legX + 24, legY + 26);
+        ctx.stroke();
+        ctx.setLineDash([]);
+        ctx.fillText(`Polinômio P_${N}(x)`, legX + 30, legY + 26);
+        ctx.restore();
+      }
+
+      selFn.addEventListener('change', () => {
+        syncFunctionBounds();
+        drawSim11();
+      });
+      nSlider.addEventListener('input', drawSim11);
+      xpSlider.addEventListener('input', drawSim11);
+      syncFunctionBounds();
+      P.registerChart(drawSim11);
+    });
+  </script>
+</body>
+</html>

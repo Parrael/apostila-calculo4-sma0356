@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulário de Bolso — Mapa de Sobrevivência da P2 · Cálculo IV (SMA0356)</title>
+  <meta name="description" content="Apêndice Final da Apostila Interativa de Cálculo IV (ICMC/USP): formulário completo de bolso para a P2 (Séries de Maclaurin, EDOs, Fourier, Parseval e Quadro Comparativo das 4 EDPs), otimizado para impressão.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script defer src="js/app.js"></script>
+  <style>
+    .print-toolbar {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-top: 1.15rem;
+    }
+    .compact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(290px, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+    .compact-grid-2 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin: 1.25rem 0;
+    }
+    @media (max-width: 720px) {
+      .compact-grid-2 { grid-template-columns: 1fr; }
+    }
+    .pocket-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-md);
+      padding: 1.05rem 1.2rem;
+      box-shadow: var(--shadow-xs);
+    }
+    .pocket-card h3 {
+      margin: 0 0 0.6rem;
+      font-size: 1.08rem;
+      color: var(--accent);
+    }
+    .pocket-card > :last-child {
+      margin-bottom: 0;
+    }
+    @media print {
+      .print-toolbar { display: none !important; }
+      h1 { font-size: 18pt; margin-bottom: 4pt; }
+      h2 { font-size: 13.5pt; margin: 14pt 0 6pt; page-break-after: avoid; }
+      .chapter-header { padding-bottom: 8pt; margin-bottom: 10pt; }
+      .table-wrap { border: 1px solid #bbb; margin: 6pt 0; }
+      th, td { padding: 4pt 6pt; font-size: 8.8pt; }
+      .pocket-card, .callout { break-inside: avoid; padding: 8pt 10pt; margin: 6pt 0; }
+      .compact-grid, .compact-grid-2 { grid-template-columns: 1fr 1fr; gap: 8pt; }
+    }
+  </style>
+</head>
+<body>
+  <div class="reading-progress-track" aria-hidden="true">
+    <div class="reading-progress-fill"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-left">
+      <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-label="Abrir menu lateral" aria-expanded="false">☰</button>
+      <a href="index.html" class="brand-link">
+        <span class="brand-title">Cálculo IV · Apostila P2</span>
+        <span class="brand-code">SMA0356</span>
+      </a>
+      <span class="header-breadcrumb">/ Mapa de Sobrevivência (Formulário)</span>
+    </div>
+    <div class="header-right">
+      <div class="header-progress-pill" title="Progresso geral da apostila">
+        <span>Progresso Geral:</span>
+        <strong data-global-progress-pct>0%</strong>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">☾</span>
+        <span class="theme-label">Modo Escuro</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <div class="page-shell">
+    <aside class="sidebar" aria-label="Sumário e Navegação">
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Seções do Formulário</p>
+        <ul class="toc-list">
+          <li><a href="#sec-maclaurin" class="toc-link active">1. Séries Fundamentais &amp; Binomial</a></li>
+          <li><a href="#sec-checklist" class="toc-link">2. Checklist "Qual Método Usar?"</a></li>
+          <li><a href="#sec-fourier" class="toc-link">3. Tabela Completa de Fourier</a></li>
+          <li><a href="#sec-edps" class="toc-link">4. Quadro das 4 EDPs da P2</a></li>
+          <li><a href="#sec-pegadinhas" class="toc-link">5. Top 10 Pegadinhas Finais</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Todos os Blocos</p>
+        <ul class="block-nav-list">
+          <li><a href="index.html" class="block-nav-link"><span>← Painel Inicial</span></a></li>
+          <li><a href="bloco0.html" class="block-nav-link"><span>Bloco 0 · Nivelamento</span></a></li>
+          <li><a href="bloco1.html" class="block-nav-link"><span>Bloco 1 · Séries de Potências</span></a></li>
+          <li><a href="bloco2.html" class="block-nav-link"><span>Bloco 2 · Taylor, Binomial e EDOs</span></a></li>
+          <li><a href="bloco3.html" class="block-nav-link"><span>Bloco 3 · Séries de Fourier</span></a></li>
+          <li><a href="bloco4.html" class="block-nav-link"><span>Bloco 4 · Extensões Par/Ímpar</span></a></li>
+          <li><a href="bloco5.html" class="block-nav-link"><span>Bloco 5 · EDPs (Calor e Onda)</span></a></li>
+          <li><a href="formulario.html" class="block-nav-link active"><span>Formulário de Bolso</span></a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <article class="article-container wide">
+        <header class="chapter-header">
+          <p class="chapter-kicker">Apêndice Final · SMA0356 (ICMC/USP) · Revisão de Véspera</p>
+          <h1>Mapa de Sobrevivência da P2 — Formulário de Bolso</h1>
+          <p class="chapter-lead">
+            Todas as fórmulas, critérios, intervalos de convergência, identidades de Fourier/Parseval e o quadro comparativo das 4 EDPs clássicas reunidos em uma única página limpa — pronta para revisar em 10 minutos ou imprimir em PDF.
+          </p>
+          <div class="print-toolbar">
+            <button type="button" class="btn btn-primary" onclick="window.print()">🖨 Imprimir / Salvar em PDF</button>
+            <a href="index.html" class="btn btn-subtle">← Voltar ao Painel Inicial</a>
+          </div>
+        </header>
+
+        <!-- ================================================================
+             SEÇÃO 1: TABELA DAS SÉRIES DE MACLAURIN & BINOMIAL
+             ================================================================ -->
+        <section id="sec-maclaurin">
+          <h2>1. Séries de Maclaurin Fundamentais, Derivadas e Binomial</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Função</th>
+                  <th>Série de Maclaurin ($x_0 = 0$)</th>
+                  <th>Primeiros Termos</th>
+                  <th>Intervalo $I$ (Raio $R$)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>$e^x$</strong></td>
+                  <td>$\displaystyle \sum_{n=0}^{\infty} \frac{x^n}{n!}$</td>
+                  <td>$1 + x + \dfrac{x^2}{2!} + \dfrac{x^3}{3!} + \cdots$</td>
+                  <td>$\mathbb{R}$ &nbsp; ($R = \infty$)</td>
+                </tr>
+                <tr>
+                  <td><strong>$\operatorname{sen}(x)$</strong></td>
+                  <td>$\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{(2n + 1)!}$</td>
+                  <td>$x - \dfrac{x^3}{3!} + \dfrac{x^5}{5!} - \dfrac{x^7}{7!} + \cdots$</td>
+                  <td>$\mathbb{R}$ &nbsp; ($R = \infty$)</td>
+                </tr>
+                <tr>
+                  <td><strong>$\cos(x)$</strong></td>
+                  <td>$\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!}$</td>
+                  <td>$1 - \dfrac{x^2}{2!} + \dfrac{x^4}{4!} - \dfrac{x^6}{6!} + \cdots$</td>
+                  <td>$\mathbb{R}$ &nbsp; ($R = \infty$)</td>
+                </tr>
+                <tr>
+                  <td><strong>$\dfrac{1}{1 - x}$</strong></td>
+                  <td>$\displaystyle \sum_{n=0}^{\infty} x^n$</td>
+                  <td>$1 + x + x^2 + x^3 + \cdots$</td>
+                  <td>$(-1,\, 1)$ &nbsp; ($R = 1$)</td>
+                </tr>
+                <tr>
+                  <td><strong>$\dfrac{1}{(1 - x)^2}$</strong></td>
+                  <td>$\displaystyle \sum_{n=1}^{\infty} n\,x^{n-1} = \sum_{k=0}^{\infty} (k + 1)x^k$</td>
+                  <td>$1 + 2x + 3x^2 + 4x^3 + \cdots$</td>
+                  <td>$(-1,\, 1)$ &nbsp; ($R = 1$)</td>
+                </tr>
+                <tr>
+                  <td><strong>$\ln(1 + x)$</strong></td>
+                  <td>$\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n x^{n+1}}{n + 1} = \sum_{k=1}^{\infty} \frac{(-1)^{k-1} x^k}{k}$</td>
+                  <td>$x - \dfrac{x^2}{2} + \dfrac{x^3}{3} - \dfrac{x^4}{4} + \cdots$</td>
+                  <td>$(-1,\, 1]$ &nbsp; ($R = 1$)</td>
+                </tr>
+                <tr>
+                  <td><strong>$\arctan(x)$</strong></td>
+                  <td>$\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n+1}}{2n + 1}$</td>
+                  <td>$x - \dfrac{x^3}{3} + \dfrac{x^5}{5} - \dfrac{x^7}{7} + \cdots$</td>
+                  <td>$[-1,\, 1]$ &nbsp; ($R = 1$)</td>
+                </tr>
+                <tr>
+                  <td><strong>$(1 + u)^\alpha$</strong><br><em>(Binomial, $\alpha \in \mathbb{R}$)</em></td>
+                  <td>$\displaystyle 1 + \sum_{n=1}^{\infty} \binom{\alpha}{n} u^n$, &nbsp; $\binom{\alpha}{n+1} = \frac{\alpha - n}{n + 1}\binom{\alpha}{n}$</td>
+                  <td>$1 + \alpha u + \dfrac{\alpha(\alpha - 1)}{2!}u^2 + \cdots$</td>
+                  <td>$|u| < 1$ &nbsp; ($R = 1$ em $u$)</td>
+                </tr>
+                <tr>
+                  <td>$\sqrt{1 + u}$</td>
+                  <td>Binomial com $\alpha = \frac{1}{2}$</td>
+                  <td>$1 + \dfrac{u}{2} - \dfrac{u^2}{8} + \dfrac{u^3}{16} - \dfrac{5u^4}{128} + \cdots$</td>
+                  <td>$|u| < 1$ (e $u = \pm 1$)</td>
+                </tr>
+                <tr>
+                  <td>$\dfrac{1}{\sqrt{1 + u}}$</td>
+                  <td>Binomial com $\alpha = -\frac{1}{2}$</td>
+                  <td>$1 - \dfrac{u}{2} + \dfrac{3u^2}{8} - \dfrac{5u^3}{16} + \cdots$</td>
+                  <td>$|u| < 1$ (e $u = +1$)</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p style="font-size: 0.9rem; color: var(--ink-secondary);">
+            <strong>Fórmula de Taylor em $x_0$:</strong> $s_f(x) = \displaystyle \sum_{n=0}^{\infty} \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n$ &nbsp; | &nbsp;
+            <strong>Fórmula de Euler:</strong> $e^{ix} = \cos x + i\operatorname{sen} x$ &nbsp; | &nbsp;
+            <strong>Contraexemplo $C^\infty$ não analítica em $0$:</strong> $f(x) = e^{-1/x^2}$ ($x\neq 0$), $f(0)=0$.
+          </p>
+        </section>
+
+        <!-- ================================================================
+             SEÇÃO 2: CHECKLIST "QUAL MÉTODO USAR?"
+             ================================================================ -->
+        <section id="sec-checklist">
+          <h2>2. Checklist "Qual Método Usar?" — Séries de Potências, Erros e EDOs</h2>
+          <div class="compact-grid-2">
+            <div class="pocket-card">
+              <h3>Raio $R$ e Intervalo $I$ (Aulas 11–12)</h3>
+              <ol>
+                <li><strong>Tem $n!$ ou $c^n$?</strong> Teste da Razão Direto: $\displaystyle \lim_{n\to\infty}\left|\frac{u_{n+1}(x)}{u_n(x)}\right| < 1$ (ou Inverso $R = \lim\left|\frac{a_n}{a_{n+1}}\right|$ se expoente for $n$).</li>
+                <li><strong>Termo todo elevado a $n$?</strong> Teste da Raiz: $\lim \sqrt[n]{|u_n(x)|} < 1$ (ou $R = \lim \frac{1}{\sqrt[n]{|a_n|}}$).</li>
+                <li><strong>SEMPRE teste os extremos $x_0 \pm R$</strong> usando: 1º Divergência ($a_n \not\to 0$), 2º Geométrica, 3º $p$-série ($p > 1$ conv.), 4º Leibniz ($a_n > 0, \downarrow 0$).</li>
+              </ol>
+            </div>
+
+            <div class="pocket-card">
+              <h3>Derivada Gigante $f^{(k)}(0)$ (Aula 14)</h3>
+              <ol>
+                <li>Monte a série de Maclaurin de $f(x)$ via Tabela 1 (sem derivar!).</li>
+                <li>Iguale o <strong>expoente geral de $x$</strong> à ordem $k$ (ex.: $2n + 2 = 20 \implies n = 9$).</li>
+                <li>Se não existir inteiro $n \ge 0 \implies f^{(k)}(0) = 0$.</li>
+                <li>Se existir $\implies \mathbf{f^{(k)}(0) = k!\cdot a_k}$ (multiplique por $k!$!).</li>
+              </ol>
+            </div>
+
+            <div class="pocket-card">
+              <h3>Estimativa de Erro (Aula 15)</h3>
+              <ul>
+                <li><strong>Série alternada decrescendo a $0$</strong> (ex.: $\int_0^b e^{-x^2}dx$, $\operatorname{sen} x$): use <strong>Leibniz</strong>! $|L - s_N| \le |a_{\text{1º termo abandonado}}|$.</li>
+                <li><strong>Termos positivos</strong> (ex.: $e^{0{,}2}$) ou erro em intervalo $[-a, a]$: use <strong>Resto de Taylor</strong>!
+                $$|f(x) - P_N(x)| \le \frac{M\,|x - x_0|^{N+1}}{(N + 1)!}, \quad |f^{(N+1)}(c)| \le M.$$</li>
+              </ul>
+            </div>
+
+            <div class="pocket-card">
+              <h3>EDOs via Séries (Aula 17)</h3>
+              <ol>
+                <li>Proponha $y = \sum_{n=0}^\infty a_n x^n$, $y' = \sum_{n=1}^\infty n a_n x^{n-1}$, $y'' = \sum_{n=2}^\infty n(n-1)a_n x^{n-2}$; fixe $a_0 = y(0)$ e $a_1 = y'(0)$.</li>
+                <li><strong>Regra da Gangorra:</strong> chame o expoente de $k$ e isole $n$ (ex.: $y'' = \sum_{k=0}^\infty (k+2)(k+1)a_{k+2}x^k$). Confira o 1º termo!</li>
+                <li>Descasque índices extras, junte sob $\sum x^k$, isole o maior $a_{k+2}$ e separe pares/ímpares!</li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SEÇÃO 3: TABELA COMPLETA DE FOURIER E PARSEVAL
+             ================================================================ -->
+        <section id="sec-fourier">
+          <h2>3. Tabela Completa de Séries de Fourier, Convergência e Parseval</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Tipo de Série</th>
+                  <th>Domínio / Extensão</th>
+                  <th>Fórmula da Série</th>
+                  <th>Coeficientes (ATENÇÃO ao fator $\frac{1}{L}$ vs $\frac{2}{L}$!)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Geral ($2L$-periódica)</strong><br><em>(Para $2\pi$, use $L = \pi$)</em></td>
+                  <td>$[-L, L]$</td>
+                  <td>$\displaystyle S_f(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty}\left(a_n\cos\frac{n\pi x}{L} + b_n\operatorname{sen}\frac{n\pi x}{L}\right)$</td>
+                  <td>$a_0 = \dfrac{1}{L}\displaystyle\int_{-L}^{L} f(x)\,dx$, &nbsp; $a_n = \dfrac{1}{L}\displaystyle\int_{-L}^{L} f(x)\cos\frac{n\pi x}{L}\,dx$, &nbsp; $b_n = \dfrac{1}{L}\displaystyle\int_{-L}^{L} f(x)\operatorname{sen}\frac{n\pi x}{L}\,dx$</td>
+                </tr>
+                <tr>
+                  <td><strong>Só Cossenos ($S_{f,c}$)</strong></td>
+                  <td>$[0, L]$ (Extensão <strong>PAR</strong> $2L$-periódica)</td>
+                  <td>$\displaystyle S_{f,c}(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} a_n\cos\!\left(\frac{n\pi x}{L}\right)$</td>
+                  <td>$\mathbf{a_0 = \dfrac{2}{L}\displaystyle\int_{0}^{L} f(x)\,dx}$, &nbsp; $\mathbf{a_n = \dfrac{2}{L}\displaystyle\int_{0}^{L} f(x)\cos\frac{n\pi x}{L}\,dx}$, &nbsp; $b_n = 0$</td>
+                </tr>
+                <tr>
+                  <td><strong>Só Senos ($S_{f,s}$)</strong></td>
+                  <td>$[0, L]$ (Extensão <strong>ÍMPAR</strong> $2L$-periódica)</td>
+                  <td>$\displaystyle S_{f,s}(x) = \sum_{n=1}^{\infty} b_n\operatorname{sen}\!\left(\frac{n\pi x}{L}\right)$</td>
+                  <td>$a_0 = 0$, &nbsp; $a_n = 0$, &nbsp; $\mathbf{b_n = \dfrac{2}{L}\displaystyle\int_{0}^{L} f(x)\operatorname{sen}\frac{n\pi x}{L}\,dx}$</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="compact-grid">
+            <div class="pocket-card">
+              <h3>Teorema de Fourier (Aula 21)</h3>
+              <p>Se $f$ e $f'$ são $C_{pp}$ e $2L$-periódicas:</p>
+              $$S_f(x) = \begin{cases} f(x), & \text{se } f \text{ contínua em } x, \\[4pt] \dfrac{f(x^+) + f(x^-)}{2}, & \text{nos saltos.} \end{cases}$$
+              <p>Nos extremos $\pm L$: $S_f(\pm L) = \dfrac{f(-L^+) + f(L^-)}{2}$.</p>
+              <p><em>Na Série em Senos em $[0, L]$: sempre $S_{f,s}(0) = S_{f,s}(L) = 0$!</em></p>
+            </div>
+
+            <div class="pocket-card">
+              <h3>Identidade de Parseval (Aula 22)</h3>
+              $$\frac{a_0^2}{2} + \sum_{n=1}^{\infty} (a_n^2 + b_n^2) = \frac{1}{L}\int_{-L}^{L} [f(x)]^2\,dx.$$
+              <p style="font-size: 0.88rem;"><em>(Cuidado: é $\frac{a_0^2}{2}$, nunca $\frac{a_0^2}{4}$!)</em></p>
+              <p style="font-size: 0.88rem;"><strong>Somas famosas para conferência:</strong> $\sum \frac{1}{n^2} = \frac{\pi^2}{6}$, $\sum \frac{1}{(2k-1)^2} = \frac{\pi^2}{8}$, $\sum \frac{(-1)^{n+1}}{n^2} = \frac{\pi^2}{12}$, $\sum \frac{1}{n^4} = \frac{\pi^4}{90}$, $\sum \frac{1}{n^6} = \frac{\pi^6}{945}$.</p>
+            </div>
+
+            <div class="pocket-card">
+              <h3>Kit Trigonométrico Rápido ($n \in \mathbb{Z}$)</h3>
+              <ul style="font-size: 0.9rem;">
+                <li>$\operatorname{sen}(0) = \operatorname{sen}(n\pi) = \operatorname{sen}(2n\pi) = 0$</li>
+                <li>$\cos(0) = \cos(2n\pi) = 1$, &nbsp; $\cos(n\pi) = (-1)^n$</li>
+                <li>$1 - (-1)^n = 0$ ($n$ par) ou $2$ ($n$ ímpar)</li>
+                <li>$1 + (-1)^n = 2$ ($n$ par) ou $0$ ($n$ ímpar)</li>
+                <li>$\int \operatorname{sen}(\omega x)\,dx = -\frac{\cos(\omega x)}{\omega}$, &nbsp; $\int \cos(\omega x)\,dx = +\frac{\operatorname{sen}(\omega x)}{\omega}$</li>
+                <li>$\cos^2\theta = \frac{1 + \cos(2\theta)}{2}$, &nbsp; $\operatorname{sen}^2\theta = \frac{1 - \cos(2\theta)}{2}$</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SEÇÃO 4: QUADRO COMPARATIVO DAS 4 EDPs CLÁSSICAS
+             ================================================================ -->
+        <section id="sec-edps">
+          <h2>4. Quadro Comparativo das 4 EDPs Clássicas da P2 (Aulas 24–27)</h2>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Problema / EDP</th>
+                  <th>Condições de Contorno</th>
+                  <th>Tipo de Série</th>
+                  <th>Fórmula da Solução $u(x, t)$ e Coeficientes</th>
+                  <th>Limite $t \to \infty$ / Freq.</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>1. Calor — Dirichlet Homogêneo</strong><br>$u_t = \alpha^2 u_{xx}$<br><em>($\alpha^2 = k$)</em></td>
+                  <td>$u(0, t) = 0$<br>$u(L, t) = 0$<br>$u(x, 0) = f(x)$</td>
+                  <td><strong>Senos</strong><br>(Extensão Ímpar)</td>
+                  <td>
+                    $\displaystyle u(x, t) = \sum_{n=1}^{\infty} b_n\,e^{-\frac{\alpha^2 n^2\pi^2}{L^2}t}\operatorname{sen}\!\left(\frac{n\pi x}{L}\right)$
+                    <br>$b_n = \dfrac{2}{L}\displaystyle\int_{0}^{L} f(x)\operatorname{sen}\!\left(\frac{n\pi x}{L}\right) dx$
+                  </td>
+                  <td>$\displaystyle \lim_{t \to \infty} u(x, t) = \mathbf{0}$<br><em>(esfria para $0^\circ$)</em></td>
+                </tr>
+                <tr>
+                  <td><strong>2. Calor — Dirichlet Não Homogêneo</strong><br>$u_t = \alpha^2 u_{xx}$</td>
+                  <td>$u(0, t) = T_1$<br>$u(L, t) = T_2$<br>$u(x, 0) = f(x)$</td>
+                  <td><strong>Reta $v(x)$ + Senos $w(x, t)$</strong></td>
+                  <td>
+                    $\displaystyle u(x, t) = \underbrace{\frac{T_2 - T_1}{L}x + T_1}_{v(x)} + \sum_{n=1}^{\infty} b_n\,e^{-\frac{\alpha^2 n^2\pi^2}{L^2}t}\operatorname{sen}\!\left(\frac{n\pi x}{L}\right)$
+                    <br>$b_n = \dfrac{2}{L}\displaystyle\int_{0}^{L} \big[\mathbf{f(x) - v(x)}\big]\operatorname{sen}\!\left(\frac{n\pi x}{L}\right) dx$
+                  </td>
+                  <td>$\displaystyle \lim_{t \to \infty} u(x, t) = \mathbf{v(x)}$<br><em>(reta entre $T_1$ e $T_2$)</em></td>
+                </tr>
+                <tr>
+                  <td><strong>3. Calor — Barra Isolada (Neumann)</strong><br>$u_t = \alpha^2 u_{xx}$</td>
+                  <td>$u_x(0, t) = 0$<br>$u_x(L, t) = 0$<br>$u(x, 0) = f(x)$</td>
+                  <td><strong>Cossenos + $\dfrac{a_0}{2}$</strong><br><em>($\lambda = 0$ entra!)</em></td>
+                  <td>
+                    $\displaystyle u(x, t) = \mathbf{\frac{a_0}{2}} + \sum_{n=1}^{\infty} a_n\,e^{-\frac{\alpha^2 n^2\pi^2}{L^2}t}\cos\!\left(\frac{n\pi x}{L}\right)$
+                    <br>$a_0 = \dfrac{2}{L}\displaystyle\int_{0}^{L} f(x)\,dx$, &nbsp; $a_n = \dfrac{2}{L}\displaystyle\int_{0}^{L} f(x)\cos\!\left(\frac{n\pi x}{L}\right) dx$
+                  </td>
+                  <td>$\displaystyle \lim_{t \to \infty} u(x, t) = \mathbf{\frac{a_0}{2}}$<br><em>(média inicial $\frac{1}{L}\int_0^L f$)</em></td>
+                </tr>
+                <tr>
+                  <td><strong>4. Onda — Corda Vibrante</strong><br>$u_{tt} = \alpha^2 u_{xx}$<br><em>($\alpha = \sqrt{T/\sigma}$)</em></td>
+                  <td>$u(0, t) = 0$<br>$u(L, t) = 0$<br>$u(x, 0) = f(x)$<br>$u_t(x, 0) = g(x)$</td>
+                  <td><strong>Senos</strong> em $x$<br>($\cos$ e $\operatorname{sen}$ em $t$)</td>
+                  <td>
+                    $\displaystyle u(x, t) = \sum_{n=1}^{\infty}\left[a_n\cos\!\left(\frac{n\alpha\pi t}{L}\right) + b_n\operatorname{sen}\!\left(\frac{n\alpha\pi t}{L}\right)\right]\operatorname{sen}\!\left(\frac{n\pi x}{L}\right)$
+                    <br>$a_n = \dfrac{2}{L}\displaystyle\int_{0}^{L} f(x)\operatorname{sen}\!\left(\frac{n\pi x}{L}\right) dx$, &nbsp; $\mathbf{b_n = \dfrac{2}{n\alpha\pi}\displaystyle\int_{0}^{L} g(x)\operatorname{sen}\!\left(\frac{n\pi x}{L}\right) dx}$
+                  </td>
+                  <td>Oscila eternamente!<br><strong>Freq. Fundamental:</strong><br>$f_1 = \dfrac{\alpha}{2L} = \dfrac{1}{2L}\sqrt{\dfrac{T}{\sigma}}$</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- ================================================================
+             SEÇÃO 5: TOP 10 PEGADINHAS FINAIS
+             ================================================================ -->
+        <section id="sec-pegadinhas">
+          <h2>5. Top 10 Pegadinhas para Checar Antes de Entregar a P2</h2>
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Checklist de 60 Segundos Antes de Entregar a Prova</p>
+            <ol>
+              <li>Testei os <strong>dois extremos</strong> $x_0 - R$ e $x_0 + R$ no Intervalo de Convergência?</li>
+              <li>Ao calcular $f^{(k)}(0)$, igualei o <strong>expoente de $x$</strong> a $k$ (não $n$) e <strong>multipliquei por $k!$</strong>?</li>
+              <li>Na série binomial $(A + Bx^k)^\alpha$, faturei $A^\alpha$ para deixar <strong>$(1 + u)^\alpha$</strong>?</li>
+              <li>Na troca de índices de EDOs, testei se o <strong>1º termo do somatório velho</strong> bate com o 1º termo do novo?</li>
+              <li>Nas integrais de Fourier, lembrei que <strong>$\cos(0) = 1$</strong> (e nunca $0$) e que $\int \operatorname{sen}(\omega x)\,dx = -\frac{\cos(\omega x)}{\omega}$?</li>
+              <li>Coloquei <strong>$\dfrac{a_0}{2}$</strong> na série de Fourier (e <strong>$\dfrac{a_0^2}{2}$</strong> na Identidade de Parseval)?</li>
+              <li>Em extensões em $[0, L]$, usei o fator <strong>$\dfrac{2}{L}\int_0^L$</strong> (e não $\frac{1}{L}$)?</li>
+              <li>No Calor Dirichlet Não Homogêneo, integrei <strong>$f(x) - v(x)$</strong> para achar $b_n$ e somei $v(x)$ no final?</li>
+              <li>Na Barra Isolada (Neumann), incluí o termo constante <strong>$\dfrac{a_0}{2}$</strong> vindo de $\lambda = 0$?</li>
+              <li>Na Equação da Onda $u_{tt} = \alpha^2 u_{xx}$, tirei a raiz quadrada para achar $\alpha$ e <strong>dividi $b_n$ por $\dfrac{n\alpha\pi}{L}$</strong>?</li>
+            </ol>
+          </div>
+        </section>
+
+        <nav class="chapter-footer-nav" aria-label="Navegação entre blocos">
+          <a href="bloco5.html" class="chapter-nav-btn">
+            <span class="chapter-nav-dir">← Bloco Anterior</span>
+            <span class="chapter-nav-label">Bloco 5 · Aplicações em EDPs: Calor e Onda</span>
+          </a>
+          <a href="index.html" class="chapter-nav-btn">
+            <span class="chapter-nav-dir">Início →</span>
+            <span class="chapter-nav-label">Painel Inicial &amp; Progresso Geral</span>
+          </a>
+        </nav>
+      </article>
+    </main>
+  </div>
+</body>
+</html>

@@ -1,0 +1,1550 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloco 2: Convergência, Erros, Binomiais e EDOs — Apostila Cálculo IV (SMA0356)</title>
+  <meta name="description" content="Bloco 2 da Apostila Interativa de Cálculo IV (ICMC/USP): Convergência e Resto de Taylor (Aula 15), Séries Binomiais (Aula 18) e Resolução de EDOs via Séries de Potências + Função de Bessel (Aula 17).">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body data-block-id="bloco2">
+  <div class="reading-progress-track" aria-hidden="true">
+    <div class="reading-progress-fill"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-left">
+      <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-label="Abrir menu lateral" aria-expanded="false">☰</button>
+      <a href="index.html" class="brand-link">
+        <span class="brand-title">Cálculo IV · Apostila P2</span>
+        <span class="brand-code">SMA0356</span>
+      </a>
+      <span class="header-breadcrumb">/ Bloco 2 · Erros, Binomiais e EDOs</span>
+    </div>
+    <div class="header-right">
+      <div class="header-progress-pill" title="Seu progresso neste bloco">
+        <span>Bloco 2:</span>
+        <strong data-block-progress-pct>0%</strong>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">☾</span>
+        <span class="theme-label">Modo Escuro</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <div class="page-shell">
+    <aside class="sidebar" aria-label="Sumário e Navegação">
+      <div class="sidebar-progress-box">
+        <div class="sidebar-progress-top">
+          <span>Progresso no Bloco 2</span>
+          <strong data-block-progress-pct>0%</strong>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" data-block-progress-bar></div>
+        </div>
+        <div class="sidebar-progress-meta" data-block-progress-detail>0/3 tópicos · 0/12 exercícios</div>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Sumário do Bloco 2</p>
+        <ul class="toc-list">
+          <li>
+            <a href="#topico-2-1" class="toc-link active">
+              <span>2.1 Aula 15 · Convergência e Erros</span>
+              <span class="nav-status-tag" data-toc-track="b2-t1" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#contraexemplo-analitica" class="toc-link sub-item"><span>Contraexemplo $e^{-1/x^2}$</span></a></li>
+          <li><a href="#exemplos-2-1" class="toc-link sub-item">Exemplos 2.1 a 2.3</a></li>
+          <li><a href="#exercicios-2-1" class="toc-link sub-item">Exercícios 1 a 4</a></li>
+          <li>
+            <a href="#topico-2-2" class="toc-link">
+              <span>2.2 Aula 18 · Séries Binomiais</span>
+              <span class="nav-status-tag" data-toc-track="b2-t2" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#exemplos-2-2" class="toc-link sub-item">Exemplos 2.4 a 2.6</a></li>
+          <li><a href="#exercicios-2-2" class="toc-link sub-item">Exercícios 5 a 8</a></li>
+          <li>
+            <a href="#topico-2-3" class="toc-link">
+              <span>2.3 Aula 17 · EDOs por Séries</span>
+              <span class="nav-status-tag" data-toc-track="b2-t3" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#mini-tutorial-indices" class="toc-link sub-item">Mini-Tutorial: Troca de Índices</a></li>
+          <li><a href="#simulador-b2" class="toc-link sub-item"><span>Simulador: Integrais &amp; Bessel $J_0$</span></a></li>
+          <li><a href="#exemplos-2-3" class="toc-link sub-item">Exemplos 2.7 a 2.9 (Bessel)</a></li>
+          <li><a href="#exercicios-2-3" class="toc-link sub-item">Exercícios 9 a 12</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Todos os Blocos</p>
+        <ul class="block-nav-list">
+          <li><a href="index.html" class="block-nav-link"><span>← Painel Inicial</span></a></li>
+          <li><a href="bloco0.html" class="block-nav-link"><span>Bloco 0 · Nivelamento</span></a></li>
+          <li><a href="bloco1.html" class="block-nav-link"><span>Bloco 1 · Séries de Potências</span></a></li>
+          <li><a href="bloco2.html" class="block-nav-link active"><span>Bloco 2 · Taylor, Binomial e EDOs</span></a></li>
+          <li><a href="bloco3.html" class="block-nav-link"><span>Bloco 3 · Séries de Fourier</span></a></li>
+          <li><a href="bloco4.html" class="block-nav-link"><span>Bloco 4 · Extensões Par/Ímpar</span></a></li>
+          <li><a href="bloco5.html" class="block-nav-link"><span>Bloco 5 · EDPs (Calor e Onda)</span></a></li>
+          <li><a href="formulario.html" class="block-nav-link"><span>Formulário de Bolso</span></a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <article class="article-container">
+        <header class="chapter-header">
+          <p class="chapter-kicker">Bloco 2 · Prioridade Máxima na P2 · Aulas 15, 18 e 17 (SMA0356)</p>
+          <h1>Convergência, Erros, Séries Binomiais e EDOs</h1>
+          <p class="chapter-lead">
+            Aqui fechamos com chave de ouro o Capítulo II (Séries de Potências)! Você vai aprender <strong>quando</strong> $f(x)$ realmente coincide com sua série de Taylor e como calcular aproximações numéricas e integrais impossíveis com <strong>erro garantido</strong> (Aula 15), expandir qualquer raiz ou potência fracionária $(1+u)^\alpha$ (Aula 18) e, no tópico mais cobrado desta metade da prova, <strong>resolver EDOs passo a passo por séries de potências</strong> — incluindo o mini-tutorial definitivo de deslocamento de índices e a famosa Função de Bessel $J_0(x)$ (Aula 17).
+          </p>
+          <div class="chapter-meta-row">
+            <span class="badge badge-max">Prioridade Máxima na P2</span>
+            <span class="badge badge-neutral">Aulas 15, 18 e 17</span>
+            <span class="badge badge-neutral">9 Exemplos Comentados</span>
+            <span class="badge badge-neutral">12 Exercícios Passo a Passo</span>
+            <span class="badge badge-done">1 Simulador Dual (Integrais + Bessel)</span>
+          </div>
+        </header>
+
+        <!-- ================================================================
+             TÓPICO 2.1 — AULA 15: CONVERGÊNCIA DAS SÉRIES DE TAYLOR E ERROS
+             ================================================================ -->
+        <section id="topico-2-1">
+          <div class="topic-header-bar">
+            <h2>2.1 Aula 15 — Convergência das Séries de Taylor e Estimativa de Erro</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b2-t1" data-track-type="topic" data-block="bloco2">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — A Série de Taylor SEMPRE devolve a função original?</p>
+            <p>
+              No Bloco 1, pegamos uma função infinitamente derivável $f(x)$ e fabricamos sua série de Taylor $s_f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n$. Mas existe uma pergunta crucial: <strong>será que, somando todos os termos de $s_f(x)$, nós realmente recuperamos $f(x)$?</strong>
+            </p>
+            <p>
+              A resposta é: <strong>para quase todas as funções da Física e da Engenharia, SIM — mas NÃO para 100% das funções $C^\infty$!</strong> Para garantir que $s_f(x) = f(x)$, precisamos mostrar que o "pedaço que sobra" (o <strong>Resto de Taylor</strong> $R_N(x) = f(x) - P_N(x)$) vai para zero quando o grau $N \to \infty$. E essa mesma fórmula do Resto é o que nos permite calcular $\operatorname{sen}(0{,}5)$, $e^{0{,}2}$ ou $\int_0^{1/2} e^{-x^2}dx$ com <em>precisão matematicamente garantida</em>!
+            </p>
+          </div>
+
+          <h3>1. Função Analítica e o Contraexemplo Clássico ($e^{-1/x^2}$)</h3>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Definição II.5.1 (Aula 15) — Função Analítica</p>
+            <p>
+              Seja $I_{x_0}$ um intervalo aberto contendo $x_0$ e $f : I_{x_0} \to \mathbb{R}$ infinitamente derivável ($C^\infty$). Dizemos que $f$ é <strong>analítica em $x_0$</strong> se sua série de Taylor realmente converge para a própria função $f(x)$ em todo $I_{x_0}$:
+            </p>
+            $$f(x) = s_f(x) = \sum_{n=0}^{\infty} \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n \qquad \forall\, x \in I_{x_0}.$$
+          </div>
+
+          <div class="callout box-pegadinha" id="contraexemplo-analitica">
+            <p class="callout-title">Contraexemplo Clássico da Aula 15 (Exemplo II.17) — $C^\infty$ NÃO implica Analítica!</p>
+            <p>Considere a função definida em toda a reta $\mathbb{R}$:</p>
+            $$f(x) = \begin{cases} e^{-1/x^2}, & \text{se } x \neq 0, \\[4pt] 0, & \text{se } x = 0. \end{cases}$$
+            <p>
+              Essa função é tão "achatada" perto da origem que todas as suas derivadas em $x_0 = 0$ existem e são exatamente zero: $f(0) = f'(0) = f''(0) = \cdots = f^{(n)}(0) = 0$ para todo $n \ge 0$! Portanto:
+            </p>
+            <ul>
+              <li>Ela é infinitamente derivável ($C^\infty$) em todo $\mathbb{R}$.</li>
+              <li>Sua série de Maclaurin é $s_f(x) = 0 + 0x + 0x^2 + \cdots = 0$, que converge para $0$ em todo $\mathbb{R}$.</li>
+              <li><strong>PORÉM</strong>, para qualquer $x \neq 0$, temos $f(x) = e^{-1/x^2} > 0 \neq 0 = s_f(x)$!</li>
+            </ul>
+            <p><strong>Conclusão teórica famosa de prova:</strong> $f$ é $C^\infty$ em $0$, sua série de Maclaurin converge em todo $\mathbb{R}$, mas <strong>$f$ NÃO é analítica em $x_0 = 0$</strong> (pois $s_f(x) \neq f(x)$ para $x \neq 0$).</p>
+          </div>
+
+          <h3>2. Resto de Taylor (Lagrange) e Critério de Convergência</h3>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Teorema da Fórmula de Taylor &amp; Teorema II.5.2 (Aula 15)</p>
+            <p>
+              Para $f$ infinitamente derivável em um intervalo aberto contendo $x_0$ e $x$, escrevemos $f(x) = P_N(x) + R_N(x)$, onde $P_N(x)$ é o polinômio de Taylor de grau $N$ e o <strong>Resto de Taylor</strong> satisfaz (para algum número $c$ estritamente entre $x_0$ e $x$):
+            </p>
+            $$|f(x) - P_N(x)| = |R_N(x)| = \frac{|f^{(N+1)}(c)| \cdot |x - x_0|^{N+1}}{(N + 1)!}.$$
+            <p><strong>Consequência prática 1 (Teste de Analiticidade — Teorema II.5.2):</strong> Se existir uma constante $M > 0$ tal que $|f^{(n)}(t)| \le M$ para todo $n \in \mathbb{N}$ e todo $t$ no intervalo $(a, b)$, então:</p>
+            $$|R_N(x)| \le \frac{M \cdot |x - x_0|^{N+1}}{(N + 1)!} \xrightarrow{N \to \infty} 0 \implies f(x) = s_f(x) \quad \forall\, x \in (a, b).$$
+            <p><em>(É exatamente assim que provamos na Aula 15 que $\operatorname{sen} x$ e $\cos x$ têm $M = 1$, e que $e^x$ em $(-a, a)$ tem $M = e^a$, garantindo que todas as 3 são analíticas em todo $\mathbb{R}$!)</em></p>
+            <p><strong>Consequência prática 2 (Estimativa de Erro):</strong> Se soubermos limitar a próxima derivada $|f^{(N+1)}(c)| \le M$ entre $x_0$ e $x$, garantimos que o erro ao trocar $f(x)$ por $P_N(x)$ é no máximo:</p>
+            $$|f(x) - P_N(x)| \le \frac{M \cdot |x - x_0|^{N+1}}{(N + 1)!}.$$
+          </div>
+
+          <h3>3. Qual ferramenta de erro usar na prova? (Resto de Taylor vs. Critério de Leibniz)</h3>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Situação na Prova</th>
+                  <th>Melhor Ferramenta</th>
+                  <th>Fórmula do Erro</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Série numérica <strong>alternada</strong> com termos decrescendo para $0$ (ex.: $\operatorname{sen}(x)$ para $x > 0$, $\cos(x)$, $\int_0^b e^{-x^2}dx$, $\int_0^b \frac{\operatorname{sen} x}{x}dx$)</td>
+                  <td><strong>Critério de Leibniz</strong> (muito mais rápido e sem precisar estimar derivada!)</td>
+                  <td>$|\text{Erro}| \le |a_{\text{1º termo abandonado}}|$</td>
+                </tr>
+                <tr>
+                  <td>Série de <strong>termos positivos</strong> (ex.: $e^{0{,}2}$, $\int_0^b e^{x^2}dx$) OU questão que pede explicitamente o <em>Resto de Taylor</em> em um intervalo $[-a, a]$</td>
+                  <td><strong>Resto de Taylor (Lagrange)</strong></td>
+                  <td>$|R_N(x)| \le \dfrac{M \cdot |x - x_0|^{N+1}}{(N + 1)!}$</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout box-receita">
+            <p class="callout-title">Receita de Bolo — Aproximar uma Integral Definida Não Elementar $\int_0^b g(x)\,dx$ com Erro $< \varepsilon$</p>
+            <ol>
+              <li><strong>Passo 1:</strong> Expanda o integrando $g(x)$ em série de Maclaurin (usando a Tabela Mestra do Bloco 1).</li>
+              <li><strong>Passo 2:</strong> Integre a série termo a termo de $0$ até $b$ (obtendo uma série numérica!).</li>
+              <li><strong>Passo 3:</strong> Verifique se a série numérica resultante é <strong>alternada</strong> com termos $a_n > 0$ decrescendo para $0$.</li>
+              <li><strong>Passo 4:</strong> Calcule $a_0, a_1, a_2, \dots$ até encontrar o <strong>primeiro termo $a_k < \varepsilon$</strong>. Pare no termo anterior ($k - 1$) e some as parcelas até $k - 1$!</li>
+            </ol>
+          </div>
+
+          <h3 id="exemplos-2-1">Exemplos Resolvidos (Aula 15)</h3>
+
+          <!-- EXEMPLO 2.1 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 2.1 (Resto de Taylor) — Aproximar $\operatorname{sen}(0{,}5)$ com Erro $< 10^{-4}$</h4>
+              <span class="badge badge-base">Nível Básico</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Usando o Resto de Taylor, encontre o menor grau $N$ do polinômio de Maclaurin $P_N(x)$ de $f(x) = \operatorname{sen}(x)$ que garante erro estritamente menor que $10^{-4} = 0{,}0001$ ao aproximar $\operatorname{sen}(0{,}5)$, e calcule a aproximação.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Limitar $|f^{(N+1)}(c)|$ para $f(x) = \operatorname{sen}(x)$</span>
+                <p>Qualquer derivada de $\operatorname{sen}(x)$ é $\pm\operatorname{sen}(x)$ ou $\pm\cos(x)$, cujo módulo é sempre $\le 1$. Portanto, podemos tomar <strong>$M = 1$</strong>! Com $x_0 = 0$ e $x = 0{,}5 = \frac{1}{2}$:</p>
+                $$|R_N(0{,}5)| \le \frac{1 \cdot (0{,}5)^{N+1}}{(N + 1)!} = \frac{1}{2^{N+1} \cdot (N + 1)!}.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Testar valores de $N$ até a cota ficar $< 0{,}0001$</span>
+                <ul>
+                  <li>$N = 3$: $\dfrac{1}{2^4 \cdot 4!} = \dfrac{1}{16 \cdot 24} = \dfrac{1}{384} \approx 0{,}00260 > 0{,}0001$ (não basta)</li>
+                  <li>$N = 4$: $\dfrac{1}{2^5 \cdot 5!} = \dfrac{1}{32 \cdot 120} = \dfrac{1}{3840} \approx 0{,}000260 > 0{,}0001$ (quase, ainda não!)</li>
+                  <li>$N = 5$: $\dfrac{1}{2^6 \cdot 6!} = \dfrac{1}{64 \cdot 720} = \dfrac{1}{46\,080} \approx 0{,}0000217 < 0{,}0001$ ✓!</li>
+                </ul>
+                <p>Logo, o grau $N = 5$ garante erro menor que $10^{-4}$!</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Calcular $P_5(0{,}5)$ passo a passo</span>
+                $$P_5(x) = x - \frac{x^3}{3!} + \frac{x^5}{5!} = x - \frac{x^3}{6} + \frac{x^5}{120}.$$
+                <p>Substituindo $x = \dfrac{1}{2}$:</p>
+                $$P_5\!\left(\frac{1}{2}\right) = \frac{1}{2} - \frac{1}{8 \cdot 6} + \frac{1}{32 \cdot 120} = \frac{1}{2} - \frac{1}{48} + \frac{1}{3840}.$$
+                <p>Colocando tudo sobre $3840$ ($\frac{3840}{2} = 1920$ e $\frac{3840}{48} = 80$):</p>
+                $$P_5\!\left(\frac{1}{2}\right) = \frac{1920 - 80 + 1}{3840} = \frac{1841}{3840} \approx 0{,}479427.$$
+                <p><em>(Conferência real: $\operatorname{sen}(0{,}5) \approx 0{,}4794255$; o erro real foi apenas $0{,}0000015 \ll 0{,}0001$!)</em></p>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 2.2 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 2.2 (Clássico de Prova) — Integral Gaussiana $\int_{0}^{1/2} e^{-x^2}\,dx$ com Erro $< 10^{-3}$</h4>
+              <span class="badge badge-max">Cai Muito na P2</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Sabendo que $e^{-x^2}$ não possui primitiva elementar, calcule $\displaystyle I = \int_{0}^{1/2} e^{-x^2}\,dx$ com erro estritamente menor que $10^{-3} = 0{,}001$.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Expandir $e^{-x^2}$ em série de Maclaurin</span>
+                <p>Trocando $u = -x^2$ em $e^u = \sum_{n=0}^{\infty} \frac{u^n}{n!}$ ($\forall\, u \in \mathbb{R}$):</p>
+                $$e^{-x^2} = \sum_{n=0}^{\infty} \frac{(-x^2)^n}{n!} = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{n!} = 1 - x^2 + \frac{x^4}{2!} - \frac{x^6}{3!} + \cdots$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Integrar termo a termo de $0$ até $\frac{1}{2}$</span>
+                $$I = \int_{0}^{1/2} \left(\sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{n!}\right) dx = \sum_{n=0}^{\infty} \frac{(-1)^n}{n!} \left[\frac{x^{2n+1}}{2n + 1}\right]_{0}^{1/2} = \sum_{n=0}^{\infty} \frac{(-1)^n}{2^{2n+1}\cdot(2n + 1)\cdot n!}.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Aplicar o Critério de Leibniz para encontrar onde parar</span>
+                <p>A série é alternada com $a_n = \dfrac{1}{2^{2n+1}(2n+1)n!} > 0$, estritamente decrescente e tendendo a $0$. Calculamos os primeiros módulos $a_n$:</p>
+                <ul>
+                  <li>$n = 0$: $a_0 = \dfrac{1}{2^1 \cdot 1 \cdot 0!} = \dfrac{1}{2} = 0{,}5$</li>
+                  <li>$n = 1$: $a_1 = \dfrac{1}{2^3 \cdot 3 \cdot 1!} = \dfrac{1}{8 \cdot 3} = \dfrac{1}{24} \approx 0{,}04167$</li>
+                  <li>$n = 2$: $a_2 = \dfrac{1}{2^5 \cdot 5 \cdot 2!} = \dfrac{1}{32 \cdot 5 \cdot 2} = \dfrac{1}{320} = 0{,}003125 > 0{,}001$ (ainda não!)</li>
+                  <li>$n = 3$: $a_3 = \dfrac{1}{2^7 \cdot 7 \cdot 3!} = \dfrac{1}{128 \cdot 7 \cdot 6} = \dfrac{1}{5376} \approx 0{,}000186 < 0{,}001$ ✓!</li>
+                </ul>
+                <p>Como $|I - s_2| \le a_3 = \dfrac{1}{5376} < 10^{-3}$, basta somar até $n = 2$!</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 4 · Calcular $s_2$ com MMC</span>
+                $$s_2 = \frac{1}{2} - \frac{1}{24} + \frac{1}{320}.$$
+                <p>Como $\text{MMC}(2, 24, 320) = 960$ ($\frac{960}{2}=480$, $\frac{960}{24}=40$, $\frac{960}{320}=3$):</p>
+                $$s_2 = \frac{480 - 40 + 3}{960} = \frac{443}{960} \approx 0{,}46146.$$
+                <div class="result-highlight">
+                  <strong>Resposta:</strong> $\displaystyle \int_{0}^{1/2} e^{-x^2}\,dx \approx \frac{443}{960} \approx 0{,}46146$, com erro garantido $\le \dfrac{1}{5376} < 10^{-3}$.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 2.3 (AVANÇADO RECOLHÍVEL) -->
+          <div class="box-exemplo" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 2.3 (Série de Termos Positivos!) — Estimar $e^{0{,}2}$ com Erro $< 10^{-3}$</h4>
+              <span class="badge badge-high">Nível de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Como a série de $e^{0{,}2}$ tem <strong>todos os termos positivos</strong>, o Critério de Leibniz NÃO se aplica! Use o <strong>Resto de Taylor</strong> para encontrar o menor $N$ tal que $P_N(0{,}2)$ aproxime $e^{0{,}2}$ com erro $< 10^{-3}$, e calcule $P_N(0{,}2)$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Limitar $|f^{(N+1)}(c)| = e^c$ para $c \in (0,\, 0{,}2)$</span>
+                  <p>Para $f(x) = e^x$, todas as derivadas são $e^x$, que é crescente! Logo, para qualquer $c \in (0,\, 0{,}2)$, temos $e^c < e^{0{,}2} < e^1 < 3$. Escolhemos a cota simples e segura <strong>$M = 3$</strong>! Assim:</p>
+                  $$|R_N(0{,}2)| \le \frac{3 \cdot (0{,}2)^{N+1}}{(N + 1)!}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Testar $N = 1, 2, 3$</span>
+                  <ul>
+                    <li>$N = 1$: $\dfrac{3 \cdot (0{,}2)^2}{2!} = \dfrac{3 \cdot 0{,}04}{2} = 0{,}06 > 0{,}001$</li>
+                    <li>$N = 2$: $\dfrac{3 \cdot (0{,}2)^3}{3!} = \dfrac{3 \cdot 0{,}008}{6} = 0{,}004 > 0{,}001$</li>
+                    <li>$N = 3$: $\dfrac{3 \cdot (0{,}2)^4}{4!} = \dfrac{3 \cdot 0{,}0016}{24} = \dfrac{0{,}0048}{24} = 0{,}0002 < 0{,}001$ ✓!</li>
+                  </ul>
+                  <p>Logo, <strong>$N = 3$</strong> é suficiente!</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Calcular $P_3(0{,}2)$</span>
+                  $$P_3(0{,}2) = 1 + 0{,}2 + \frac{(0{,}2)^2}{2!} + \frac{(0{,}2)^3}{3!} = 1 + 0{,}2 + \frac{0{,}04}{2} + \frac{0{,}008}{6} = 1{,}22 + 0{,}001333\dots \approx 1{,}22133.$$
+                  <div class="result-highlight">
+                    <strong>Resposta:</strong> $e^{0{,}2} \approx 1{,}22133$ (valor real: $1{,}22140$; erro real $= 0{,}00007 < 0{,}0002 < 10^{-3}$).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Alertas de Pegadinha — Aula 15</p>
+            <ul>
+              <li><strong>Usar Leibniz em série de termos positivos:</strong> NUNCA aplique $|L - s_N| \le a_{N+1}$ para $e^{0{,}2}$ ou $\int_0^{0{,}5} e^{x^2}dx$! A cota de Leibniz <em>só vale para séries alternadas</em>! Em termos positivos, use o Resto de Taylor!</li>
+              <li><strong>Limitar $e^c$ pelo valor errado:</strong> Para $x < 0$ (ex.: $e^{-0{,}5}$), $c \in (-0{,}5,\, 0)$, logo $e^c < e^0 = 1$ (e NÃO $e^{-0{,}5}$!). Para $x > 0$, $e^c < e^x < 3^x$ (ou $3$ se $x < 1$).</li>
+              <li><strong>Esquecer de elevar $x$ à potência $(N+1)$ no Resto:</strong> O Resto do polinômio de grau $N$ tem expoente <strong>$N + 1$</strong> e denominador <strong>$(N + 1)!$</strong>!</li>
+            </ul>
+          </div>
+
+          <h3 id="exercicios-2-1">Exercícios de Fixação (Aula 15)</h3>
+
+          <!-- EXERCÍCIO 1 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 1 — Erro Máximo de $P_4(x)$ para $\cos(x)$ em $[-0{,}5,\, 0{,}5]$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b2-ex1" data-track-type="exercise" data-block="bloco2">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Estime o erro máximo cometido ao aproximar $f(x) = \cos(x)$ por seu polinômio de Maclaurin $P_4(x) = 1 - \dfrac{x^2}{2!} + \dfrac{x^4}{4!}$ para todo $x \in \left[-\dfrac{1}{2},\, \dfrac{1}{2}\right]$. <em>(Bônus: observe que $P_4(x) = P_5(x)$ para obter uma cota ainda mais apertada!)</em>
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Cota padrão com $N = 4$</span>
+                  <p>Para $f(x) = \cos(x)$, $|f^{(n)}(c)| \le 1$ para todo $n$ e todo $c$. Em $\left[-\frac{1}{2}, \frac{1}{2}\right]$, temos $|x| \le \frac{1}{2}$:</p>
+                  $$|R_4(x)| \le \frac{1 \cdot \left(\frac{1}{2}\right)^5}{5!} = \frac{1}{32 \cdot 120} = \frac{1}{3840} \approx 0{,}0002604.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Refinamento esperto usando $P_4(x) = P_5(x)$!</span>
+                  <p>Como $f^{(5)}(0) = -\operatorname{sen}(0) = 0$, o polinômio $P_4(x)$ é <em>idêntico</em> a $P_5(x)$! Portanto podemos usar $N = 5$ na fórmula do resto:</p>
+                  $$|\cos(x) - P_4(x)| = |R_5(x)| \le \frac{1 \cdot \left(\frac{1}{2}\right)^6}{6!} = \frac{1}{64 \cdot 720} = \frac{1}{46\,080} \approx 0{,}0000217.$$
+                  <p><em>(As duas respostas são corretas e aceitas; a segunda é 12 vezes mais precisa!)</em></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 2 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 2 — Integral Seno: $\int_{0}^{0{,}5} \frac{\operatorname{sen}(x)}{x}\,dx$ com Erro $< 10^{-4}$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b2-ex2" data-track-type="exercise" data-block="bloco2">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Calcule $\displaystyle I = \int_{0}^{1/2} \frac{\operatorname{sen}(x)}{x}\,dx$ com erro estritamente menor que $10^{-4} = 0{,}0001$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Expandir $\frac{\operatorname{sen}(x)}{x}$ e integrar de $0$ até $\frac{1}{2}$</span>
+                  $$\frac{\operatorname{sen}(x)}{x} = \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n + 1)!} \implies I = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n + 1)!}\left[\frac{x^{2n+1}}{2n + 1}\right]_{0}^{1/2} = \sum_{n=0}^{\infty} \frac{(-1)^n}{2^{2n+1}(2n + 1)(2n + 1)!}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Testar os módulos $a_n$ por Leibniz</span>
+                  <ul>
+                    <li>$n = 0$: $a_0 = \dfrac{1}{2^1 \cdot 1 \cdot 1!} = \dfrac{1}{2} = 0{,}5$</li>
+                    <li>$n = 1$: $a_1 = \dfrac{1}{2^3 \cdot 3 \cdot 3!} = \dfrac{1}{8 \cdot 3 \cdot 6} = \dfrac{1}{144} \approx 0{,}006944$</li>
+                    <li>$n = 2$: $a_2 = \dfrac{1}{2^5 \cdot 5 \cdot 5!} = \dfrac{1}{32 \cdot 5 \cdot 120} = \dfrac{1}{19\,200} \approx 0{,}0000521 < 0{,}0001$ ✓!</li>
+                  </ul>
+                  <p>Apenas <strong>2 termos</strong> ($n = 0$ e $n = 1$) já bastam!</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Somar $s_1$</span>
+                  $$s_1 = \frac{1}{2} - \frac{1}{144} = \frac{72 - 1}{144} = \frac{71}{144} \approx 0{,}49306.$$
+                  <div class="result-highlight">
+                    <strong>Resposta:</strong> $I \approx \dfrac{71}{144} \approx 0{,}49306$ (erro garantido $\le \dfrac{1}{19\,200} < 10^{-4}$).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 3 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 3 — Integral de Fresnel: $\int_{0}^{0{,}2} \cos(x^2)\,dx$ com Erro $< 10^{-6}$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b2-ex3" data-track-type="exercise" data-block="bloco2">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Aproxime $\displaystyle \int_{0}^{0{,}2} \cos(x^2)\,dx$ com erro menor que $10^{-6}$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Série de $\cos(x^2)$ e integração de $0$ até $0{,}2$</span>
+                  $$\cos(x^2) = \sum_{n=0}^{\infty} \frac{(-1)^n x^{4n}}{(2n)!} \implies \int_{0}^{0{,}2} \cos(x^2)\,dx = \sum_{n=0}^{\infty} \frac{(-1)^n (0{,}2)^{4n+1}}{(4n + 1)(2n)!}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Verificar módulos $a_n$ via Leibniz</span>
+                  <ul>
+                    <li>$n = 0$: $a_0 = \dfrac{0{,}2}{1 \cdot 0!} = 0{,}2$</li>
+                    <li>$n = 1$: $a_1 = \dfrac{(0{,}2)^5}{5 \cdot 2!} = \dfrac{0{,}00032}{10} = 0{,}000032 = 3{,}2 \times 10^{-5} > 10^{-6}$</li>
+                    <li>$n = 2$: $a_2 = \dfrac{(0{,}2)^9}{9 \cdot 4!} = \dfrac{5{,}12 \times 10^{-7}}{216} \approx 2{,}37 \times 10^{-9} < 10^{-6}$ ✓!</li>
+                  </ul>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Somar até $n = 1$</span>
+                  $$s_1 = 0{,}2 - 0{,}000032 = 0{,}199968.$$
+                  <div class="result-highlight">
+                    <strong>Resposta:</strong> $\displaystyle \int_{0}^{0{,}2} \cos(x^2)\,dx \approx 0{,}199968$ (erro $\le 2{,}4 \times 10^{-9} < 10^{-6}$).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 4 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 4 (Conceitual de Prova) — Analiticidade e Verdadeiro/Falso</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b2-ex4" data-track-type="exercise" data-block="bloco2">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Julgue como <strong>Verdadeira</strong> ou <strong>Falsa</strong> cada afirmação abaixo, justificando:
+                <br><strong>(a)</strong> "Se $f$ é infinitamente derivável em $\mathbb{R}$ e sua série de Maclaurin converge para todo $x \in \mathbb{R}$, então $s_f(x) = f(x)$ para todo $x \in \mathbb{R}$."
+                <br><strong>(b)</strong> "Se existe $M > 0$ tal que $|f^{(n)}(x)| \le M$ para todo $n \in \mathbb{N}$ e todo $x \in (-a, a)$, então $f$ é analítica em $x_0 = 0$."
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (a) · FALSA!</span>
+                  <p>Contraexemplo da Aula 15: $f(x) = e^{-1/x^2}$ para $x \neq 0$ e $f(0) = 0$. Ela é $C^\infty$ em $\mathbb{R}$ e sua série de Maclaurin é $s_f(x) = 0$ (converge em todo $\mathbb{R}$), mas $s_f(x) = 0 \neq f(x)$ para todo $x \neq 0$!</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b) · VERDADEIRA!</span>
+                  <p>É exatamente o enunciado do <strong>Teorema II.5.2</strong>: como $|R_N(x)| \le \frac{M a^{N+1}}{(N+1)!} \to 0$ quando $N \to \infty$, segue que $P_N(x) \to f(x)$, isto é, $s_f(x) = f(x)$ em $(-a, a)$.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr>
+
+        <!-- ================================================================
+             TÓPICO 2.2 — AULA 18: SÉRIES BINOMIAIS
+             ================================================================ -->
+        <section id="topico-2-2">
+          <div class="topic-header-bar">
+            <h2>2.2 Aula 18 — Séries Binomiais $(1 + u)^\alpha$</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b2-t2" data-track-type="topic" data-block="bloco2">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — O Binômio de Newton para QUALQUER Expoente!</p>
+            <p>
+              No Ensino Médio você aprendeu o Binômio de Newton para expoentes inteiros positivos: $(1 + x)^2 = 1 + 2x + x^2$, $(1 + x)^3 = 1 + 3x + 3x^2 + x^3$. Isaac Newton percebeu algo genial: <strong>a mesmíssima fórmula funciona para expoentes fracionários ou negativos</strong> — como $\sqrt{1 + x} = (1 + x)^{1/2}$ ou $\dfrac{1}{\sqrt{1 - x^2}} = (1 - x^2)^{-1/2}$ — com uma única diferença: em vez de parar num polinômio finito, a soma vira uma <strong>série infinita</strong> válida para $|u| < 1$!
+            </p>
+          </div>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Teorema da Série Binomial (Aula 18)</p>
+            <p>Para qualquer número real $\alpha \in \mathbb{R}$ e qualquer $|u| < 1$:</p>
+            $$(1 + u)^\alpha = 1 + \sum_{n=1}^{\infty} \binom{\alpha}{n} u^n = 1 + \alpha u + \frac{\alpha(\alpha - 1)}{2!}u^2 + \frac{\alpha(\alpha - 1)(\alpha - 2)}{3!}u^3 + \cdots$$
+            <p>onde o <strong>coeficiente binomial generalizado</strong> é definido por:</p>
+            $$\binom{\alpha}{0} = 1, \qquad \binom{\alpha}{n} = \frac{\alpha(\alpha - 1)(\alpha - 2)\cdots(\alpha - n + 1)}{n!} \quad (n \ge 1).$$
+            <p><strong>Fórmula recursiva da Profa. Janete (equação (19) da Aula 18 — economiza muita conta!):</strong></p>
+            $$\binom{\alpha}{n + 1} = \frac{\alpha - n}{n + 1}\binom{\alpha}{n}.$$
+            <p><strong>Raio de Convergência:</strong> Se $\alpha \notin \{0, 1, 2, 3, \dots\}$, a série binomial converge absolutamente para <strong>$|u| < 1$</strong> (raio $R = 1$ em $u$) e diverge para $|u| > 1$.</p>
+          </div>
+
+          <h3>As Duas Séries Binomiais Mais Cobradas (Vale Decorar os 4 Primeiros Termos!)</h3>
+          <ul>
+            <li><strong>$\alpha = \dfrac{1}{2}$ ($\sqrt{1 + u}$):</strong>
+              $$\sqrt{1 + u} = (1 + u)^{1/2} = 1 + \frac{1}{2}u - \frac{1}{8}u^2 + \frac{1}{16}u^3 - \frac{5}{128}u^4 + \cdots, \qquad |u| < 1.$$
+            </li>
+            <li><strong>$\alpha = -\dfrac{1}{2}$ ($\dfrac{1}{\sqrt{1 + u}}$):</strong>
+              $$\frac{1}{\sqrt{1 + u}} = (1 + u)^{-1/2} = 1 - \frac{1}{2}u + \frac{3}{8}u^2 - \frac{5}{16}u^3 + \frac{35}{128}u^4 - \cdots, \qquad |u| < 1.$$
+            </li>
+          </ul>
+
+          <div class="callout box-receita">
+            <p class="callout-title">Receita de Bolo — Expandir $(A + B x^k)^\alpha$ via Série Binomial</p>
+            <ol>
+              <li><strong>Passo 1 (Obrigatório: criar o "$1$" na frente!):</strong> Se o primeiro termo dentro dos parênteses NÃO for $1$, coloque $A$ em evidência <em>elevado a $\alpha$</em>:
+              $$(A + B x^k)^\alpha = A^\alpha \left(1 + \frac{B}{A}x^k\right)^\alpha.$$</li>
+              <li><strong>Passo 2:</strong> Identifique $u = \dfrac{B}{A}x^k$ e anote imediatamente a condição de convergência $|u| < 1$ para achar o raio $R$ em $x$.</li>
+              <li><strong>Passo 3:</strong> Calcule os coeficientes $\binom{\alpha}{1}, \binom{\alpha}{2}, \binom{\alpha}{3}, \dots$ usando a recursão $\binom{\alpha}{n+1} = \frac{\alpha - n}{n+1}\binom{\alpha}{n}$.</li>
+              <li><strong>Passo 4:</strong> Substitua $u$ e multiplique de volta por $A^\alpha$ (e integre termo a termo se a questão pedir uma integral!).</li>
+            </ol>
+          </div>
+
+          <h3 id="exemplos-2-2">Exemplos Resolvidos (Aula 18)</h3>
+
+          <!-- EXEMPLO 2.4 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 2.4 (Direto da Aula 18) — Dedução de $\sqrt{1 + x}$ e Aproximação de $\sqrt{1{,}2}$</h4>
+              <span class="badge badge-base">Nível Básico</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Calcule os coeficientes binomiais até $n = 4$ para $\sqrt{1 + x}$ e use o resultado para aproximar $\sqrt{1{,}2}$ com erro menor que $0{,}001$.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Calcular $\binom{1/2}{n}$ pela recursão $\binom{1/2}{n+1} = \frac{\frac{1}{2} - n}{n+1}\binom{1/2}{n}$</span>
+                <ul>
+                  <li>$n = 1$: $\displaystyle \binom{1/2}{1} = \frac{1}{2}$.</li>
+                  <li>$n = 2$: $\displaystyle \binom{1/2}{2} = \frac{\frac{1}{2} - 1}{2}\cdot\frac{1}{2} = \frac{-\frac{1}{2}}{2}\cdot\frac{1}{2} = -\frac{1}{8}$.</li>
+                  <li>$n = 3$: $\displaystyle \binom{1/2}{3} = \frac{\frac{1}{2} - 2}{3}\cdot\left(-\frac{1}{8}\right) = \frac{-\frac{3}{2}}{3}\cdot\left(-\frac{1}{8}\right) = \left(-\frac{1}{2}\right)\left(-\frac{1}{8}\right) = +\frac{1}{16}$.</li>
+                  <li>$n = 4$: $\displaystyle \binom{1/2}{4} = \frac{\frac{1}{2} - 3}{4}\cdot\frac{1}{16} = \frac{-\frac{5}{2}}{4}\cdot\frac{1}{16} = -\frac{5}{8}\cdot\frac{1}{16} = -\frac{5}{128}$.</li>
+                </ul>
+                <p>Assim, para $|x| < 1$: $\displaystyle \sqrt{1 + x} = 1 + \frac{x}{2} - \frac{x^2}{8} + \frac{x^3}{16} - \frac{5x^4}{128} + \cdots$</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Substituir $x = 0{,}2$ (pois $1{,}2 = 1 + 0{,}2$ e $|0{,}2| < 1$)</span>
+                <p>Note que, a partir de $n = 1$, os sinais alternam ($+, -, +, -, \dots$) e os módulos decrescem para $0$ — logo vale Leibniz a partir de $n = 1$!</p>
+                <ul>
+                  <li>$n = 0$: $1$</li>
+                  <li>$n = 1$: $+\dfrac{0{,}2}{2} = +0{,}1$</li>
+                  <li>$n = 2$: $-\dfrac{(0{,}2)^2}{8} = -\dfrac{0{,}04}{8} = -0{,}005$</li>
+                  <li>$n = 3$: $+\dfrac{(0{,}2)^3}{16} = +\dfrac{0{,}008}{16} = +0{,}0005 < 0{,}001$ ✓!</li>
+                </ul>
+                <p>Como o termo $n = 3$ já tem módulo $0{,}0005 < 0{,}001$, paramos em $n = 2$:</p>
+                $$\sqrt{1{,}2} \approx 1 + 0{,}1 - 0{,}005 = 1{,}095.$$
+                <div class="result-highlight">
+                  <strong>Resposta:</strong> $\sqrt{1{,}2} \approx 1{,}095$ (valor real: $1{,}095445$; erro real $= 0{,}000445 \le 0{,}0005 < 0{,}001$!).
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 2.5 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 2.5 — Expandir $\dfrac{1}{\sqrt{1 - x^2}}$ e Deduzir a Série de $\operatorname{arcsen}(x)$</h4>
+              <span class="badge badge-high">Nível de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre os 4 primeiros termos não nulos da série de Maclaurin de $f(x) = \dfrac{1}{\sqrt{1 - x^2}}$ e, integrando termo a termo, obtenha os 4 primeiros termos de $\operatorname{arcsen}(x)$ (com o raio de convergência).
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Escrever como $(1 + u)^{-1/2}$ com $u = -x^2$</span>
+                <p>Calculando $\binom{-1/2}{n}$ pela recursão $\binom{-1/2}{n+1} = \frac{-\frac{1}{2} - n}{n + 1}\binom{-1/2}{n}$:</p>
+                <ul>
+                  <li>$n = 1$: $\binom{-1/2}{1} = -\dfrac{1}{2}$.</li>
+                  <li>$n = 2$: $\binom{-1/2}{2} = \dfrac{-3/2}{2}\cdot\left(-\dfrac{1}{2}\right) = +\dfrac{3}{8}$.</li>
+                  <li>$n = 3$: $\binom{-1/2}{3} = \dfrac{-5/2}{3}\cdot\dfrac{3}{8} = -\dfrac{5}{16}$.</li>
+                </ul>
+                <p>Agora substituímos $u = -x^2$ (note que $u^1 = -x^2$, $u^2 = +x^4$, $u^3 = -x^6$, então TODOS os sinais viram positivos!):</p>
+                $$\frac{1}{\sqrt{1 - x^2}} = 1 - \frac{1}{2}(-x^2) + \frac{3}{8}(-x^2)^2 - \frac{5}{16}(-x^2)^3 + \cdots = 1 + \frac{1}{2}x^2 + \frac{3}{8}x^4 + \frac{5}{16}x^6 + \cdots, \quad |x| < 1.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Integrar de $0$ até $x$ para achar $\operatorname{arcsen}(x)$</span>
+                $$\operatorname{arcsen}(x) = \int_{0}^{x} \frac{dt}{\sqrt{1 - t^2}} = x + \frac{1}{2}\cdot\frac{x^3}{3} + \frac{3}{8}\cdot\frac{x^5}{5} + \frac{5}{16}\cdot\frac{x^7}{7} + \cdots$$
+                <div class="result-highlight">
+                  $$\operatorname{arcsen}(x) = x + \frac{x^3}{6} + \frac{3x^5}{40} + \frac{5x^7}{112} + \cdots, \qquad R = 1.$$
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 2.6 (AVANÇADO RECOLHÍVEL) -->
+          <div class="box-exemplo" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 2.6 (Estilo Lista 3 Ex. 27!) — Integral Binomial $\int_{0}^{0{,}5} \sqrt{1 + x^3}\,dx$ com Erro $< 10^{-3}$</h4>
+              <span class="badge badge-max">Clássico de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Use a série binomial para aproximar $\displaystyle I = \int_{0}^{1/2} \sqrt{1 + x^3}\,dx$ com erro menor que $10^{-3}$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Substituir $u = x^3$ em $\sqrt{1 + u}$ (válido para $|x^3| < 1 \iff |x| < 1$)</span>
+                  $$\sqrt{1 + x^3} = 1 + \frac{1}{2}x^3 - \frac{1}{8}x^6 + \frac{1}{16}x^9 - \cdots$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Integrar termo a termo de $0$ até $\frac{1}{2}$</span>
+                  $$I = \left[x + \frac{x^4}{8} - \frac{x^7}{56} + \frac{x^{10}}{160} - \cdots\right]_{0}^{1/2} = \frac{1}{2} + \frac{1}{8 \cdot 2^4} - \frac{1}{56 \cdot 2^7} + \frac{1}{160 \cdot 2^{10}} - \cdots$$
+                  <p>Calculando cada módulo (alterna sinais a partir de $n = 1$: $+, -, +, \dots$):</p>
+                  <ul>
+                    <li>$t_0 = \dfrac{1}{2} = 0{,}5$</li>
+                    <li>$t_1 = \dfrac{1}{8 \cdot 16} = \dfrac{1}{128} = 0{,}0078125$</li>
+                    <li>$t_2 = \dfrac{1}{56 \cdot 128} = \dfrac{1}{7168} \approx 0{,}0001395 < 0{,}001$ ✓!</li>
+                  </ul>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Somar até $t_1$</span>
+                  $$I \approx \frac{1}{2} + \frac{1}{128} = \frac{64 + 1}{128} = \frac{65}{128} = 0{,}5078125.$$
+                  <div class="result-highlight">
+                    <strong>Resposta:</strong> $I \approx \dfrac{65}{128} \approx 0{,}50781$, com erro garantido $\le \dfrac{1}{7168} < 10^{-3}$ (valor real: $0{,}50768$).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Alertas de Pegadinha — Aula 18</p>
+            <ul>
+              <li><strong>Aplicar a série binomial direto em $(4 + x)^{-1/2}$ sem fatorar o $4$:</strong> A fórmula SÓ vale para <strong>$(1 + u)^\alpha$</strong> (com $1$ na frente!). Em $\frac{1}{\sqrt{4 + x}}$, você precisa fazer $(4 + x)^{-1/2} = 4^{-1/2}\left(1 + \frac{x}{4}\right)^{-1/2} = \frac{1}{2}\left(1 + \frac{x}{4}\right)^{-1/2}$, e o raio vira $|x/4| < 1 \iff R = 4$!</li>
+              <li><strong>Esquecer os sinais negativos ao substituir $u = -x^2$:</strong> Sempre coloque parênteses em $(-x^2)^n = (-1)^n x^{2n}$!</li>
+            </ul>
+          </div>
+
+          <h3 id="exercicios-2-2">Exercícios de Fixação (Aula 18)</h3>
+
+          <!-- EXERCÍCIO 5 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 5 — Raiz Cúbica: $\sqrt[3]{1 + x}$ até $x^3$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b2-ex5" data-track-type="exercise" data-block="bloco2">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre os 4 primeiros termos (até $x^3$) da série binomial de $f(x) = \sqrt[3]{1 + x} = (1 + x)^{1/3}$ e indique o raio de convergência.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Calcular $\binom{1/3}{1}, \binom{1/3}{2}, \binom{1/3}{3}$</span>
+                  <ul>
+                    <li>$\displaystyle \binom{1/3}{1} = \frac{1}{3}$</li>
+                    <li>$\displaystyle \binom{1/3}{2} = \frac{\frac{1}{3}\left(\frac{1}{3} - 1\right)}{2!} = \frac{\frac{1}{3}\left(-\frac{2}{3}\right)}{2} = -\frac{1}{9}$</li>
+                    <li>$\displaystyle \binom{1/3}{3} = \frac{\frac{1}{3} - 2}{3}\cdot\left(-\frac{1}{9}\right) = \frac{-\frac{5}{3}}{3}\cdot\left(-\frac{1}{9}\right) = \left(-\frac{5}{9}\right)\left(-\frac{1}{9}\right) = +\frac{5}{81}$</li>
+                  </ul>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Escrever a expansão e o raio</span>
+                  <div class="result-highlight">
+                    $$\sqrt[3]{1 + x} = 1 + \frac{1}{3}x - \frac{1}{9}x^2 + \frac{5}{81}x^3 - \cdots, \qquad R = 1 \quad (|x| < 1).$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 6 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 6 — Fatorando a Constante: $\dfrac{1}{\sqrt{4 + x}}$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b2-ex6" data-track-type="exercise" data-block="bloco2">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre os 4 primeiros termos da série de Maclaurin de $f(x) = \dfrac{1}{\sqrt{4 + x}}$ e seu raio de convergência $R$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Colocar $4$ em evidência para obter $(1 + u)^{-1/2}$</span>
+                  $$\frac{1}{\sqrt{4 + x}} = (4 + x)^{-1/2} = 4^{-1/2}\left(1 + \frac{x}{4}\right)^{-1/2} = \frac{1}{2}\left(1 + \frac{x}{4}\right)^{-1/2}.$$
+                  <p>Condição de convergência: $\left|\dfrac{x}{4}\right| < 1 \iff |x| < 4 \implies \mathbf{R = 4}$!</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Substituir $u = \frac{x}{4}$ em $(1 + u)^{-1/2}$</span>
+                  $$\left(1 + \frac{x}{4}\right)^{-1/2} = 1 - \frac{1}{2}\left(\frac{x}{4}\right) + \frac{3}{8}\left(\frac{x}{4}\right)^2 - \frac{5}{16}\left(\frac{x}{4}\right)^3 + \cdots = 1 - \frac{x}{8} + \frac{3x^2}{128} - \frac{5x^3}{1024} + \cdots$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Multiplicar tudo por $\frac{1}{2}$</span>
+                  <div class="result-highlight">
+                    $$\frac{1}{\sqrt{4 + x}} = \frac{1}{2} - \frac{x}{16} + \frac{3x^2}{256} - \frac{5x^3}{2048} + \cdots, \qquad R = 4.$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 7 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 7 — Integral com Série Binomial: $\int_{0}^{0{,}5} \frac{dx}{\sqrt{1 + x^4}}$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b2-ex7" data-track-type="exercise" data-block="bloco2">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Aproxime $\displaystyle I = \int_{0}^{1/2} \frac{dx}{\sqrt{1 + x^4}}$ com erro menor que $10^{-3}$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Expandir $(1 + x^4)^{-1/2}$ ($|x| < 1$)</span>
+                  $$(1 + x^4)^{-1/2} = 1 - \frac{1}{2}x^4 + \frac{3}{8}x^8 - \frac{5}{16}x^{12} + \cdots$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Integrar de $0$ até $\frac{1}{2}$ e checar módulos via Leibniz</span>
+                  $$I = \left[x - \frac{x^5}{10} + \frac{3x^9}{72} - \cdots\right]_{0}^{1/2} = \frac{1}{2} - \frac{1}{10 \cdot 32} + \frac{1}{24 \cdot 512} - \cdots$$
+                  <ul>
+                    <li>$u_0 = \dfrac{1}{2} = 0{,}5$</li>
+                    <li>$u_1 = \dfrac{1}{320} = 0{,}003125$</li>
+                    <li>$u_2 = \dfrac{1}{12\,288} \approx 0{,}0000814 < 0{,}001$ ✓!</li>
+                  </ul>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Somar os 2 primeiros termos</span>
+                  $$I \approx \frac{1}{2} - \frac{1}{320} = \frac{160 - 1}{320} = \frac{159}{320} = 0{,}496875.$$
+                  <div class="result-highlight">
+                    <strong>Resposta:</strong> $I \approx \dfrac{159}{320} = 0{,}496875$ (erro $\le \dfrac{1}{12\,288} < 10^{-3}$).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 8 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 8 (Direto do Exercício II.8 da Aula 18) — $\sqrt{1 + 4x^2}$ e $\int_0^x \sqrt{1 - 9t^2}\,dt$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b2-ex8" data-track-type="exercise" data-block="bloco2">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre os 3 primeiros termos e o raio de convergência $R$ de:
+                <br><strong>(a)</strong> $f(x) = \sqrt{1 + 4x^2}$ &qquad
+                <strong>(b)</strong> $h(x) = \displaystyle \int_{0}^{x} \sqrt{1 - 9t^2}\,dt$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (a) · Substituir $u = 4x^2$ em $\sqrt{1 + u} = 1 + \frac{u}{2} - \frac{u^2}{8} + \cdots$</span>
+                  <p>Condição: $|4x^2| < 1 \iff x^2 < \frac{1}{4} \iff |x| < \frac{1}{2} \implies \mathbf{R = \frac{1}{2}}$.</p>
+                  $$\sqrt{1 + 4x^2} = 1 + \frac{4x^2}{2} - \frac{(4x^2)^2}{8} + \cdots = 1 + 2x^2 - 2x^4 + \cdots, \qquad R = \frac{1}{2}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b) · Expandir $\sqrt{1 - 9t^2}$ ($|9t^2| < 1 \iff |t| < \frac{1}{3}$) e integrar</span>
+                  $$\sqrt{1 - 9t^2} = 1 + \frac{1}{2}(-9t^2) - \frac{1}{8}(-9t^2)^2 + \cdots = 1 - \frac{9}{2}t^2 - \frac{81}{8}t^4 - \cdots$$
+                  <p>Integrando termo a termo de $0$ até $x$ (mantém $R = \dfrac{1}{3}$!):</p>
+                  $$h(x) = x - \frac{9}{2}\cdot\frac{x^3}{3} - \frac{81}{8}\cdot\frac{x^5}{5} - \cdots = x - \frac{3}{2}x^3 - \frac{81}{40}x^5 - \cdots, \qquad R = \frac{1}{3}.$$
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr>
+
+        <!-- ================================================================
+             TÓPICO 2.3 — AULA 17: RESOLVENDO EDOs VIA SÉRIES DE POTÊNCIAS
+             ================================================================ -->
+        <section id="topico-2-3">
+          <div class="topic-header-bar">
+            <h2>2.3 Aula 17 — Resolvendo EDOs via Séries de Potências (PRIORIDADE MÁXIMA!)</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b2-t3" data-track-type="topic" data-block="bloco2">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — A "Chave Mestra" das EDOs</p>
+            <p>
+              Quando uma Equação Diferencial Ordinária (EDO) tem coeficientes variáveis — como $y'' + x y' + y = 0$ ou a Equação de Bessel $x^2 y'' + x y' + x^2 y = 0$ —, os truques de Cálculo III (polinômio característico) <strong>não funcionam</strong>!
+            </p>
+            <p>
+              Qual é a saída genial da Aula 17? Nós <strong>chutamos</strong> que a solução é uma série de potências com coeficientes ainda desconhecidos:
+              $$y(x) = \sum_{n=0}^{\infty} a_n x^n = a_0 + a_1 x + a_2 x^2 + a_3 x^3 + \cdots$$
+              Aí derivamos termo a termo ($y'$ e $y''$), jogamos tudo dentro da EDO, <strong>juntamos todas as potências iguais de $x$</strong> em um único somatório e usamos o <strong>Princípio da Identidade</strong>: se $\sum c_k x^k = 0$, então <em>cada coeficiente $c_k$ tem que ser ZERO</em>! Isso vira uma equação mágica (a <strong>relação de recorrência</strong>) que fabrica $a_2, a_3, a_4, \dots$ automaticamente!
+            </p>
+          </div>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">As 3 Peças Fixas (Decorar com os Olhos Fechados!) + Teorema II.7.1</p>
+            <p>Propondo solução analítica centrada em $x_0 = 0$:</p>
+            $$y(x) = \sum_{n=0}^{\infty} a_n x^n \quad \Longrightarrow \quad y(0) = a_0$$
+            $$y'(x) = \sum_{n=1}^{\infty} n\,a_n x^{n-1} \quad \Longrightarrow \quad y'(0) = a_1$$
+            $$y''(x) = \sum_{n=2}^{\infty} n(n - 1)\,a_n x^{n-2} \quad \Longrightarrow \quad y''(0) = 2a_2$$
+            <p><strong>Teorema II.7.1 (Unicidade / Identidade de Séries):</strong> Se $\displaystyle \sum_{k=0}^{\infty} c_k x^k = \sum_{k=0}^{\infty} b_k x^k$ em um intervalo aberto contendo $0$, então $c_k = b_k$ para <strong>todo</strong> $k \ge 0$. Em particular, se $\displaystyle \sum_{k=0}^{\infty} c_k x^k = 0$, então $c_k = 0$ para todo $k \ge 0$!</p>
+          </div>
+
+          <!-- MINI-TUTORIAL EXCLUSIVO DE DESLOCAMENTO DE ÍNDICES -->
+          <div class="callout box-receita" id="mini-tutorial-indices">
+            <p class="callout-title">MINI-TUTORIAL EXCLUSIVO — Deslocamento de Índices e Alinhamento de Potências de $x$</p>
+            <p>
+              <strong>90% dos alunos que travam na Aula 17 travam exatamente aqui!</strong> Para somar dois somatórios como $\sum_{n=2}^{\infty} n(n-1)a_n x^{n-2} + \sum_{n=0}^{\infty} a_n x^n$, eles precisam satisfazer <strong>DUAS regras obrigatórias</strong>:
+            </p>
+            <ol>
+              <li><strong>Regra 1 (Mesma potência de $x$):</strong> Todos os somatórios têm que exibir exatamente <strong>$x^k$</strong> (e não $x^{n-2}$ num e $x^{n+1}$ no outro!).</li>
+              <li><strong>Regra 2 (Mesmo índice inicial):</strong> Todos os somatórios têm que começar no mesmo $k$ (ex.: todos a partir de $k = 1$ — os termos extras de $k = 0$ ficam "descascados" do lado de fora!).</li>
+            </ol>
+
+            <h4>A "Regra da Gangorra" (Nunca mais erre troca de índice!)</h4>
+            <p>
+              Quer transformar uma potência $x^{n - 2}$ em $x^k$? <strong>Basta chamar o expoente inteiro de $k$!</strong>
+            </p>
+            <ul>
+              <li><strong>Passo A:</strong> Escreva $k = (\text{expoente de } x)$. Exemplo: em $\displaystyle \sum_{n=2}^{\infty} n(n-1)a_n x^{n-2}$, chamamos <strong>$k = n - 2$</strong>.</li>
+              <li><strong>Passo B:</strong> Isole $n$ em função de $k$: $k = n - 2 \iff \mathbf{n = k + 2}$.</li>
+              <li><strong>Passo C:</strong> Ache o novo valor inicial de $k$: quando $n = 2$, $k = 2 - 2 = \mathbf{0}$.</li>
+              <li><strong>Passo D:</strong> Troque <em>todo</em> $n$ dentro do somatório por $(k + 2)$:
+                $$\sum_{n=2}^{\infty} n(n - 1)a_n x^{n-2} \;\xrightarrow[\,n \,=\, k + 2\,]{\,k \,=\, n - 2\,}\; \sum_{k=0}^{\infty} (k + 2)(k + 1)a_{k+2}\,x^k.$$
+              </li>
+            </ul>
+            <p><strong>Teste de 5 segundos (SEMPRE faça na prova!):</strong> O 1º termo do somatório velho ($n=2$) é $2\cdot 1\cdot a_2 x^0 = 2a_2$. O 1º termo do somatório novo ($k=0$) é $(0+2)(0+1)a_2 x^0 = 2a_2$. <strong>Bateu?! Então a troca está 100% CERTA!</strong></p>
+
+            <h4>Os 4 Deslocamentos que Aparecem em 99% das Provas</h4>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Expressão na EDO</th><th>Substituição</th><th>Forma Alinhada em $x^k$</th></tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>$y' = \displaystyle \sum_{n=1}^{\infty} n\,a_n x^{n-1}$</td>
+                    <td>$k = n - 1 \implies n = k + 1$</td>
+                    <td>$\displaystyle \sum_{k=0}^{\infty} (k + 1)a_{k+1}\,x^k$</td>
+                  </tr>
+                  <tr>
+                    <td>$y'' = \displaystyle \sum_{n=2}^{\infty} n(n-1)a_n x^{n-2}$</td>
+                    <td>$k = n - 2 \implies n = k + 2$</td>
+                    <td>$\displaystyle \sum_{k=0}^{\infty} (k + 2)(k + 1)a_{k+2}\,x^k$</td>
+                  </tr>
+                  <tr>
+                    <td>$x\,y' = x\displaystyle \sum_{n=1}^{\infty} n\,a_n x^{n-1} = \sum_{n=1}^{\infty} n\,a_n x^n$</td>
+                    <td>Já está em $x^n$! (Só renomear $n \to k$; note que em $k=0$, $0\cdot a_0 = 0$, então pode começar em $k=0$!)</td>
+                    <td>$\displaystyle \sum_{k=0}^{\infty} k\,a_k\,x^k$</td>
+                  </tr>
+                  <tr>
+                    <td>$x\,y = x\displaystyle \sum_{n=0}^{\infty} a_n x^n = \sum_{n=0}^{\infty} a_n x^{n+1}$</td>
+                    <td>$k = n + 1 \implies n = k - 1$</td>
+                    <td>$\displaystyle \sum_{k=1}^{\infty} a_{k-1}\,x^k$ &nbsp; <em>(começa em $k = 1$!)</em></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <div class="callout box-receita">
+            <p class="callout-title">Receita de Bolo — 6 Passos para Qualquer Questão de EDO por Séries na P2</p>
+            <ol>
+              <li><strong>Passo 1 (Proposta + Condições Iniciais):</strong> Escreva $y(x) = \sum_{n=0}^{\infty} a_n x^n$, $y'(x)$, $y''(x)$. Já fixe $a_0 = y(0)$ e $a_1 = y'(0)$ se forem dados!</li>
+              <li><strong>Passo 2 (Substituir na EDO):</strong> Jogue $y, y', y''$ na EDO e absorva qualquer $x$ ou $x^2$ multiplicando para dentro do somatório (ex.: $x \cdot x^{n-1} = x^n$). Se o lado direito tiver $e^x$, $\cos x$, etc., substitua por sua série de Maclaurin!</li>
+              <li><strong>Passo 3 (Alinhar potências para $x^k$):</strong> Use a <em>Regra da Gangorra</em> para deixar TODOS os somatórios com potência $x^k$.</li>
+              <li><strong>Passo 4 (Alinhar o índice inicial e juntar):</strong> Se algum somatório começa em $k = 1$ e outros em $k = 0$, "descasque" o termo $k = 0$ para fora e junte todo o resto sob um único $\sum_{k=1}^{\infty} [\dots]\,x^k$.</li>
+              <li><strong>Passo 5 (Relação de Recorrência):</strong> Iguale os coeficientes de cada potência de $x$ nos dois lados da EDO e <strong>isole o coeficiente de maior índice</strong> (ex.: $a_{k+2} = \dots$ em função de $a_k$).</li>
+              <li><strong>Passo 6 (Desenrolar o padrão):</strong> Calcule $k = 0, 1, 2, 3, 4$ sem simplificar prematuramente os produtos ($2\cdot 4\cdot 6$ ajuda a enxergar $2^k k!$!), separe pares ($a_{2m}$) e ímpares ($a_{2m+1}$), escreva a série e verifique se reconhece uma função elementar!</li>
+            </ol>
+          </div>
+
+          <!-- SIMULADOR INTERATIVO 2.1 (DUAL: INTEGRAL NÃO ELEMENTAR + BESSEL J_0) -->
+          <div class="simulator-card" id="simulador-b2">
+            <div class="simulator-header">
+              <div>
+                <h3 class="simulator-title">Simulador Interativo 2.1 — Erro em $\int_0^b e^{-x^2}dx$ e Solução de Bessel $J_0(x)$</h3>
+                <p class="simulator-subtitle">Alterne entre (A) a aproximação da integral Gaussiana com cota de Leibniz e (B) a construção termo a termo da Função de Bessel $J_0(x)$ obtida por séries de potências!</p>
+              </div>
+              <span class="badge badge-done">Simulador Interativo</span>
+            </div>
+
+            <div class="sim-controls">
+              <div class="sim-control-group">
+                <label for="sim21-mode"><span>Modo do Laboratório</span></label>
+                <select id="sim21-mode" class="sim-select">
+                  <option value="gauss">Modo A: Integral ∫₀ᵇ e^(−x²) dx + Cota de Leibniz</option>
+                  <option value="bessel">Modo B: Equação de Bessel → Função J₀(x)</option>
+                </select>
+              </div>
+
+              <div class="sim-control-group">
+                <label for="sim21-n">
+                  <span id="sim21-n-label">Índice máximo da soma (N)</span>
+                  <span class="sim-val" id="sim21-n-val">3</span>
+                </label>
+                <input id="sim21-n" class="sim-range" type="range" min="0" max="10" step="1" value="3">
+              </div>
+
+              <div class="sim-control-group" id="sim21-b-group">
+                <label for="sim21-b">
+                  <span>Limite superior $b$</span>
+                  <span class="sim-val" id="sim21-b-val">0.80</span>
+                </label>
+                <input id="sim21-b" class="sim-range" type="range" min="0.2" max="1.5" step="0.05" value="0.8">
+              </div>
+            </div>
+
+            <div class="canvas-stage">
+              <canvas id="canvas-sim21" aria-label="Gráfico interativo do Bloco 2"></canvas>
+            </div>
+
+            <div class="sim-readout">
+              <div class="readout-metric">
+                <div class="readout-label" id="sim21-m1-lbl">Integral exata</div>
+                <div class="readout-value" id="sim21-m1-val">—</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label" id="sim21-m2-lbl">Aproximação $S_N$</div>
+                <div class="readout-value" id="sim21-m2-val">—</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label" id="sim21-m3-lbl">Erro real</div>
+                <div class="readout-value" id="sim21-m3-val">—</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label" id="sim21-m4-lbl">Cota de Leibniz</div>
+                <div class="readout-value" id="sim21-m4-val">—</div>
+              </div>
+            </div>
+
+            <div class="sim-explanation" id="sim21-msg">
+              Carregando simulação...
+            </div>
+          </div>
+
+          <h3 id="exemplos-2-3">Exemplos Resolvidos (Aula 17 — EDOs e Bessel)</h3>
+
+          <!-- EXEMPLO 2.7 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 2.7 (Aquecimento — Lista 3 Ex. 29a) — EDO de 1ª Ordem: $y' = 2xy,\; y(0) = 1$</h4>
+              <span class="badge badge-base">Nível Básico</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva o problema de valor inicial $\begin{cases} y' - 2xy = 0, \\ y(0) = 1 \end{cases}$ usando séries de potências e identifique a função elementar resultante.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Propor a série e aplicar a condição inicial</span>
+                <p>Propomos $y(x) = \displaystyle \sum_{n=0}^{\infty} a_n x^n$. De $y(0) = 1$, obtemos imediatamente <strong>$a_0 = 1$</strong>. Derivando: $y'(x) = \displaystyle \sum_{n=1}^{\infty} n\,a_n x^{n-1}$.</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Substituir na EDO e alinhar potências para $x^k$</span>
+                $$\sum_{n=1}^{\infty} n\,a_n x^{n-1} - 2x\sum_{n=0}^{\infty} a_n x^n = 0 \iff \sum_{n=1}^{\infty} n\,a_n x^{n-1} - \sum_{n=0}^{\infty} 2a_n x^{n+1} = 0.$$
+                <p>Aplicando a <em>Regra da Gangorra</em> nos dois somatórios:</p>
+                <ul>
+                  <li>No 1º somatório: $k = n - 1 \implies n = k + 1$ ($n = 1 \implies k = 0$): $\displaystyle \sum_{k=0}^{\infty} (k + 1)a_{k+1} x^k$.</li>
+                  <li>No 2º somatório: $k = n + 1 \implies n = k - 1$ ($n = 0 \implies k = 1$): $\displaystyle \sum_{k=1}^{\infty} 2a_{k-1} x^k$.</li>
+                </ul>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Alinhar o índice inicial (descascar $k = 0$ do 1º somatório!)</span>
+                <p>O 1º começa em $k = 0$ e o 2º em $k = 1$. Tirando o termo $k = 0$ ($1 \cdot a_1 x^0 = a_1$) do 1º somatório:</p>
+                $$a_1 + \sum_{k=1}^{\infty} \Big[(k + 1)a_{k+1} - 2a_{k-1}\Big] x^k = 0.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 4 · Igualar coeficientes a zero (Recorrência!)</span>
+                <ul>
+                  <li>Do termo constante ($x^0$): <strong>$a_1 = 0$</strong>.</li>
+                  <li>Para todo $k \ge 1$: $(k + 1)a_{k+1} - 2a_{k-1} = 0 \implies \mathbf{a_{k+1} = \dfrac{2\,a_{k-1}}{k + 1}}$.</li>
+                </ul>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 5 · Desenrolar os índices (pares vs. ímpares) e reconhecer a função!</span>
+                <p><strong>Índices ímpares (a partir de $a_1 = 0$):</strong></p>
+                <ul>
+                  <li>$k = 2$: $a_3 = \frac{2a_1}{3} = 0$; $k = 4$: $a_5 = \frac{2a_3}{5} = 0$; $\dots \implies \mathbf{a_{2m+1} = 0}$ para todo $m \ge 0$!</li>
+                </ul>
+                <p><strong>Índices pares (a partir de $a_0 = 1$):</strong></p>
+                <ul>
+                  <li>$k = 1$: $a_2 = \dfrac{2a_0}{2} = 1 = \dfrac{1}{1!}$</li>
+                  <li>$k = 3$: $a_4 = \dfrac{2a_2}{4} = \dfrac{1}{2} = \dfrac{1}{2!}$</li>
+                  <li>$k = 5$: $a_6 = \dfrac{2a_4}{6} = \dfrac{2}{6}\cdot\dfrac{1}{2} = \dfrac{1}{3 \cdot 2} = \dfrac{1}{3!}$</li>
+                  <li>$k = 7$: $a_8 = \dfrac{2a_6}{8} = \dfrac{1}{4 \cdot 3!} = \dfrac{1}{4!}$</li>
+                </ul>
+                <p>Padrão cristalino: $a_{2m} = \dfrac{1}{m!}$! Logo:</p>
+                $$y(x) = \sum_{m=0}^{\infty} \frac{1}{m!} x^{2m} = \sum_{m=0}^{\infty} \frac{(x^2)^m}{m!} = e^{x^2}.$$
+                <div class="result-highlight">
+                  <strong>Resposta:</strong> $y(x) = e^{x^2}$ (Conferência: $y' = 2x e^{x^2} = 2xy$ e $y(0) = e^0 = 1$ ✓!).
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 2.8 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 2.8 (EDO de 2ª Ordem Clássica) — $y'' + y = 0$ (Solução Geral)</h4>
+              <span class="badge badge-high">Essencial</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre a solução geral em séries de potências centrada em $x_0 = 0$ da equação $y'' + y = 0$ e identifique as duas soluções elementares independentes (sem usar equação característica).
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Substituir $y$ e $y''$ e alinhar potências</span>
+                $$\sum_{n=2}^{\infty} n(n - 1)a_n x^{n-2} + \sum_{n=0}^{\infty} a_n x^n = 0.$$
+                <p>No 1º somatório fazemos $k = n - 2 \implies n = k + 2$ ($k$ começa em $0$). No 2º renomeamos $n = k$ ($k$ também começa em $0$!). Como ambos começam em $k = 0$, juntamos direto:</p>
+                $$\sum_{k=0}^{\infty} \Big[(k + 2)(k + 1)a_{k+2} + a_k\Big] x^k = 0.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Relação de recorrência (pula de 2 em 2!)</span>
+                $$(k + 2)(k + 1)a_{k+2} + a_k = 0 \implies \mathbf{a_{k+2} = -\frac{a_k}{(k + 2)(k + 1)}} \qquad (k \ge 0).$$
+                <p>Como a recorrência pula de $2$ em $2$, $a_0$ e $a_1$ ficam livres (são as duas constantes arbitrárias de uma EDO de 2ª ordem!).</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Separar pares (dependem de $a_0$) e ímpares (dependem de $a_1$)</span>
+                <p><strong>Termos pares:</strong></p>
+                <ul>
+                  <li>$k = 0$: $a_2 = -\dfrac{a_0}{2 \cdot 1} = -\dfrac{a_0}{2!}$</li>
+                  <li>$k = 2$: $a_4 = -\dfrac{a_2}{4 \cdot 3} = +\dfrac{a_0}{4 \cdot 3 \cdot 2!} = +\dfrac{a_0}{4!}$</li>
+                  <li>$k = 4$: $a_6 = -\dfrac{a_4}{6 \cdot 5} = -\dfrac{a_0}{6!} \implies \mathbf{a_{2m} = \dfrac{(-1)^m}{(2m)!}a_0}$.</li>
+                </ul>
+                <p><strong>Termos ímpares:</strong></p>
+                <ul>
+                  <li>$k = 1$: $a_3 = -\dfrac{a_1}{3 \cdot 2} = -\dfrac{a_1}{3!}$</li>
+                  <li>$k = 3$: $a_5 = -\dfrac{a_3}{5 \cdot 4} = +\dfrac{a_1}{5!}$</li>
+                  <li>$k = 5$: $a_7 = -\dfrac{a_5}{7 \cdot 6} = -\dfrac{a_1}{7!} \implies \mathbf{a_{2m+1} = \dfrac{(-1)^m}{(2m + 1)!}a_1}$.</li>
+                </ul>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 4 · Montar $y(x)$ e reconhecer $\cos(x)$ e $\operatorname{sen}(x)$!</span>
+                $$y(x) = a_0\underbrace{\left(1 - \frac{x^2}{2!} + \frac{x^4}{4!} - \cdots\right)}_{=\,\cos(x)} + a_1\underbrace{\left(x - \frac{x^3}{3!} + \frac{x^5}{5!} - \cdots\right)}_{=\,\operatorname{sen}(x)}.$$
+                <div class="result-highlight">
+                  <strong>Resposta:</strong> $y(x) = a_0 \cos(x) + a_1 \operatorname{sen}(x)$ (com $a_0 = y(0)$ e $a_1 = y'(0)$).
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 2.9 (BESSEL — AVANÇADO RECOLHÍVEL) -->
+          <div class="box-exemplo" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 2.9 (Lista 3 Ex. 28!) — A Equação e a Função de Bessel de Ordem 0: $J_0(x)$</h4>
+              <span class="badge badge-max">Clássico de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                A famosa <strong>Equação de Bessel de ordem $0$</strong> (que descreve a vibração de tambores circulares e ondas em cilindros) é
+                $$x^2 y'' + x y' + x^2 y = 0.$$
+                <strong>(a)</strong> Mostre, propondo $y(x) = \displaystyle \sum_{n=0}^{\infty} a_n x^n$ com $y(0) = 1$, como a EDO gera exatamente a <strong>Função de Bessel de ordem $0$</strong>:
+                $$J_0(x) = \sum_{m=0}^{\infty} \frac{(-1)^m x^{2m}}{2^{2m}(m!)^2}.$$
+                <strong>(b)</strong> Determine o domínio (intervalo de convergência) de $J_0(x)$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 4</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Substituir $y, y', y''$ na Equação de Bessel</span>
+                  <p>Multiplicando $x^2$ em $y''$, $x$ em $y'$ e $x^2$ em $y$ (note que $x^2 \cdot x^{n-2} = x^n$ e $x \cdot x^{n-1} = x^n$!):</p>
+                  $$\sum_{n=2}^{\infty} n(n - 1)a_n x^n + \sum_{n=1}^{\infty} n\,a_n x^n + \sum_{n=0}^{\infty} a_n x^{n+2} = 0.$$
+                  <p>No 1º somatório, o termo $n = 1$ vale $1(0)a_1 x = 0$, então podemos começar em $n = 1$ e juntar os dois primeiros somatórios imediatamente:</p>
+                  $$n(n - 1) + n = n^2 - n + n = n^2 \implies \sum_{n=1}^{\infty} n^2 a_n x^n + \sum_{n=0}^{\infty} a_n x^{n+2} = 0.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Alinhar potências e índices iniciais para $x^k$</span>
+                  <p>No 1º somatório renomeamos $n = k$; no 2º fazemos $k = n + 2 \implies n = k - 2$ ($k$ começa em $2$):</p>
+                  $$\sum_{k=1}^{\infty} k^2 a_k x^k + \sum_{k=2}^{\infty} a_{k-2} x^k = 0.$$
+                  <p>Descasque o termo $k = 1$ ($1^2 a_1 x = a_1 x$) do 1º somatório para que ambos comecem em $k = 2$:</p>
+                  $$a_1 x + \sum_{k=2}^{\infty} \Big(k^2 a_k + a_{k-2}\Big) x^k = 0.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Recorrência e obtenção explícita de $J_0(x)$</span>
+                  <p>Igualando a zero: <strong>$a_1 = 0$</strong> e, para todo $k \ge 2$, $\mathbf{a_k = -\dfrac{a_{k-2}}{k^2}}$!</p>
+                  <ul>
+                    <li><strong>Ímpares:</strong> Como $a_1 = 0$, temos $a_3 = -\frac{a_1}{3^2} = 0$, $a_5 = 0$, $\dots \implies \mathbf{a_{2m+1} = 0}$.</li>
+                    <li><strong>Pares (com $a_0 = y(0) = 1$):</strong>
+                      <ul>
+                        <li>$a_2 = -\dfrac{1}{2^2}$</li>
+                        <li>$a_4 = -\dfrac{a_2}{4^2} = +\dfrac{1}{2^2 \cdot 4^2} = \dfrac{1}{(2\cdot 1)^2 (2\cdot 2)^2} = \dfrac{1}{2^4 (2!)^2}$</li>
+                        <li>$a_6 = -\dfrac{a_4}{6^2} = -\dfrac{1}{2^2 \cdot 4^2 \cdot 6^2} = -\dfrac{1}{2^6 (3!)^2}$</li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <p>Em geral, como $2 \cdot 4 \cdot 6 \cdots (2m) = 2^m \cdot m!$, o quadrado disso é $2^{2m}(m!)^2$, resultando exatamente em:</p>
+                  $$J_0(x) = \sum_{m=0}^{\infty} \frac{(-1)^m x^{2m}}{2^{2m}(m!)^2} = 1 - \frac{x^2}{4} + \frac{x^4}{64} - \frac{x^6}{2304} + \cdots$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 4 · Item (b): Domínio (Raio e Intervalo de Convergência) de $J_0(x)$</span>
+                  <p>Aplicando o Teste da Razão Direto com $u_m(x) = \dfrac{(-1)^m x^{2m}}{2^{2m}(m!)^2}$:</p>
+                  $$\left|\frac{u_{m+1}(x)}{u_m(x)}\right| = \frac{|x|^{2m+2}}{2^{2m+2}((m+1)!)^2} \cdot \frac{2^{2m}(m!)^2}{|x|^{2m}} = \frac{x^2}{4(m + 1)^2} \xrightarrow{m \to \infty} 0 < 1 \quad (\forall\, x \in \mathbb{R}).$$
+                  <div class="result-highlight">
+                    <strong>Resposta (b):</strong> $R = \infty$, portanto o domínio de $J_0(x)$ é toda a reta real $I = \mathbb{R}$! <em>(Veja $J_0(x)$ ganhando vida no Simulador 2.1 acima no Modo B!)</em>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Alertas de Pegadinha — Aula 17 (EDOs por Séries)</p>
+            <ul>
+              <li><strong>Somar somatórios que começam em índices diferentes:</strong> NUNCA junte $\sum_{k=0}^{\infty} A_k x^k + \sum_{k=1}^{\infty} B_k x^k$ sem antes tirar o termo $k = 0$ ($A_0$) para fora!</li>
+              <li><strong>Esquecer de testar o 1º termo após trocar índices:</strong> Sempre faça o teste de 5 segundos comparando o 1º termo do somatório velho com o 1º termo do somatório novo.</li>
+              <li><strong>Simplificar demais ao desenrolar a recorrência:</strong> Se você escrever $a_6 = -\frac{1}{2304}$ em vez de $-\frac{1}{2^2\cdot 4^2\cdot 6^2}$, fica muito mais difícil enxergar o padrão geral $2^{2m}(m!)^2$! Deixe em forma fatorada até achar a fórmula fechada!</li>
+              <li><strong>EDO não homogênea (ex.: $y' - y = e^x$):</strong> Não esqueça de expandir o lado direito em série de Maclaurin antes de igualar os coeficientes de $x^k$!</li>
+            </ul>
+          </div>
+
+          <h3 id="exercicios-2-3">Exercícios de Fixação (Aula 17 — EDOs por Séries)</h3>
+
+          <!-- EXERCÍCIO 9 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 9 (Aquecimento — Lista 3 Ex. 29b) — $y' + 2y = 0,\; y(0) = 3$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b2-ex9" data-track-type="exercise" data-block="bloco2">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva $\begin{cases} y' + 2y = 0, \\ y(0) = 3 \end{cases}$ usando séries de potências e identifique a função elementar.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Substituir e alinhar potências</span>
+                  <p>De $y(0) = 3$, temos $a_0 = 3$. Substituindo $y$ e $y'$ e fazendo $k = n - 1$ no 1º somatório:</p>
+                  $$\sum_{k=0}^{\infty} (k + 1)a_{k+1} x^k + \sum_{k=0}^{\infty} 2a_k x^k = 0 \implies \sum_{k=0}^{\infty} \Big[(k + 1)a_{k+1} + 2a_k\Big] x^k = 0.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Recorrência e padrão</span>
+                  $$a_{k+1} = -\frac{2a_k}{k + 1} \quad (k \ge 0).$$
+                  <ul>
+                    <li>$a_0 = 3$</li>
+                    <li>$a_1 = -\dfrac{2}{1}\cdot 3 = 3\cdot\dfrac{(-2)^1}{1!}$</li>
+                    <li>$a_2 = -\dfrac{2}{2}a_1 = 3\cdot\dfrac{(-2)^2}{2!}$</li>
+                    <li>$a_3 = -\dfrac{2}{3}a_2 = 3\cdot\dfrac{(-2)^3}{3!} \implies a_n = 3\cdot\dfrac{(-2)^n}{n!}$.</li>
+                  </ul>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Reconhecer a exponencial</span>
+                  <div class="result-highlight">
+                    $$y(x) = 3\sum_{n=0}^{\infty} \frac{(-2x)^n}{n!} = 3e^{-2x}.$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 10 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 10 — EDO de 2ª Ordem: $y'' - y = 0,\; y(0) = 1,\; y'(0) = 0$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b2-ex10" data-track-type="exercise" data-block="bloco2">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva $\begin{cases} y'' - y = 0, \\ y(0) = 1,\; y'(0) = 0 \end{cases}$ via séries de potências e identifique a solução em termos de exponenciais ou cosseno hiperbólico.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Condições iniciais e recorrência</span>
+                  <p>$a_0 = y(0) = 1$ e $a_1 = y'(0) = 0$. Alinhando $y'' - y = 0$ para $x^k$:</p>
+                  $$\sum_{k=0}^{\infty} \Big[(k + 2)(k + 1)a_{k+2} - a_k\Big] x^k = 0 \implies a_{k+2} = +\frac{a_k}{(k + 2)(k + 1)}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Termos ímpares e pares</span>
+                  <p>Como $a_1 = 0$, todos os ímpares zeram ($a_{2m+1} = 0$). Para os pares (todos positivos!):</p>
+                  $$a_0 = 1, \quad a_2 = \frac{1}{2!}, \quad a_4 = \frac{1}{4!}, \quad a_6 = \frac{1}{6!} \implies a_{2m} = \frac{1}{(2m)!}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Reconhecer $\cosh(x) = \frac{e^x + e^{-x}}{2}$</span>
+                  <div class="result-highlight">
+                    $$y(x) = \sum_{m=0}^{\infty} \frac{x^{2m}}{(2m)!} = \frac{e^x + e^{-x}}{2} = \cosh(x).$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 11 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 11 (EDO Não Homogênea — Lista 3 Ex. 29c) — $y' - y = e^x,\; y(0) = 0$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b2-ex11" data-track-type="exercise" data-block="bloco2">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva o problema não homogêneo $\begin{cases} y' - y = e^x, \\ y(0) = 0 \end{cases}$ por séries de potências e reconheça a solução exata!
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Expandir ambos os lados em potências de $x^k$</span>
+                  <p>De $y(0) = 0$, temos $a_0 = 0$. Substituindo $y'$, $y$ e $e^x = \sum_{k=0}^{\infty} \frac{x^k}{k!}$:</p>
+                  $$\sum_{k=0}^{\infty} \Big[(k + 1)a_{k+1} - a_k\Big] x^k = \sum_{k=0}^{\infty} \frac{1}{k!}\,x^k.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Igualar coeficientes de $x^k$ e desenrolar</span>
+                  $$(k + 1)a_{k+1} - a_k = \frac{1}{k!} \implies a_{k+1} = \frac{a_k + \frac{1}{k!}}{k + 1} \qquad (k \ge 0).$$
+                  <ul>
+                    <li>$k = 0$: $a_1 = \dfrac{a_0 + 1}{1} = \dfrac{0 + 1}{1} = 1 = \dfrac{1}{0!}$</li>
+                    <li>$k = 1$: $a_2 = \dfrac{1 + 1}{2} = 1 = \dfrac{1}{1!}$</li>
+                    <li>$k = 2$: $a_3 = \dfrac{1 + \frac{1}{2}}{3} = \dfrac{\frac{3}{2}}{3} = \dfrac{1}{2} = \dfrac{1}{2!}$</li>
+                    <li>$k = 3$: $a_4 = \dfrac{\frac{1}{2} + \frac{1}{6}}{4} = \dfrac{\frac{4}{6}}{4} = \dfrac{1}{6} = \dfrac{1}{3!}$</li>
+                  </ul>
+                  <p>Padrão evidente (fácil de checar por indução!): $a_n = \dfrac{1}{(n - 1)!}$ para todo $n \ge 1$!</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Reconhecer $x\,e^x$</span>
+                  $$y(x) = \sum_{n=1}^{\infty} \frac{x^n}{(n - 1)!} = x \sum_{n=1}^{\infty} \frac{x^{n-1}}{(n - 1)!} = x \sum_{m=0}^{\infty} \frac{x^m}{m!} = x\,e^x.$$
+                  <div class="result-highlight">
+                    <strong>Resposta:</strong> $y(x) = x\,e^x$ (Conferência: $y' = e^x + xe^x \implies y' - y = e^x$ e $y(0) = 0$ ✓!).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 12 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 12 (Coeficiente Variável — Estilo Lista 3 Ex. 29j) — $y'' + x y' + y = 0$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b2-ex12" data-track-type="exercise" data-block="bloco2">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva o problema com coeficiente variável $\begin{cases} y'' + x y' + y = 0, \\ y(0) = 1,\; y'(0) = 0 \end{cases}$ via séries de potências e identifique a função elementar!
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 4</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Substituir $y, y', y''$ e absorver o $x$ em $x y'$</span>
+                  <p>Temos $a_0 = 1$ e $a_1 = 0$. Na EDO:</p>
+                  $$\sum_{n=2}^{\infty} n(n - 1)a_n x^{n-2} + \sum_{n=1}^{\infty} n\,a_n x^n + \sum_{n=0}^{\infty} a_n x^n = 0.$$
+                  <p>Note que no 2º somatório, se adicionarmos $n = 0$, o termo extra é $0 \cdot a_0 x^0 = 0$ (não altera nada!), permitindo começar todos em $k = 0$!</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Alinhar para $x^k$ e simplificar o fator $(k + 1)$!</span>
+                  $$\sum_{k=0}^{\infty} \Big[(k + 2)(k + 1)a_{k+2} + (k + 1)a_k\Big] x^k = 0.$$
+                  <p>Igualando a zero e dividindo tudo por $(k + 1) \neq 0$ (que cancelamento lindo!):</p>
+                  $$(k + 2)\cancel{(k + 1)}a_{k+2} + \cancel{(k + 1)}a_k = 0 \implies \mathbf{a_{k+2} = -\frac{a_k}{k + 2}} \qquad (k \ge 0).$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Desenrolar pares e ímpares</span>
+                  <p>Como $a_1 = 0$, todos os ímpares são $0$. Para os pares ($a_0 = 1$):</p>
+                  <ul>
+                    <li>$a_2 = -\dfrac{1}{2}$</li>
+                    <li>$a_4 = -\dfrac{a_2}{4} = +\dfrac{1}{2 \cdot 4} = \dfrac{1}{2^2 \cdot 2!}$</li>
+                    <li>$a_6 = -\dfrac{a_4}{6} = -\dfrac{1}{2 \cdot 4 \cdot 6} = -\dfrac{1}{2^3 \cdot 3!} \implies a_{2m} = \dfrac{(-1)^m}{2^m \cdot m!}$.</li>
+                  </ul>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 4 · Reconhecer a curva Gaussiana $e^{-x^2/2}$!</span>
+                  $$y(x) = \sum_{m=0}^{\infty} \frac{(-1)^m x^{2m}}{2^m \cdot m!} = \sum_{m=0}^{\infty} \frac{\left(-\frac{x^2}{2}\right)^m}{m!} = e^{-x^2/2}.$$
+                  <div class="result-highlight">
+                    <strong>Resposta:</strong> $y(x) = e^{-x^2/2}$ (Conferência: $y' = -x e^{-x^2/2}$, $y'' = (x^2 - 1)e^{-x^2/2}$, logo $y'' + x y' + y = (x^2 - 1 - x^2 + 1)e^{-x^2/2} = 0$ ✓!).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <nav class="chapter-footer-nav" aria-label="Navegação entre blocos">
+          <a href="bloco1.html" class="chapter-nav-btn">
+            <span class="chapter-nav-dir">← Bloco Anterior</span>
+            <span class="chapter-nav-label">Bloco 1 · Motor das Séries de Potências</span>
+          </a>
+          <a href="bloco3.html" class="chapter-nav-btn">
+            <span class="chapter-nav-dir">Próximo Bloco →</span>
+            <span class="chapter-nav-label">Bloco 3 · Fundamentos de Séries de Fourier</span>
+          </a>
+        </nav>
+      </article>
+    </main>
+  </div>
+
+  <!-- ======================================================================
+       SIMULADOR INTERATIVO 2.1: INTEGRAL GAUSSIANA + BESSEL J_0(x)
+       ====================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const P = window.Calc4Plot;
+      if (!P) return;
+
+      const selMode = document.getElementById('sim21-mode');
+      const nSlider = document.getElementById('sim21-n');
+      const nLabel = document.getElementById('sim21-n-label');
+      const nVal = document.getElementById('sim21-n-val');
+      const bGroup = document.getElementById('sim21-b-group');
+      const bSlider = document.getElementById('sim21-b');
+      const bVal = document.getElementById('sim21-b-val');
+      const canvas = document.getElementById('canvas-sim21');
+
+      const m1Lbl = document.getElementById('sim21-m1-lbl');
+      const m1Val = document.getElementById('sim21-m1-val');
+      const m2Lbl = document.getElementById('sim21-m2-lbl');
+      const m2Val = document.getElementById('sim21-m2-val');
+      const m3Lbl = document.getElementById('sim21-m3-lbl');
+      const m3Val = document.getElementById('sim21-m3-val');
+      const m4Lbl = document.getElementById('sim21-m4-lbl');
+      const m4Val = document.getElementById('sim21-m4-val');
+      const msgEl = document.getElementById('sim21-msg');
+
+      function fact(k) {
+        let f = 1;
+        for (let i = 2; i <= k; i++) f *= i;
+        return f;
+      }
+
+      function simpsonGauss(b) {
+        const steps = 400;
+        const h = b / steps;
+        let s = Math.exp(0) + Math.exp(-b * b);
+        for (let i = 1; i < steps; i++) {
+          const x = i * h;
+          s += (i % 2 === 0 ? 2 : 4) * Math.exp(-x * x);
+        }
+        return (s * h) / 3;
+      }
+
+      function evalJ0(x, maxM) {
+        let s = 0;
+        const x2 = x * x;
+        let term = 1;
+        for (let m = 0; m <= maxM; m++) {
+          if (m > 0) term = -term * x2 / (4 * m * m);
+          s += term;
+        }
+        return s;
+      }
+
+      function configureMode() {
+        if (selMode.value === 'gauss') {
+          bGroup.style.display = 'flex';
+          nLabel.textContent = 'Último índice N da soma';
+          nSlider.min = '0';
+          nSlider.max = '8';
+          nSlider.value = '2';
+        } else {
+          bGroup.style.display = 'none';
+          nLabel.textContent = 'Número de termos M em J₀(x)';
+          nSlider.min = '0';
+          nSlider.max = '14';
+          nSlider.value = '5';
+        }
+      }
+
+      function drawSim21() {
+        const mode = selMode.value;
+        const N = parseInt(nSlider.value, 10);
+        nVal.textContent = String(N);
+
+        const { ctx, width, height } = P.setupCanvas(canvas, 320);
+        const colors = P.getThemeColors();
+
+        if (mode === 'gauss') {
+          const b = parseFloat(bSlider.value);
+          bVal.textContent = b.toFixed(2);
+
+          const exactInt = simpsonGauss(b);
+          let approxInt = 0;
+          for (let n = 0; n <= N; n++) {
+            approxInt += (Math.pow(-1, n) * Math.pow(b, 2 * n + 1)) / ((2 * n + 1) * fact(n));
+          }
+          const realErr = Math.abs(exactInt - approxInt);
+          const leibnizBound = Math.pow(b, 2 * (N + 1) + 1) / ((2 * (N + 1) + 1) * fact(N + 1));
+
+          m1Lbl.textContent = 'Integral exata';
+          m1Val.textContent = exactInt.toFixed(6);
+          m2Lbl.innerHTML = `Série truncada S<sub>${N}</sub>`;
+          m2Val.textContent = approxInt.toFixed(6);
+          m3Lbl.textContent = 'Erro real |I − Sₙ|';
+          m3Val.textContent = realErr.toExponential(2);
+          m4Lbl.innerHTML = `Cota Leibniz a<sub>${N + 1}</sub>`;
+          m4Val.textContent = leibnizBound.toExponential(2);
+
+          msgEl.innerHTML = `Integrando termo a termo e<sup>−x²</sup> em [0, ${b.toFixed(2)}] até n = ${N}: o erro real (${realErr.toExponential(2)}) é garantidamente menor ou igual à cota de Leibniz a<sub>${N + 1}</sub> = ${leibnizBound.toExponential(2)}! ${b > 1.1 && N < 3 ? '<strong>Repare:</strong> para b maior que 1, precisamos de mais termos N para o polinômio acompanhar e<sup>−x²</sup> até x = b!' : ''}`;
+
+          const map = P.createMapper(width, height, 0, 1.7, -0.3, 1.25);
+          P.drawGridAndAxes(ctx, map, colors, {
+            xTicks: 6, yTicks: 5,
+            xLabel: 'x', yLabel: 'e^(−x²) vs. polinômio truncado'
+          });
+
+          /* Shaded area under e^(-x^2) on [0, b] */
+          ctx.save();
+          ctx.beginPath();
+          ctx.rect(map.pad.left, map.pad.top, map.plotW, map.plotH);
+          ctx.clip();
+          ctx.fillStyle = colors.band;
+          ctx.beginPath();
+          ctx.moveTo(map.toX(0), map.toY(0));
+          for (let i = 0; i <= 120; i++) {
+            const xv = (i / 120) * b;
+            ctx.lineTo(map.toX(xv), map.toY(Math.exp(-xv * xv)));
+          }
+          ctx.lineTo(map.toX(b), map.toY(0));
+          ctx.closePath();
+          ctx.fill();
+
+          /* Vertical boundary line at x = b */
+          ctx.strokeStyle = colors.success;
+          ctx.lineWidth = 1.6;
+          ctx.setLineDash([5, 4]);
+          ctx.beginPath();
+          ctx.moveTo(map.toX(b), map.pad.top);
+          ctx.lineTo(map.toX(b), map.toY(0));
+          ctx.stroke();
+          ctx.restore();
+
+          /* Exact e^(-x^2) */
+          P.plotCurve(ctx, map, (x) => Math.exp(-x * x), {
+            color: colors.primary, lineWidth: 2.5, samples: 400
+          });
+
+          /* Truncated Maclaurin polynomial of e^(-x^2) up to index N */
+          P.plotCurve(ctx, map, (x) => {
+            let s = 0;
+            for (let n = 0; n <= N; n++) s += (Math.pow(-1, n) * Math.pow(x, 2 * n)) / fact(n);
+            return s;
+          }, {
+            color: colors.secondary, lineWidth: 2.3, dash: [7, 4], samples: 400
+          });
+        } else {
+          /* Mode B: Bessel function J_0(x) */
+          const xTest = 4.0;
+          const j0Exact = evalJ0(xTest, 45);
+          const j0Approx = evalJ0(xTest, N);
+          const errAt4 = Math.abs(j0Exact - j0Approx);
+
+          m1Lbl.textContent = 'J₀(4) exato';
+          m1Val.textContent = j0Exact.toFixed(6);
+          m2Lbl.innerHTML = `S<sub>${N}</sub>(4) (grau ${2 * N})`;
+          m2Val.textContent = Number.isFinite(j0Approx) && Math.abs(j0Approx) < 1e4 ? j0Approx.toFixed(6) : 'Diverge fora';
+          m3Lbl.textContent = 'Erro em x = 4';
+          m3Val.textContent = errAt4 < 1e4 ? errAt4.toExponential(2) : '> 10⁴';
+          m4Lbl.textContent = 'Raio de Conv.';
+          m4Val.textContent = 'R = ∞ (ℝ)';
+
+          msgEl.innerHTML = `A <strong>Função de Bessel J<sub>0</sub>(x)</strong> nasce direto da EDO x²y'' + xy' + x²y = 0! Como seu raio de convergência é R = ∞, cada termo extra m adicionado na soma parcial faz a curva laranja acompanhar mais oscilações da membrana circular exata (curva azul).`;
+
+          const map = P.createMapper(width, height, -10, 10, -0.8, 1.3);
+          P.drawGridAndAxes(ctx, map, colors, {
+            xTicks: 10, yTicks: 5,
+            xLabel: 'x', yLabel: `J₀(x) exato vs. soma parcial (m = 0..${N})`
+          });
+
+          P.plotCurve(ctx, map, (x) => evalJ0(x, 45), {
+            color: colors.primary, lineWidth: 2.5, samples: 500
+          });
+          P.plotCurve(ctx, map, (x) => evalJ0(x, N), {
+            color: colors.secondary, lineWidth: 2.3, dash: [7, 4], samples: 500
+          });
+        }
+      }
+
+      selMode.addEventListener('change', () => {
+        configureMode();
+        drawSim21();
+      });
+      nSlider.addEventListener('input', drawSim21);
+      bSlider.addEventListener('input', drawSim21);
+      configureMode();
+      P.registerChart(drawSim21);
+    });
+  </script>
+</body>
+</html>

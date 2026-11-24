@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloco 4: Extensões Periódicas, Pares e Ímpares — Apostila Cálculo IV (SMA0356)</title>
+  <meta name="description" content="Bloco 4 da Apostila Interativa de Cálculo IV (ICMC/USP): Aula 23 — Extensões periódica, par (série de cossenos) e ímpar (série de senos) em [0, L], simulador interativo em [-2L, 2L] e ponte para EDPs.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body data-block-id="bloco4">
+  <div class="reading-progress-track" aria-hidden="true">
+    <div class="reading-progress-fill"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-left">
+      <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-label="Abrir menu lateral" aria-expanded="false">☰</button>
+      <a href="index.html" class="brand-link">
+        <span class="brand-title">Cálculo IV · Apostila P2</span>
+        <span class="brand-code">SMA0356</span>
+      </a>
+      <span class="header-breadcrumb">/ Bloco 4 · Extensões Par, Ímpar e Periódica</span>
+    </div>
+    <div class="header-right">
+      <div class="header-progress-pill" title="Seu progresso neste bloco">
+        <span>Bloco 4:</span>
+        <strong data-block-progress-pct>0%</strong>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">☾</span>
+        <span class="theme-label">Modo Escuro</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <div class="page-shell">
+    <aside class="sidebar" aria-label="Sumário e Navegação">
+      <div class="sidebar-progress-box">
+        <div class="sidebar-progress-top">
+          <span>Progresso no Bloco 4</span>
+          <strong data-block-progress-pct>0%</strong>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" data-block-progress-bar></div>
+        </div>
+        <div class="sidebar-progress-meta" data-block-progress-detail>0/2 tópicos · 0/6 exercícios</div>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Sumário do Bloco 4</p>
+        <ul class="toc-list">
+          <li>
+            <a href="#topico-4-1" class="toc-link active">
+              <span>4.1 Aula 23 · As 3 Extensões em $[0, L]$</span>
+              <span class="nav-status-tag" data-toc-track="b4-t1" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#simulador-extensoes" class="toc-link sub-item"><span>Simulador: Extensões em $[-2L, 2L]$</span></a></li>
+          <li><a href="#exemplos-4-1" class="toc-link sub-item">Exemplos 4.1 e 4.2</a></li>
+          <li><a href="#exercicios-4-1" class="toc-link sub-item">Exercícios 1 a 3</a></li>
+          <li>
+            <a href="#topico-4-2" class="toc-link">
+              <span>4.2 Pontas, Convergência e Ponte p/ EDPs</span>
+              <span class="nav-status-tag" data-toc-track="b4-t2" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#ponte-edps" class="toc-link sub-item">Qual extensão usar em cada EDP?</a></li>
+          <li><a href="#exemplos-4-2" class="toc-link sub-item">Exemplos 4.3 e 4.4</a></li>
+          <li><a href="#exercicios-4-2" class="toc-link sub-item">Exercícios 4 a 6</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Todos os Blocos</p>
+        <ul class="block-nav-list">
+          <li><a href="index.html" class="block-nav-link"><span>← Painel Inicial</span></a></li>
+          <li><a href="bloco0.html" class="block-nav-link"><span>Bloco 0 · Nivelamento</span></a></li>
+          <li><a href="bloco1.html" class="block-nav-link"><span>Bloco 1 · Séries de Potências</span></a></li>
+          <li><a href="bloco2.html" class="block-nav-link"><span>Bloco 2 · Taylor, Binomial e EDOs</span></a></li>
+          <li><a href="bloco3.html" class="block-nav-link"><span>Bloco 3 · Séries de Fourier</span></a></li>
+          <li><a href="bloco4.html" class="block-nav-link active"><span>Bloco 4 · Extensões Par/Ímpar</span></a></li>
+          <li><a href="bloco5.html" class="block-nav-link"><span>Bloco 5 · EDPs (Calor e Onda)</span></a></li>
+          <li><a href="formulario.html" class="block-nav-link"><span>Formulário de Bolso</span></a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <article class="article-container">
+        <header class="chapter-header">
+          <p class="chapter-kicker">Bloco 4 · A Ponte Obrigatória para EDPs · Aula 23 (SMA0356)</p>
+          <h1>Extensões Periódicas, Pares e Ímpares</h1>
+          <p class="chapter-lead">
+            No Bloco 3, nossas funções já vinham definidas em $[-L, L]$ e eram $2L$-periódicas. Mas no mundo real — e nas EDPs do Bloco 5! — uma barra metálica ou uma corda de violão só existe de <strong>$x = 0$ até $x = L$</strong>! Como representar uma função definida apenas em $[0, L]$ usando <em>somente cossenos</em> ou <em>somente senos</em>? O segredo está em como você "inventa" a função para fora de $[0, L]$!
+          </p>
+          <div class="chapter-meta-row">
+            <span class="badge badge-high">Prioridade Alta · Ponte para EDPs</span>
+            <span class="badge badge-neutral">Aula 23</span>
+            <span class="badge badge-neutral">4 Exemplos Completos</span>
+            <span class="badge badge-neutral">6 Exercícios Passo a Passo</span>
+            <span class="badge badge-done">1 Simulador Visual de Extensões em $[-2L, 2L]$</span>
+          </div>
+        </header>
+
+        <!-- ================================================================
+             TÓPICO 4.1 — AS 3 EXTENSÕES DE f : [0, L] -> R
+             ================================================================ -->
+        <section id="topico-4-1">
+          <div class="topic-header-bar">
+            <h2>4.1 Aula 23 — Construindo Extensões Periódicas, Pares e Ímpares</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b4-t1" data-track-type="topic" data-block="bloco4">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — Você tem Liberdade Fora de $[0, L]$!</p>
+            <p>
+              Imagine uma barra de metal de comprimento $L$, colocada de $x = 0$ até $x = L$. A temperatura inicial da barra é uma função $f(x)$ que <strong>só tem sentido físico para $x \in [0, L]$</strong> — não existe barra em $x = -3$ ou $x = 5L$!
+            </p>
+            <p>
+              Como a Física só se importa com o que a série vale dentro de $[0, L]$, nós podemos <strong>estender $f(x)$ para toda a reta $\mathbb{R}$ do jeito que for mais conveniente para a nossa EDP</strong>! Existem <strong>3 extensões clássicas</strong>:
+            </p>
+            <ol>
+              <li><strong>Extensão Periódica Direta (período $L$):</strong> Copia e cola o trecho $[0, L]$ lado a lado, infinitas vezes. Gera uma série de Fourier completa (com senos E cossenos) de argumento $\frac{2n\pi x}{L}$.</li>
+              <li><strong>Extensão PAR e $2L$-Periódica ($\tilde{f}$):</strong> Primeiro <em>espelha</em> o gráfico de $[0, L]$ no eixo $y$ para preencher $[-L, 0]$, e depois repete esse bloco $[-L, L]$ com período $2L$. Como $\tilde{f}$ é par, todos os $b_n$ zeram $\implies$ gera a <strong>Série de Fourier em Cossenos ($S_{f,c}(x)$)</strong>!</li>
+              <li><strong>Extensão ÍMPAR e $2L$-Periódica ($\hat{f}$):</strong> Primeiro <em>gira 180° em torno da origem</em> (reflete no eixo $y$ e depois no eixo $x$) para preencher $[-L, 0)$, e depois repete o bloco $[-L, L]$ com período $2L$. Como $\hat{f}$ é ímpar, $a_0 = 0$ e todos os $a_n$ zeram $\implies$ gera a <strong>Série de Fourier em Senos ($S_{f,s}(x)$)</strong>!</li>
+            </ol>
+          </div>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Definição III.5.1 (Aula 23) — Série em Cossenos ($S_{f,c}$) e Série em Senos ($S_{f,s}$)</p>
+            <p>Seja $f : [0, L] \to \mathbb{R}$ contínua por partes em $[0, L]$.</p>
+
+            <p><strong>1. Extensão Par e $2L$-Periódica $\tilde{f}$ $\implies$ Série de Fourier em Cossenos:</strong></p>
+            $$\tilde{f}(x) = \begin{cases} f(x), & x \in [0, L], \\ f(-x), & x \in [-L, 0], \end{cases} \quad \tilde{f}(x + 2L) = \tilde{f}(x).$$
+            $$S_{f,c}(x) = \frac{a_0}{2} + \sum_{n=1}^{\infty} a_n \cos\!\left(\frac{n\pi x}{L}\right), \qquad \text{onde } \quad \boxed{a_0 = \frac{2}{L}\int_{0}^{L} f(x)\,dx, \qquad a_n = \frac{2}{L}\int_{0}^{L} f(x)\cos\!\left(\frac{n\pi x}{L}\right) dx.}$$
+
+            <p><strong>2. Extensão Ímpar e $2L$-Periódica $\hat{f}$ $\implies$ Série de Fourier em Senos:</strong></p>
+            $$\hat{f}(x) = \begin{cases} f(x), & x \in (0, L], \\ -f(-x), & x \in [-L, 0), \end{cases} \quad \hat{f}(x + 2L) = \hat{f}(x).$$
+            $$S_{f,s}(x) = \sum_{n=1}^{\infty} b_n \operatorname{sen}\!\left(\frac{n\pi x}{L}\right), \qquad \text{onde } \quad \boxed{b_n = \frac{2}{L}\int_{0}^{L} f(x)\operatorname{sen}\!\left(\frac{n\pi x}{L}\right) dx.}$$
+
+            <p><strong>3. (Para comparação) Extensão Periódica Direta (período $P = L$, logo semiperíodo $L' = \frac{L}{2}$):</strong></p>
+            $$S_{f,\text{per}}(x) = \frac{\alpha_0}{2} + \sum_{n=1}^{\infty} \left[\alpha_n \cos\!\left(\frac{2n\pi x}{L}\right) + \beta_n \operatorname{sen}\!\left(\frac{2n\pi x}{L}\right)\right], \qquad \alpha_n = \frac{2}{L}\int_{0}^{L} f(x)\cos\!\left(\frac{2n\pi x}{L}\right) dx.$$
+          </div>
+
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Atenção Redobrada — A Mudança nos Limites e no Fator $\frac{2}{L}$!</p>
+            <p>
+              Olhe o alerta que a própria Profa. Janete destaca na página 133 das Notas de Aula! Quando a função vem dada apenas em <strong>$[0, L]$</strong> e você pede a Série em Cossenos ou em Senos:
+            </p>
+            <ul>
+              <li>Os limites de integração são <strong>de $0$ até $L$</strong> (e NÃO de $-L$ até $L$!).</li>
+              <li>O fator na frente da integral é <strong>$\dfrac{2}{L}$</strong> (e NÃO $\dfrac{1}{L}$!), porque $\frac{1}{L}\int_{-L}^{L}(\text{integrando par})\,dx = \frac{2}{L}\int_{0}^{L}(\text{integrando})\,dx$!</li>
+              <li>E na Série em Cossenos, o termo constante na série continua sendo <strong>$\dfrac{a_0}{2} = \dfrac{1}{L}\displaystyle \int_{0}^{L} f(x)\,dx$</strong> (a média de $f$ em $[0, L]$!).</li>
+            </ul>
+          </div>
+
+          <!-- SIMULADOR INTERATIVO 4.1: EXTENSÕES EM [-2L, 2L] -->
+          <div class="simulator-card" id="simulador-extensoes">
+            <div class="simulator-header">
+              <div>
+                <h3 class="simulator-title">Simulador Interativo 4.1 — Extensões Periódica, Par e Ímpar em $[-2L, 2L]$</h3>
+                <p class="simulator-subtitle">Escolha uma função definida apenas em $[0, L]$ (região sombreada), alterne entre as 3 extensões e ative a sobreposição da Série de Fourier $S_N(x)$ para ver a mágica acontecendo ao vivo!</p>
+              </div>
+              <span class="badge badge-done">Simulador Interativo</span>
+            </div>
+
+            <div class="sim-controls">
+              <div class="sim-control-group">
+                <label for="sim41-fn"><span>Função $f(x)$ dada em $[0, L]$ ($L = 2$)</span></label>
+                <select id="sim41-fn" class="sim-select">
+                  <option value="ramp">f(x) = x   (Rampa — Ex. III.12)</option>
+                  <option value="const">f(x) = 1   (Constante — Ex. III.7)</option>
+                  <option value="down">f(x) = L − x   (Rampa decrescente)</option>
+                  <option value="arch">f(x) = x(L − x)   (Arco parabólico)</option>
+                  <option value="half">Pulso: 1 em [0, L/2), 0 em [L/2, L]</option>
+                </select>
+              </div>
+
+              <div class="sim-control-group">
+                <label for="sim41-ext"><span>Tipo de Extensão para $[-2L, 2L]$</span></label>
+                <select id="sim41-ext" class="sim-select">
+                  <option value="even">Extensão PAR (2L-periódica) → Série de Cossenos</option>
+                  <option value="odd">Extensão ÍMPAR (2L-periódica) → Série de Senos</option>
+                  <option value="periodic">Extensão PERIÓDICA direta (período L)</option>
+                </select>
+              </div>
+
+              <div class="sim-control-group">
+                <label for="sim41-n">
+                  <span>Sobrepor Fourier $S_N(x)$ (0 = desligar)</span>
+                  <span class="sim-val" id="sim41-n-val">7</span>
+                </label>
+                <input id="sim41-n" class="sim-range" type="range" min="0" max="25" step="1" value="7">
+              </div>
+            </div>
+
+            <div class="canvas-stage">
+              <canvas id="canvas-sim41" aria-label="Gráfico dinâmico das extensões periódica, par e ímpar em [-2L, 2L]"></canvas>
+            </div>
+
+            <div class="sim-readout">
+              <div class="readout-metric">
+                <div class="readout-label">Período da Extensão</div>
+                <div class="readout-value" id="sim41-period">2L = 4</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label">Série Gerada</div>
+                <div class="readout-value" id="sim41-series">Só Cossenos</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label">Convergência em $x = 0$</div>
+                <div class="readout-value" id="sim41-at0">—</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label">Convergência em $x = L$</div>
+                <div class="readout-value" id="sim41-atL">—</div>
+              </div>
+            </div>
+
+            <div class="sim-explanation" id="sim41-msg">
+              Carregando simulador de extensões...
+            </div>
+          </div>
+
+          <div class="callout box-receita">
+            <p class="callout-title">Receita de Bolo — Como Esboçar e Calcular Extensões na Prova</p>
+            <ol>
+              <li><strong>Passo 1 (Desenhe $[0, L]$ primeiro):</strong> Faça um traço firme da função $f(x)$ apenas no intervalo $[0, L]$.</li>
+              <li><strong>Passo 2 (Preencha $[-L, 0]$ conforme a extensão pedida):</strong>
+                <ul>
+                  <li><strong>Extensão PAR:</strong> Espelhe horizontalmente em torno do eixo $y$ (como dobrar uma folha no eixo $y$).</li>
+                  <li><strong>Extensão ÍMPAR:</strong> Espelhe no eixo $y$ e depois vire de ponta-cabeça no eixo $x$ (rotação de 180° em torno da origem $(0,0)$!).</li>
+                  <li><strong>Extensão PERIÓDICA direta:</strong> Apenas translade $[0, L]$ para $[-L, 0]$ (sem espelhar nada!).</li>
+                </ul>
+              </li>
+              <li><strong>Passo 3 (Repita para fora):</strong> Copie o bloco completo ($[-L, L]$ nos casos par/ímpar; $[0, L]$ no caso periódico direto) para a direita e para a esquerda!</li>
+              <li><strong>Passo 4 (Aplique a fórmula com $\frac{2}{L}\int_0^L$):</strong> Só cossenos $\implies a_0$ e $a_n$ (não esqueça $\frac{a_0}{2}$!). Só senos $\implies$ apenas $b_n$!</li>
+            </ol>
+          </div>
+
+          <h3 id="exemplos-4-1">Exemplos Resolvidos (Seção 4.1)</h3>
+
+          <!-- EXEMPLO 4.1 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 4.1 (Direto do Exemplo III.12 da Profa. Janete!) — $f(x) = x$ em $[0, L]$</h4>
+              <span class="badge badge-base">Essencial</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Dada $f(x) = x$ definida apenas em $[0, L]$ ($L > 0$), encontre:
+                <strong>(a)</strong> sua Série de Fourier em Cossenos $S_{f,c}(x)$;
+                <strong>(b)</strong> sua Série de Fourier em Senos $S_{f,s}(x)$;
+                <strong>(c)</strong> diga para quais valores cada uma converge em $x = 0$ e $x = L$.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Item (a) · Série em Cossenos (Extensão Par: vira uma onda triangular $|x|$ contínua!)</span>
+                <p>Usando $\dfrac{2}{L}\displaystyle \int_{0}^{L}$ com $\omega = \dfrac{n\pi}{L}$:</p>
+                $$a_0 = \frac{2}{L}\int_{0}^{L} x\,dx = \frac{2}{L}\left[\frac{x^2}{2}\right]_{0}^{L} = L \implies \frac{a_0}{2} = \frac{L}{2}.$$
+                $$a_n = \frac{2}{L}\int_{0}^{L} x\cos(\omega x)\,dx = \frac{2}{L}\left[\frac{x\operatorname{sen}(\omega x)}{\omega} + \frac{\cos(\omega x)}{\omega^2}\right]_{0}^{L} = \frac{2}{L}\cdot\frac{(-1)^n - 1}{\frac{n^2\pi^2}{L^2}} = \frac{2L\big((-1)^n - 1\big)}{n^2\pi^2}.$$
+                <p>Pares zeram ($a_{2k} = 0$); ímpares dão $a_{2k-1} = -\dfrac{4L}{(2k - 1)^2\pi^2}$. Logo:</p>
+                $$S_{f,c}(x) = \frac{L}{2} - \frac{4L}{\pi^2}\sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2}\cos\!\left(\frac{(2k - 1)\pi x}{L}\right).$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Item (b) · Série em Senos (Extensão Ímpar: vira dente de serra com salto em $x = L$!)</span>
+                $$b_n = \frac{2}{L}\int_{0}^{L} x\operatorname{sen}(\omega x)\,dx = \frac{2}{L}\left[-\frac{x\cos(\omega x)}{\omega} + \frac{\operatorname{sen}(\omega x)}{\omega^2}\right]_{0}^{L} = \frac{2}{L}\left(-\frac{L(-1)^n}{\frac{n\pi}{L}}\right) = \frac{2L(-1)^{n+1}}{n\pi}.$$
+                $$S_{f,s}(x) = \frac{2L}{\pi}\sum_{n=1}^{\infty} \frac{(-1)^{n+1}}{n}\operatorname{sen}\!\left(\frac{n\pi x}{L}\right).$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Item (c) · Convergência nas pontas $x = 0$ e $x = L$ (COMPARE AS DUAS!)</span>
+                <ul>
+                  <li><strong>Na Série em Cossenos ($S_{f,c}$):</strong> A extensão par (onda triangular) é <strong>contínua em TODO $\mathbb{R}$</strong>! Logo $S_{f,c}(0) = 0$, $S_{f,c}(L) = L$, e $S_{f,c}(x) = x$ em <em>todo</em> o intervalo fechado $[0, L]$! (Além disso, seus coeficientes caem como $\frac{1}{n^2}$ — converge muito mais rápido!)</li>
+                  <li><strong>Na Série em Senos ($S_{f,s}$):</strong> Em $x = 0$ a extensão ímpar é contínua ($S_{f,s}(0) = 0$), mas em $x = L$ ela salta de $+L$ para $-L$! Logo $S_{f,s}(L) = \frac{L + (-L)}{2} = \mathbf{0} \neq L$! Assim $S_{f,s}(x) = x$ apenas em $[0, L)$, valendo $0$ em $x = L$.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 4.2 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 4.2 (Direto do Exercício III.7 da Profa. Janete!) — A Constante $f(x) = 1$ em $[0, L]$</h4>
+              <span class="badge badge-high">Surpreendente!</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Determine as séries em cossenos e em senos de $f(x) = 1$ em $[0, L]$ e analise para onde cada uma converge em $[0, L]$.
+              </p>
+              <div class="math-step">
+                <span class="step-label">1. Série em Cossenos (Extensão Par: a constante $1$ em todo $\mathbb{R}$!)</span>
+                $$a_0 = \frac{2}{L}\int_{0}^{L} 1\,dx = 2 \implies \frac{a_0}{2} = 1, \qquad a_n = \frac{2}{L}\int_{0}^{L} \cos\!\left(\frac{n\pi x}{L}\right) dx = \frac{2}{L}\left[\frac{L}{n\pi}\operatorname{sen}\!\left(\frac{n\pi x}{L}\right)\right]_{0}^{L} = 0.$$
+                <p>A série em cossenos é simplesmente a constante exata <strong>$S_{f,c}(x) = 1$</strong> para todo $x \in [0, L]$! (Faz total sentido: $1$ já é uma função par constante!)</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">2. Série em Senos (Extensão Ímpar: vira uma Onda Quadrada $\pm 1$!)</span>
+                $$b_n = \frac{2}{L}\int_{0}^{L} 1\cdot\operatorname{sen}\!\left(\frac{n\pi x}{L}\right) dx = \frac{2}{L}\left[-\frac{L}{n\pi}\cos\!\left(\frac{n\pi x}{L}\right)\right]_{0}^{L} = \frac{2}{n\pi}\big(1 - (-1)^n\big).$$
+                <p>Só sobrevivem os ímpares $n = 2k - 1$, com $b_{2k-1} = \dfrac{4}{(2k - 1)\pi}$:</p>
+                $$S_{f,s}(x) = \frac{4}{\pi}\sum_{k=1}^{\infty} \frac{1}{2k - 1}\operatorname{sen}\!\left(\frac{(2k - 1)\pi x}{L}\right).$$
+                <p><strong>Convergência em $[0, L]$:</strong> Para todo $x \in (0, L)$ (interior), $S_{f,s}(x) = 1$. Mas <strong>nas duas pontas $x = 0$ e $x = L$</strong>, todo seno vale zero $\implies S_{f,s}(0) = 0$ e $S_{f,s}(L) = 0$ (média do salto entre $+1$ e $-1$)! <em>(No Bloco 5, essa mesmíssima série será a solução da barra inicialmente a temperatura constante $1$ com as pontas mantidas a $0^\circ$!)</em></p>
+              </div>
+            </div>
+          </div>
+
+          <h3 id="exercicios-4-1">Exercícios de Fixação (Seção 4.1)</h3>
+
+          <!-- EXERCÍCIO 1 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 1 — Comparando as 3 Extensões de $f(x) = x + 1$ em $[0, 1]$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b4-ex1" data-track-type="exercise" data-block="bloco4">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Considere $f(x) = x + 1$ definida em $[0, 1]$ ($L = 1$). Sem precisar calcular a série inteira, determine o valor para o qual convergem em $x = 0$, $x = 1$ e $x = -0{,}5$:
+                <strong>(a)</strong> a Extensão Par $\tilde{f}$; &nbsp;
+                <strong>(b)</strong> a Extensão Ímpar $\hat{f}$; &nbsp;
+                <strong>(c)</strong> a Extensão Periódica direta (período $1$).
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (a) · Extensão Par $\tilde{f}$ (contínua em toda parte!)</span>
+                  <p>Em $[-1, 0]$, $\tilde{f}(x) = f(-x) = -x + 1$. Note que $\tilde{f}(0^-) = 1 = \tilde{f}(0^+)$ e $\tilde{f}(1^-) = 2 = \tilde{f}(-1^+)$ (sem nenhum salto!). Logo:</p>
+                  <ul>
+                    <li>$S_{f,c}(0) = 1$; &nbsp; $S_{f,c}(1) = 2$; &nbsp; $S_{f,c}(-0{,}5) = f(0{,}5) = 1{,}5$.</li>
+                  </ul>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b) · Extensão Ímpar $\hat{f}$ (saltos em $0$ e em $1$!)</span>
+                  <p>Em $(-1, 0)$, $\hat{f}(x) = -f(-x) = -(-x + 1) = x - 1$. Em $x = 0$ salta de $-1$ para $+1$ (média $0$); em $x = 1$ salta de $+2$ para $-2$ (média $0$):</p>
+                  <ul>
+                    <li>$S_{f,s}(0) = 0$; &nbsp; $S_{f,s}(1) = 0$; &nbsp; $S_{f,s}(-0{,}5) = -f(0{,}5) = -1{,}5$.</li>
+                  </ul>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (c) · Extensão Periódica Direta (período $P = 1$)</span>
+                  <p>Repete o segmento de $1$ a $2$ a cada intervalo de tamanho $1$. Em todo inteiro ($0$ e $1$), salta de $2$ (esquerda) para $1$ (direita), logo média $= \frac{2 + 1}{2} = 1{,}5$. Em $x = -0{,}5$, somamos $1$ período: $-0{,}5 + 1 = 0{,}5 \implies f(0{,}5) = 1{,}5$!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 2 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 2 — Série em Cossenos e em Senos de $f(x) = L - x$ em $[0, L]$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b4-ex2" data-track-type="exercise" data-block="bloco4">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Calcule a Série de Fourier em Cossenos $S_{f,c}(x)$ e a Série de Fourier em Senos $S_{f,s}(x)$ de $f(x) = L - x$ em $[0, L]$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Série em Cossenos ($a_0$ e $a_n$ com $\omega = \frac{n\pi}{L}$)</span>
+                  $$a_0 = \frac{2}{L}\int_{0}^{L} (L - x)\,dx = \frac{2}{L}\left[Lx - \frac{x^2}{2}\right]_{0}^{L} = \frac{2}{L}\cdot\frac{L^2}{2} = L \implies \frac{a_0}{2} = \frac{L}{2}.$$
+                  <p>Usando linearidade (ou Partes com $u = L - x$, $du = -dx$):</p>
+                  $$a_n = \frac{2}{L}\left[\frac{(L - x)\operatorname{sen}(\omega x)}{\omega} - \frac{\cos(\omega x)}{\omega^2}\right]_{0}^{L} = \frac{2}{L}\left(-\frac{(-1)^n}{\omega^2} - \left(-\frac{1}{\omega^2}\right)\right) = \frac{2L\big(1 - (-1)^n\big)}{n^2\pi^2}.$$
+                  <p>Logo $S_{f,c}(x) = \dfrac{L}{2} + \dfrac{4L}{\pi^2}\displaystyle \sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2}\cos\!\left(\frac{(2k - 1)\pi x}{L}\right)$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Série em Senos ($b_n$ — veja que simplificação linda!)</span>
+                  $$b_n = \frac{2}{L}\int_{0}^{L} (L - x)\operatorname{sen}(\omega x)\,dx = \frac{2}{L}\left[-\frac{(L - x)\cos(\omega x)}{\omega} - \frac{\operatorname{sen}(\omega x)}{\omega^2}\right]_{0}^{L}.$$
+                  <p>Em $x = L$: $L - L = 0$ e $\operatorname{sen}(n\pi) = 0$ (tudo zera!). Em $x = 0$: $-\frac{L\cos(0)}{\omega} = -\frac{L}{\omega}$. Com o sinal de menos do limite inferior:</p>
+                  $$b_n = \frac{2}{L}\left(0 - \left(-\frac{L}{\omega}\right)\right) = \frac{2}{\frac{n\pi}{L}} = \frac{2L}{n\pi} \quad (\text{sem } (-1)^n!).$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Resposta Final (conferência rápida!)</span>
+                  <div class="result-highlight">
+                    $$S_{f,s}(x) = \frac{2L}{\pi}\sum_{n=1}^{\infty} \frac{1}{n}\operatorname{sen}\!\left(\frac{n\pi x}{L}\right).$$
+                    <em>(Bônus: some $f_1(x) = x$ do Ex. 4.1 com $f_2(x) = L - x$: $b_n^{(1)} + b_n^{(2)} = \frac{2L((-1)^{n+1} + 1)}{n\pi} = \frac{2L(1 - (-1)^n)}{n\pi}$, que é exatamente $L$ vezes a série de $1$ do Ex. 4.2 ✓!)</em>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 3 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 3 (Clássico!) — $f(x) = \operatorname{sen}(x)$ em $[0, \pi]$ (Extensão Par vs. Ímpar)</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b4-ex3" data-track-type="exercise" data-block="bloco4">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Dada $f(x) = \operatorname{sen}(x)$ em $[0, \pi]$ ($L = \pi$):
+                <strong>(a)</strong> qual é sua Série em Senos (sem integrar!)?
+                <strong>(b)</strong> calcule sua Série em Cossenos (extensão par = $|\operatorname{sen} x|$ — onda retificada de circuito eletrônico!).
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (a) · Série em Senos instantânea!</span>
+                  <p>Como $f(x) = \operatorname{sen}(x)$ já é um elemento da própria base de senos ($\operatorname{sen}\frac{1\cdot\pi x}{\pi} = \operatorname{sen} x$), por ortogonalidade temos $b_1 = 1$ e $b_n = 0$ para todo $n \ge 2$! Logo <strong>$S_{f,s}(x) = \operatorname{sen}(x)$</strong>!</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b) · Série em Cossenos ($a_0$, $a_1$ separado, e $a_n$ para $n \ge 2$ via Prostaférese!)</span>
+                  $$a_0 = \frac{2}{\pi}\int_{0}^{\pi} \operatorname{sen}(x)\,dx = \frac{2}{\pi}\Big[-\cos(x)\Big]_{0}^{\pi} = \frac{2}{\pi}\big(1 - (-1)\big) = \frac{4}{\pi} \implies \frac{a_0}{2} = \frac{2}{\pi}.$$
+                  <p>Para $n = 1$: $a_1 = \dfrac{2}{\pi}\displaystyle \int_{0}^{\pi} \operatorname{sen}(x)\cos(x)\,dx = \frac{1}{\pi}\int_{0}^{\pi} \operatorname{sen}(2x)\,dx = \frac{1}{\pi}\left[-\frac{\cos(2x)}{2}\right]_{0}^{\pi} = \mathbf{0}$!</p>
+                  <p>Para $n \ge 2$, usamos a identidade produto-em-soma do Bloco 0: $\operatorname{sen}(x)\cos(nx) = \frac{1}{2}[\operatorname{sen}((1+n)x) + \operatorname{sen}((1-n)x)]$:</p>
+                  $$a_n = \frac{1}{\pi}\int_{0}^{\pi} \Big[\operatorname{sen}\big((1 + n)x\big) + \operatorname{sen}\big((1 - n)x\big)\Big] dx = \frac{1}{\pi}\left[-\frac{\cos((1+n)x)}{1+n} - \frac{\cos((1-n)x)}{1-n}\right]_{0}^{\pi}.$$
+                  <p>Note que $\cos((1+n)\pi) = \cos((1-n)\pi) = (-1)^{n+1} = -(-1)^n$. Logo:</p>
+                  $$a_n = \frac{1}{\pi}\left(\frac{1 + (-1)^n}{1 + n} + \frac{1 + (-1)^n}{1 - n}\right) = \frac{1 + (-1)^n}{\pi}\cdot\frac{(1 - n) + (1 + n)}{1 - n^2} = -\frac{2\big(1 + (-1)^n\big)}{\pi(n^2 - 1)}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b) · Separar $n$ par e $n$ ímpar</span>
+                  <p>Para $n$ ímpar: $1 + (-1)^n = 0 \implies a_{2k-1} = 0$. Para $n = 2k$ par ($k \ge 1$): $a_{2k} = -\dfrac{4}{\pi(4k^2 - 1)}$.</p>
+                  <div class="result-highlight">
+                    $$S_{f,c}(x) = \frac{2}{\pi} - \frac{4}{\pi}\sum_{k=1}^{\infty} \frac{\cos(2kx)}{4k^2 - 1} \qquad (= |\operatorname{sen} x|\text{ em todo }\mathbb{R}!).$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr>
+
+        <!-- ================================================================
+             TÓPICO 4.2 — A PONTE PARA AS EDPs (BLOCO 5)
+             ================================================================ -->
+        <section id="topico-4-2">
+          <div class="topic-header-bar">
+            <h2>4.2 Convergência nas Pontas e Por que Cada Extensão Aparece nas EDPs</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b4-t2" data-track-type="topic" data-block="bloco4">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao" id="ponte-edps">
+            <p class="callout-title">A Ponte Direta para o Bloco 5 — Qual Extensão Escolher na Prova de EDP?</p>
+            <p>
+              No Bloco 5, quando você resolver a Equação do Calor ou a Equação da Onda por Separação de Variáveis numa barra/corda $[0, L]$, <strong>as próprias condições de contorno em $x = 0$ e $x = L$ vão te obrigar a escolher entre senos ou cossenos!</strong> Entenda o porquê agora e o Bloco 5 vai parecer ridiculamente lógico:
+            </p>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr>
+                    <th>Condição de Contorno nas Pontas</th>
+                    <th>Problema Físico (Bloco 5)</th>
+                    <th>Autofunções que satisfazem</th>
+                    <th>Extensão / Série Obrigatória</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>$u(0, t) = 0$ e $u(L, t) = 0$<br><em>(Dirichlet Homogêneo)</em></td>
+                    <td><strong>Calor</strong> com pontas no gelo ($0^\circ$) ou <strong>Corda Vibrante</strong> presa nas pontas</td>
+                    <td>$\operatorname{sen}\!\left(\dfrac{n\pi x}{L}\right)$ (pois zera em $x=0$ e $x=L$!)</td>
+                    <td><strong>Extensão ÍMPAR</strong> $\implies$ <strong>Série de Senos</strong> ($b_n = \frac{2}{L}\int_0^L$)</td>
+                  </tr>
+                  <tr>
+                    <td>$u_x(0, t) = 0$ e $u_x(L, t) = 0$<br><em>(Neumann Homogêneo)</em></td>
+                    <td><strong>Barra Termicamente Isolada</strong> (fluxo de calor zero nas pontas)</td>
+                    <td>$1$ e $\cos\!\left(\dfrac{n\pi x}{L}\right)$ (pois a <em>derivada</em> zera em $x=0$ e $x=L$!)</td>
+                    <td><strong>Extensão PAR</strong> $\implies$ <strong>Série de Cossenos</strong> ($\frac{a_0}{2} + \sum a_n\cos$)</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <p>
+              <strong>Resumo de uma frase para a vida:</strong> Pontas presas / temperatura fixa $0$ ($u = 0$) $\implies$ <strong>SENOS</strong> (extensão ímpar). Pontas isoladas / derivada zero ($u_x = 0$) $\implies$ <strong>COSSENOS</strong> (extensão par, lembrando do termo constante $\frac{a_0}{2}$ que é a temperatura final de equilíbrio!).
+            </p>
+          </div>
+
+          <h3 id="exemplos-4-2">Exemplos Resolvidos (Seção 4.2 — Preparação Direta para Calor &amp; Onda)</h3>
+
+          <!-- EXEMPLO 4.3 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 4.3 (Perfil Inicial Campeão de Calor &amp; Onda!) — $f(x) = x(L - x)$ em $[0, L]$</h4>
+              <span class="badge badge-max">Clássico de EDP</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Uma barra de comprimento $L$ tem perfil inicial parabólico $f(x) = x(L - x) = Lx - x^2$ em $[0, L]$ (note que $f(0) = f(L) = 0$!). Calcule:
+                <strong>(a)</strong> sua <strong>Série em Senos</strong> (que usaremos no Calor Dirichlet e na Corda Vibrante!);
+                <strong>(b)</strong> sua <strong>Série em Cossenos</strong> (que usaremos na Barra Isolada!).
+              </p>
+              <div class="math-step">
+                <span class="step-label">Item (a) · Série em Senos ($b_n$ com Método Tabular DI e $\omega = \frac{n\pi}{L}$)</span>
+                <p>Montamos a tabela DI para $u = Lx - x^2$ (derivadas: $L - 2x$, depois $-2$, depois $0$) e $dv = \operatorname{sen}(\omega x)\,dx$:</p>
+                <div class="table-wrap">
+                  <table class="di-table">
+                    <thead>
+                      <tr><th>Sinal</th><th>D (Derivar)</th><th>I (Integrar)</th><th>Produto Diagonal</th></tr>
+                    </thead>
+                    <tbody>
+                      <tr><td class="di-sign">$+$</td><td>$Lx - x^2$</td><td>$\operatorname{sen}(\omega x)$</td><td>$-\dfrac{(Lx - x^2)\cos(\omega x)}{\omega}$</td></tr>
+                      <tr><td class="di-sign">$-$</td><td>$L - 2x$</td><td>$-\dfrac{\cos(\omega x)}{\omega}$</td><td>$+\dfrac{(L - 2x)\operatorname{sen}(\omega x)}{\omega^2}$</td></tr>
+                      <tr><td class="di-sign">$+$</td><td>$-2$</td><td>$-\dfrac{\operatorname{sen}(\omega x)}{\omega^2}$</td><td>$-\dfrac{2\cos(\omega x)}{\omega^3}$</td></tr>
+                      <tr><td class="di-sign">$-$</td><td>$0$</td><td>$+\dfrac{\cos(\omega x)}{\omega^3}$</td><td><em>(pare)</em></td></tr>
+                    </tbody>
+                  </table>
+                </div>
+                <p>Avaliando de $0$ até $L$ (que maravilha: $Lx - x^2$ zera em $0$ E em $L$, e $\operatorname{sen}(\omega x)$ também zera em $0$ E em $L$! Sobra SÓ a última parcela!):</p>
+                $$b_n = \frac{2}{L}\left[-\frac{2\cos(\omega x)}{\omega^3}\right]_{0}^{L} = \frac{2}{L}\left(-\frac{2(-1)^n}{\omega^3} - \left(-\frac{2\cdot 1}{\omega^3}\right)\right) = \frac{4\big(1 - (-1)^n\big)}{L\,\omega^3}.$$
+                <p>Devolvendo $\omega^3 = \dfrac{n^3\pi^3}{L^3}$:</p>
+                $$b_n = \frac{4L^2\big(1 - (-1)^n\big)}{n^3\pi^3} \implies b_{2k} = 0, \qquad b_{2k-1} = \frac{8L^2}{(2k - 1)^3\pi^3}.$$
+                <div class="result-highlight">
+                  <strong>Série em Senos:</strong> $S_{f,s}(x) = \dfrac{8L^2}{\pi^3}\displaystyle \sum_{k=1}^{\infty} \frac{1}{(2k - 1)^3}\operatorname{sen}\!\left(\frac{(2k - 1)\pi x}{L}\right)$.
+                </div>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Item (b) · Série em Cossenos ($a_0$ e $a_n$ com Método Tabular)</span>
+                $$a_0 = \frac{2}{L}\int_{0}^{L} (Lx - x^2)\,dx = \frac{2}{L}\left[\frac{Lx^2}{2} - \frac{x^3}{3}\right]_{0}^{L} = \frac{2}{L}\cdot\frac{L^3}{6} = \frac{L^2}{3} \implies \frac{a_0}{2} = \frac{L^2}{6}.$$
+                <p>Com a mesma tabela DI agora para $\cos(\omega x)$ (o 1º e o 3º termos têm $\operatorname{sen}(\omega x)$, que zeram em $0$ e $L$; sobra só o 2º termo $+\frac{(L - 2x)\cos(\omega x)}{\omega^2}$!):</p>
+                $$a_n = \frac{2}{L}\left[\frac{(L - 2x)\cos(\omega x)}{\omega^2}\right]_{0}^{L} = \frac{2}{L}\left(\frac{(-L)(-1)^n}{\omega^2} - \frac{L\cdot 1}{\omega^2}\right) = -\frac{2\big(1 + (-1)^n\big)}{\omega^2} = -\frac{2L^2\big(1 + (-1)^n\big)}{n^2\pi^2}.$$
+                <p>Ímpares zeram ($a_{2k-1} = 0$); pares ($n = 2k$) dão $a_{2k} = -\dfrac{4L^2}{4k^2\pi^2} = -\dfrac{L^2}{k^2\pi^2}$!</p>
+                <div class="result-highlight">
+                  <strong>Série em Cossenos:</strong> $S_{f,c}(x) = \dfrac{L^2}{6} - \dfrac{L^2}{\pi^2}\displaystyle \sum_{k=1}^{\infty} \frac{1}{k^2}\cos\!\left(\frac{2k\pi x}{L}\right)$.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 4.4 (RECOLHÍVEL) -->
+          <div class="box-exemplo" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 4.4 — Degrau na Metade da Barra ($1$ em $[0, L/2]$, $0$ em $(L/2, L]$)</h4>
+              <span class="badge badge-high">Clássico de Calor</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Uma barra de comprimento $L$ está aquecida a $1^\circ$ na metade esquerda $[0, L/2]$ e a $0^\circ$ na metade direita $(L/2, L]$. Encontre tanto a Série em Cossenos quanto a Série em Senos de $f(x)$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">1. Série em Cossenos (Barra Isolada!)</span>
+                  <p>Como $f(x) = 0$ em $(L/2, L]$, a integral termina em $L/2$:</p>
+                  $$a_0 = \frac{2}{L}\int_{0}^{L/2} 1\,dx = \frac{2}{L}\cdot\frac{L}{2} = 1 \implies \frac{a_0}{2} = \frac{1}{2} \quad (\text{a temperatura média da barra!}).$$
+                  $$a_n = \frac{2}{L}\int_{0}^{L/2} \cos\!\left(\frac{n\pi x}{L}\right) dx = \frac{2}{L}\left[\frac{L}{n\pi}\operatorname{sen}\!\left(\frac{n\pi x}{L}\right)\right]_{0}^{L/2} = \frac{2}{n\pi}\operatorname{sen}\!\left(\frac{n\pi}{2}\right).$$
+                  <p>Logo $S_{f,c}(x) = \dfrac{1}{2} + \dfrac{2}{\pi}\displaystyle \sum_{n=1}^{\infty} \frac{\operatorname{sen}(n\pi/2)}{n}\cos\!\left(\frac{n\pi x}{L}\right)$ (onde $\operatorname{sen}(n\pi/2)$ vale $+1, 0, -1, 0, \dots$).</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">2. Série em Senos (Pontas a $0^\circ$!)</span>
+                  $$b_n = \frac{2}{L}\int_{0}^{L/2} \operatorname{sen}\!\left(\frac{n\pi x}{L}\right) dx = \frac{2}{L}\left[-\frac{L}{n\pi}\cos\!\left(\frac{n\pi x}{L}\right)\right]_{0}^{L/2} = \frac{2}{n\pi}\left(1 - \cos\!\left(\frac{n\pi}{2}\right)\right).$$
+                  <p>Logo $S_{f,s}(x) = \dfrac{2}{\pi}\displaystyle \sum_{n=1}^{\infty} \frac{1 - \cos(n\pi/2)}{n}\operatorname{sen}\!\left(\frac{n\pi x}{L}\right)$.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 id="exercicios-4-2">Exercícios de Fixação (Seção 4.2)</h3>
+
+          <!-- EXERCÍCIO 4 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 4 — Temperatura Média na Barra Isolada (Sem Integrar $a_n$!)</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b4-ex4" data-track-type="exercise" data-block="bloco4">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Na Aula 26 (Bloco 5), veremos que numa barra termicamente isolada de comprimento $L$ com temperatura inicial $f(x)$, todos os cossenos decaem a zero quando $t \to \infty$, restando apenas $\dfrac{a_0}{2}$. Calcule o termo constante $\dfrac{a_0}{2}$ da Série em Cossenos para:
+                <strong>(a)</strong> $f(x) = 100\operatorname{sen}\!\left(\dfrac{\pi x}{L}\right)$; &nbsp;
+                <strong>(b)</strong> $f(x) = x^2$ em $[0, 3]$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (a) · $f(x) = 100\operatorname{sen}(\pi x / L)$</span>
+                  $$\frac{a_0}{2} = \frac{1}{L}\int_{0}^{L} 100\operatorname{sen}\!\left(\frac{\pi x}{L}\right) dx = \frac{100}{L}\left[-\frac{L}{\pi}\cos\!\left(\frac{\pi x}{L}\right)\right]_{0}^{L} = \frac{100}{\pi}\big(-\cos(\pi) + \cos(0)\big) = \frac{200}{\pi} \approx 63{,}66^\circ.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b) · $f(x) = x^2$ em $[0, 3]$ ($L = 3$)</span>
+                  $$\frac{a_0}{2} = \frac{1}{3}\int_{0}^{3} x^2\,dx = \frac{1}{3}\left[\frac{x^3}{3}\right]_{0}^{3} = \frac{1}{3}\cdot\frac{27}{3} = 3.$$
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 5 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 5 — Série em Senos de $f(x) = x^2$ em $[0, 1]$ (Conexão com Bloco 0!)</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b4-ex5" data-track-type="exercise" data-block="bloco4">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre a Série de Fourier em Senos de $f(x) = x^2$ definida em $[0, 1]$ ($L = 1$). <em>(Dica: você já calculou $\int_0^1 x^2 \operatorname{sen}(n\pi x)\,dx$ no Exercício 10 do Bloco 0!)</em>
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Aplicar $b_n = \frac{2}{1}\int_0^1 x^2\operatorname{sen}(n\pi x)\,dx$</span>
+                  <p>Do Exercício 10 do Bloco 0 (via Método Tabular DI), $\displaystyle \int_{0}^{1} x^2\operatorname{sen}(n\pi x)\,dx = \frac{(-1)^{n+1}}{n\pi} + \frac{2\big((-1)^n - 1\big)}{n^3\pi^3}$. Multiplicando por $\frac{2}{L} = 2$:</p>
+                  $$b_n = \frac{2(-1)^{n+1}}{n\pi} + \frac{4\big((-1)^n - 1\big)}{n^3\pi^3}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Escrever a série final</span>
+                  <div class="result-highlight">
+                    $$S_{f,s}(x) = \sum_{n=1}^{\infty} \left[\frac{2(-1)^{n+1}}{n\pi} + \frac{4\big((-1)^n - 1\big)}{n^3\pi^3}\right]\operatorname{sen}(n\pi x).$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 6 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 6 — Escolhendo a Extensão Certa para Cada EDP (Check-in do Bloco 5!)</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b4-ex6" data-track-type="exercise" data-block="bloco4">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Para cada problema físico em $[0, L]$ abaixo, indique qual extensão (par ou ímpar) e qual série ($S_{f,c}$ ou $S_{f,s}$) deve ser usada na condição inicial $f(x)$:
+                <br><strong>(a)</strong> Equação do Calor com $u(0,t) = 0$ e $u(L,t) = 0$;
+                <br><strong>(b)</strong> Equação do Calor com $u_x(0,t) = 0$ e $u_x(L,t) = 0$;
+                <br><strong>(c)</strong> Equação da Onda (corda presa nas extremidades) com $u(0,t) = 0$ e $u(L,t) = 0$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (a) · Calor Dirichlet Homogêneo</span>
+                  <p>Como $u(0,t) = u(L,t) = 0$, as autofunções espaciais são $\operatorname{sen}\!\left(\frac{n\pi x}{L}\right)$ $\implies$ <strong>Extensão ÍMPAR (Série em Senos $S_{f,s}$)</strong>!</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b) · Calor Neumann Homogêneo (Barra Isolada)</span>
+                  <p>Como $u_x(0,t) = u_x(L,t) = 0$, as autofunções espaciais são $1$ e $\cos\!\left(\frac{n\pi x}{L}\right)$ $\implies$ <strong>Extensão PAR (Série em Cossenos $S_{f,c}$, incluindo $\frac{a_0}{2}$!)</strong>!</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (c) · Equação da Onda (Corda Presa)</span>
+                  <p>Como $u(0,t) = u(L,t) = 0$, as autofunções espaciais são $\operatorname{sen}\!\left(\frac{n\pi x}{L}\right)$ $\implies$ <strong>Extensão ÍMPAR (Série em Senos $S_{f,s}$)</strong> tanto para a posição inicial $f(x)$ quanto para a velocidade inicial $g(x)$!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <nav class="chapter-footer-nav" aria-label="Navegação entre blocos">
+          <a href="bloco3.html" class="chapter-nav-btn">
+            <span class="chapter-nav-dir">← Bloco Anterior</span>
+            <span class="chapter-nav-label">Bloco 3 · Fundamentos de Séries de Fourier</span>
+          </a>
+          <a href="bloco5.html" class="chapter-nav-btn">
+            <span class="chapter-nav-dir">Próximo Bloco →</span>
+            <span class="chapter-nav-label">Bloco 5 · Aplicações em EDPs: Calor e Onda</span>
+          </a>
+        </nav>
+      </article>
+    </main>
+  </div>
+
+  <!-- ======================================================================
+       SIMULADOR INTERATIVO 4.1: EXTENSÕES EM [-2L, 2L] (L = 2)
+       ====================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const P = window.Calc4Plot;
+      if (!P) return;
+
+      const L = 2.0;
+      const selFn = document.getElementById('sim41-fn');
+      const selExt = document.getElementById('sim41-ext');
+      const nSlider = document.getElementById('sim41-n');
+      const nVal = document.getElementById('sim41-n-val');
+      const canvas = document.getElementById('canvas-sim41');
+      const outPeriod = document.getElementById('sim41-period');
+      const outSeries = document.getElementById('sim41-series');
+      const outAt0 = document.getElementById('sim41-at0');
+      const outAtL = document.getElementById('sim41-atL');
+      const outMsg = document.getElementById('sim41-msg');
+
+      const BASE_FNS = {
+        ramp: {
+          name: 'f(x) = x',
+          f: (x) => x,
+          f0p: 0, fLm: L,
+          yMin: -2.4, yMax: 2.4
+        },
+        const: {
+          name: 'f(x) = 1',
+          f: () => 1,
+          f0p: 1, fLm: 1,
+          yMin: -1.5, yMax: 1.5
+        },
+        down: {
+          name: 'f(x) = L − x',
+          f: (x) => L - x,
+          f0p: L, fLm: 0,
+          yMin: -2.4, yMax: 2.4
+        },
+        arch: {
+          name: 'f(x) = x(L − x)',
+          f: (x) => x * (L - x),
+          f0p: 0, fLm: 0,
+          yMin: -1.35, yMax: 1.35
+        },
+        half: {
+          name: 'Pulso [0, L/2]',
+          f: (x) => (x < L / 2 ? 1 : 0),
+          f0p: 1, fLm: 0,
+          yMin: -1.45, yMax: 1.45
+        }
+      };
+
+      function evalExtended(base, extMode, x) {
+        if (extMode === 'periodic') {
+          let r = ((x % L) + L) % L;
+          if (r < 1e-3 || Math.abs(r - L) < 1e-3) {
+            if (Math.abs(base.f0p - base.fLm) > 1e-3) return NaN;
+          }
+          if (selFn.value === 'half' && Math.abs(r - L / 2) < 1e-3) return NaN;
+          return base.f(r);
+        } else {
+          const P2 = 2 * L;
+          let r = (((x + L) % P2) + P2) % P2 - L; /* in [-L, L) */
+          if (extMode === 'even') {
+            const ar = Math.abs(r);
+            if (selFn.value === 'half' && Math.abs(ar - L / 2) < 1e-3) return NaN;
+            return base.f(ar);
+          } else {
+            /* odd */
+            if (Math.abs(r) < 1e-3 && Math.abs(base.f0p) > 1e-3) return NaN;
+            if (Math.abs(Math.abs(r) - L) < 1e-3 && Math.abs(base.fLm) > 1e-3) return NaN;
+            const ar = Math.abs(r);
+            if (selFn.value === 'half' && Math.abs(ar - L / 2) < 1e-3) return NaN;
+            return r >= 0 ? base.f(ar) : -base.f(ar);
+          }
+        }
+      }
+
+      /* Compute numerical Fourier coefficients cleanly on [0, L] via Simpson/midpoint rule */
+      function computeFourierCoeffs(base, extMode, N) {
+        const M = 240;
+        const dx = L / M;
+        const a = new Array(N + 1).fill(0);
+        const b = new Array(N + 1).fill(0);
+
+        if (extMode === 'even') {
+          for (let n = 0; n <= N; n++) {
+            let s = 0;
+            for (let i = 0; i < M; i++) {
+              const x = (i + 0.5) * dx;
+              s += base.f(x) * Math.cos((n * Math.PI * x) / L);
+            }
+            a[n] = (2 / L) * s * dx;
+          }
+        } else if (extMode === 'odd') {
+          for (let n = 1; n <= N; n++) {
+            let s = 0;
+            for (let i = 0; i < M; i++) {
+              const x = (i + 0.5) * dx;
+              s += base.f(x) * Math.sin((n * Math.PI * x) / L);
+            }
+            b[n] = (2 / L) * s * dx;
+          }
+        } else {
+          /* Periodic period L => angular freq 2*n*pi/L */
+          let s0 = 0;
+          for (let i = 0; i < M; i++) s0 += base.f((i + 0.5) * dx);
+          a[0] = (2 / L) * s0 * dx;
+          for (let n = 1; n <= N; n++) {
+            let sc = 0;
+            let ss = 0;
+            for (let i = 0; i < M; i++) {
+              const x = (i + 0.5) * dx;
+              const ang = (2 * n * Math.PI * x) / L;
+              sc += base.f(x) * Math.cos(ang);
+              ss += base.f(x) * Math.sin(ang);
+            }
+            a[n] = (2 / L) * sc * dx;
+            b[n] = (2 / L) * ss * dx;
+          }
+        }
+        return { a, b };
+      }
+
+      function drawSim41() {
+        const base = BASE_FNS[selFn.value];
+        const extMode = selExt.value;
+        const N = parseInt(nSlider.value, 10);
+        nVal.textContent = N === 0 ? 'Off' : String(N);
+
+        let at0 = 0;
+        let atL = 0;
+        if (extMode === 'even') {
+          outPeriod.textContent = '2L = 4';
+          outSeries.textContent = 'Só Cossenos (S_{f,c})';
+          outSeries.innerHTML = 'Só Cossenos (S<sub>f,c</sub>)';
+          at0 = base.f0p;
+          atL = base.fLm;
+          outMsg.innerHTML = `<strong>Extensão PAR</strong> de ${base.name}: espelha o trecho [0, L] (faixa destacada) no eixo y e repete com período 2L. Note que ela <strong>nunca cria saltos novos em x = 0 nem em x = L</strong> — por isso é a extensão natural da <em>Barra Termicamente Isolada (Neumann)</em>!`;
+        } else if (extMode === 'odd') {
+          outPeriod.textContent = '2L = 4';
+          outSeries.innerHTML = 'Só Senos (S<sub>f,s</sub>)';
+          at0 = 0;
+          atL = 0;
+          outMsg.innerHTML = `<strong>Extensão ÍMPAR</strong> de ${base.name}: gira [0, L] em 180° na origem e repete com período 2L. Repare que em x = 0 e x = L a Série em Senos <strong>SEMPRE converge para 0</strong> (bolinhas verdes) — exatamente a condição de contorno da <em>Barra com Pontas a 0° (Dirichlet)</em> e da <em>Corda Presa</em>!`;
+        } else {
+          outPeriod.textContent = 'L = 2';
+          outSeries.textContent = 'Geral (Senos + Cossenos)';
+          at0 = (base.f0p + base.fLm) / 2;
+          atL = (base.f0p + base.fLm) / 2;
+          outMsg.innerHTML = `<strong>Extensão PERIÓDICA direta</strong> de ${base.name}: apenas repete cópias idênticas de [0, L] com período L (sem espelhar). Se f(0⁺) ≠ f(L⁻), surgem saltos em todos os múltiplos de L, onde a série converge para a média ${(at0).toFixed(2)}.`;
+        }
+
+        outAt0.textContent = at0.toFixed(2);
+        outAtL.textContent = atL.toFixed(2);
+
+        const { ctx, width, height } = P.setupCanvas(canvas, 330);
+        const colors = P.getThemeColors();
+        const xMin = -2 * L;
+        const xMax = 2 * L;
+        const map = P.createMapper(width, height, xMin, xMax, base.yMin, base.yMax);
+
+        P.drawGridAndAxes(ctx, map, colors, {
+          xTicks: 8, yTicks: 5,
+          xLabel: 'x (de −2L até +2L)', yLabel: 'Extensão escolhida vs. [0, L] original'
+        });
+
+        /* Highlight original physical domain [0, L] */
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(map.pad.left, map.pad.top, map.plotW, map.plotH);
+        ctx.clip();
+        ctx.fillStyle = colors.band;
+        ctx.fillRect(map.toX(0), map.pad.top, map.toX(L) - map.toX(0), map.plotH);
+
+        /* Label [0, L] at top of shaded band */
+        ctx.fillStyle = colors.primary;
+        ctx.font = `700 11px ${colors.monoFont}`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        ctx.fillText('Domínio original [0, L]', (map.toX(0) + map.toX(L)) / 2, map.pad.top + 6);
+        ctx.restore();
+
+        /* Plot full extended curve (subtle/dashed outside [0,L]) */
+        P.plotCurve(ctx, map, (x) => evalExtended(base, extMode, x), {
+          color: colors.primary, lineWidth: 2.0, dash: [6, 4], samples: 700
+        });
+
+        /* Plot original [0, L] solid thick */
+        P.plotCurve(ctx, map, (x) => (x >= 0 && x <= L ? evalExtended(base, extMode, x) : NaN), {
+          color: colors.primary, lineWidth: 3.2, samples: 400
+        });
+
+        /* Optional Fourier partial sum overlay */
+        if (N > 0) {
+          const { a, b } = computeFourierCoeffs(base, extMode, N);
+          const freqScale = extMode === 'periodic' ? (2 * Math.PI) / L : Math.PI / L;
+          P.plotCurve(ctx, map, (x) => {
+            let s = a[0] / 2;
+            for (let n = 1; n <= N; n++) {
+              const ang = n * freqScale * x;
+              if (a[n] !== 0) s += a[n] * Math.cos(ang);
+              if (b[n] !== 0) s += b[n] * Math.sin(ang);
+            }
+            return s;
+          }, {
+            color: colors.secondary, lineWidth: 2.2, samples: 650
+          });
+        }
+
+        /* Mark convergence values at x = 0 and x = L */
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(map.pad.left, map.pad.top, map.plotW, map.plotH);
+        ctx.clip();
+        [
+          { x: 0, y: at0 },
+          { x: L, y: atL }
+        ].forEach((pt) => {
+          ctx.beginPath();
+          ctx.arc(map.toX(pt.x), map.toY(pt.y), 5.5, 0, Math.PI * 2);
+          ctx.fillStyle = colors.success;
+          ctx.fill();
+          ctx.strokeStyle = colors.bg;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        });
+        ctx.restore();
+      }
+
+      selFn.addEventListener('change', drawSim41);
+      selExt.addEventListener('change', drawSim41);
+      nSlider.addEventListener('input', drawSim41);
+      P.registerChart(drawSim41);
+    });
+  </script>
+</body>
+</html>

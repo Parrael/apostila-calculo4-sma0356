@@ -1,0 +1,1455 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloco 5: Aplicações em EDPs — Calor e Onda — Apostila Cálculo IV (SMA0356)</title>
+  <meta name="description" content="Bloco 5 da Apostila Interativa de Cálculo IV (ICMC/USP): Aulas 24, 25, 26 e 27 — Equação do Calor (Dirichlet Homogêneo, Não Homogêneo e Neumann) e Equação da Onda (Corda Vibrante + Frequência Fundamental) com simuladores temporais.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body data-block-id="bloco5">
+  <div class="reading-progress-track" aria-hidden="true">
+    <div class="reading-progress-fill"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-left">
+      <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-label="Abrir menu lateral" aria-expanded="false">☰</button>
+      <a href="index.html" class="brand-link">
+        <span class="brand-title">Cálculo IV · Apostila P2</span>
+        <span class="brand-code">SMA0356</span>
+      </a>
+      <span class="header-breadcrumb">/ Bloco 5 · EDPs: Calor e Onda</span>
+    </div>
+    <div class="header-right">
+      <div class="header-progress-pill" title="Seu progresso neste bloco">
+        <span>Bloco 5:</span>
+        <strong data-block-progress-pct>0%</strong>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">☾</span>
+        <span class="theme-label">Modo Escuro</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <div class="page-shell">
+    <aside class="sidebar" aria-label="Sumário e Navegação">
+      <div class="sidebar-progress-box">
+        <div class="sidebar-progress-top">
+          <span>Progresso no Bloco 5</span>
+          <strong data-block-progress-pct>0%</strong>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" data-block-progress-bar></div>
+        </div>
+        <div class="sidebar-progress-meta" data-block-progress-detail>0/4 tópicos · 0/12 exercícios</div>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Sumário do Bloco 5</p>
+        <ul class="toc-list">
+          <li>
+            <a href="#topico-5-1" class="toc-link active">
+              <span>5.1 Calor · Dirichlet Homogêneo</span>
+              <span class="nav-status-tag" data-toc-track="b5-t1" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#sep-dirichlet" class="toc-link sub-item">Separação de Variáveis (3 Casos)</a></li>
+          <li><a href="#exercicios-5-1" class="toc-link sub-item">Exercícios 1 a 3</a></li>
+          <li>
+            <a href="#topico-5-2" class="toc-link">
+              <span>5.2 Calor · Dirichlet Não Homogêneo</span>
+              <span class="nav-status-tag" data-toc-track="b5-t2" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#exercicios-5-2" class="toc-link sub-item">Exercícios 4 a 6</a></li>
+          <li>
+            <a href="#topico-5-3" class="toc-link">
+              <span>5.3 Calor · Barra Isolada (Neumann)</span>
+              <span class="nav-status-tag" data-toc-track="b5-t3" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#simulador-calor" class="toc-link sub-item"><span>Simulador 5.1: Difusão do Calor</span></a></li>
+          <li><a href="#exercicios-5-3" class="toc-link sub-item">Exercícios 7 a 9</a></li>
+          <li>
+            <a href="#topico-5-4" class="toc-link">
+              <span>5.4 Onda · Corda Vibrante (Aula 27)</span>
+              <span class="nav-status-tag" data-toc-track="b5-t4" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#frequencia-fundamental" class="toc-link sub-item">Frequência Fundamental</a></li>
+          <li><a href="#simulador-onda" class="toc-link sub-item"><span>Simulador 5.2: Corda Vibrante</span></a></li>
+          <li><a href="#exercicios-5-4" class="toc-link sub-item">Exercícios 10 a 12</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Todos os Blocos</p>
+        <ul class="block-nav-list">
+          <li><a href="index.html" class="block-nav-link"><span>← Painel Inicial</span></a></li>
+          <li><a href="bloco0.html" class="block-nav-link"><span>Bloco 0 · Nivelamento</span></a></li>
+          <li><a href="bloco1.html" class="block-nav-link"><span>Bloco 1 · Séries de Potências</span></a></li>
+          <li><a href="bloco2.html" class="block-nav-link"><span>Bloco 2 · Taylor, Binomial e EDOs</span></a></li>
+          <li><a href="bloco3.html" class="block-nav-link"><span>Bloco 3 · Séries de Fourier</span></a></li>
+          <li><a href="bloco4.html" class="block-nav-link"><span>Bloco 4 · Extensões Par/Ímpar</span></a></li>
+          <li><a href="bloco5.html" class="block-nav-link active"><span>Bloco 5 · EDPs (Calor e Onda)</span></a></li>
+          <li><a href="formulario.html" class="block-nav-link"><span>Formulário de Bolso</span></a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <article class="article-container">
+        <header class="chapter-header">
+          <p class="chapter-kicker">Bloco 5 · Prioridade Máxima na P2 · Aulas 24, 25, 26 e 27 (SMA0356)</p>
+          <h1>Aplicações em EDPs: Equação do Calor e Equação da Onda</h1>
+          <p class="chapter-lead">
+            Chegamos ao grande finale da disciplina! Tudo o que você construiu nos Blocos 0, 3 e 4 se encaixa agora como peças de um relógio suíço. Vamos desenvolver a <strong>Separação de Variáveis do início ao fim</strong> (analisando os 3 casos da constante de separação sem pular nenhuma passagem) para os 4 problemas clássicos da P2: <strong>Calor Dirichlet Homogêneo</strong>, <strong>Calor Dirichlet Não Homogêneo</strong>, <strong>Barra Termicamente Isolada (Neumann)</strong> e <strong>Corda Vibrante (Onda)</strong> — e ver a física ganhando vida nos dois simuladores temporais!
+          </p>
+          <div class="chapter-meta-row">
+            <span class="badge badge-max">Prioridade Máxima na P2</span>
+            <span class="badge badge-neutral">Aulas 24, 25, 26 e 27</span>
+            <span class="badge badge-neutral">7 Exemplos Completos</span>
+            <span class="badge badge-neutral">12 Exercícios Passo a Passo</span>
+            <span class="badge badge-done">2 Simuladores Temporais (Calor + Onda)</span>
+          </div>
+        </header>
+
+        <!-- ================================================================
+             TÓPICO 5.1 — EQUAÇÃO DO CALOR: DIRICHLET HOMOGÊNEO (AULAS 24–25)
+             ================================================================ -->
+        <section id="topico-5-1">
+          <div class="topic-header-bar">
+            <h2>5.1 Aulas 24 e 25 (Parte I) — Equação do Calor e Dirichlet Homogêneo</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b5-t1" data-track-type="topic" data-block="bloco5">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — O que significa $u_t = \alpha^2 u_{xx}$?</p>
+            <p>
+              Imagine uma barra metálica fina de comprimento $L$, isolada nas laterais, cuja temperatura no ponto $x \in [0, L]$ e no instante $t \ge 0$ é $u(x, t)$. A Física mostra que ela obedece à <strong>Equação do Calor</strong>:
+              $$u_t = \alpha^2 u_{xx} \qquad \left(\text{também escrita como } \frac{1}{k}u_t = u_{xx}, \text{ onde } \alpha^2 = k > 0 \text{ é a difusividade térmica!}\right)$$
+            </p>
+            <p>
+              Olhe que intuição linda: $u_{xx}$ mede a <em>concavidade</em> (curvatura) do gráfico da temperatura! Num pico quente (concavidade para baixo, $u_{xx} < 0$), temos $u_t < 0$ (o pico <strong>esfria</strong>!). Num vale frio (concavidade para cima, $u_{xx} > 0$), temos $u_t > 0$ (o vale <strong>esquenta</strong>!). O calor sempre flui do mais quente para o mais frio até achatar o perfil!
+            </p>
+          </div>
+
+          <h3 id="sep-dirichlet">Separação de Variáveis COMPLETA (Dirichlet Homogêneo: $u(0,t) = u(L,t) = 0$)</h3>
+          <p>Queremos resolver o Problema de Valor Inicial e de Contorno (PVIC) para uma barra com as duas pontas mantidas no gelo ($0^\circ$):</p>
+          $$\begin{cases} u_t(x, t) = \alpha^2 u_{xx}(x, t), & 0 < x < L,\; t > 0, \\ u(0, t) = 0 \;\text{ e }\; u(L, t) = 0, & t > 0 \quad (\text{Condições de Contorno}), \\ u(x, 0) = f(x), & 0 \le x \le L \quad (\text{Condição Inicial}). \end{cases}$$
+
+          <div class="math-step">
+            <span class="step-label">Etapa 1 · Separar as variáveis $u(x, t) = X(x)\,T(t) \neq 0$</span>
+            <p>Substituindo $u_t = X(x)T'(t)$ e $u_{xx} = X''(x)T(t)$ na EDP:</p>
+            $$X(x)T'(t) = \alpha^2 X''(x)T(t).$$
+            <p>Dividindo os dois lados por $\alpha^2 X(x)T(t)$ (separando tudo que depende de $t$ de um lado e tudo que depende de $x$ do outro):</p>
+            $$\frac{T'(t)}{\alpha^2 T(t)} = \frac{X''(x)}{X(x)} = \lambda \quad (\text{constante de separação } \lambda \in \mathbb{R}!).$$
+            <p><em>(Por que tem que ser constante? Porque o lado esquerdo só depende de $t$ e o direito só depende de $x$; a única forma de serem iguais para todo $x$ e todo $t$ é ambos valerem o mesmo número constante $\lambda$!)</em></p>
+            <p>Assim a EDP se quebra em <strong>duas EDOs simples</strong>:</p>
+            $$(1)\; X''(x) - \lambda X(x) = 0 \qquad \text{e} \qquad (2)\; T'(t) - \alpha^2 \lambda\,T(t) = 0.$$
+            <p>Das condições de contorno $u(0, t) = X(0)T(t) = 0$ e $u(L, t) = X(L)T(t) = 0$ (como $T(t) \not\equiv 0$), obtemos <strong>$X(0) = 0$ e $X(L) = 0$</strong>!</p>
+          </div>
+
+          <div class="math-step">
+            <span class="step-label">Etapa 2 · Análise dos 3 Casos de $\lambda$ no Problema Espacial $X'' = \lambda X$, $X(0) = X(L) = 0$</span>
+            <ul>
+              <li><strong>Caso I: $\lambda > 0$ (escrevemos $\lambda = \beta^2$ com $\beta > 0$):</strong>
+                <br>EDO: $X'' - \beta^2 X = 0 \implies$ raízes $r = \pm\beta \implies X(x) = c_1 e^{\beta x} + c_2 e^{-\beta x}$.
+                <br>Aplicando $X(0) = 0$: $c_1 + c_2 = 0 \implies c_2 = -c_1$.
+                <br>Aplicando $X(L) = 0$: $c_1(e^{\beta L} - e^{-\beta L}) = 0$. Como $\beta L > 0$, temos $e^{\beta L} > 1 > e^{-\beta L}$, logo $e^{\beta L} - e^{-\beta L} \neq 0 \implies c_1 = 0 \implies c_2 = 0$. Só dá a solução trivial $X(x) \equiv 0$ — <strong>DESCARTADO!</strong>
+              </li>
+              <li><strong>Caso II: $\lambda = 0$:</strong>
+                <br>EDO: $X'' = 0 \implies X(x) = c_1 x + c_2$.
+                <br>De $X(0) = 0$: $c_2 = 0$. De $X(L) = 0$: $c_1 L = 0 \implies c_1 = 0$ (pois $L > 0$). Só dá $X(x) \equiv 0$ — <strong>DESCARTADO!</strong>
+              </li>
+              <li><strong>Caso III: $\lambda < 0$ (escrevemos $\lambda = -\beta^2$ com $\beta > 0$):</strong>
+                <br>EDO: $X'' + \beta^2 X = 0 \implies$ raízes $r = \pm i\beta \implies X(x) = c_1 \cos(\beta x) + c_2 \operatorname{sen}(\beta x)$.
+                <br>De $X(0) = 0$: $c_1 \cdot 1 + c_2 \cdot 0 = 0 \implies \mathbf{c_1 = 0}$, sobrando $X(x) = c_2 \operatorname{sen}(\beta x)$.
+                <br>De $X(L) = 0$: $c_2 \operatorname{sen}(\beta L) = 0$. Para ter solução não nula ($c_2 \neq 0$), exigimos $\operatorname{sen}(\beta L) = 0 \iff \beta L = n\pi$ ($n = 1, 2, 3, \dots$, pois $\beta > 0$)!
+                <br>Logo obtemos os <strong>autovalores</strong> e <strong>autofunções</strong>:
+                $$\beta_n = \frac{n\pi}{L}, \qquad \lambda_n = -\frac{n^2\pi^2}{L^2}, \qquad X_n(x) = \operatorname{sen}\!\left(\frac{n\pi x}{L}\right) \quad (n = 1, 2, 3, \dots).$$
+              </li>
+            </ul>
+          </div>
+
+          <div class="math-step">
+            <span class="step-label">Etapa 3 · Resolver a EDO Temporal $T'(t) = \alpha^2 \lambda_n T(t)$ e Aplicar Superposição</span>
+            <p>Substituindo $\lambda_n = -\dfrac{n^2\pi^2}{L^2}$ em $T'_n = \alpha^2 \lambda_n T_n$:</p>
+            $$T'_n(t) = -\frac{\alpha^2 n^2\pi^2}{L^2}\,T_n(t) \implies T_n(t) = b_n\,e^{-\frac{\alpha^2 n^2\pi^2}{L^2}t}.$$
+            <p>Como a EDP e as condições de contorno são lineares e homogêneas, pelo <strong>Princípio da Superposição</strong> somamos todos os modos $u_n(x,t) = X_n(x)T_n(t)$:</p>
+            $$u(x, t) = \sum_{n=1}^{\infty} b_n\,e^{-\frac{\alpha^2 n^2\pi^2}{L^2}t}\operatorname{sen}\!\left(\frac{n\pi x}{L}\right).$$
+          </div>
+
+          <div class="math-step">
+            <span class="step-label">Etapa 4 · Impor a Condição Inicial $u(x, 0) = f(x)$ (A Ponte do Bloco 4!)</span>
+            <p>Fazendo $t = 0$, a exponencial vira $e^0 = 1$, e ficamos com a <strong>Série de Fourier em Senos</strong> de $f(x)$ em $[0, L]$:</p>
+            $$u(x, 0) = \sum_{n=1}^{\infty} b_n \operatorname{sen}\!\left(\frac{n\pi x}{L}\right) = f(x) \implies \boxed{b_n = \frac{2}{L}\int_{0}^{L} f(x)\operatorname{sen}\!\left(\frac{n\pi x}{L}\right) dx.}$$
+          </div>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Fórmula Fechada — Calor com Dirichlet Homogêneo ($u(0,t) = u(L,t) = 0$)</p>
+            $$u(x, t) = \sum_{n=1}^{\infty} b_n\,e^{-\frac{\alpha^2 n^2\pi^2}{L^2}t}\operatorname{sen}\!\left(\frac{n\pi x}{L}\right), \qquad b_n = \frac{2}{L}\int_{0}^{L} f(x)\operatorname{sen}\!\left(\frac{n\pi x}{L}\right) dx.$$
+            <p><strong>Limite quando $t \to \infty$:</strong> Como todo $e^{-\frac{\alpha^2 n^2\pi^2}{L^2}t} \to 0$, temos $\displaystyle \lim_{t \to \infty} u(x, t) = 0$ (toda a barra esfria até a temperatura $0^\circ$ das pontas!).</p>
+          </div>
+
+          <!-- EXEMPLO 5.1 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 5.1 (Atalho de Ouro!) — Quando $f(x)$ já é Combinação de Senos</h4>
+              <span class="badge badge-base">Nível Básico</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva $\begin{cases} u_t = 3u_{xx}, & 0 < x < \pi,\; t > 0, \\ u(0, t) = u(\pi, t) = 0, & t > 0, \\ u(x, 0) = 4\operatorname{sen}(2x) - 7\operatorname{sen}(5x), & 0 \le x \le \pi. \end{cases}$
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo a passo (SEM precisar integrar nada!)</span>
+                <p>Identificamos $L = \pi$ e <strong>$\alpha^2 = 3$</strong> (cuidado: não é $\alpha = 3$!). A solução geral de Dirichlet Homogêneo é:</p>
+                $$u(x, t) = \sum_{n=1}^{\infty} b_n\,e^{-3n^2 t}\operatorname{sen}(nx).$$
+                <p>Em $t = 0$, igualamos $\displaystyle \sum_{n=1}^{\infty} b_n \operatorname{sen}(nx) = 4\operatorname{sen}(2x) - 7\operatorname{sen}(5x)$. Por comparação direta de coeficientes (ortogonalidade!): $b_2 = 4$, $b_5 = -7$, e todos os outros $b_n = 0$!</p>
+                <div class="result-highlight">
+                  $$u(x, t) = 4\,e^{-3\cdot 2^2 t}\operatorname{sen}(2x) - 7\,e^{-3\cdot 5^2 t}\operatorname{sen}(5x) = 4e^{-12t}\operatorname{sen}(2x) - 7e^{-75t}\operatorname{sen}(5x).$$
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 5.2 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 5.2 (Exemplo III.13 da Profa. Janete!) — Barra com $f(x) = x$, $L = \pi$, $\alpha^2 = 4$</h4>
+              <span class="badge badge-high">Nível de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Uma barra de comprimento $L = \pi$ com difusividade térmica $\alpha^2 = 4$ tem as pontas mantidas a $0^\circ$ e temperatura inicial $u(x, 0) = x$. Encontre $u(x, t)$.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Montar o PVIC e a solução geral</span>
+                <p>Com $L = \pi$ e $\alpha^2 = 4$, temos $\dfrac{\alpha^2 n^2\pi^2}{L^2} = \dfrac{4n^2\cancel{\pi^2}}{\cancel{\pi^2}} = 4n^2$, logo $u(x, t) = \displaystyle \sum_{n=1}^{\infty} b_n\,e^{-4n^2 t}\operatorname{sen}(nx)$.</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Calcular $b_n$ (Série em Senos de $f(x) = x$ em $[0, \pi]$)</span>
+                $$b_n = \frac{2}{\pi}\int_{0}^{\pi} x\operatorname{sen}(nx)\,dx = \frac{2}{\pi}\cdot\frac{(-1)^{n+1}\pi}{n} = \frac{2(-1)^{n+1}}{n}.$$
+                <div class="result-highlight">
+                  $$u(x, t) = \sum_{n=1}^{\infty} \frac{2(-1)^{n+1}}{n}\,e^{-4n^2 t}\operatorname{sen}(nx).$$
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 id="exercicios-5-1">Exercícios de Fixação (Seção 5.1)</h3>
+
+          <!-- EXERCÍCIO 1 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 1 — Aquecimento Rápido: $\frac{1}{2}u_t = u_{xx}$ com $L = 3$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b5-ex1" data-track-type="exercise" data-block="bloco5">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva $\begin{cases} \dfrac{1}{2}u_t = u_{xx}, & 0 < x < 3,\; t > 0, \\ u(0, t) = u(3, t) = 0, & t > 0, \\ u(x, 0) = 6\operatorname{sen}\!\left(\dfrac{\pi x}{3}\right) + 2\operatorname{sen}\!\left(\dfrac{4\pi x}{3}\right), & 0 \le x \le 3. \end{cases}$
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Isolar $u_t$ para achar $\alpha^2$ corretamente!</span>
+                  <p>Multiplicando por $2$: $u_t = 2u_{xx}$, logo <strong>$\alpha^2 = 2$</strong> e $L = 3$. O expoente temporal é $-\dfrac{\alpha^2 n^2\pi^2}{L^2}t = -\dfrac{2n^2\pi^2}{9}t$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Ler $b_1 = 6$, $b_4 = 2$ e escrever a resposta</span>
+                  <div class="result-highlight">
+                    $$u(x, t) = 6\,e^{-\frac{2\pi^2}{9}t}\operatorname{sen}\!\left(\frac{\pi x}{3}\right) + 2\,e^{-\frac{32\pi^2}{9}t}\operatorname{sen}\!\left(\frac{4\pi x}{3}\right).$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 2 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 2 (Lista 5 Ex. 2a) — Barra Inicialmente a $25^\circ$ com Pontas no Gelo</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b5-ex2" data-track-type="exercise" data-block="bloco5">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva $u_t = u_{xx}$ em $(0, \pi) \times (0, \infty)$ com $u(0, t) = u(\pi, t) = 0$ e $u(x, 0) = 25$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Calcular $b_n$ (Série em Senos de $f(x) = 25$)</span>
+                  $$b_n = \frac{2}{\pi}\int_{0}^{\pi} 25\operatorname{sen}(nx)\,dx = \frac{50}{\pi}\left[-\frac{\cos(nx)}{n}\right]_{0}^{\pi} = \frac{50\big(1 - (-1)^n\big)}{n\pi}.$$
+                  <p>Pares zeram; para $n = 2k - 1$ ímpar, $b_{2k-1} = \dfrac{100}{(2k - 1)\pi}$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Montar $u(x, t)$ ($\alpha^2 = 1, L = \pi$)</span>
+                  <div class="result-highlight">
+                    $$u(x, t) = \frac{100}{\pi}\sum_{k=1}^{\infty} \frac{1}{2k - 1}\,e^{-(2k - 1)^2 t}\operatorname{sen}\big((2k - 1)x\big).$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 3 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 3 — Perfil Parabólico $u(x, 0) = x(L - x)$ com Pontas a $0^\circ$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b5-ex3" data-track-type="exercise" data-block="bloco5">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva $u_t = \alpha^2 u_{xx}$ em $(0, L) \times (0, \infty)$ com $u(0, t) = u(L, t) = 0$ e $u(x, 0) = x(L - x)$. <em>(Aproveite o Exemplo 4.3 do Bloco 4!)</em>
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Recuperar $b_n$ do Exemplo 4.3(a)</span>
+                  <p>Para $f(x) = x(L - x)$ em $[0, L]$, obtivemos $b_{2k} = 0$ e $b_{2k-1} = \dfrac{8L^2}{(2k - 1)^3\pi^3}$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Multiplicar cada modo por $e^{-\alpha^2 (2k-1)^2 \pi^2 t / L^2}$</span>
+                  <div class="result-highlight">
+                    $$u(x, t) = \frac{8L^2}{\pi^3}\sum_{k=1}^{\infty} \frac{1}{(2k - 1)^3}\,e^{-\frac{\alpha^2 (2k - 1)^2 \pi^2}{L^2}t}\operatorname{sen}\!\left(\frac{(2k - 1)\pi x}{L}\right).$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr>
+
+        <!-- ================================================================
+             TÓPICO 5.2 — DIRICHLET NÃO HOMOGÊNEO (AULA 25, PARTE II)
+             ================================================================ -->
+        <section id="topico-5-2">
+          <div class="topic-header-bar">
+            <h2>5.2 Aula 25 (Parte II) — Dirichlet Não Homogêneo ($u(0,t) = T_1,\; u(L,t) = T_2$)</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b5-t2" data-track-type="topic" data-block="bloco5">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — E se as Pontas NÃO estiverem a $0^\circ$?</p>
+            <p>
+              Suponha que a ponta esquerda esteja a $T_1 = 10^\circ$ e a direita a $T_2 = 40^\circ$. Se você tentar usar separação de variáveis direto, <strong>NÃO FUNCIONA</strong> — porque a soma de duas soluções com ponta $10^\circ$ daria ponta $20^\circ$ (não é homogêneo!).
+            </p>
+            <p>
+              O truque genial é quebrar a temperatura em <strong>dois pedaços</strong>:
+              $$u(x, t) = \underbrace{v(x)}_{\text{equilíbrio final (reta)}} + \underbrace{w(x, t)}_{\text{transiente que morre com } t \to \infty}.$$
+              A reta $v(x)$ "absorve" as temperaturas $T_1$ e $T_2$ das pontas, deixando o transiente $w(x, t)$ com <strong>pontas exatamente a $0^\circ$</strong> — ou seja, voltamos ao Problema 5.1 que você já sabe resolver!
+            </p>
+          </div>
+
+          <div class="callout box-receita">
+            <p class="callout-title">Receita de Bolo — 4 Passos para Dirichlet Não Homogêneo</p>
+            <ol>
+              <li><strong>Passo 1 (Solução Estacionária $v(x)$):</strong> Ponha $u_t = 0 \implies v''(x) = 0$ com $v(0) = T_1$ e $v(L) = T_2$. Integrando duas vezes ($v(x) = Ax + B$):
+                $$\boxed{v(x) = \frac{T_2 - T_1}{L}x + T_1.}$$
+              </li>
+              <li><strong>Passo 2 (Decomposição $u(x, t) = v(x) + w(x, t)$):</strong> Mostre na prova (3 linhas!) que $w = u - v$ satisfaz:
+                <ul>
+                  <li>$w_t = u_t = \alpha^2 u_{xx} = \alpha^2(w_{xx} + \underbrace{v''}_{=\,0}) = \alpha^2 w_{xx}$;</li>
+                  <li>$w(0, t) = T_1 - T_1 = 0$ e $w(L, t) = T_2 - T_2 = 0$ (homogêneo!);</li>
+                  <li><strong>Nova condição inicial:</strong> $\mathbf{w(x, 0) = f(x) - v(x)}$!</li>
+                </ul>
+              </li>
+              <li><strong>Passo 3 (Resolver $w(x, t)$ via Série em Senos):</strong> Calcule $b_n = \dfrac{2}{L}\displaystyle \int_{0}^{L} \big(f(x) - v(x)\big)\operatorname{sen}\!\left(\frac{n\pi x}{L}\right) dx$.</li>
+              <li><strong>Passo 4 (Somar $v(x) + w(x, t)$!):</strong> Escreva $u(x, t) = v(x) + \displaystyle \sum_{n=1}^{\infty} b_n\,e^{-\frac{\alpha^2 n^2\pi^2}{L^2}t}\operatorname{sen}\!\left(\frac{n\pi x}{L}\right)$. Note que quando $t \to \infty$, $u(x, t) \to v(x)$!</li>
+            </ol>
+          </div>
+
+          <!-- EXEMPLO 5.3 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 5.3 (Clássico de Prova) — Barra Aquecida de $10^\circ$ para Pontas $(10^\circ,\, 40^\circ)$</h4>
+              <span class="badge badge-max">Clássico de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva $\begin{cases} u_t = u_{xx}, & 0 < x < \pi,\; t > 0, \\ u(0, t) = 10,\; u(\pi, t) = 40, & t > 0, \\ u(x, 0) = 10, & 0 \le x \le \pi. \end{cases}$ &nbsp; Qual é o limite $\lim_{t\to\infty} u(x, t)$?
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Solução estacionária $v(x)$</span>
+                <p>Com $L = \pi$, $T_1 = 10$ e $T_2 = 40$: $v''(x) = 0$, $v(0) = 10$, $v(\pi) = 40 \implies$</p>
+                $$v(x) = \frac{40 - 10}{\pi}x + 10 = \frac{30}{\pi}x + 10.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Nova condição inicial do transiente $w(x, t) = u(x, t) - v(x)$</span>
+                $$w(x, 0) = f(x) - v(x) = 10 - \left(\frac{30}{\pi}x + 10\right) = -\frac{30}{\pi}x.$$
+                <p><em>(Olha que maravilha: o $10$ cancelou certinho!)</em></p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Coeficientes $b_n$ de $w(x, 0) = -\frac{30}{\pi}x$</span>
+                $$b_n = \frac{2}{\pi}\int_{0}^{\pi} \left(-\frac{30}{\pi}x\right)\operatorname{sen}(nx)\,dx = -\frac{60}{\pi^2}\cdot\underbrace{\frac{(-1)^{n+1}\pi}{n}}_{\text{Ex. 0.7}} = -\frac{60(-1)^{n+1}}{n\pi} = \frac{60(-1)^n}{n\pi}.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 4 · Solução completa $u = v + w$ e limite $t \to \infty$</span>
+                <div class="result-highlight">
+                  $$u(x, t) = \frac{30}{\pi}x + 10 + \frac{60}{\pi}\sum_{n=1}^{\infty} \frac{(-1)^n}{n}\,e^{-n^2 t}\operatorname{sen}(nx).$$
+                  $$\lim_{t \to \infty} u(x, t) = v(x) = \frac{30}{\pi}x + 10 \quad (\text{perfil linear estacionário entre } 10^\circ \text{ e } 40^\circ!).$$
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Alertas de Pegadinha — Dirichlet Não Homogêneo</p>
+            <ul>
+              <li><strong>Integrar $f(x)$ em vez de $f(x) - v(x)$!</strong> O erro mais comum da P2 é esquecer de subtrair $v(x)$ da condição inicial ao calcular $b_n$!</li>
+              <li><strong>Esquecer de somar $v(x)$ de volta na resposta final!</strong> Você resolveu para $w(x, t)$, mas a pergunta pede $u(x, t) = v(x) + w(x, t)$!</li>
+            </ul>
+          </div>
+
+          <h3 id="exercicios-5-2">Exercícios de Fixação (Seção 5.2)</h3>
+
+          <!-- EXERCÍCIO 4 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 4 — Cancelamento Perfeito na Condição Inicial</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b5-ex4" data-track-type="exercise" data-block="bloco5">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva $\begin{cases} u_t = 2u_{xx}, & 0 < x < \pi,\; t > 0, \\ u(0, t) = 20,\; u(\pi, t) = 60, & t > 0, \\ u(x, 0) = 20 + \dfrac{40}{\pi}x + 5\operatorname{sen}(3x), & 0 \le x \le \pi. \end{cases}$
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Estacionária $v(x)$ e $w(x, 0)$</span>
+                  <p>$v(x) = \dfrac{60 - 20}{\pi}x + 20 = 20 + \dfrac{40}{\pi}x$. Subtraindo de $f(x)$: $w(x, 0) = f(x) - v(x) = 5\operatorname{sen}(3x)$!</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Resolver $w$ ($\alpha^2 = 2, L = \pi$) e somar $v$</span>
+                  <p>Só $b_3 = 5$ é não nulo, logo $w(x, t) = 5e^{-2\cdot 3^2 t}\operatorname{sen}(3x) = 5e^{-18t}\operatorname{sen}(3x)$.</p>
+                  <div class="result-highlight">
+                    $$u(x, t) = 20 + \frac{40}{\pi}x + 5e^{-18t}\operatorname{sen}(3x).$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 5 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 5 — Barra Fria ($0^\circ$) com Uma Ponta Aquecida a $100^\circ$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b5-ex5" data-track-type="exercise" data-block="bloco5">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva $u_t = 4u_{xx}$ em $(0, L) \times (0, \infty)$ com $u(0, t) = 0$, $u(L, t) = 100$ e $u(x, 0) = 0$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Solução estacionária $v(x)$ e $w(x, 0)$</span>
+                  <p>$v(x) = \dfrac{100 - 0}{L}x + 0 = \dfrac{100}{L}x$. Logo $w(x, 0) = 0 - \dfrac{100}{L}x = -\dfrac{100}{L}x$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Coeficientes $b_n$ (usando o Exemplo 4.1!)</span>
+                  <p>Sabemos que $\frac{2}{L}\int_0^L x\operatorname{sen}\frac{n\pi x}{L}\,dx = \frac{2L(-1)^{n+1}}{n\pi}$. Multiplicando por $-\frac{100}{L}$:</p>
+                  $$b_n = -\frac{100}{\cancel{L}} \cdot \frac{2\cancel{L}(-1)^{n+1}}{n\pi} = \frac{200(-1)^n}{n\pi}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Solução Final ($\alpha^2 = 4$)</span>
+                  <div class="result-highlight">
+                    $$u(x, t) = \frac{100}{L}x + \frac{200}{\pi}\sum_{n=1}^{\infty} \frac{(-1)^n}{n}\,e^{-\frac{4n^2\pi^2}{L^2}t}\operatorname{sen}\!\left(\frac{n\pi x}{L}\right).$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 6 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 6 (Lista 5 Ex. 5a!) — Solução Estacionária com Fonte Interna $+\operatorname{sen}(x)$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b5-ex6" data-track-type="exercise" data-block="bloco5">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre a solução estacionária $v(x)$ (independente de $t$) do problema com fonte de calor interna:
+                $u_t = u_{xx} + \operatorname{sen}(x)$ em $(0, \pi) \times (0, \infty)$, com $u(0, t) = 1$ e $u_x(\pi, t) = 2$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Impor $v_t = 0$ na EDP</span>
+                  $$0 = v''(x) + \operatorname{sen}(x) \iff v''(x) = -\operatorname{sen}(x).$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Integrar duas vezes e achar $C_1, C_2$ pelas condições de contorno</span>
+                  <p>1ª integral: $v'(x) = \cos(x) + C_1$. Aplicando $v'(\pi) = 2$: $\cos(\pi) + C_1 = 2 \implies -1 + C_1 = 2 \implies C_1 = 3$.</p>
+                  <p>2ª integral: $v(x) = \operatorname{sen}(x) + 3x + C_2$. Aplicando $v(0) = 1$: $\operatorname{sen}(0) + 0 + C_2 = 1 \implies C_2 = 1$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Solução Estacionária</span>
+                  <div class="result-highlight">
+                    $$v(x) = \operatorname{sen}(x) + 3x + 1.$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr>
+
+        <!-- ================================================================
+             TÓPICO 5.3 — BARRA TERMICAMENTE ISOLADA (NEUMANN — AULA 26)
+             ================================================================ -->
+        <section id="topico-5-3">
+          <div class="topic-header-bar">
+            <h2>5.3 Aula 26 — Barra Termicamente Isolada (Neumann Homogêneo)</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b5-t3" data-track-type="topic" data-block="bloco5">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — Quando o Calor NÃO Pode Escapar pelas Pontas!</p>
+            <p>
+              Agora colocamos isolamento térmico perfeito nas duas extremidades da barra: nenhum calor entra nem sai em $x = 0$ ou $x = L$. Como o fluxo de calor é proporcional à derivada espacial $-u_x$, isso se traduz na <strong>Condição de Neumann Homogênea</strong>:
+              $$u_x(0, t) = 0 \quad \text{e} \quad u_x(L, t) = 0 \qquad (\forall\, t > 0).$$
+            </p>
+            <p>
+              Pense fisicamente antes de qualquer conta: se o calor <em>não pode escapar</em>, a energia térmica total da barra é conservada! Então, quando $t \to \infty$, a barra <strong>NÃO esfria para $0^\circ$</strong> — ela se uniformiza inteira na <strong>temperatura média inicial</strong> $\dfrac{1}{L}\displaystyle \int_{0}^{L} f(x)\,dx = \dfrac{a_0}{2}$!
+            </p>
+          </div>
+
+          <h3>Separação de Variáveis COMPLETA (Por que $\lambda = 0$ NÃO é descartado aqui!)</h3>
+          <div class="math-step">
+            <span class="step-label">Análise dos 3 Casos para $X'' = \lambda X$ com $X'(0) = 0$ e $X'(L) = 0$</span>
+            <ul>
+              <li><strong>Caso I: $\lambda = \beta^2 > 0$:</strong> $X(x) = c_1 e^{\beta x} + c_2 e^{-\beta x} \implies X'(x) = \beta(c_1 e^{\beta x} - c_2 e^{-\beta x})$. De $X'(0) = 0 \implies c_1 = c_2$. De $X'(L) = 0 \implies c_1\beta(e^{\beta L} - e^{-\beta L}) = 0 \implies c_1 = c_2 = 0$. Trivial — <strong>DESCARTADO!</strong></li>
+              <li><strong>Caso II: $\lambda = 0$ (A GRANDE DIFERENÇA DE NEUMANN!):</strong>
+                <br>EDO: $X'' = 0 \implies X(x) = c_1 x + c_2 \implies X'(x) = c_1$.
+                <br>De $X'(0) = 0$: $\mathbf{c_1 = 0}$. De $X'(L) = 0$: $0 = 0$ (automaticamente satisfeito para <strong>QUALQUER constante $c_2 \neq 0$!</strong>).
+                <br>Portanto, <strong>$\lambda_0 = 0$ É AUTOVALOR!</strong> Sua autofunção é a constante <strong>$X_0(x) = 1$</strong>, e a EDO temporal $T'_0(t) = \alpha^2 \cdot 0 \cdot T_0 = 0$ dá $T_0(t) = \text{constante}$ (que chamamos de <strong>$\dfrac{a_0}{2}$</strong>)!
+              </li>
+              <li><strong>Caso III: $\lambda = -\beta^2 < 0$:</strong>
+                <br>$X(x) = c_1 \cos(\beta x) + c_2 \operatorname{sen}(\beta x) \implies X'(x) = -c_1 \beta \operatorname{sen}(\beta x) + c_2 \beta \cos(\beta x)$.
+                <br>De $X'(0) = 0$: $c_2 \beta \cdot 1 = 0 \implies \mathbf{c_2 = 0}$, sobrando $X(x) = c_1 \cos(\beta x)$!
+                <br>De $X'(L) = 0$: $-c_1 \beta \operatorname{sen}(\beta L) = 0 \implies \beta L = n\pi \implies \beta_n = \dfrac{n\pi}{L}$ ($n = 1, 2, 3, \dots$).
+                <br>Logo: $X_n(x) = \cos\!\left(\dfrac{n\pi x}{L}\right)$ e $T_n(t) = a_n\,e^{-\frac{\alpha^2 n^2\pi^2}{L^2}t}$!
+              </li>
+            </ul>
+          </div>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Fórmula Fechada — Barra Termicamente Isolada (Neumann: $u_x(0,t) = u_x(L,t) = 0$)</p>
+            $$u(x, t) = \frac{a_0}{2} + \sum_{n=1}^{\infty} a_n\,e^{-\frac{\alpha^2 n^2\pi^2}{L^2}t}\cos\!\left(\frac{n\pi x}{L}\right),$$
+            $$a_0 = \frac{2}{L}\int_{0}^{L} f(x)\,dx, \qquad a_n = \frac{2}{L}\int_{0}^{L} f(x)\cos\!\left(\frac{n\pi x}{L}\right) dx.$$
+            <p><strong>Interpretação Física ($t \to \infty$):</strong> Todas as exponenciais morrem, mas o modo $\lambda_0 = 0$ <em>nunca decai</em>! Logo:</p>
+            $$\lim_{t \to \infty} u(x, t) = \frac{a_0}{2} = \frac{1}{L}\int_{0}^{L} f(x)\,dx \quad (\text{temperatura constante = média inicial!}).$$
+          </div>
+
+          <!-- SIMULADOR INTERATIVO 5.1: EQUAÇÃO DO CALOR (DIRICHLET VS NEUMANN) -->
+          <div class="simulator-card" id="simulador-calor">
+            <div class="simulator-header">
+              <div>
+                <h3 class="simulator-title">Simulador Interativo 5.1 — Difusão do Calor: Dirichlet vs. Barra Isolada (Neumann)</h3>
+                <p class="simulator-subtitle">Arraste o tempo $t$ (ou clique em <strong>Animar</strong>) e compare visualmente a barra esfriando para $0^\circ$ (Dirichlet Homogêneo), para a reta estacionária $v(x)$ (Dirichlet Não Homogêneo) ou para a <strong>média constante $\frac{a_0}{2}$</strong> (Neumann)!</p>
+              </div>
+              <span class="badge badge-done">Simulador Temporal</span>
+            </div>
+
+            <div class="sim-controls">
+              <div class="sim-control-group">
+                <label for="sim51-bc"><span>Condição de Contorno</span></label>
+                <select id="sim51-bc" class="sim-select">
+                  <option value="neumann">Barra Isolada (Neumann: uₓ = 0) → Média a₀/2</option>
+                  <option value="dirichlet0">Dirichlet Homogêneo (u = 0 nas pontas) → 0</option>
+                  <option value="dirichletNH">Dirichlet Não Homogêneo (T₁ = 0, T₂ = 1) → Reta</option>
+                </select>
+              </div>
+
+              <div class="sim-control-group">
+                <label for="sim51-init"><span>Temperatura Inicial $f(x)$ em $[0, \pi]$</span></label>
+                <select id="sim51-init" class="sim-select">
+                  <option value="step">Metade esquerda quente (1 em [0, π/2], 0 no resto)</option>
+                  <option value="ramp">Rampa f(x) = x / π</option>
+                  <option value="pulse">Pulso central quente (1 em [π/4, 3π/4])</option>
+                </select>
+              </div>
+
+              <div class="sim-control-group">
+                <label for="sim51-t">
+                  <span>Tempo $t$</span>
+                  <span class="sim-val" id="sim51-t-val">0.00</span>
+                </label>
+                <input id="sim51-t" class="sim-range" type="range" min="0" max="2.5" step="0.02" value="0">
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 0.6rem; margin-bottom: 0.9rem;">
+              <button type="button" class="btn btn-primary" id="sim51-play">▶ Animar Difusão</button>
+              <button type="button" class="btn btn-subtle" id="sim51-reset">↺ Reiniciar (t = 0)</button>
+            </div>
+
+            <div class="canvas-stage">
+              <canvas id="canvas-sim51" aria-label="Simulador temporal da Equação do Calor com mapa térmico da barra"></canvas>
+            </div>
+
+            <div class="sim-readout">
+              <div class="readout-metric">
+                <div class="readout-label">Instante $t$</div>
+                <div class="readout-value" id="sim51-tout">0.00 s</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label">Temp. no centro $u(\frac{\pi}{2}, t)$</div>
+                <div class="readout-value" id="sim51-mid">—</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label">Equilíbrio ($t \to \infty$)</div>
+                <div class="readout-value" id="sim51-eq">—</div>
+              </div>
+            </div>
+
+            <div class="sim-explanation" id="sim51-msg">
+              Carregando simulador do calor...
+            </div>
+          </div>
+
+          <!-- EXEMPLO 5.4 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 5.4 (Aula 26 da Profa. Janete!) — Barra Isolada com $f(x) = x$, $L = \pi$, $\alpha^2 = 4$</h4>
+              <span class="badge badge-max">Clássico SMA0356</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva $\begin{cases} u_t = 4u_{xx}, & 0 < x < \pi,\; t > 0, \\ u_x(0, t) = u_x(\pi, t) = 0, & t > 0, \\ u(x, 0) = x, & 0 \le x \le \pi \end{cases}$ e encontre $\lim_{t \to \infty} u(x, t)$.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Identificar Neumann $\implies$ Série em Cossenos + $\frac{a_0}{2}$</span>
+                <p>Com $L = \pi$ e $\alpha^2 = 4$: $u(x, t) = \dfrac{a_0}{2} + \displaystyle \sum_{n=1}^{\infty} a_n\,e^{-4n^2 t}\cos(nx)$.</p>
+                <p>Do Exemplo 4.1(a) (com $L = \pi$): $a_0 = \pi \implies \dfrac{a_0}{2} = \dfrac{\pi}{2}$, $a_{2k} = 0$ e $a_{2k-1} = -\dfrac{4}{\pi(2k - 1)^2}$.</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Solução Completa e Equilíbrio Térmico</span>
+                <div class="result-highlight">
+                  $$u(x, t) = \frac{\pi}{2} - \frac{4}{\pi}\sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2}\,e^{-4(2k - 1)^2 t}\cos\big((2k - 1)x\big).$$
+                  $$\lim_{t \to \infty} u(x, t) = \frac{\pi}{2} \quad (\text{exatamente a temperatura média da rampa de } 0 \text{ a } \pi!).$$
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <h3 id="exercicios-5-3">Exercícios de Fixação (Seção 5.3 — Neumann)</h3>
+
+          <!-- EXERCÍCIO 7 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 7 — Barra Isolada com $f(x)$ já na Base de Cossenos</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b5-ex7" data-track-type="exercise" data-block="bloco5">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva $u_t = 2u_{xx}$ em $(0, \pi) \times (0, \infty)$ com $u_x(0, t) = u_x(\pi, t) = 0$ e $u(x, 0) = 3 + 4\cos(2x) - \cos(5x)$, e determine $\lim_{t \to \infty} u(x, t)$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Ler os coeficientes diretamente (sem integrar!)</span>
+                  <p>$\dfrac{a_0}{2} = 3$ (constante!), $a_2 = 4$, $a_5 = -1$, e demais $a_n = 0$. Com $\alpha^2 = 2$ e $L = \pi$, o fator temporal é $e^{-2n^2 t}$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Resposta e Limite</span>
+                  <div class="result-highlight">
+                    $$u(x, t) = 3 + 4e^{-8t}\cos(2x) - e^{-50t}\cos(5x), \qquad \lim_{t \to \infty} u(x, t) = 3.$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 8 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 8 — Barra Isolada com Metade a $100^\circ$ e Metade a $0^\circ$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b5-ex8" data-track-type="exercise" data-block="bloco5">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva $u_t = \alpha^2 u_{xx}$ em $(0, L) \times (0, \infty)$ com $u_x(0, t) = u_x(L, t) = 0$ e $u(x, 0) = \begin{cases} 100, & 0 \le x \le L/2, \\ 0, & L/2 < x \le L. \end{cases}$
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Coeficientes em Cossenos (100 × Exemplo 4.4!)</span>
+                  <p>$\dfrac{a_0}{2} = \dfrac{1}{L}\displaystyle \int_{0}^{L/2} 100\,dx = 50$, e $a_n = \dfrac{200}{n\pi}\operatorname{sen}\!\left(\dfrac{n\pi}{2}\right)$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Solução e Equilíbrio</span>
+                  <div class="result-highlight">
+                    $$u(x, t) = 50 + \frac{200}{\pi}\sum_{n=1}^{\infty} \frac{\operatorname{sen}(n\pi/2)}{n}\,e^{-\frac{\alpha^2 n^2\pi^2}{L^2}t}\cos\!\left(\frac{n\pi x}{L}\right) \xrightarrow{t \to \infty} 50^\circ!$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 9 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 9 (Conceitual — Lista 5 Ex. 3) — Comparação Física $t \to \infty$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b5-ex9" data-track-type="exercise" data-block="bloco5">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Uma barra de comprimento $\pi$ começa com temperatura inicial $f(x) = x^2$. Qual será a temperatura final $\lim_{t \to \infty} u(x, t)$ se:
+                <strong>(a)</strong> as pontas forem mantidas a $0^\circ$;
+                <strong>(b)</strong> as pontas forem termicamente isoladas ($u_x = 0$)? Explique fisicamente a diferença!
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (a) · Dirichlet Homogêneo</span>
+                  <p>$\lim_{t\to\infty} u(x,t) = \mathbf{0}$: todo o calor vaza pelas extremidades fixadas em $0^\circ$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b) · Neumann Homogêneo (Isolada)</span>
+                  <p>O calor não escapa; toda a barra converge para a média espacial $\dfrac{a_0}{2} = \dfrac{1}{\pi}\displaystyle \int_{0}^{\pi} x^2\,dx = \dfrac{1}{\pi}\cdot\dfrac{\pi^3}{3} = \mathbf{\dfrac{\pi^2}{3}}$!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr>
+
+        <!-- ================================================================
+             TÓPICO 5.4 — A CORDA VIBRANTE (EQUAÇÃO DA ONDA — AULA 27)
+             ================================================================ -->
+        <section id="topico-5-4">
+          <div class="topic-header-bar">
+            <h2>5.4 Aula 27 — A Corda Vibrante (Equação da Onda $u_{tt} = \alpha^2 u_{xx}$)</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b5-t4" data-track-type="topic" data-block="bloco5">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — Do Calor (1ª Derivada em $t$) para a Onda (2ª Derivada em $t$!)</p>
+            <p>
+              Na Equação da Onda $u_{tt} = \alpha^2 u_{xx}$ (onde $\alpha^2 = \frac{T}{\sigma}$ = tensão / densidade linear), temos a <strong>aceleração</strong> $u_{tt}$ da corda! Por ser de <strong>2ª ordem no tempo</strong>:
+            </p>
+            <ol>
+              <li>Precisamos de <strong>DUAS condições iniciais</strong>: posição inicial $u(x, 0) = f(x)$ e velocidade inicial $u_t(x, 0) = g(x)$.</li>
+              <li>A parte temporal NÃO é mais uma exponencial que morre — ela vira <strong>oscilações eternas de cossenos e senos</strong> ($\cos\frac{n\alpha\pi t}{L}$ e $\operatorname{sen}\frac{n\alpha\pi t}{L}$)!</li>
+            </ol>
+          </div>
+
+          <h3>Separação de Variáveis COMPLETA para a Corda Presa ($u(0,t) = u(L,t) = 0$)</h3>
+          <div class="math-step">
+            <span class="step-label">Passo a passo completo (com atenção cirúrgica ao fator $\frac{n\alpha\pi}{L}$!)</span>
+            <p><strong>1. Separar $u(x, t) = X(x)T(t)$:</strong></p>
+            $$X(x)T''(t) = \alpha^2 X''(x)T(t) \implies \frac{T''(t)}{\alpha^2 T(t)} = \frac{X''(x)}{X(x)} = \lambda.$$
+            <p><strong>2. Problema espacial (idêntico ao de Dirichlet 5.1!):</strong> $X'' = \lambda X$, $X(0) = X(L) = 0 \implies$ só $\lambda < 0$ funciona, dando $\lambda_n = -\dfrac{n^2\pi^2}{L^2}$ e $X_n(x) = \operatorname{sen}\!\left(\dfrac{n\pi x}{L}\right)$ ($n \ge 1$).</p>
+            <p><strong>3. EDO temporal de 2ª ordem:</strong></p>
+            $$T''_n(t) + \left(\frac{n\alpha\pi}{L}\right)^2 T_n(t) = 0 \implies T_n(t) = a_n\cos\!\left(\frac{n\alpha\pi t}{L}\right) + b_n\operatorname{sen}\!\left(\frac{n\alpha\pi t}{L}\right).$$
+            <p><strong>4. Superposição:</strong></p>
+            $$u(x, t) = \sum_{n=1}^{\infty} \left[a_n\cos\!\left(\frac{n\alpha\pi t}{L}\right) + b_n\operatorname{sen}\!\left(\frac{n\alpha\pi t}{L}\right)\right]\operatorname{sen}\!\left(\frac{n\pi x}{L}\right).$$
+            <p><strong>5. Impor as DUAS condições iniciais ($t = 0$):</strong></p>
+            <ul>
+              <li><strong>Posição inicial $u(x, 0) = f(x)$:</strong> Como $\cos(0) = 1$ e $\operatorname{sen}(0) = 0$:
+                $$\sum_{n=1}^{\infty} a_n \operatorname{sen}\!\left(\frac{n\pi x}{L}\right) = f(x) \implies \boxed{a_n = \frac{2}{L}\int_{0}^{L} f(x)\operatorname{sen}\!\left(\frac{n\pi x}{L}\right) dx.}$$
+              </li>
+              <li><strong>Velocidade inicial $u_t(x, 0) = g(x)$ (OLHE O FATOR QUE CAI DA REGRA DA CADEIA!):</strong> Derivando $u(x,t)$ em relação a $t$:
+                $$u_t(x, t) = \sum_{n=1}^{\infty} \left[-\frac{n\alpha\pi}{L}a_n\operatorname{sen}\!\left(\frac{n\alpha\pi t}{L}\right) + \frac{n\alpha\pi}{L}b_n\cos\!\left(\frac{n\alpha\pi t}{L}\right)\right]\operatorname{sen}\!\left(\frac{n\pi x}{L}\right).$$
+                Avaliando em $t = 0$ ($\operatorname{sen}(0) = 0, \cos(0) = 1$):
+                $$\sum_{n=1}^{\infty} \left(\frac{n\alpha\pi}{L}\,b_n\right)\operatorname{sen}\!\left(\frac{n\pi x}{L}\right) = g(x) \implies \frac{n\alpha\pi}{L}\,b_n = \frac{2}{L}\int_{0}^{L} g(x)\operatorname{sen}\!\left(\frac{n\pi x}{L}\right) dx.$$
+                Multiplicando ambos os lados por $\dfrac{L}{n\alpha\pi}$ (o $L$ cancela perfeitamente!):
+                $$\boxed{b_n = \frac{2}{n\alpha\pi}\int_{0}^{L} g(x)\operatorname{sen}\!\left(\frac{n\pi x}{L}\right) dx.}$$
+              </li>
+            </ul>
+          </div>
+
+          <div class="callout box-teorema" id="frequencia-fundamental">
+            <p class="callout-title">Frequência Fundamental e Harmônicos da Corda (Apêndice V — Aula 27)</p>
+            <p>O $n$-ésimo harmônico $u_n(x,t)$ oscila com período $T_n = \dfrac{2\pi}{\frac{n\alpha\pi}{L}} = \dfrac{2L}{n\alpha}$ e frequência (em ciclos/segundo = Hz):</p>
+            $$f_n = \frac{1}{T_n} = \frac{n\alpha}{2L} = n\,f_1, \qquad \text{onde a \textbf{Frequência Fundamental} ($n = 1$) é } \quad \boxed{f_1 = \frac{\alpha}{2L} = \frac{1}{2L}\sqrt{\frac{T}{\sigma}}}.$$
+            <p><em>(A frequência angular em rad/s é $\omega_1 = 2\pi f_1 = \dfrac{\alpha\pi}{L}$.)</em></p>
+            <p><strong>Como alterar o som (frequência fundamental) na prova:</strong></p>
+            <ul>
+              <li><strong>Reduzir o comprimento $L$ pela metade</strong> $\implies$ $f_1$ <strong>dobra</strong> (som 1 oitava mais agudo — exatamente o que você faz apertando o traste de um violão!).</li>
+              <li><strong>Dobrar $\alpha$</strong> (ou <strong>quadruplicar a tensão $T$</strong>, já que $\alpha = \sqrt{T/\sigma}$!) $\implies$ $f_1$ <strong>dobra</strong> (som mais agudo).</li>
+              <li><strong>Aumentar a densidade $\sigma$</strong> (corda mais grossa) $\implies$ $\alpha$ diminui $\implies$ $f_1$ diminui (som mais grave).</li>
+            </ul>
+          </div>
+
+          <!-- SIMULADOR INTERATIVO 5.2: EQUAÇÃO DA ONDA -->
+          <div class="simulator-card" id="simulador-onda">
+            <div class="simulator-header">
+              <div>
+                <h3 class="simulator-title">Simulador Interativo 5.2 — A Corda Vibrante (Equação da Onda $u_{tt} = \alpha^2 u_{xx}$)</h3>
+                <p class="simulator-subtitle">Teste posição inicial sem velocidade, velocidade inicial sem posição (corda percutida) e ambos não nulos — e altere $\alpha$ ou $L$ para ver a <strong>Frequência Fundamental $f_1 = \frac{\alpha}{2L}$</strong> mudar ao vivo!</p>
+              </div>
+              <span class="badge badge-done">Simulador Temporal</span>
+            </div>
+
+            <div class="sim-controls">
+              <div class="sim-control-group">
+                <label for="sim52-case"><span>Cenário Inicial da Corda</span></label>
+                <select id="sim52-case" class="sim-select">
+                  <option value="plucked">Corda Dedilhada (triângulo no meio, g = 0)</option>
+                  <option value="mode1">Modo Fundamental (f = sen(πx/L), g = 0)</option>
+                  <option value="struck">Corda Percutida (f = 0, velocidade g ≠ 0)</option>
+                  <option value="both">Ambos não nulos (f = sen(πx/L), g = 3·sen(2πx/L))</option>
+                </select>
+              </div>
+
+              <div class="sim-control-group">
+                <label for="sim52-t">
+                  <span>Tempo $t$ (s)</span>
+                  <span class="sim-val" id="sim52-t-val">0.00</span>
+                </label>
+                <input id="sim52-t" class="sim-range" type="range" min="0" max="6" step="0.02" value="0">
+              </div>
+
+              <div class="sim-control-group">
+                <label for="sim52-alpha">
+                  <span>Velocidade $\alpha$</span>
+                  <span class="sim-val" id="sim52-alpha-val">1.0</span>
+                </label>
+                <input id="sim52-alpha" class="sim-range" type="range" min="0.5" max="3.0" step="0.25" value="1.0">
+              </div>
+
+              <div class="sim-control-group">
+                <label for="sim52-L">
+                  <span>Comprimento $L$</span>
+                  <span class="sim-val" id="sim52-L-val">2.0</span>
+                </label>
+                <input id="sim52-L" class="sim-range" type="range" min="1.0" max="4.0" step="0.5" value="2.0">
+              </div>
+            </div>
+
+            <div style="display: flex; gap: 0.6rem; margin-bottom: 0.9rem;">
+              <button type="button" class="btn btn-primary" id="sim52-play">▶ Animar Corda</button>
+              <button type="button" class="btn btn-subtle" id="sim52-reset">↺ Reiniciar (t = 0)</button>
+            </div>
+
+            <div class="canvas-stage">
+              <canvas id="canvas-sim52" aria-label="Simulador temporal da Corda Vibrante"></canvas>
+            </div>
+
+            <div class="sim-readout">
+              <div class="readout-metric">
+                <div class="readout-label">Instante $t$</div>
+                <div class="readout-value" id="sim52-tout">0.00 s</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label">Freq. Fundamental $f_1 = \frac{\alpha}{2L}$</div>
+                <div class="readout-value" id="sim52-f1">0.250 Hz</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label">Período $T_1 = \frac{2L}{\alpha}$</div>
+                <div class="readout-value" id="sim52-T1">4.00 s</div>
+              </div>
+            </div>
+
+            <div class="sim-explanation" id="sim52-msg">
+              Carregando simulador da corda vibrante...
+            </div>
+          </div>
+
+          <h3>Os 3 Exemplos Completos da Equação da Onda (Os 3 Casos de Prova!)</h3>
+
+          <!-- EXEMPLO 5.5 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 5.5 (Caso 1: Posição sem Velocidade — Exemplo III.16)</h4>
+              <span class="badge badge-base">f ≠ 0, g = 0</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva $u_{tt} = 4u_{xx}$ em $(0, \pi) \times (0, \infty)$, $u(0, t) = u(\pi, t) = 0$, $u(x, 0) = 5\operatorname{sen}(x)$ e $u_t(x, 0) = 0$.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Resolução completa</span>
+                <p>Temos $L = \pi$ e $\alpha^2 = 4 \implies \alpha = 2$. Logo $\frac{n\alpha\pi t}{L} = 2nt$. Como $g(x) = 0$, todos os <strong>$b_n = 0$</strong>! E de $\sum a_n\operatorname{sen}(nx) = 5\operatorname{sen}(x)$, lemos $a_1 = 5$ e $a_n = 0$ ($n \ge 2$):</p>
+                <div class="result-highlight">
+                  $$u(x, t) = 5\cos(2t)\operatorname{sen}(x).$$
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 5.6 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 5.6 (Caso 2: Velocidade sem Posição) — $f(x) = 0,\; g(x) = 1$</h4>
+              <span class="badge badge-high">f = 0, g ≠ 0</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva $u_{tt} = 9u_{xx}$ em $(0, \pi) \times (0, \infty)$, $u(0, t) = u(\pi, t) = 0$, $u(x, 0) = 0$ e $u_t(x, 0) = 1$.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo a passo (Atenção ao fator $\frac{2}{n\alpha\pi}$!)</span>
+                <p>Temos $L = \pi$ e $\alpha^2 = 9 \implies \mathbf{\alpha = 3}$ (NUNCA esqueça a raiz quadrada!). Como $f(x) = 0$, todos os <strong>$a_n = 0$</strong>! Calculamos $b_n$ com a fórmula $\frac{2}{n\alpha\pi}\int_0^L g(x)\operatorname{sen}\frac{n\pi x}{L}\,dx$:</p>
+                $$b_n = \frac{2}{n \cdot 3 \cdot \pi}\int_{0}^{\pi} 1\cdot\operatorname{sen}(nx)\,dx = \frac{2}{3n\pi}\cdot\frac{1 - (-1)^n}{n} = \frac{2\big(1 - (-1)^n\big)}{3\pi n^2}.$$
+                <p>Pares zeram; ímpares ($n = 2k - 1$) dão $b_{2k-1} = \dfrac{4}{3\pi(2k - 1)^2}$:</p>
+                <div class="result-highlight">
+                  $$u(x, t) = \frac{4}{3\pi}\sum_{k=1}^{\infty} \frac{1}{(2k - 1)^2}\operatorname{sen}\big(3(2k - 1)t\big)\operatorname{sen}\big((2k - 1)x\big).$$
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 5.7 (RECOLHÍVEL) -->
+          <div class="box-exemplo" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 5.7 (Caso 3: Posição E Velocidade Ambos Não Nulos!)</h4>
+              <span class="badge badge-max">f ≠ 0 e g ≠ 0</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva $u_{tt} = 4u_{xx}$ em $(0, \pi) \times (0, \infty)$, $u(0, t) = u(\pi, t) = 0$, com $u(x, 0) = 2\operatorname{sen}(x)$ e $u_t(x, 0) = 6\operatorname{sen}(3x)$. Calcule também a frequência fundamental $f_1$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Ler $\alpha = 2$, $L = \pi$ e achar $a_n$</span>
+                  <p>Em $t = 0$: $\sum a_n\operatorname{sen}(nx) = 2\operatorname{sen}(x) \implies \mathbf{a_1 = 2}$ e demais $a_n = 0$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Achar $b_n$ (CUIDADO com o fator $2n$ que desce na derivada!)</span>
+                  <p>Em $u_t(x, 0) = \sum (2n\,b_n)\operatorname{sen}(nx) = 6\operatorname{sen}(3x)$:</p>
+                  <p>Para $n = 3$: $2(3)\,b_3 = 6 \implies 6b_3 = 6 \implies \mathbf{b_3 = 1}$ (e demais $b_n = 0$)! <em>(Quem esquece o $2n$ erra respondendo $b_3 = 6$!)</em></p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Solução Completa e Frequência Fundamental</span>
+                  <div class="result-highlight">
+                    $$u(x, t) = 2\cos(2t)\operatorname{sen}(x) + \operatorname{sen}(6t)\operatorname{sen}(3x), \qquad f_1 = \frac{\alpha}{2L} = \frac{2}{2\pi} = \frac{1}{\pi}\text{ Hz}.$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Alertas de Pegadinha — Equação da Onda (Aula 27)</p>
+            <ul>
+              <li><strong>A PEGADINHA #1 DA ONDA — Esquecer o fator $\dfrac{n\alpha\pi}{L}$ em $b_n$!</strong> Na hora de ajustar a velocidade inicial $u_t(x, 0) = g(x)$, você precisa <strong>dividir por $\dfrac{n\alpha\pi}{L}$</strong>! Se a questão der $g(x) = 6\operatorname{sen}(3x)$ com $\alpha = 2, L = \pi$, $b_3$ é $\frac{6}{2\cdot 3} = 1$ (e NÃO $6$)!</li>
+              <li><strong>Confundir $\alpha^2$ com $\alpha$:</strong> Em $u_{tt} = 9u_{xx}$, temos $\alpha^2 = 9 \implies \mathbf{\alpha = 3}$! No Calor entra $\alpha^2$ na exponencial, mas na Onda entra <strong>$\alpha$ (com raiz quadrada!)</strong> dentro de $\cos\frac{n\alpha\pi t}{L}$ e $\operatorname{sen}\frac{n\alpha\pi t}{L}$!</li>
+            </ul>
+          </div>
+
+          <h3 id="exercicios-5-4">Exercícios de Fixação (Seção 5.4 — Onda)</h3>
+
+          <!-- EXERCÍCIO 10 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 10 — Corda Solta do Repouso em Arco Parabólico</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b5-ex10" data-track-type="exercise" data-block="bloco5">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva $u_{tt} = \alpha^2 u_{xx}$ em $(0, \pi) \times (0, \infty)$ com $u(0, t) = u(\pi, t) = 0$, $u(x, 0) = x(\pi - x)$ e $u_t(x, 0) = 0$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · $b_n = 0$ e $a_n$ do Exemplo 4.3(a) com $L = \pi$</span>
+                  <p>Como $g(x) = 0 \implies b_n = 0$. Para $f(x) = x(\pi - x)$, temos $a_{2k} = 0$ e $a_{2k-1} = \dfrac{8\pi^2}{(2k - 1)^3\pi^3} = \dfrac{8}{\pi(2k - 1)^3}$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Solução Final</span>
+                  <div class="result-highlight">
+                    $$u(x, t) = \frac{8}{\pi}\sum_{k=1}^{\infty} \frac{1}{(2k - 1)^3}\cos\big((2k - 1)\alpha t\big)\operatorname{sen}\big((2k - 1)x\big).$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 11 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 11 — Velocidade Inicial com Comprimento $L$ Genérico</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b5-ex11" data-track-type="exercise" data-block="bloco5">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Resolva $u_{tt} = 16u_{xx}$ em $(0, L) \times (0, \infty)$ com $u(0, t) = u(L, t) = 0$, $u(x, 0) = 0$ e $u_t(x, 0) = 4\operatorname{sen}\!\left(\dfrac{\pi x}{L}\right) - 2\operatorname{sen}\!\left(\dfrac{3\pi x}{L}\right)$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · $\alpha = \sqrt{16} = 4$, $a_n = 0$, e ajustar $\frac{4n\pi}{L}\,b_n$</span>
+                  <ul>
+                    <li>Para $n = 1$: $\dfrac{4\pi}{L}\,b_1 = 4 \implies b_1 = \dfrac{L}{\pi}$.</li>
+                    <li>Para $n = 3$: $\dfrac{12\pi}{L}\,b_3 = -2 \implies b_3 = -\dfrac{2L}{12\pi} = -\dfrac{L}{6\pi}$.</li>
+                  </ul>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Resposta Final</span>
+                  <div class="result-highlight">
+                    $$u(x, t) = \frac{L}{\pi}\operatorname{sen}\!\left(\frac{4\pi t}{L}\right)\operatorname{sen}\!\left(\frac{\pi x}{L}\right) - \frac{L}{6\pi}\operatorname{sen}\!\left(\frac{12\pi t}{L}\right)\operatorname{sen}\!\left(\frac{3\pi x}{L}\right).$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 12 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 12 — Ambos Não Nulos + Frequência Fundamental</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b5-ex12" data-track-type="exercise" data-block="bloco5">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Uma corda de violão de comprimento $L = 1\text{ m}$ obedece a $u_{tt} = 900\,u_{xx}$ (ou seja, $\alpha = 30\text{ m/s}$), com $u(x, 0) = \operatorname{sen}(\pi x)$ e $u_t(x, 0) = 60\pi\operatorname{sen}(2\pi x)$.
+                <br><strong>(a)</strong> Encontre $u(x, t)$;
+                <br><strong>(b)</strong> Calcule a frequência fundamental $f_1$;
+                <br><strong>(c)</strong> O que acontece com $f_1$ se prendermos a corda na metade ($L' = 0{,}5\text{ m}$) e quadruplicarmos a tensão $T$?
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (a) · Solução $u(x, t)$</span>
+                  <p>Com $\alpha = 30$ e $L = 1$, temos $\frac{n\alpha\pi}{L} = 30n\pi$. De $u(x,0)$: $a_1 = 1$. De $u_t(x,0)$: $30(2)\pi b_2 = 60\pi \implies b_2 = 1$!</p>
+                  $$u(x, t) = \cos(30\pi t)\operatorname{sen}(\pi x) + \operatorname{sen}(60\pi t)\operatorname{sen}(2\pi x).$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b) · Frequência Fundamental</span>
+                  $$f_1 = \frac{\alpha}{2L} = \frac{30}{2 \cdot 1} = \mathbf{15\text{ Hz}}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (c) · Efeito de $L' = L/2$ e $T' = 4T$</span>
+                  <p>Quadruplicar a tensão $T$ <strong>dobra</strong> $\alpha' = \sqrt{4T/\sigma} = 2\alpha = 60\text{ m/s}$. Dividir $L$ por $2$ <strong>dobra</strong> novamente a frequência! Logo $f'_1 = \dfrac{60}{2 \cdot 0{,}5} = \mathbf{60\text{ Hz}}$ (<strong>4 vezes maior</strong> — duas oitavas mais aguda!).</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <nav class="chapter-footer-nav" aria-label="Navegação entre blocos">
+          <a href="bloco4.html" class="chapter-nav-btn">
+            <span class="chapter-nav-dir">← Bloco Anterior</span>
+            <span class="chapter-nav-label">Bloco 4 · Extensões Par, Ímpar e Periódica</span>
+          </a>
+          <a href="formulario.html" class="chapter-nav-btn">
+            <span class="chapter-nav-dir">Apêndice Final →</span>
+            <span class="chapter-nav-label">Mapa de Sobrevivência da P2 (Formulário)</span>
+          </a>
+        </nav>
+      </article>
+    </main>
+  </div>
+
+  <!-- ======================================================================
+       SIMULADORES TEMPORAIS INTERATIVOS DO BLOCO 5 (CALOR + ONDA)
+       ====================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const P = window.Calc4Plot;
+      if (!P) return;
+
+      /* ================= SIMULADOR 5.1: EQUAÇÃO DO CALOR ================= */
+      const bcSel = document.getElementById('sim51-bc');
+      const initSel = document.getElementById('sim51-init');
+      const tSlider51 = document.getElementById('sim51-t');
+      const tVal51 = document.getElementById('sim51-t-val');
+      const playBtn51 = document.getElementById('sim51-play');
+      const resetBtn51 = document.getElementById('sim51-reset');
+      const canvas51 = document.getElementById('canvas-sim51');
+      const outT51 = document.getElementById('sim51-tout');
+      const outMid51 = document.getElementById('sim51-mid');
+      const outEq51 = document.getElementById('sim51-eq');
+      const outMsg51 = document.getElementById('sim51-msg');
+
+      const L51 = Math.PI;
+      const N_MODES = 30;
+      let anim51 = null;
+
+      function fInit51(kind, x) {
+        if (kind === 'step') return x <= L51 / 2 ? 1.0 : 0.0;
+        if (kind === 'ramp') return x / L51;
+        return x >= L51 / 4 && x <= (3 * L51) / 4 ? 1.0 : 0.0;
+      }
+
+      function heatCoeffs(bc, kind) {
+        const M = 240;
+        const dx = L51 / M;
+        const c = new Array(N_MODES + 1).fill(0);
+        if (bc === 'neumann') {
+          for (let n = 0; n <= N_MODES; n++) {
+            let s = 0;
+            for (let i = 0; i < M; i++) {
+              const x = (i + 0.5) * dx;
+              s += fInit51(kind, x) * Math.cos(n * x);
+            }
+            c[n] = (2 / L51) * s * dx;
+          }
+        } else {
+          for (let n = 1; n <= N_MODES; n++) {
+            let s = 0;
+            for (let i = 0; i < M; i++) {
+              const x = (i + 0.5) * dx;
+              const v = bc === 'dirichletNH' ? x / L51 : 0;
+              s += (fInit51(kind, x) - v) * Math.sin(n * x);
+            }
+            c[n] = (2 / L51) * s * dx;
+          }
+        }
+        return c;
+      }
+
+      let cachedHeatKey = '';
+      let cachedHeatC = [];
+
+      function evalHeat(bc, kind, t, x) {
+        const key = bc + '|' + kind;
+        if (key !== cachedHeatKey) {
+          cachedHeatKey = key;
+          cachedHeatC = heatCoeffs(bc, kind);
+        }
+        const c = cachedHeatC;
+        if (bc === 'neumann') {
+          let u = c[0] / 2;
+          for (let n = 1; n <= N_MODES; n++) {
+            u += c[n] * Math.exp(-n * n * t) * Math.cos(n * x);
+          }
+          return u;
+        } else {
+          let u = bc === 'dirichletNH' ? x / L51 : 0;
+          for (let n = 1; n <= N_MODES; n++) {
+            u += c[n] * Math.exp(-n * n * t) * Math.sin(n * x);
+          }
+          return u;
+        }
+      }
+
+      function heatColor(temp) {
+        const v = Math.max(0, Math.min(1, temp));
+        /* Cool blue -> warm amber -> hot crimson */
+        const r = Math.round(35 + 205 * Math.pow(v, 0.75));
+        const g = Math.round(95 + 85 * Math.sin(v * Math.PI));
+        const b = Math.round(205 * (1 - v) + 30);
+        return `rgb(${r},${g},${b})`;
+      }
+
+      function drawSim51() {
+        const bc = bcSel.value;
+        const kind = initSel.value;
+        const t = parseFloat(tSlider51.value);
+        tVal51.textContent = t.toFixed(2);
+        outT51.textContent = `${t.toFixed(2)} s`;
+
+        const midTemp = evalHeat(bc, kind, t, L51 / 2);
+        outMid51.textContent = midTemp.toFixed(3);
+
+        const eqMid = bc === 'neumann' ? cachedHeatC[0] / 2 : (bc === 'dirichletNH' ? 0.5 : 0);
+        if (bc === 'neumann') {
+          outEq51.textContent = `Constante ${eqMid.toFixed(3)}`;
+          outMsg51.innerHTML = `<strong>Barra Isolada (Neumann, u<sub>x</sub> = 0):</strong> o calor NÃO escapa! Veja a curva achatando e a barra física embaixo ficando toda de uma só cor na temperatura média inicial a<sub>0</sub>/2 = ${eqMid.toFixed(3)}.`;
+        } else if (bc === 'dirichlet0') {
+          outEq51.textContent = '0.000 (gelo)';
+          outMsg51.innerHTML = `<strong>Dirichlet Homogêneo (pontas a 0°):</strong> o calor vaza rapidamente pelas duas extremidades — toda a barra esfria até 0°!`;
+        } else {
+          outEq51.textContent = 'Reta v(x) = x/π';
+          outMsg51.innerHTML = `<strong>Dirichlet Não Homogêneo (T₁ = 0, T₂ = 1):</strong> o transiente w(x, t) morre e a barra converge exatamente para a solução estacionária linear v(x) = x/π (linha verde tracejada)!`;
+        }
+
+        const { ctx, width, height } = P.setupCanvas(canvas51, 340);
+        const colors = P.getThemeColors();
+        const map = P.createMapper(width, height, 0, L51, -0.1, 1.18, { left: 52, right: 22, top: 20, bottom: 68 });
+
+        P.drawGridAndAxes(ctx, map, colors, {
+          xTicks: 6, yTicks: 5,
+          xLabel: 'Posição x ∈ [0, π]', yLabel: `Temperatura u(x, t = ${t.toFixed(2)})`
+        });
+
+        /* Equilibrium dashed curve */
+        P.plotCurve(ctx, map, (x) => {
+          if (bc === 'neumann') return cachedHeatC[0] / 2;
+          if (bc === 'dirichletNH') return x / L51;
+          return 0;
+        }, { color: colors.success, lineWidth: 1.8, dash: [6, 4], samples: 200 });
+
+        /* Initial profile t = 0 faint reference */
+        P.plotCurve(ctx, map, (x) => fInit51(kind, x), {
+          color: colors.axis, lineWidth: 1.3, dash: [3, 4], samples: 250
+        });
+
+        /* Current temperature curve u(x, t) */
+        P.plotCurve(ctx, map, (x) => evalHeat(bc, kind, t, x), {
+          color: colors.secondary, lineWidth: 2.8, samples: 260
+        });
+
+        /* Physical thermal rod color bar below plot */
+        const barY = height - 26;
+        const barH = 16;
+        const segs = 90;
+        for (let i = 0; i < segs; i++) {
+          const x = ((i + 0.5) / segs) * L51;
+          const u = evalHeat(bc, kind, t, x);
+          const x0 = map.pad.left + (i / segs) * map.plotW;
+          const wSeg = map.plotW / segs + 1;
+          ctx.fillStyle = heatColor(u);
+          ctx.fillRect(x0, barY, wSeg, barH);
+        }
+        ctx.strokeStyle = colors.axis;
+        ctx.lineWidth = 1;
+        ctx.strokeRect(map.pad.left, barY, map.plotW, barH);
+      }
+
+      function stopAnim51() {
+        if (anim51) { cancelAnimationFrame(anim51); anim51 = null; }
+        playBtn51.textContent = '▶ Animar Difusão';
+      }
+
+      playBtn51.addEventListener('click', () => {
+        if (anim51) { stopAnim51(); return; }
+        playBtn51.textContent = '⏸ Pausar';
+        let lastTs = null;
+        function step(ts) {
+          if (lastTs !== null) {
+            const dt = (ts - lastTs) / 1000;
+            let nextT = parseFloat(tSlider51.value) + dt * 0.45;
+            if (nextT >= 2.5) { nextT = 2.5; tSlider51.value = '2.5'; drawSim51(); stopAnim51(); return; }
+            tSlider51.value = nextT.toFixed(3);
+            drawSim51();
+          }
+          lastTs = ts;
+          anim51 = requestAnimationFrame(step);
+        }
+        anim51 = requestAnimationFrame(step);
+      });
+
+      resetBtn51.addEventListener('click', () => { stopAnim51(); tSlider51.value = '0'; drawSim51(); });
+      bcSel.addEventListener('change', drawSim51);
+      initSel.addEventListener('change', drawSim51);
+      tSlider51.addEventListener('input', () => { stopAnim51(); drawSim51(); });
+      P.registerChart(drawSim51);
+
+      /* ================= SIMULADOR 5.2: EQUAÇÃO DA ONDA ================= */
+      const caseSel52 = document.getElementById('sim52-case');
+      const tSlider52 = document.getElementById('sim52-t');
+      const tVal52 = document.getElementById('sim52-t-val');
+      const aSlider52 = document.getElementById('sim52-alpha');
+      const aVal52 = document.getElementById('sim52-alpha-val');
+      const lSlider52 = document.getElementById('sim52-L');
+      const lVal52 = document.getElementById('sim52-L-val');
+      const playBtn52 = document.getElementById('sim52-play');
+      const resetBtn52 = document.getElementById('sim52-reset');
+      const canvas52 = document.getElementById('canvas-sim52');
+      const outT52 = document.getElementById('sim52-tout');
+      const outF1 = document.getElementById('sim52-f1');
+      const outT1 = document.getElementById('sim52-T1');
+      const outMsg52 = document.getElementById('sim52-msg');
+
+      let anim52 = null;
+
+      function evalWave(kind, t, alpha, L, x) {
+        if (kind === 'mode1') {
+          const w1 = (alpha * Math.PI) / L;
+          return Math.cos(w1 * t) * Math.sin((Math.PI * x) / L);
+        } else if (kind === 'plucked') {
+          /* Triangle plucked at L/2, height 1: an = 8/(n^2 pi^2) sin(n pi / 2) */
+          let s = 0;
+          for (let n = 1; n <= 25; n += 2) {
+            const sign = ((n - 1) / 2) % 2 === 0 ? 1 : -1;
+            const an = (8 * sign) / (n * n * Math.PI * Math.PI);
+            const wn = (n * alpha * Math.PI) / L;
+            s += an * Math.cos(wn * t) * Math.sin((n * Math.PI * x) / L);
+          }
+          return s;
+        } else if (kind === 'struck') {
+          /* f = 0, g(x) = (alpha*pi/L)*sin(pi x/L) + 1.5*(2*alpha*pi/L)*sin(2 pi x/L) => clean b1=0.7, b2=0.5 */
+          const w1 = (alpha * Math.PI) / L;
+          const w2 = (2 * alpha * Math.PI) / L;
+          return 0.75 * Math.sin(w1 * t) * Math.sin((Math.PI * x) / L) +
+                 0.45 * Math.sin(w2 * t) * Math.sin((2 * Math.PI * x) / L);
+        } else {
+          /* Both nonzero */
+          const w1 = (alpha * Math.PI) / L;
+          const w2 = (2 * alpha * Math.PI) / L;
+          return 0.85 * Math.cos(w1 * t) * Math.sin((Math.PI * x) / L) +
+                 0.45 * Math.sin(w2 * t) * Math.sin((2 * Math.PI * x) / L);
+        }
+      }
+
+      function drawSim52() {
+        const kind = caseSel52.value;
+        const t = parseFloat(tSlider52.value);
+        const alpha = parseFloat(aSlider52.value);
+        const L = parseFloat(lSlider52.value);
+
+        tVal52.textContent = t.toFixed(2);
+        aVal52.textContent = alpha.toFixed(2);
+        lVal52.textContent = L.toFixed(1);
+        outT52.textContent = `${t.toFixed(2)} s`;
+
+        const f1 = alpha / (2 * L);
+        const T1 = (2 * L) / alpha;
+        outF1.textContent = `${f1.toFixed(3)} Hz`;
+        outT1.textContent = `${T1.toFixed(2)} s`;
+
+        if (kind === 'struck') {
+          outMsg52.innerHTML = `<strong>Corda Percutida (f = 0, g ≠ 0):</strong> em t = 0 a corda está reta na horizontal (u = 0), mas sai disparada pela velocidade inicial (termos em <strong>sen(nαπt/L)</strong>)! Frequência fundamental f₁ = α/(2L) = ${f1.toFixed(3)} Hz.`;
+        } else if (kind === 'plucked') {
+          outMsg52.innerHTML = `<strong>Corda Dedilhada (triângulo no meio, g = 0):</strong> soma infinita de harmônicos ímpares em <strong>cos(nαπt/L)</strong>! Note as duas pontas presas em u(0, t) = u(L, t) = 0 o tempo todo.`;
+        } else if (kind === 'mode1') {
+          outMsg52.innerHTML = `<strong>Modo Fundamental (n = 1):</strong> toda a corda vibra em fase perfeita com período T₁ = 2L/α = ${T1.toFixed(2)} s. Aumente α ou diminua L para vê-la vibrar mais rápido!`;
+        } else {
+          outMsg52.innerHTML = `<strong>Posição + Velocidade (f ≠ 0 e g ≠ 0):</strong> superposição do 1º modo em cosseno (posição) com o 2º modo em seno (velocidade), criando uma onda assimétrica!`;
+        }
+
+        const { ctx, width, height } = P.setupCanvas(canvas52, 290);
+        const colors = P.getThemeColors();
+        const map = P.createMapper(width, height, 0, L, -1.35, 1.35);
+
+        P.drawGridAndAxes(ctx, map, colors, {
+          xTicks: 6, yTicks: 5,
+          xLabel: `Posição x ∈ [0, ${L.toFixed(1)}]`, yLabel: `Deslocamento u(x, t = ${t.toFixed(2)})`
+        });
+
+        /* Plot vibrating string */
+        P.plotCurve(ctx, map, (x) => evalWave(kind, t, alpha, L, x), {
+          color: colors.primary, lineWidth: 3.0, samples: 300
+        });
+
+        /* Fixed anchor pins at x = 0 and x = L */
+        [0, L].forEach((xv) => {
+          ctx.beginPath();
+          ctx.arc(map.toX(xv), map.toY(0), 6, 0, Math.PI * 2);
+          ctx.fillStyle = colors.danger;
+          ctx.fill();
+          ctx.strokeStyle = colors.bg;
+          ctx.lineWidth = 2;
+          ctx.stroke();
+        });
+      }
+
+      function stopAnim52() {
+        if (anim52) { cancelAnimationFrame(anim52); anim52 = null; }
+        playBtn52.textContent = '▶ Animar Corda';
+      }
+
+      playBtn52.addEventListener('click', () => {
+        if (anim52) { stopAnim52(); return; }
+        playBtn52.textContent = '⏸ Pausar';
+        let lastTs = null;
+        function step(ts) {
+          if (lastTs !== null) {
+            const dt = (ts - lastTs) / 1000;
+            let nextT = parseFloat(tSlider52.value) + dt;
+            if (nextT > 6.0) nextT = nextT - 6.0;
+            tSlider52.value = nextT.toFixed(3);
+            drawSim52();
+          }
+          lastTs = ts;
+          anim52 = requestAnimationFrame(step);
+        }
+        anim52 = requestAnimationFrame(step);
+      });
+
+      resetBtn52.addEventListener('click', () => { stopAnim52(); tSlider52.value = '0'; drawSim52(); });
+      caseSel52.addEventListener('change', drawSim52);
+      tSlider52.addEventListener('input', () => { stopAnim52(); drawSim52(); });
+      aSlider52.addEventListener('input', drawSim52);
+      lSlider52.addEventListener('input', drawSim52);
+      P.registerChart(drawSim52);
+    });
+  </script>
+</body>
+</html>

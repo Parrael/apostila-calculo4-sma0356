@@ -1,0 +1,2139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bloco 0: Nivelamento Obrigatório — Apostila Cálculo IV (SMA0356)</title>
+  <meta name="description" content="Bloco 0 da Apostila Interativa de Cálculo IV (ICMC/USP): séries numéricas indispensáveis, séries de potências (Aulas 11 e 12) e kit de sobrevivência em integrais por partes e trigonometria.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body data-block-id="bloco0">
+  <div class="reading-progress-track" aria-hidden="true">
+    <div class="reading-progress-fill"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-left">
+      <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-label="Abrir menu lateral" aria-expanded="false">☰</button>
+      <a href="index.html" class="brand-link">
+        <span class="brand-title">Cálculo IV · Apostila P2</span>
+        <span class="brand-code">SMA0356</span>
+      </a>
+      <span class="header-breadcrumb">/ Bloco 0 · Nivelamento Obrigatório</span>
+    </div>
+    <div class="header-right">
+      <div class="header-progress-pill" title="Seu progresso neste bloco">
+        <span>Bloco 0:</span>
+        <strong data-block-progress-pct>0%</strong>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">☾</span>
+        <span class="theme-label">Modo Escuro</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <div class="page-shell">
+    <aside class="sidebar" aria-label="Sumário e Navegação">
+      <div class="sidebar-progress-box">
+        <div class="sidebar-progress-top">
+          <span>Progresso no Bloco 0</span>
+          <strong data-block-progress-pct>0%</strong>
+        </div>
+        <div class="progress-bar-track">
+          <div class="progress-bar-fill" data-block-progress-bar></div>
+        </div>
+        <div class="sidebar-progress-meta" data-block-progress-detail>0/3 tópicos · 0/12 exercícios</div>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Sumário do Bloco 0</p>
+        <ul class="toc-list">
+          <li>
+            <a href="#topico-0-1" class="toc-link active">
+              <span>0.1 Séries Numéricas</span>
+              <span class="nav-status-tag" data-toc-track="b0-t1" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#simulador-somas-parciais" class="toc-link sub-item">Simulador: Somas Parciais</a></li>
+          <li><a href="#exemplos-0-1" class="toc-link sub-item">Exemplos 0.1 a 0.3</a></li>
+          <li><a href="#exercicios-0-1" class="toc-link sub-item">Exercícios 1 a 4</a></li>
+          <li>
+            <a href="#topico-0-2" class="toc-link">
+              <span>0.2 Séries de Potências (Aulas 11–12)</span>
+              <span class="nav-status-tag" data-toc-track="b0-t2" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#simulador-raio" class="toc-link sub-item"><span>Simulador: Raio $R$ na Reta</span></a></li>
+          <li><a href="#exemplos-0-2" class="toc-link sub-item">Exemplos 0.4 a 0.6</a></li>
+          <li><a href="#exercicios-0-2" class="toc-link sub-item">Exercícios 5 a 8</a></li>
+          <li>
+            <a href="#topico-0-3" class="toc-link">
+              <span>0.3 Kit de Integrais e Trigonometria</span>
+              <span class="nav-status-tag" data-toc-track="b0-t3" style="display:none;"></span>
+            </a>
+          </li>
+          <li><a href="#metodo-tabular" class="toc-link sub-item">Método Tabular (DI)</a></li>
+          <li><a href="#tabela-trigonometria" class="toc-link sub-item">Tabela Trigonométrica de Fourier</a></li>
+          <li><a href="#exemplos-0-3" class="toc-link sub-item">Exemplos 0.7 a 0.9</a></li>
+          <li><a href="#exercicios-0-3" class="toc-link sub-item">Exercícios 9 a 12</a></li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Todos os Blocos</p>
+        <ul class="block-nav-list">
+          <li><a href="index.html" class="block-nav-link"><span>← Painel Inicial</span></a></li>
+          <li><a href="bloco0.html" class="block-nav-link active"><span>Bloco 0 · Nivelamento</span></a></li>
+          <li><a href="bloco1.html" class="block-nav-link"><span>Bloco 1 · Séries de Potências</span></a></li>
+          <li><a href="bloco2.html" class="block-nav-link"><span>Bloco 2 · Taylor, Binomial e EDOs</span></a></li>
+          <li><a href="bloco3.html" class="block-nav-link"><span>Bloco 3 · Séries de Fourier</span></a></li>
+          <li><a href="bloco4.html" class="block-nav-link"><span>Bloco 4 · Extensões Par/Ímpar</span></a></li>
+          <li><a href="bloco5.html" class="block-nav-link"><span>Bloco 5 · EDPs (Calor e Onda)</span></a></li>
+          <li><a href="formulario.html" class="block-nav-link"><span>Formulário de Bolso</span></a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <article class="article-container">
+        <header class="chapter-header">
+          <p class="chapter-kicker">Bloco 0 · Fundação Obrigatória · Aulas 6, 8, 11 e 12 (SMA0356)</p>
+          <h1>Nivelamento Obrigatório (Base do Zero)</h1>
+          <p class="chapter-lead">
+            Respire fundo: aqui não assumimos que você lembra da P1 nem das técnicas de integração de Cálculo I. Vamos construir, tijolo por tijolo e sem pular nenhuma passagem algébrica, os <strong>três pilares indispensáveis</strong> que serão usados o tempo todo na P2: séries numéricas essenciais, raio/intervalo de convergência e o kit de integrais + trigonometria para Fourier.
+          </p>
+          <div class="chapter-meta-row">
+            <span class="badge badge-base">Pré-requisito de toda a P2</span>
+            <span class="badge badge-neutral">3 Tópicos Fundamentais</span>
+            <span class="badge badge-neutral">9 Exemplos Comentados</span>
+            <span class="badge badge-neutral">12 Exercícios Passo a Passo</span>
+            <span class="badge badge-done">2 Simuladores Interativos</span>
+          </div>
+        </header>
+
+        <!-- ================================================================
+             TÓPICO 0.1 — SÉRIES NUMÉRICAS INDISPENSÁVEIS
+             ================================================================ -->
+        <section id="topico-0-1">
+          <div class="topic-header-bar">
+            <h2>0.1 Revisão Relâmpago de Séries Numéricas</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b0-t1" data-track-type="topic" data-block="bloco0">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — Por que preciso disso na P2?</p>
+            <p>
+              Você talvez pense: <em>"Mas séries numéricas não eram da P1?"</em>. Sim — porém elas <strong>reaparecem em quase todas as questões da P2</strong> em três momentos decisivos:
+            </p>
+            <ol>
+              <li>Quando você encontra o raio de convergência $R$ de uma série de potências e precisa testar os <strong>dois extremos</strong> $x = x_0 - R$ e $x = x_0 + R$ (ao substituir um número em $x$, a série de potências vira uma série numérica!).</li>
+              <li>Quando você precisa estimar o erro de uma integral aproximada usando o <strong>Critério de Leibniz</strong> (Aula 15).</li>
+              <li>Quando você manipula séries geométricas $\frac{1}{1-x} = \sum x^n$ para montar séries de Maclaurin sem derivar (Aulas 13 e 16).</li>
+            </ol>
+            <p>
+              A boa notícia é que você <strong>não</strong> precisa decorar 15 critérios obscuros da P1. Dominando com perfeição os <strong>4 pilares</strong> abaixo (Somas Parciais + Teste da Divergência, Geométrica, $p$-séries e Leibniz), você resolve mais de 95% do que aparece na P2.
+            </p>
+          </div>
+
+          <h3>1. O que significa "somar infinitos números"? (Somas Parciais $s_n$)</h3>
+          <p>
+            Ninguém consegue digitar infinitos sinais de "$+$" na calculadora. Como a Matemática dá sentido a uma soma infinita como
+            $$0{,}9 + 0{,}09 + 0{,}009 + 0{,}0009 + \cdots = \sum_{n=1}^{\infty} \frac{9}{10^n}?$$
+          </p>
+          <p>
+            A ideia é genial e simples (exatamente como na Aula 6 das notas da Profa. Janete): em vez de somar tudo de uma vez, somamos <strong>aos poucos</strong>, parando no termo $n$, e observamos para onde esse subtotal caminha quando $n \to \infty$.
+          </p>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Definição — Sequência das Somas Parciais e Convergência</p>
+            <p>
+              Dada uma sequência de números reais $(a_n)_{n \ge 0}$, definimos a <strong>$n$-ésima soma parcial</strong> (ou reduzida) como a soma finita dos termos até o índice $n$:
+            </p>
+            $$s_n = a_0 + a_1 + a_2 + \cdots + a_n = \sum_{k=0}^{n} a_k.$$
+            <ul>
+              <li>Se existir um número real finito $s \in \mathbb{R}$ tal que $\displaystyle \lim_{n \to \infty} s_n = s$, dizemos que a série <strong>converge</strong> para $s$, e escrevemos $\displaystyle \sum_{n=0}^{\infty} a_n = s$.</li>
+              <li>Se $\displaystyle \lim_{n \to \infty} s_n$ for $+\infty$, $-\infty$ ou simplesmente não existir (por exemplo, ficar oscilando), dizemos que a série <strong>diverge</strong>.</li>
+            </ul>
+          </div>
+
+          <p>
+            <strong>Atenção à diferença entre dois objetos parecidos:</strong>
+          </p>
+          <ul>
+            <li>A <strong>sequência</strong> $(a_n)$ é a lista de parcelas individuais: $a_1, a_2, a_3, \dots$</li>
+            <li>A <strong>série</strong> $\sum a_n$ é a soma acumulada dessas parcelas: $s_1 = a_1$, $s_2 = a_1 + a_2$, $s_3 = a_1 + a_2 + a_3, \dots$</li>
+          </ul>
+          <p>
+            No exemplo $0{,}9 + 0{,}09 + 0{,}009 + \cdots$: as parcelas são $a_1 = 0{,}9$, $a_2 = 0{,}09$, $a_3 = 0{,}009, \dots$ (que tendem a $0$). Já as somas parciais são $s_1 = 0{,}9$, $s_2 = 0{,}99$, $s_3 = 0{,}999, \dots$, que se aproximam cada vez mais de $1$. Logo, a série converge para $1$.
+          </p>
+
+          <h3>2. Teste do Termo Geral (ou Teste da Divergência)</h3>
+          <p>
+            Pense com bom senso: se você está somando infinitos números e quer que o total se estabilize em um valor finito, o que precisa acontecer com as parcelas novas que você continua jogando na soma? Elas <em>têm</em> que ficar cada vez menores, tendendo a zero! Se você continuar somando pedaços que não vão para zero (tipo $+0{,}5 + 0{,}5 + 0{,}5 + \cdots$ ou $+1 - 1 + 1 - 1 + \cdots$), a soma nunca vai se acalmar.
+          </p>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Teorema — Teste do Termo Geral (Teste da Divergência)</p>
+            <p>
+              Se a série $\displaystyle \sum_{n=0}^{\infty} a_n$ converge, então obrigatoriamente $\displaystyle \lim_{n \to \infty} a_n = 0$.
+            </p>
+            <p>
+              Na prática (usando a contrapositiva, que é como aplicamos na prova):
+            </p>
+            $$\text{Se } \lim_{n \to \infty} a_n \neq 0 \quad (\text{ou se o limite não existir}), \quad \text{então } \sum_{n=0}^{\infty} a_n \textbf{ DIVERGE!}$$
+          </div>
+
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Alerta de Pegadinha nº 1 — A armadilha mais fatal de séries</p>
+            <p>
+              O Teste do Termo Geral <strong>NUNCA prova convergência!</strong> Se você calcular $\lim_{n\to\infty} a_n = 0$, isso significa apenas "não sei ainda; a série passou na primeira triagem, preciso usar outro teste".
+            </p>
+            <p>
+              <strong>Contraexemplo clássico:</strong> Na Série Harmônica $\displaystyle \sum_{n=1}^{\infty} \frac{1}{n}$, temos $\lim_{n\to\infty} \frac{1}{n} = 0$, mas mesmo assim a soma cresce sem limite ($+\infty$) — ela <strong>diverge</strong>!
+            </p>
+          </div>
+
+          <h3>3. A Série Geométrica (A Mãe das Séries de Potências)</h3>
+          <p>
+            A série geométrica é aquela em que cada termo é o anterior multiplicado por uma mesma constante $r$ (chamada de <strong>razão</strong>):
+            $$\sum_{n=0}^{\infty} r^n = 1 + r + r^2 + r^3 + \cdots + r^n + \cdots$$
+          </p>
+          <p>
+            Vamos deduzir sua fórmula de soma parcial <strong>sem nenhum salto algébrico</strong>, para você nunca mais esquecer:
+          </p>
+          <div class="math-step">
+            <span class="step-label">Dedução Passo a Passo da Soma Parcial $s_n$</span>
+            <p>Escreva $s_n$ e logo abaixo multiplique toda a equação por $r$:</p>
+            $$s_n = 1 + r + r^2 + \cdots + r^{n-1} + r^n$$
+            $$r \cdot s_n = r + r^2 + r^3 + \cdots + r^n + r^{n+1}$$
+            <p>Agora subtraia a segunda linha da primeira. Quase todos os termos se cancelam ($r - r = 0$, $r^2 - r^2 = 0$, $\dots$, $r^n - r^n = 0$), sobrando apenas o primeiro termo da linha de cima ($1$) e o último da linha de baixo ($-r^{n+1}$):</p>
+            $$s_n - r \cdot s_n = 1 - r^{n+1}$$
+            <p>Colocando $s_n$ em evidência no lado esquerdo: $(1 - r)s_n = 1 - r^{n+1}$. Para $r \neq 1$, dividimos ambos os lados por $(1 - r)$:</p>
+            $$s_n = \frac{1 - r^{n+1}}{1 - r}.$$
+            <p>Agora faça $n \to \infty$: sabemos que $r^{n+1} \to 0$ se e somente se $|r| < 1$ (ou seja, $-1 < r < 1$). Nesse caso:</p>
+            $$\lim_{n \to \infty} s_n = \frac{1 - 0}{1 - r} = \frac{1}{1 - r}.$$
+          </div>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Teorema — Série Geométrica (Forma Básica e Forma Geral)</p>
+            <p><strong>Forma básica (começando em $n = 0$):</strong></p>
+            $$\sum_{n=0}^{\infty} r^n = \begin{cases} \dfrac{1}{1 - r}, & \text{se } |r| < 1 \quad (\text{converge}), \\[10pt] \text{diverge}, & \text{se } |r| \ge 1. \end{cases}$$
+            <p><strong>Forma geral (com constante $c \neq 0$ e começando em qualquer índice $n = k$):</strong></p>
+            $$\sum_{n=k}^{\infty} c \cdot r^n = \frac{c \cdot r^k}{1 - r} = \frac{\textbf{primeiro termo}}{1 - \textbf{razão}}, \qquad \text{válido para } |r| < 1.$$
+          </div>
+
+          <h3>4. $p$-Séries (Série Harmônica e Generalizada)</h3>
+          <p>
+            Nos extremos das séries de potências, quase sempre sobra algo da forma $\sum \frac{1}{n}$, $\sum \frac{1}{n^2}$ ou $\sum \frac{1}{\sqrt{n}}$. Todas elas pertencem à mesma família:
+          </p>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Teorema — Critério das $p$-Séries (Aula 7)</p>
+            <p>Uma série da forma $\displaystyle \sum_{n=1}^{\infty} \frac{1}{n^p}$ (com $p \in \mathbb{R}$ constante) comporta-se assim:</p>
+            $$\sum_{n=1}^{\infty} \frac{1}{n^p} \quad \begin{cases} \textbf{CONVERGE}, & \text{se } p > 1, \\[6pt] \textbf{DIVERGE}, & \text{se } p \le 1. \end{cases}$$
+          </div>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Série</th>
+                  <th>Reescrita como $\frac{1}{n^p}$</th>
+                  <th>Valor de $p$</th>
+                  <th>Resultado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>$\displaystyle \sum_{n=1}^{\infty} \frac{1}{n}$ (Série Harmônica)</td>
+                  <td>$\displaystyle \frac{1}{n^1}$</td>
+                  <td>$p = 1 \le 1$</td>
+                  <td><strong>Diverge</strong> (clássica de prova!)</td>
+                </tr>
+                <tr>
+                  <td>$\displaystyle \sum_{n=1}^{\infty} \frac{1}{\sqrt{n}}$</td>
+                  <td>$\displaystyle \frac{1}{n^{1/2}}$</td>
+                  <td>$p = \frac{1}{2} \le 1$</td>
+                  <td><strong>Diverge</strong></td>
+                </tr>
+                <tr>
+                  <td>$\displaystyle \sum_{n=1}^{\infty} \frac{1}{n^2}$</td>
+                  <td>$\displaystyle \frac{1}{n^2}$</td>
+                  <td>$p = 2 > 1$</td>
+                  <td><strong>Converge</strong> (na Aula 22 veremos que dá $\frac{\pi^2}{6}$!)</td>
+                </tr>
+                <tr>
+                  <td>$\displaystyle \sum_{n=1}^{\infty} \frac{1}{n\sqrt{n}}$</td>
+                  <td>$\displaystyle \frac{1}{n^1 \cdot n^{1/2}} = \frac{1}{n^{3/2}}$</td>
+                  <td>$p = \frac{3}{2} = 1{,}5 > 1$</td>
+                  <td><strong>Converge</strong></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>5. Critério de Leibniz (Séries Alternadas) e Estimativa de Erro</h3>
+          <p>
+            Na Série Harmônica $\sum \frac{1}{n}$, todos os termos são positivos e a soma vai para $+\infty$. Mas e se os sinais <strong>alternarem</strong> ($+ - + - \cdots$), como em $1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots$?
+          </p>
+          <p>
+            Imagine dar 1 passo para frente, depois $\frac{1}{2}$ passo para trás, depois $\frac{1}{3}$ para frente, depois $\frac{1}{4}$ para trás... Como cada passo é <strong>menor que o anterior</strong> e vai encolhendo até $0$, você fica "cercando" um ponto fixo $L$ sem nunca escapar! E mais incrível ainda: depois de dar o $n$-ésimo passo, a sua distância até o alvo $L$ é <strong>no máximo o tamanho do próximo passo</strong> $a_{n+1}$!
+          </p>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Teorema — Critério de Leibniz (Aula 8 — Teorema I.9.2)</p>
+            <p>
+              Considere a série alternada $\displaystyle \sum_{n=0}^{\infty} (-1)^n a_n = a_0 - a_1 + a_2 - a_3 + \cdots$ (ou começando em $n = 1$, ou com $(-1)^{n-1}$). Suponha que a sequência $(a_n)$ (sem o sinal!) satisfaça as <strong>3 hipóteses</strong> (pelo menos a partir de algum índice $n_0$):
+            </p>
+            <ol>
+              <li>$a_n > 0$ (termos positivos);</li>
+              <li>$\displaystyle \lim_{n \to \infty} a_n = 0$ (tende a zero);</li>
+              <li>$a_{n+1} \le a_n$ (é decrescente).</li>
+            </ol>
+            <p>Então valem duas conclusões poderosíssimas:</p>
+            <ul>
+              <li><strong>(a) Convergência:</strong> Existe $L \in \mathbb{R}$ tal que $\displaystyle \sum_{n=0}^{\infty} (-1)^n a_n = L$.</li>
+              <li><strong>(b) Cota de Erro:</strong> Se truncarmos a série na soma parcial $s_n = \sum_{k=0}^{n} (-1)^k a_k$, o erro cometido satisfaz
+              $$|L - s_n| \le a_{n+1} \qquad (\text{módulo do primeiro termo desprezado}).$$</li>
+            </ul>
+          </div>
+
+          <p>
+            <strong>Bônus rápido — Convergência Absoluta vs. Condicional:</strong> Dizemos que $\sum c_n$ é <em>absolutamente convergente</em> se $\sum |c_n|$ converge (toda série absolutamente convergente também converge!). Se $\sum c_n$ converge (por exemplo, por Leibniz), mas $\sum |c_n|$ diverge, dizemos que ela é <em>condicionalmente convergente</em>. Exemplo: $\sum_{n=1}^{\infty} \frac{(-1)^n}{n}$ converge (Leibniz), mas em módulo vira $\sum \frac{1}{n}$ (diverge) $\implies$ é <strong>condicionalmente convergente</strong>.
+          </p>
+
+          <!-- SIMULADOR INTERATIVO 1 -->
+          <div class="simulator-card" id="simulador-somas-parciais">
+            <div class="simulator-header">
+              <div>
+                <h3 class="simulator-title">Simulador Interativo 0.1 — Somas Parciais $s_N$ e Cota de Erro</h3>
+                <p class="simulator-subtitle">Veja com seus próprios olhos o que significa convergir, divergir e como Leibniz "enjaula" o limite $L$.</p>
+              </div>
+              <span class="badge badge-base">Laboratório Visual</span>
+            </div>
+
+            <div class="sim-controls">
+              <div class="sim-control-group">
+                <label for="sim01-type">Escolha a Série</label>
+                <select id="sim01-type" class="sim-select">
+                  <option value="geom">Série Geométrica: Σ rⁿ (n ≥ 0)</option>
+                  <option value="pseries">p-Série: Σ 1/nᵖ (n ≥ 1)</option>
+                  <option value="leibniz">Harmônica Alternada (Leibniz): Σ (-1)ⁿ⁻¹/n</option>
+                </select>
+              </div>
+
+              <div class="sim-control-group" id="sim01-param-group">
+                <label for="sim01-param">
+                  <span id="sim01-param-label">Razão r</span>
+                  <span class="sim-val" id="sim01-param-val">0.60</span>
+                </label>
+                <input id="sim01-param" class="sim-range" type="range" min="-1.15" max="1.15" step="0.05" value="0.60">
+              </div>
+
+              <div class="sim-control-group">
+                <label for="sim01-n">
+                  <span>Número de termos (N)</span>
+                  <span class="sim-val" id="sim01-n-val">15</span>
+                </label>
+                <input id="sim01-n" class="sim-range" type="range" min="1" max="40" step="1" value="15">
+              </div>
+            </div>
+
+            <div class="canvas-stage">
+              <canvas id="canvas-sim01" aria-label="Gráfico interativo das somas parciais s_n"></canvas>
+            </div>
+
+            <div class="sim-readout">
+              <div class="readout-metric">
+                <div class="readout-label">Última parcela $a_N$</div>
+                <div class="readout-value" id="sim01-an">—</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label">Soma Parcial $s_N$</div>
+                <div class="readout-value" id="sim01-sn">—</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label">Limite $L$</div>
+                <div class="readout-value" id="sim01-lim">—</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label" id="sim01-err-label">Erro $|L - s_N|$</div>
+                <div class="readout-value" id="sim01-err">—</div>
+              </div>
+            </div>
+
+            <div class="sim-explanation" id="sim01-msg">
+              Carregando análise...
+            </div>
+          </div>
+
+          <div class="callout box-receita">
+            <p class="callout-title">Receita de Bolo — Como classificar uma série numérica em 30 segundos</p>
+            <ol>
+              <li><strong>Passo 1 (Triagem obrigatória):</strong> Calcule mentalmente $\lim_{n\to\infty} a_n$. Deu diferente de $0$ (ou não existe)? <strong>PARE e escreva "Diverge pelo Teste do Termo Geral"</strong>.</li>
+              <li><strong>Passo 2 (Reconhecimento direto):</strong> Se o termo geral tem apenas potências com $n$ no expoente ($c \cdot r^n$), é <strong>Geométrica</strong>: converge se $|r| < 1$ (soma = $\frac{\text{1º termo}}{1-r}$) e diverge se $|r| \ge 1$.</li>
+              <li><strong>Passo 3 ($p$-série):</strong> Se o termo geral é $\frac{c}{n^p}$ (ou se comporta como $\frac{1}{n^p}$), olhe o expoente $p$: converge se $p > 1$, diverge se $p \le 1$.</li>
+              <li><strong>Passo 4 (Sinais alternados):</strong> Se houver $(-1)^n$ ou $(-1)^{n-1}$ multiplicando $a_n > 0$: verifique se $a_n \to 0$ e se $a_{n+1} \le a_n$. Se sim, <strong>converge pelo Critério de Leibniz</strong> (e o erro de $s_n$ é $\le a_{n+1}$).</li>
+            </ol>
+          </div>
+
+          <h3 id="exemplos-0-1">Exemplos Resolvidos (Seção 0.1)</h3>
+
+          <!-- EXEMPLO 0.1 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 0.1 (Aquecimento) — Série Geométrica Deslocada</h4>
+              <span class="badge badge-base">Nível Básico</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Determine se a série $\displaystyle \sum_{n=2}^{\infty} \frac{3 \cdot (-2)^n}{5^n}$ converge ou diverge. Em caso de convergência, encontre sua soma exata.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Agrupar as potências de $n$</span>
+                <p>Colocamos a constante $3$ para fora e juntamos $(-2)^n$ e $5^n$ sob o mesmo expoente $n$:</p>
+                $$\sum_{n=2}^{\infty} \frac{3 \cdot (-2)^n}{5^n} = \sum_{n=2}^{\infty} 3 \cdot \left(-\frac{2}{5}\right)^n.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Identificar a razão $r$ e verificar $|r| < 1$</span>
+                <p>Trata-se de uma série geométrica com razão $r = -\dfrac{2}{5}$. Calculando o módulo:</p>
+                $$|r| = \left|-\frac{2}{5}\right| = \frac{2}{5} = 0{,}4 < 1.$$
+                <p>Como $|r| < 1$, a série <strong>converge</strong>!</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Atenção ao índice inicial ($n = 2$, e NÃO $n = 0$!)</span>
+                <p>O primeiro termo da soma é obtido substituindo $n = 2$:</p>
+                $$\text{1º termo} = 3 \cdot \left(-\frac{2}{5}\right)^2 = 3 \cdot \frac{(-2)^2}{5^2} = 3 \cdot \frac{4}{25} = \frac{12}{25}.$$
+                <p>Agora aplicamos a fórmula $\dfrac{\text{1º termo}}{1 - r}$, tomando extremo cuidado com o sinal duplo em $1 - \left(-\frac{2}{5}\right)$:</p>
+                $$S = \frac{\frac{12}{25}}{1 - \left(-\frac{2}{5}\right)} = \frac{\frac{12}{25}}{1 + \frac{2}{5}} = \frac{\frac{12}{25}}{\frac{5}{5} + \frac{2}{5}} = \frac{\frac{12}{25}}{\frac{7}{5}}.$$
+                <p>Divisão de frações (mantém a primeira e multiplica pelo inverso da segunda):</p>
+                $$S = \frac{12}{25} \cdot \frac{5}{7} = \frac{12 \cdot \cancel{5}^{1}}{\cancel{25}_{5} \cdot 7} = \frac{12}{35}.$$
+              </div>
+              <div class="result-highlight">
+                <strong>Conclusão:</strong> A série converge e sua soma exata é $\displaystyle \sum_{n=2}^{\infty} \frac{3 \cdot (-2)^n}{5^n} = \frac{12}{35}$.
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 0.2 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 0.2 (Clássico de Extremos) — Divergência vs. Leibniz</h4>
+              <span class="badge badge-high">Nível de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Classifique quanto à convergência:
+                <strong>(a)</strong> $\displaystyle \sum_{n=1}^{\infty} \frac{2n}{3n + 1}$ &nbsp; e &nbsp;
+                <strong>(b)</strong> $\displaystyle \sum_{n=1}^{\infty} \frac{(-1)^n}{\sqrt{n}}$ (indicando se converge absoluta ou condicionalmente).
+              </p>
+              <div class="math-step">
+                <span class="step-label">Item (a) · Sempre comece pelo Teste do Termo Geral!</span>
+                <p>Dividimos numerador e denominador por $n$ (a maior potência de $n$):</p>
+                $$\lim_{n \to \infty} a_n = \lim_{n \to \infty} \frac{2n}{3n + 1} = \lim_{n \to \infty} \frac{\frac{2n}{n}}{\frac{3n}{n} + \frac{1}{n}} = \lim_{n \to \infty} \frac{2}{3 + \frac{1}{n}} = \frac{2}{3 + 0} = \frac{2}{3} \neq 0.$$
+                <p>Como o limite do termo geral é diferente de $0$, a série <strong>diverge pelo Teste do Termo Geral</strong>.</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Item (b) · Série Alternada (Critério de Leibniz)</span>
+                <p>Separamos o sinal $(-1)^n$ da parte positiva $a_n = \dfrac{1}{\sqrt{n}}$ e verificamos as 3 condições de Leibniz:</p>
+                <ol>
+                  <li>$a_n = \dfrac{1}{\sqrt{n}} > 0$ para todo $n \ge 1$. (OK!)</li>
+                  <li>$\displaystyle \lim_{n \to \infty} \frac{1}{\sqrt{n}} = 0$. (OK!)</li>
+                  <li>Decrescente: como $n + 1 > n > 0$, tirando a raiz temos $\sqrt{n+1} > \sqrt{n}$, e invertendo a fração a desigualdade inverte:
+                  $$\frac{1}{\sqrt{n+1}} < \frac{1}{\sqrt{n}} \implies a_{n+1} < a_n.$$ (OK!)</li>
+                </ol>
+                <p>Logo, pelo <strong>Critério de Leibniz</strong>, $\displaystyle \sum_{n=1}^{\infty} \frac{(-1)^n}{\sqrt{n}}$ <strong>converge</strong>.</p>
+                <p><strong>É absoluta ou condicional?</strong> Tomando o módulo do termo geral:</p>
+                $$\sum_{n=1}^{\infty} \left|\frac{(-1)^n}{\sqrt{n}}\right| = \sum_{n=1}^{\infty} \frac{1}{\sqrt{n}} = \sum_{n=1}^{\infty} \frac{1}{n^{1/2}}.$$
+                <p>Esta é uma $p$-série com $p = \dfrac{1}{2} \le 1$, que <strong>diverge</strong>. Portanto, a série original é <strong>condicionalmente convergente</strong>.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 0.3 (AVANÇADO COM RESOLUÇÃO RECOLHÍVEL) -->
+          <div class="box-exemplo" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 0.3 (Estilo Aula 8 / P2) — Estimativa de Erro via Leibniz</h4>
+              <span class="badge badge-max">Clássico de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Considere a série convergente $\displaystyle L = \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n^3}$. Determine o menor número de termos $N$ necessário para aproximar $L$ por sua soma parcial $s_N$ com erro estritamente menor que $0{,}01$, e calcule essa aproximação em forma de fração exata e decimal.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 4</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Confirmar as hipóteses de Leibniz</span>
+                  <p>Temos $a_n = \dfrac{1}{n^3} > 0$, $\lim_{n\to\infty} \dfrac{1}{n^3} = 0$, e $a_{n+1} = \dfrac{1}{(n+1)^3} < \dfrac{1}{n^3} = a_n$. Portanto vale a estimativa de erro:</p>
+                  $$|L - s_N| \le a_{N+1} = \frac{1}{(N+1)^3}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Impor a tolerância de erro $a_{N+1} < 0{,}01$</span>
+                  <p>Queremos garantir que o erro seja menor que $0{,}01 = \dfrac{1}{100}$:</p>
+                  $$\frac{1}{(N+1)^3} < \frac{1}{100} \iff (N+1)^3 > 100.$$
+                  <p>Testando inteiros positivos no cubo:</p>
+                  <ul>
+                    <li>$4^3 = 64$ (não serve, pois $64 \not> 100$)</li>
+                    <li>$5^3 = 125 > 100$ (serve! E dá $a_5 = \frac{1}{125} = 0{,}008 < 0{,}01$).</li>
+                  </ul>
+                  <p>Portanto, o primeiro termo que podemos desprezar é o de índice $N + 1 = 5$, o que significa que devemos somar até $N = 4$!</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Escrever a soma parcial $s_4$ termo a termo</span>
+                  <p>Substituindo $n = 1, 2, 3, 4$ na expressão $\dfrac{(-1)^{n-1}}{n^3}$:</p>
+                  $$s_4 = \frac{(-1)^0}{1^3} + \frac{(-1)^1}{2^3} + \frac{(-1)^2}{3^3} + \frac{(-1)^3}{4^3} = 1 - \frac{1}{8} + \frac{1}{27} - \frac{1}{64}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 4 · Somar as frações com MMC passo a passo</span>
+                  <p>Como $8 = 2^3$, $27 = 3^3$ e $64 = 2^6$, o mínimo múltiplo comum é $\text{MMC}(8, 27, 64) = 2^6 \cdot 3^3 = 64 \cdot 27 = 1728$:</p>
+                  <ul>
+                    <li>$1 = \dfrac{1728}{1728}$</li>
+                    <li>$\dfrac{1}{8} = \dfrac{1728 \div 8}{1728} = \dfrac{216}{1728}$</li>
+                    <li>$\dfrac{1}{27} = \dfrac{1728 \div 27}{1728} = \dfrac{64}{1728}$</li>
+                    <li>$\dfrac{1}{64} = \dfrac{1728 \div 64}{1728} = \dfrac{27}{1728}$</li>
+                  </ul>
+                  $$s_4 = \frac{1728 - 216 + 64 - 27}{1728} = \frac{1512 + 64 - 27}{1728} = \frac{1576 - 27}{1728} = \frac{1549}{1728} \approx 0{,}8964.$$
+                  <div class="result-highlight">
+                    <strong>Resposta:</strong> São necessários $N = 4$ termos, e a aproximação é $L \approx s_4 = \dfrac{1549}{1728} \approx 0{,}8964$ (com erro garantido $\le \dfrac{1}{125} = 0{,}008 < 0{,}01$).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Alertas de Pegadinha — Seção 0.1</p>
+            <ul>
+              <li><strong>Pegadinha do índice na Geométrica:</strong> Se a série começa em $n = 1$, $\displaystyle \sum_{n=1}^{\infty} r^n$ <strong>NÃO</strong> vale $\dfrac{1}{1-r}$! Ela vale $\dfrac{r}{1-r}$ (falta o termo $r^0 = 1$). Sempre use $\dfrac{\text{1º termo}}{1 - r}$.</li>
+              <li><strong>Pegadinha no Leibniz:</strong> Na estimativa $|L - s_N| \le a_{N+1}$, o número que você testa contra a tolerância é $a_{N+1}$ (o <em>próximo</em> termo), e NÃO $a_N$! No Exemplo 0.3, $a_5 = \frac{1}{125} < 0{,}01$, então paramos em $N = 4$ (não precisamos somar o $5$º termo).</li>
+              <li><strong>Pegadinha da recíproca falsa:</strong> $\lim a_n = 0$ nunca prova convergência! Se escrever "como $a_n \to 0$, a série converge" na prova, o corretor zera a justificativa.</li>
+            </ul>
+          </div>
+
+          <h3 id="exercicios-0-1">Exercícios de Fixação (Seção 0.1)</h3>
+          <p>Tente resolver no papel antes de clicar nos botões. Se travar no começo, use <strong>"Revelar Passo 1"</strong> como uma dica gentil!</p>
+
+          <!-- EXERCÍCIO 1 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 1 — Geométrica e Teste da Divergência</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b0-ex1" data-track-type="exercise" data-block="bloco0">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Determine se cada série abaixo converge ou diverge. Se for geométrica convergente, calcule sua soma:
+                <br><strong>(a)</strong> $\displaystyle \sum_{n=1}^{\infty} \frac{4}{3^n}$ &qquad
+                <strong>(b)</strong> $\displaystyle \sum_{n=1}^{\infty} \frac{n^2 + 1}{2n^2 - 1}$
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (a) · Série Geométrica começando em $n = 1$</span>
+                  <p>Reescrevemos como $\displaystyle \sum_{n=1}^{\infty} 4 \cdot \left(\frac{1}{3}\right)^n$. A razão é $r = \dfrac{1}{3}$, e como $|r| = \dfrac{1}{3} < 1$, a série <strong>converge</strong>.</p>
+                  <p>O primeiro termo ($n = 1$) é $4 \cdot \left(\dfrac{1}{3}\right)^1 = \dfrac{4}{3}$. Aplicando a fórmula:</p>
+                  $$S = \frac{\text{1º termo}}{1 - r} = \frac{\frac{4}{3}}{1 - \frac{1}{3}} = \frac{\frac{4}{3}}{\frac{2}{3}} = \frac{4}{3} \cdot \frac{3}{2} = \frac{4}{2} = 2.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b) · Teste do Termo Geral</span>
+                  <p>Dividimos numerador e denominador por $n^2$:</p>
+                  $$\lim_{n \to \infty} \frac{n^2 + 1}{2n^2 - 1} = \lim_{n \to \infty} \frac{1 + \frac{1}{n^2}}{2 - \frac{1}{n^2}} = \frac{1 + 0}{2 - 0} = \frac{1}{2} \neq 0.$$
+                  <p>Como o termo geral não tende a zero, a série <strong>diverge pelo Teste do Termo Geral</strong>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 2 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 2 — Reconhecendo $p$-Séries com Raízes</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b0-ex2" data-track-type="exercise" data-block="bloco0">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Reescreva os denominadores como potência $n^p$ e decida se convergem ou divergem:
+                <br><strong>(a)</strong> $\displaystyle \sum_{n=1}^{\infty} \frac{1}{n\sqrt{n}}$ &qquad
+                <strong>(b)</strong> $\displaystyle \sum_{n=1}^{\infty} \frac{1}{\sqrt[3]{n^2}}$
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (a) · Propriedade de potências $n^a \cdot n^b = n^{a+b}$</span>
+                  <p>Lembrando que $\sqrt{n} = n^{1/2}$:</p>
+                  $$n \cdot \sqrt{n} = n^1 \cdot n^{1/2} = n^{1 + \frac{1}{2}} = n^{3/2}.$$
+                  <p>Logo a série é $\displaystyle \sum_{n=1}^{\infty} \frac{1}{n^{3/2}}$, uma $p$-série com $p = \dfrac{3}{2} = 1{,}5 > 1$. Portanto, <strong>converge</strong>.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b) · Propriedade $\sqrt[m]{n^k} = n^{k/m}$</span>
+                  <p>Reescrevemos $\sqrt[3]{n^2} = n^{2/3}$. A série é $\displaystyle \sum_{n=1}^{\infty} \frac{1}{n^{2/3}}$, uma $p$-série com $p = \dfrac{2}{3} \approx 0{,}67 \le 1$. Portanto, <strong>diverge</strong>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 3 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 3 — Convergência Absoluta ou Condicional?</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b0-ex3" data-track-type="exercise" data-block="bloco0">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Analise a série $\displaystyle \sum_{n=1}^{\infty} \frac{(-1)^n}{2n + 1}$: ela diverge, converge condicionalmente ou converge absolutamente?
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Testar convergência pelo Critério de Leibniz</span>
+                  <p>Seja $a_n = \dfrac{1}{2n + 1}$ (a parte sem o sinal $(-1)^n$). Verificamos as 3 condições:</p>
+                  <ol>
+                    <li>$a_n = \dfrac{1}{2n+1} > 0$ para todo $n \ge 1$.</li>
+                    <li>$\displaystyle \lim_{n \to \infty} \frac{1}{2n + 1} = 0$.</li>
+                    <li>$a_{n+1} = \dfrac{1}{2(n+1) + 1} = \dfrac{1}{2n + 3} < \dfrac{1}{2n + 1} = a_n$ (pois $2n + 3 > 2n + 1 > 0$).</li>
+                  </ol>
+                  <p>Logo, a série <strong>converge</strong> pelo Critério de Leibniz.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Testar convergência absoluta (série dos módulos)</span>
+                  <p>Tomando o módulo, obtemos $\displaystyle \sum_{n=1}^{\infty} \frac{1}{2n + 1}$. Compare com a série harmônica $\displaystyle \sum_{n=1}^{\infty} \frac{1}{n}$ (ou observe diretamente que, para todo $n \ge 1$, $2n + 1 \le 2n + n = 3n$, logo $\dfrac{1}{2n+1} \ge \dfrac{1}{3n} = \dfrac{1}{3}\cdot\dfrac{1}{n}$).</p>
+                  <p>Como $\displaystyle \frac{1}{3} \sum_{n=1}^{\infty} \frac{1}{n}$ diverge (múltiplo positivo da série harmônica), por comparação $\displaystyle \sum_{n=1}^{\infty} \frac{1}{2n + 1}$ <strong>diverge</strong>.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Conclusão</span>
+                  <p>Como a série converge, mas a série dos módulos diverge, concluímos que $\displaystyle \sum_{n=1}^{\infty} \frac{(-1)^n}{2n + 1}$ é <strong>condicionalmente convergente</strong>.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 4 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 4 — Estimativa de Erro com Fatorial (Prévia da Aula 15!)</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b0-ex4" data-track-type="exercise" data-block="bloco0">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                No Bloco 1 veremos que $\displaystyle \operatorname{sen}(1) = \sum_{n=0}^{\infty} \frac{(-1)^n}{(2n+1)!}$. Use o Critério de Leibniz para encontrar o menor índice $N$ tal que $s_N$ aproxime $\operatorname{sen}(1)$ com erro menor que $10^{-3} = 0{,}001$, e calcule essa aproximação!
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Listar os primeiros termos $a_n = \frac{1}{(2n+1)!}$</span>
+                  <p>Lembrando que $k! = 1 \cdot 2 \cdot 3 \cdots k$, calculamos cada termo positivo:</p>
+                  <ul>
+                    <li>$n = 0$: $a_0 = \dfrac{1}{1!} = 1$</li>
+                    <li>$n = 1$: $a_1 = \dfrac{1}{3!} = \dfrac{1}{6} \approx 0{,}1667$</li>
+                    <li>$n = 2$: $a_2 = \dfrac{1}{5!} = \dfrac{1}{120} \approx 0{,}00833$</li>
+                    <li>$n = 3$: $a_3 = \dfrac{1}{7!} = \dfrac{1}{5040} \approx 0{,}0001984 < 0{,}001$ ✓</li>
+                  </ul>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Identificar $N$ pela cota $|L - s_N| \le a_{N+1}$</span>
+                  <p>Como $a_n$ é positivo, decrescente e tende a $0$, vale $|L - s_N| \le a_{N+1}$. Como $a_3 = \dfrac{1}{5040} < \dfrac{1}{1000} = 10^{-3}$, basta parar no índice <strong>$N = 2$</strong> (somando apenas os 3 primeiros termos: $n=0, 1, 2$)!</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Calcular $s_2$ sem erros</span>
+                  $$s_2 = \frac{(-1)^0}{1!} + \frac{(-1)^1}{3!} + \frac{(-1)^2}{5!} = 1 - \frac{1}{6} + \frac{1}{120}.$$
+                  <p>Colocando tudo no denominador $120$:</p>
+                  $$s_2 = \frac{120}{120} - \frac{20}{120} + \frac{1}{120} = \frac{120 - 20 + 1}{120} = \frac{101}{120} \approx 0{,}84167.$$
+                  <div class="result-highlight">
+                    <strong>Curiosidade:</strong> Na calculadora, $\operatorname{sen}(1\text{ rad}) \approx 0{,}84147$. O erro real foi apenas $0{,}00020$, rigorosamente abaixo da cota $\frac{1}{5040} \approx 0{,}000198$... ops, conferindo com mais casas: $0{,}8416667 - 0{,}8414710 = 0{,}0001957 \le 0{,}0001984$! Incrível, não?
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr>
+
+        <!-- ================================================================
+             TÓPICO 0.2 — SÉRIES DE POTÊNCIAS (AULAS 11 E 12)
+             ================================================================ -->
+        <section id="topico-0-2">
+          <div class="topic-header-bar">
+            <h2>0.2 Séries de Potências, Raio e Intervalo de Convergência (Aulas 11 e 12)</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b0-t2" data-track-type="topic" data-block="bloco0">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — O "Polinômio Infinito"</p>
+            <p>
+              Até agora, nossas séries só tinham números. Agora vamos colocar uma variável $x$ dentro da soma! Uma <strong>série de potências</strong> nada mais é do que um polinômio que nunca acaba:
+              $$f(x) = a_0 + a_1(x - x_0) + a_2(x - x_0)^2 + a_3(x - x_0)^3 + \cdots = \sum_{n=0}^{\infty} a_n(x - x_0)^n.$$
+            </p>
+            <p>
+              Pense nela como uma <strong>máquina de fabricar séries numéricas</strong>: você escolhe um número $x$, pluga na fórmula, e ela cospe uma série numérica da Seção 0.1. Para alguns valores de $x$, essa soma converge (ou seja, $f(x)$ existe!); para outros $x$, ela explode (diverge). O conjunto de todos os $x$ onde ela converge é o <strong>domínio</strong> dessa função — chamado de <strong>Intervalo de Convergência ($I$)</strong>.
+            </p>
+          </div>
+
+          <h3>1. O Teorema Fundamental do Raio de Convergência (Aula 11)</h3>
+          <p>
+            O mais bonito nas séries de potências é que o conjunto de convergência nunca é "todo esburacado" ou aleatório: ele é <strong>sempre simétrico em torno do centro $x_0$</strong>!
+          </p>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Teorema — Raio de Convergência (Aula 11 — Observação II.2 e Definição II.1.5)</p>
+            <p>
+              Dada uma série de potências centrada em $x_0$, $\displaystyle \sum_{n=0}^{\infty} a_n (x - x_0)^n$, ocorre <strong>exatamente uma</strong> das três possibilidades abaixo:
+            </p>
+            <ol>
+              <li><strong>$R = 0$:</strong> A série converge <em>apenas</em> no centro $x = x_0$ (então $I = \{x_0\}$).</li>
+              <li><strong>$R = \infty$:</strong> A série converge absolutamente para <em>todo</em> $x \in \mathbb{R}$ (então $I = (-\infty, +\infty) = \mathbb{R}$).</li>
+              <li><strong>$0 < R < \infty$:</strong> Existe um número real positivo $R$ (chamado <strong>Raio de Convergência</strong>) tal que:
+                <ul>
+                  <li>a série <strong>converge absolutamente</strong> para todo $x$ com $|x - x_0| < R$, isto é, $x \in (x_0 - R,\, x_0 + R)$;</li>
+                  <li>a série <strong>diverge</strong> para todo $x$ com $|x - x_0| > R$.</li>
+                </ul>
+              </li>
+            </ol>
+            <p>
+              <strong>Nos extremos $x = x_0 - R$ e $x = x_0 + R$, qualquer coisa pode acontecer!</strong> Por isso, o intervalo de convergência $I$ pode assumir qualquer uma das 4 formas: $(x_0-R, x_0+R)$, $[x_0-R, x_0+R)$, $(x_0-R, x_0+R]$ ou $[x_0-R, x_0+R]$.
+            </p>
+          </div>
+
+          <h3>2. Como calcular o Raio $R$ sem errar (Aula 12)</h3>
+          <p>
+            Nas Notas de Aula da Profa. Janete (Aula 12), são apresentados dois teoremas diretos para achar $R$ — e também existe a versão "direta com $x$" (Teste da Razão/Raiz aplicado ao termo completo $u_n(x)$), que te protege contra a pegadinha de potências como $x^{2n}$ ou $(2x-1)^n$. Vamos conhecer os dois caminhos!
+          </p>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Teoremas II.2.1 e II.2.2 (Aula 12) — Critérios Inversos da Razão e da Raiz</p>
+            <p>Para uma série na forma padrão $\displaystyle \sum a_n (x - x_0)^n$ (atenção: expoente <strong>exatamente</strong> $n$ e coeficiente de $x$ igual a $1$):</p>
+            <ul>
+              <li><strong>Critério Inverso da Razão:</strong> Se existir o limite (finito ou $\infty$)
+              $$R = \lim_{n \to \infty} \left|\frac{a_n}{a_{n+1}}\right|,$$
+              então $R$ é o raio de convergência da série.</li>
+              <li><strong>Critério Inverso da Raiz:</strong> Se existir o limite (finito ou $\infty$)
+              $$R = \lim_{n \to \infty} \frac{1}{\sqrt[n]{|a_n|}},$$
+              então $R$ é o raio de convergência da série.</li>
+            </ul>
+            <hr style="margin: 1rem 0;">
+            <p><strong>Alternativa blindada (Teste da Razão / Raiz Direto — funciona SEMPRE, até para $x^{2n}$ ou $(3x-2)^n$!):</strong></p>
+            <p>Chame o termo geral <em>completo</em> (incluindo o $x$) de $u_n(x)$ e imponha a condição de convergência absoluta $L(x) < 1$:</p>
+            $$\text{Razão Direta: } L(x) = \lim_{n \to \infty} \left|\frac{u_{n+1}(x)}{u_n(x)}\right| < 1 \qquad \text{ou} \qquad \text{Raiz Direta: } L(x) = \lim_{n \to \infty} \sqrt[n]{|u_n(x)|} < 1.$$
+          </div>
+
+          <h3>3. Mini-revisão de Fatoriais (para nunca travar no Teste da Razão)</h3>
+          <p>
+            O fatorial $n!$ é o produto de todos os inteiros de $1$ até $n$ (com a convenção $0! = 1$ e $1! = 1$). A regra de ouro para simplificar frações com fatoriais é <strong>"abrir o maior fatorial até enxergar o menor"</strong>:
+          </p>
+          <ul>
+            <li>$(n + 1)! = (n + 1) \cdot n! \implies \dfrac{n!}{(n+1)!} = \dfrac{\cancel{n!}}{(n+1)\cdot \cancel{n!}} = \dfrac{1}{n + 1}$.</li>
+            <li>$(2n + 2)! = (2n + 2)(2n + 1)(2n)! \implies \dfrac{(2n)!}{(2n+2)!} = \dfrac{\cancel{(2n)!}}{(2n+2)(2n+1)\cancel{(2n)!}} = \dfrac{1}{(2n+2)(2n+1)}$.</li>
+            <li>$(2(n+1) + 1)! = (2n + 3)! = (2n + 3)(2n + 2)(2n + 1)! \implies \dfrac{(2n+1)!}{(2n+3)!} = \dfrac{1}{(2n+3)(2n+2)}$.</li>
+          </ul>
+          <p>
+            <strong>Cuidado com parênteses!</strong> Quando você troca $n$ por $(n+1)$ dentro de $(2n)!$, você obtém $(2(n+1))! = (2n + 2)!$, e <strong>NÃO</strong> $(2n + 1)!$. Esse erro bobo derruba muita gente!
+          </p>
+
+          <!-- SIMULADOR INTERATIVO 2 -->
+          <div class="simulator-card" id="simulador-raio">
+            <div class="simulator-header">
+              <div>
+                <h3 class="simulator-title">Simulador Interativo 0.2 — Raio $R$ e Intervalo de Convergência na Reta Real</h3>
+                <p class="simulator-subtitle">Arraste o ponto $x$ na reta real para ver o que acontece dentro do intervalo aberto, exatamente nos dois extremos e fora do raio $R$.</p>
+              </div>
+              <span class="badge badge-base">Laboratório Visual</span>
+            </div>
+
+            <div class="sim-controls">
+              <div class="sim-control-group">
+                <label for="sim02-series">Escolha uma Série de Potências</label>
+                <select id="sim02-series" class="sim-select">
+                  <option value="ex1">Σ (x − 3)ⁿ / (n · 2ⁿ)   [I = [1, 5)]</option>
+                  <option value="ex2">Σ (−1)ⁿ (x + 1)ⁿ / (n² · 3ⁿ)   [I = [−4, 2]]</option>
+                  <option value="ex3">Σ ((n+2)/(2n+3))ⁿ (x + 4)ⁿ   [I = (−6, −2)]</option>
+                  <option value="ex4">Σ x²ⁿ / (4ⁿ · n²)   [I = [−2, 2]]</option>
+                  <option value="ex5">Σ xⁿ / n!   [R = ∞, I = ℝ]</option>
+                </select>
+              </div>
+
+              <div class="sim-control-group">
+                <label for="sim02-x">
+                  <span>Ponto de teste $x$</span>
+                  <span class="sim-val" id="sim02-x-val">3.00</span>
+                </label>
+                <input id="sim02-x" class="sim-range" type="range" min="-8" max="8" step="0.25" value="3.00">
+              </div>
+            </div>
+
+            <div class="canvas-stage">
+              <canvas id="canvas-sim02" aria-label="Reta real interativa mostrando centro x0, raio R e extremos"></canvas>
+            </div>
+
+            <div class="sim-readout">
+              <div class="readout-metric">
+                <div class="readout-label">Centro $x_0$</div>
+                <div class="readout-value" id="sim02-x0">3</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label">Raio $R$</div>
+                <div class="readout-value" id="sim02-r">2</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label">Distância $|x - x_0|$</div>
+                <div class="readout-value" id="sim02-dist">0.00</div>
+              </div>
+              <div class="readout-metric">
+                <div class="readout-label">Status em $x$</div>
+                <div class="readout-value" id="sim02-status">Converge Abs.</div>
+              </div>
+            </div>
+
+            <div class="sim-explanation" id="sim02-msg">
+              Arraste o controle de $x$ para testar os extremos!
+            </div>
+          </div>
+
+          <div class="callout box-receita">
+            <p class="callout-title">Receita de Bolo — Os 4 Passos Sagrados para achar $R$ e $I$</p>
+            <ol>
+              <li><strong>Passo 1 (Escolher o teste):</strong> Tem fatorial ($n!$), potência $c^n$ ou polinômio em $n$? Use <strong>Razão</strong>. O termo inteiro está elevado a $n$, tipo $(\text{fração})^n$? Use <strong>Raiz</strong>.</li>
+              <li><strong>Passo 2 (Achar o intervalo aberto):</strong> Use o <strong>Teste da Razão/Raiz Direto</strong> com $u_n(x)$ completo (ou os Critérios Inversos se o expoente for exatamente $n$ e o fator for $(x-x_0)^n$). Resolva a inequação $L(x) < 1$ até isolar $|x - x_0| < R$. Isso já te entrega o centro $x_0$, o raio $R$ e o intervalo aberto $(x_0 - R,\, x_0 + R)$.</li>
+              <li><strong>Passo 3 (Testar o extremo esquerdo $x = x_0 - R$):</strong> Substitua $x = x_0 - R$ na série <em>original</em>. Simplifique até reconhecer uma série numérica da Seção 0.1 (geralmente harmônica, $p$-série, Leibniz ou divergência). Se convergir, use colchete <code>[</code>; se divergir, parêntese <code>(</code>.</li>
+              <li><strong>Passo 4 (Testar o extremo direito $x = x_0 + R$):</strong> Repita o processo para $x = x_0 + R$ e escreva explicitamente na resposta final: <em>"Raio de convergência $R = \dots$ e Intervalo de convergência $I = \dots$"</em>.</li>
+            </ol>
+          </div>
+
+          <h3 id="exemplos-0-2">Exemplos Resolvidos (Seção 0.2)</h3>
+
+          <!-- EXEMPLO 0.4 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 0.4 (Clássico de Prova) — Centro Deslocado e Extremos Assimétricos</h4>
+              <span class="badge badge-high">Nível de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre o raio de convergência $R$ e o intervalo de convergência $I$ da série $\displaystyle \sum_{n=1}^{\infty} \frac{(x - 3)^n}{n \cdot 2^n}$.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Aplicar o Teste da Razão Direto</span>
+                <p>Chamamos o termo geral completo de $u_n(x) = \dfrac{(x-3)^n}{n \cdot 2^n}$. Trocando $n$ por $n + 1$, obtemos $u_{n+1}(x) = \dfrac{(x-3)^{n+1}}{(n+1) \cdot 2^{n+1}}$. Montamos a razão (dividir fração = multiplicar pelo inverso):</p>
+                $$\left|\frac{u_{n+1}(x)}{u_n(x)}\right| = \left|\frac{(x - 3)^{n+1}}{(n+1) \cdot 2^{n+1}} \cdot \frac{n \cdot 2^n}{(x - 3)^n}\right|.$$
+                <p>Agora cancelamos potência com potência com calma:</p>
+                <ul>
+                  <li>$\dfrac{|x - 3|^{n+1}}{|x - 3|^n} = |x - 3|^{(n+1)-n} = |x - 3|$;</li>
+                  <li>$\dfrac{2^n}{2^{n+1}} = \dfrac{\cancel{2^n}}{2 \cdot \cancel{2^n}} = \dfrac{1}{2}$.</li>
+                </ul>
+                <p>Juntando tudo e tomando o limite quando $n \to \infty$:</p>
+                $$L(x) = \lim_{n \to \infty} \left(\frac{n}{n + 1} \cdot \frac{|x - 3|}{2}\right) = \underbrace{\left(\lim_{n \to \infty} \frac{1}{1 + \frac{1}{n}}\right)}_{=\,1} \cdot \frac{|x - 3|}{2} = \frac{|x - 3|}{2}.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Resolver $L(x) < 1$ para achar $R$ e o intervalo aberto</span>
+                $$\frac{|x - 3|}{2} < 1 \iff |x - 3| < 2.$$
+                <p>Daqui lemos imediatamente: centro $x_0 = 3$ e <strong>raio de convergência $R = 2$</strong>. Abrindo o módulo:</p>
+                $$-2 < x - 3 < 2 \iff -2 + 3 < x < 2 + 3 \iff 1 < x < 5.$$
+                <p>A série converge absolutamente em $(1, 5)$ e diverge fora de $[1, 5]$. Falta testar $x = 1$ e $x = 5$!</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Testar o extremo esquerdo $x = 1$</span>
+                <p>Substituindo $x = 1$ na série original, temos $x - 3 = 1 - 3 = -2$:</p>
+                $$\sum_{n=1}^{\infty} \frac{(-2)^n}{n \cdot 2^n} = \sum_{n=1}^{\infty} \frac{(-1)^n \cdot \cancel{2^n}}{n \cdot \cancel{2^n}} = \sum_{n=1}^{\infty} \frac{(-1)^n}{n}.$$
+                <p>Essa é a série harmônica alternada! Como $a_n = \frac{1}{n} > 0$, $\frac{1}{n} \to 0$ e $\frac{1}{n+1} < \frac{1}{n}$, ela <strong>converge pelo Critério de Leibniz</strong>. Logo, $x = 1$ <strong>ENTRA</strong> no intervalo!</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 4 · Testar o extremo direito $x = 5$</span>
+                <p>Substituindo $x = 5$, temos $x - 3 = 5 - 3 = 2$:</p>
+                $$\sum_{n=1}^{\infty} \frac{2^n}{n \cdot 2^n} = \sum_{n=1}^{\infty} \frac{1}{n}.$$
+                <p>Essa é a série harmônica ($p$-série com $p = 1 \le 1$), que <strong>diverge</strong>. Logo, $x = 5$ <strong>NÃO entra</strong> no intervalo!</p>
+              </div>
+              <div class="result-highlight">
+                <strong>Resposta Final:</strong> Raio de convergência $R = 2$ e Intervalo de convergência $I = [1,\, 5)$.
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 0.5 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 0.5 (Direto da Aula 12 da Profa. Janete!) — Critério Inverso da Raiz + Número $e$</h4>
+              <span class="badge badge-max">Clássico SMA0356</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Determine o raio $R$ e o intervalo de convergência $I$ de $\displaystyle \sum_{n=1}^{\infty} \left(\frac{n + 2}{2n + 3}\right)^n (x + 4)^n$.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Identificar o centro e aplicar o Critério Inverso da Raiz</span>
+                <p>Note que $(x + 4) = (x - (-4))$, logo o centro é $x_0 = -4$. O coeficiente é $a_n = \left(\dfrac{n+2}{2n+3}\right)^n$, que está todo elevado a $n$ — sinal verde para o <strong>Critério Inverso da Raiz</strong>!</p>
+                $$\sqrt[n]{|a_n|} = \sqrt[n]{\left(\frac{n+2}{2n+3}\right)^n} = \frac{n + 2}{2n + 3}.$$
+                <p>Invertendo para aplicar o Teorema II.2.2:</p>
+                $$R = \lim_{n \to \infty} \frac{1}{\sqrt[n]{|a_n|}} = \lim_{n \to \infty} \frac{2n + 3}{n + 2} = \lim_{n \to \infty} \frac{2 + \frac{3}{n}}{1 + \frac{2}{n}} = \frac{2 + 0}{1 + 0} = 2.$$
+                <p>Assim, $R = 2$. O intervalo aberto de convergência é $|x + 4| < 2 \iff -2 < x + 4 < 2 \iff -6 < x < -2$.</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Testar $x = -2$ (extremo direito)</span>
+                <p>Substituindo $x = -2$, temos $x + 4 = 2$:</p>
+                $$\sum_{n=1}^{\infty} \left(\frac{n + 2}{2n + 3}\right)^n \cdot 2^n = \sum_{n=1}^{\infty} \left(\frac{2n + 4}{2n + 3}\right)^n.$$
+                <p>Para aplicar o Teste do Termo Geral, escrevemos $\dfrac{2n+4}{2n+3} = \dfrac{(2n+3) + 1}{2n+3} = 1 + \dfrac{1}{2n+3}$. Fazendo a substituição $m = 2n + 3$ (quando $n \to \infty$, $m \to \infty$, e $n = \dfrac{m - 3}{2}$):</p>
+                $$\left(1 + \frac{1}{2n + 3}\right)^n = \left(1 + \frac{1}{m}\right)^{\frac{m - 3}{2}} = \left[\left(1 + \frac{1}{m}\right)^m\right]^{1/2} \cdot \left(1 + \frac{1}{m}\right)^{-3/2}.$$
+                <p>Lembrando do limite fundamental $\displaystyle \lim_{m \to \infty} \left(1 + \frac{1}{m}\right)^m = e$:</p>
+                $$\lim_{n \to \infty} \left(\frac{2n + 4}{2n + 3}\right)^n = e^{1/2} \cdot 1^{-3/2} = \sqrt{e} \neq 0.$$
+                <p>Pelo <strong>Teste do Termo Geral</strong>, a série <strong>diverge</strong> em $x = -2$!</p>
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Testar $x = -6$ (extremo esquerdo)</span>
+                <p>Substituindo $x = -6$, temos $x + 4 = -2 = (-1)\cdot 2$, logo o termo geral é $(-1)^n \left(\dfrac{2n+4}{2n+3}\right)^n$. O módulo desse termo tende a $\sqrt{e} \neq 0$, logo ele fica alternando perto de $+\sqrt{e}$ e $-\sqrt{e}$ (não tende a $0$). Portanto, <strong>diverge</strong> também em $x = -6$!</p>
+              </div>
+              <div class="result-highlight">
+                <strong>Resposta Final:</strong> $R = 2$ e $I = (-6,\, -2)$.
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 0.6 (AVANÇADO COM RESOLUÇÃO RECOLHÍVEL) -->
+          <div class="box-exemplo" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 0.6 (A Pegadinha do $x^{2n}$ e o Caso $R = \infty$)</h4>
+              <span class="badge badge-max">Anti-Pegadinha</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Determine o raio $R$ e o intervalo de convergência $I$ de:
+                <br><strong>(a)</strong> $\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n x^{2n}}{(2n)!}$ &qquad
+                <strong>(b)</strong> $\displaystyle \sum_{n=1}^{\infty} \frac{x^{2n}}{4^n \cdot n^2}$
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (a) · Caso $R = \infty$ (esta é a série de $\cos x$!)</span>
+                  <p>Aplicando o Teste da Razão Direto com $u_n(x) = \dfrac{(-1)^n x^{2n}}{(2n)!}$ e $u_{n+1}(x) = \dfrac{(-1)^{n+1} x^{2(n+1)}}{(2(n+1))!} = \dfrac{(-1)^{n+1} x^{2n+2}}{(2n+2)!}$:</p>
+                  $$\left|\frac{u_{n+1}(x)}{u_n(x)}\right| = \frac{|x|^{2n+2}}{(2n+2)!} \cdot \frac{(2n)!}{|x|^{2n}} = \frac{|x|^2 \cdot \cancel{(2n)!}}{(2n+2)(2n+1)\cancel{(2n)!}} = \frac{x^2}{(2n+2)(2n+1)}.$$
+                  <p>Para <strong>qualquer</strong> número real $x$ fixo, o numerador $x^2$ é constante enquanto o denominador vai para $+\infty$:</p>
+                  $$L(x) = \lim_{n \to \infty} \frac{x^2}{(2n+2)(2n+1)} = 0 < 1 \qquad (\text{para todo } x \in \mathbb{R}).$$
+                  <p>Portanto, $R = \infty$ e $I = \mathbb{R} = (-\infty, +\infty)$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b) · Cuidado com o expoente $2n$! (Por que $R = 2$ e NÃO $4$?)</span>
+                  <p><strong>Jeito 1 (Teste da Razão Direto — à prova de erro!):</strong> Com $u_n(x) = \dfrac{x^{2n}}{4^n n^2}$ e $u_{n+1}(x) = \dfrac{x^{2n+2}}{4^{n+1}(n+1)^2}$:</p>
+                  $$\left|\frac{u_{n+1}(x)}{u_n(x)}\right| = \frac{|x|^{2n+2}}{4^{n+1}(n+1)^2} \cdot \frac{4^n n^2}{|x|^{2n}} = \frac{x^2}{4} \cdot \left(\frac{n}{n+1}\right)^2 \xrightarrow{n \to \infty} \frac{x^2}{4} \cdot 1^2 = \frac{x^2}{4}.$$
+                  <p>Impondo $L(x) < 1$:</p>
+                  $$\frac{x^2}{4} < 1 \iff x^2 < 4 \iff |x| < \sqrt{4} = 2.$$
+                  <p><em>(Jeito 2 — truque da Profa. Janete na Aula 12: faça $y = x^2$. A série $\sum \frac{y^n}{4^n n^2}$ tem raio $4$ em $y$, ou seja, $|y| < 4 \iff x^2 < 4 \iff |x| < 2$!)</em></p>
+                  <p>Logo, o raio de convergência é <strong>$R = 2$</strong> (e NÃO $4$!).</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Item (b) · Testar os extremos $x = -2$ e $x = 2$</span>
+                  <p>Para ambos os extremos ($x = 2$ e $x = -2$), como o expoente é par, temos $x^{2n} = (x^2)^n = ((\pm 2)^2)^n = 4^n$:</p>
+                  $$\sum_{n=1}^{\infty} \frac{4^n}{4^n \cdot n^2} = \sum_{n=1}^{\infty} \frac{1}{n^2}.$$
+                  <p>Essa é uma $p$-série com $p = 2 > 1$, logo <strong>converge</strong> em ambos os extremos!</p>
+                  <div class="result-highlight">
+                    <strong>Resposta (b):</strong> $R = 2$ e $I = [-2,\, 2]$.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Alertas de Pegadinha — Seção 0.2</p>
+            <ul>
+              <li><strong>Inverter a razão sem querer:</strong> O Critério <em>Inverso</em> da Razão usa $\left|\frac{a_n}{a_{n+1}}\right| = R$, enquanto o Teste da Razão direto usa $\left|\frac{u_{n+1}}{u_n}\right| < 1$. Se você mistura os dois, acha $1/R$ em vez de $R$! <strong>Dica de ouro:</strong> na dúvida, use sempre o Teste da Razão Direto com $u_n(x)$ completo e imponha $< 1$ — ele nunca mente.</li>
+              <li><strong>Esquecer de isolar $x$ quando há $(2x - 1)^n$:</strong> De $|2x - 1| < 1$, o raio NÃO é $1$! Fatore o $2$: $2\left|x - \frac{1}{2}\right| < 1 \iff \left|x - \frac{1}{2}\right| < \frac{1}{2}$. Portanto $x_0 = \frac{1}{2}$ e $R = \frac{1}{2}$.</li>
+              <li><strong>Parar depois de achar $R$:</strong> Se a questão pede o <em>intervalo de convergência</em> e você não testa $x_0 - R$ e $x_0 + R$, perde facilmente metade da nota!</li>
+            </ul>
+          </div>
+
+          <h3 id="exercicios-0-2">Exercícios de Fixação (Seção 0.2)</h3>
+
+          <!-- EXERCÍCIO 5 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 5 — Raio e Intervalo com $n^2$ no Denominador</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b0-ex5" data-track-type="exercise" data-block="bloco0">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre o raio $R$ e o intervalo de convergência $I$ da série $\displaystyle \sum_{n=1}^{\infty} \frac{(-1)^n (x + 1)^n}{n^2 \cdot 3^n}$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Teste da Razão Direto</span>
+                  <p>Com $u_n(x) = \dfrac{(-1)^n (x+1)^n}{n^2 \cdot 3^n}$, o módulo elimina o $(-1)^n$:</p>
+                  $$\left|\frac{u_{n+1}(x)}{u_n(x)}\right| = \frac{|x+1|^{n+1}}{(n+1)^2 \cdot 3^{n+1}} \cdot \frac{n^2 \cdot 3^n}{|x+1|^n} = \left(\frac{n}{n+1}\right)^2 \cdot \frac{|x+1|}{3}.$$
+                  <p>Quando $n \to \infty$, $\left(\dfrac{n}{n+1}\right)^2 \to 1$, logo $L(x) = \dfrac{|x+1|}{3}$. Impondo $L(x) < 1$:</p>
+                  $$\frac{|x + 1|}{3} < 1 \iff |x + 1| < 3 \iff -3 < x + 1 < 3 \iff -4 < x < 2.$$
+                  <p>Portanto, $x_0 = -1$ e <strong>$R = 3$</strong>.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Testar $x = -4$ e $x = 2$</span>
+                  <ul>
+                    <li><strong>Em $x = -4$:</strong> $x + 1 = -3$, logo $(-1)^n (-3)^n = (-1)^n (-1)^n 3^n = ((-1)^2)^n 3^n = 3^n$. A série vira:
+                    $$\sum_{n=1}^{\infty} \frac{3^n}{n^2 \cdot 3^n} = \sum_{n=1}^{\infty} \frac{1}{n^2} \qquad (p = 2 > 1 \implies \textbf{converge!}).$$</li>
+                    <li><strong>Em $x = 2$:</strong> $x + 1 = 3$. A série vira:
+                    $$\sum_{n=1}^{\infty} \frac{(-1)^n 3^n}{n^2 \cdot 3^n} = \sum_{n=1}^{\infty} \frac{(-1)^n}{n^2},$$
+                    que converge absolutamente (pois em módulo é $\sum \frac{1}{n^2}$, que converge; ou diretamente por Leibniz). Logo <strong>converge!</strong></li>
+                  </ul>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Resposta Final</span>
+                  <div class="result-highlight">
+                    $R = 3$ e $I = [-4,\, 2]$.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 6 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 6 — Atenção ao Coeficiente em $(2x - 1)^n$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b0-ex6" data-track-type="exercise" data-block="bloco0">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Encontre o centro $x_0$, o raio $R$ e o intervalo de convergência $I$ de $\displaystyle \sum_{n=0}^{\infty} \frac{(2x - 1)^n}{\sqrt{n + 1}}$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Teste da Razão Direto e isolamento de $x$</span>
+                  $$\left|\frac{u_{n+1}(x)}{u_n(x)}\right| = \frac{|2x - 1|^{n+1}}{\sqrt{n + 2}} \cdot \frac{\sqrt{n + 1}}{|2x - 1|^n} = |2x - 1| \cdot \sqrt{\frac{n + 1}{n + 2}} \xrightarrow{n \to \infty} |2x - 1| \cdot \sqrt{1} = |2x - 1|.$$
+                  <p>Impondo $|2x - 1| < 1$:</p>
+                  $$-1 < 2x - 1 < 1 \iff 0 < 2x < 2 \iff 0 < x < 1.$$
+                  <p>Observe também que $|2x - 1| < 1 \iff 2\left|x - \frac{1}{2}\right| < 1 \iff \left|x - \frac{1}{2}\right| < \frac{1}{2}$, revelando centro $x_0 = \dfrac{1}{2}$ e raio <strong>$R = \dfrac{1}{2}$</strong>.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Testar os extremos $x = 0$ e $x = 1$</span>
+                  <ul>
+                    <li><strong>Em $x = 0$:</strong> $2(0) - 1 = -1$. A série fica $\displaystyle \sum_{n=0}^{\infty} \frac{(-1)^n}{\sqrt{n + 1}}$. Como $a_n = \frac{1}{\sqrt{n+1}} > 0$, tende a $0$ e é decrescente ($\frac{1}{\sqrt{n+2}} < \frac{1}{\sqrt{n+1}}$), <strong>converge pelo Critério de Leibniz</strong>!</li>
+                    <li><strong>Em $x = 1$:</strong> $2(1) - 1 = 1$. A série fica $\displaystyle \sum_{n=0}^{\infty} \frac{1}{\sqrt{n + 1}}$. Fazendo $k = n + 1$, ela é exatamente $\displaystyle \sum_{k=1}^{\infty} \frac{1}{k^{1/2}}$ ($p$-série com $p = \frac{1}{2} \le 1$), que <strong>diverge</strong>!</li>
+                  </ul>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Resposta Final</span>
+                  <div class="result-highlight">
+                    Centro $x_0 = \dfrac{1}{2}$, raio $R = \dfrac{1}{2}$ e intervalo de convergência $I = [0,\, 1)$.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 7 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 7 — O Caso Degenerado ($R = 0$)</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b0-ex7" data-track-type="exercise" data-block="bloco0">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Determine o raio $R$ e o intervalo de convergência $I$ da série $\displaystyle \sum_{n=1}^{\infty} n!\,(x - 5)^n$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 2</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Aplicar o Teste da Razão Direto para $x \neq 5$</span>
+                  $$\left|\frac{u_{n+1}(x)}{u_n(x)}\right| = \frac{(n+1)!\,|x - 5|^{n+1}}{n!\,|x - 5|^n} = \frac{(n+1)\cancel{n!}}{\cancel{n!}} \cdot |x - 5| = (n + 1)|x - 5|.$$
+                  <p>Para qualquer $x \neq 5$, temos $|x - 5| > 0$ (uma constante positiva), logo:</p>
+                  $$\lim_{n \to \infty} (n + 1)|x - 5| = +\infty > 1 \implies \text{diverge para todo } x \neq 5.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Verificar o centro $x = 5$</span>
+                  <p>Quando $x = 5$, todos os termos valem $n!\cdot 0^n = 0$, então a soma converge para $0$.</p>
+                  <div class="result-highlight">
+                    <strong>Resposta:</strong> $R = 0$ e $I = \{5\}$ (converge apenas no centro).
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 8 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 8 — Critério da Raiz e Extremos com $e^{-1}$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b0-ex8" data-track-type="exercise" data-block="bloco0">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Determine o raio $R$ e o intervalo de convergência $I$ da série $\displaystyle \sum_{n=1}^{\infty} \left(\frac{3n}{n + 1}\right)^n x^n$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Teste da Raiz Direto</span>
+                  <p>Como tudo está elevado a $n$, aplicamos $\sqrt[n]{|u_n(x)|}$:</p>
+                  $$\sqrt[n]{|u_n(x)|} = \sqrt[n]{\left(\frac{3n}{n+1}\right)^n |x|^n} = \frac{3n}{n+1}\,|x| = \frac{3}{1 + \frac{1}{n}}\,|x| \xrightarrow{n \to \infty} 3|x|.$$
+                  <p>Impondo $3|x| < 1 \iff |x| < \dfrac{1}{3}$, encontramos centro $x_0 = 0$ e <strong>$R = \dfrac{1}{3}$</strong>.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Testar $x = \frac{1}{3}$ e $x = -\frac{1}{3}$</span>
+                  <p>Para $x = \dfrac{1}{3}$, o fator $3^n$ cancela com $\left(\dfrac{1}{3}\right)^n$:</p>
+                  $$\sum_{n=1}^{\infty} \left(\frac{\cancel{3}n}{n + 1}\right)^n \cdot \frac{1}{\cancel{3}^n} = \sum_{n=1}^{\infty} \left(\frac{n}{n + 1}\right)^n.$$
+                  <p>Verificando o Teste do Termo Geral (invertendo a fração para reconhecer o limite fundamental $e$):</p>
+                  $$\lim_{n \to \infty} \left(\frac{n}{n + 1}\right)^n = \lim_{n \to \infty} \frac{1}{\left(\frac{n + 1}{n}\right)^n} = \lim_{n \to \infty} \frac{1}{\left(1 + \frac{1}{n}\right)^n} = \frac{1}{e} \neq 0.$$
+                  <p>Logo <strong>diverge</strong> em $x = \dfrac{1}{3}$. Em $x = -\dfrac{1}{3}$, o termo geral é $(-1)^n \left(\frac{n}{n+1}\right)^n$, cujo módulo tende a $\frac{1}{e} \neq 0$, logo também <strong>diverge</strong>!</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Resposta Final</span>
+                  <div class="result-highlight">
+                    $R = \dfrac{1}{3}$ e $I = \left(-\dfrac{1}{3},\, \dfrac{1}{3}\right)$.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <hr>
+
+        <!-- ================================================================
+             TÓPICO 0.3 — KIT DE SOBREVIVÊNCIA EM INTEGRAIS E TRIGONOMETRIA
+             ================================================================ -->
+        <section id="topico-0-3">
+          <div class="topic-header-bar">
+            <h2>0.3 Kit de Sobrevivência em Integrais e Trigonometria (Para Fourier)</h2>
+            <label class="study-checkbox-label">
+              <input type="checkbox" data-track-id="b0-t3" data-track-type="topic" data-block="bloco0">
+              <span>Tópico estudado</span>
+            </label>
+          </div>
+
+          <div class="callout box-intuicao">
+            <p class="callout-title">Visão Geral e Intuição — O segredo de quem acerta Fourier na P2</p>
+            <p>
+              Quando chegarmos aos Blocos 3, 4 e 5 (Séries de Fourier, Equação do Calor e Equação da Onda), você vai perceber uma coisa surpreendente: a teoria em si é elegante e repetitiva, mas <strong>80% do tempo gasto na prova vai para calcular integrais</strong> do tipo $\int x \cos\left(\frac{n\pi x}{L}\right)dx$ ou $\int x^2 \operatorname{sen}\left(\frac{n\pi x}{L}\right)dx$ e simplificar expressões com $\cos(n\pi)$ e $\operatorname{sen}(n\pi)$.
+            </p>
+            <p>
+              Dominar o <strong>Método Tabular</strong> e a <strong>Tabela Trigonométrica</strong> agora é como afiar o machado antes de cortar a árvore: você vai resolver em 2 minutos (e sem errar sinal!) integrais onde a maioria dos alunos trava por 15 minutos.
+            </p>
+          </div>
+
+          <h3>1. Primitivas Trigonométricas com Constante $\omega$ (Nunca mais troque o sinal!)</h3>
+          <p>
+            Em Fourier, quase sempre aparece uma constante multiplicando $x$ dentro do seno ou cosseno, como $\omega = n$ ou $\omega = \dfrac{n\pi}{L}$ (com $\omega \neq 0$). Compare lado a lado <strong>derivar</strong> vs. <strong>integrar</strong>:
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Função</th>
+                  <th>Derivada (MULTIPLICA por $\omega$)</th>
+                  <th>Integral (DIVIDE por $\omega$)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>$\operatorname{sen}(\omega x)$</td>
+                  <td>$+\,\omega \cos(\omega x)$</td>
+                  <td>$\displaystyle -\,\frac{\cos(\omega x)}{\omega} + C$ &nbsp; <em>(tem MENOS!)</em></td>
+                </tr>
+                <tr>
+                  <td>$\cos(\omega x)$</td>
+                  <td>$-\,\omega \operatorname{sen}(\omega x)$</td>
+                  <td>$\displaystyle +\,\frac{\operatorname{sen}(\omega x)}{\omega} + C$ &nbsp; <em>(é MAIS!)</em></td>
+                </tr>
+                <tr>
+                  <td>$e^{ax}$</td>
+                  <td>$a\,e^{ax}$</td>
+                  <td>$\displaystyle \frac{e^{ax}}{a} + C$</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            <strong>Teste rápido de segurança na hora da prova:</strong> ficou em dúvida sobre o sinal de $\int \operatorname{sen}(\omega x)\,dx$? <em>Derive a sua resposta!</em> A derivada de $-\frac{\cos(\omega x)}{\omega}$ é $-\frac{-\omega \operatorname{sen}(\omega x)}{\omega} = +\operatorname{sen}(\omega x)$ ✓.
+          </p>
+
+          <h3>2. Integração por Partes Clássica e o Método Tabular (DI)</h3>
+          <div class="callout box-teorema">
+            <p class="callout-title">Fórmula da Integração por Partes</p>
+            $$\int u\,dv = u \cdot v - \int v\,du.$$
+            <p><strong>Como escolher quem é $u$ (o que será derivado) e quem é $dv$ (o que será integrado)?</strong></p>
+            <p>Use a ordem de prioridade <strong>LIATE</strong> para escolher $u$: <strong>L</strong>ogarítmica → <strong>I</strong>nversa trigonométrica → <strong>A</strong>lgébrica ($x, x^2, x^3$) → <strong>T</strong>rigonométrica ($\operatorname{sen}, \cos$) → <strong>E</strong>xponencial ($e^{ax}$).</p>
+            <p>Em Fourier, quando temos $x^k \cdot \operatorname{sen}(\omega x)$ ou $x^k \cdot \cos(\omega x)$, o polinômio $x^k$ (Algébrica) <strong>sempre</strong> é $u$ — porque derivando $x^k$ várias vezes ele chega em $0$!</p>
+          </div>
+
+          <h4 id="metodo-tabular">O Método Tabular (Método DI — Derivada / Integral)</h4>
+          <p>
+            Quando você tem $\int P(x) \cdot \cos(\omega x)\,dx$ ou $\int P(x) \cdot \operatorname{sen}(\omega x)\,dx$ (onde $P(x)$ é um polinômio como $x$, $x^2$, $L - x$), fazer integração por partes duas ou três vezes seguidas cheia de colchetes e sinais de menos é um convite ao erro. O <strong>Método Tabular</strong> organiza todas as partes de uma vez só em 3 colunas:
+          </p>
+          <ol>
+            <li><strong>Coluna 1 (Sinais):</strong> Escreva sinais alternados começando sempre no positivo: $+$, $-$, $+$, $-$, $\dots$</li>
+            <li><strong>Coluna 2 (D — Derivar $u$):</strong> Comece com $u = P(x)$ e vá derivando linha por linha até chegar em $0$.</li>
+            <li><strong>Coluna 3 (I — Integrar $dv$):</strong> Comece com a função trigonométrica (ex.: $\cos(\omega x)$) e vá integrando linha por linha (lembrando de <strong>dividir por $\omega$</strong> em cada passo!).</li>
+            <li><strong>Leitura em Diagonal:</strong> Multiplique o <strong>Sinal da linha $k$</strong> $\times$ o termo <strong>D da linha $k$</strong> $\times$ o termo <strong>I da linha $k+1$</strong> (uma linha abaixo!) e some todos esses produtos até a linha que precede o $0$!</li>
+          </ol>
+
+          <p>Veja o esqueleto visual para $\displaystyle \int x^2 \cos(\omega x)\,dx$:</p>
+          <div class="table-wrap">
+            <table class="di-table">
+              <thead>
+                <tr>
+                  <th>Linha</th>
+                  <th>Sinal</th>
+                  <th>D (Derivar $u$)</th>
+                  <th>I (Integrar $dv$)</th>
+                  <th>Produto Diagonal (Sinal $\times$ D$_k$ $\times$ I$_{k+1}$)</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td class="di-sign">$+$</td>
+                  <td>$x^2$</td>
+                  <td>$\cos(\omega x)$</td>
+                  <td>$(+) \cdot (x^2) \cdot \left(+\dfrac{\operatorname{sen}(\omega x)}{\omega}\right) = +\dfrac{x^2 \operatorname{sen}(\omega x)}{\omega}$</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td class="di-sign">$-$</td>
+                  <td>$2x$</td>
+                  <td>$+\dfrac{\operatorname{sen}(\omega x)}{\omega}$</td>
+                  <td>$(-) \cdot (2x) \cdot \left(-\dfrac{\cos(\omega x)}{\omega^2}\right) = +\dfrac{2x \cos(\omega x)}{\omega^2}$</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td class="di-sign">$+$</td>
+                  <td>$2$</td>
+                  <td>$-\dfrac{\cos(\omega x)}{\omega^2}$</td>
+                  <td>$(+) \cdot (2) \cdot \left(-\dfrac{\operatorname{sen}(\omega x)}{\omega^3}\right) = -\dfrac{2\operatorname{sen}(\omega x)}{\omega^3}$</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td class="di-sign">$-$</td>
+                  <td>$0$ (pare!)</td>
+                  <td>$-\dfrac{\operatorname{sen}(\omega x)}{\omega^3}$</td>
+                  <td><em>(acabou!)</em></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p>
+            Somando a última coluna, temos instantaneamente a primitiva inteira sem nenhuma confusão de parênteses:
+            $$\int x^2 \cos(\omega x)\,dx = \frac{x^2 \operatorname{sen}(\omega x)}{\omega} + \frac{2x \cos(\omega x)}{\omega^2} - \frac{2\operatorname{sen}(\omega x)}{\omega^3} + C.$$
+          </p>
+
+          <h3>3. Integrais Cíclicas ("Bumerangue") com $e^{ax}\operatorname{sen}(bx)$ e $e^{ax}\cos(bx)$</h3>
+          <p>
+            Quando multiplicamos uma exponencial por seno ou cosseno, <em>nenhuma das duas zera ao derivar</em>! A solução é o efeito <strong>bumerangue</strong>:
+          </p>
+          <ol>
+            <li>Chame a integral original de $I$.</li>
+            <li>Aplique integração por partes <strong>duas vezes</strong> mantendo sempre o mesmo padrão (por exemplo, $u = \text{trig}$ e $dv = e^{ax}\,dx$ nas duas vezes — <em>nunca inverta a escolha na segunda rodada, senão você desfaz a primeira!</em>).</li>
+            <li>Na segunda rodada, a integral original $I$ vai reaparecer no lado direito multiplicada por uma constante negativa (ex.: $-n^2 I$).</li>
+            <li>Passe esse termo com $I$ para o lado esquerdo, coloque $I$ em evidência e divida! (Veja o Exemplo 0.9 passo a passo.)</li>
+          </ol>
+
+          <h3 id="tabela-trigonometria">4. Tabela Comentada de Valores Trigonométricos e Identidades (Ouro para Fourier!)</h3>
+          <p>
+            Seja $n \in \mathbb{Z}$ um número inteiro (nos coeficientes de Fourier, $n = 1, 2, 3, \dots$). Decore — e entenda no círculo trigonométrico — cada linha desta tabela:
+          </p>
+
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Expressão</th>
+                  <th>Valor Exato</th>
+                  <th>Por quê / Comentário de Prova</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>$\operatorname{sen}(0)$ e $\operatorname{sen}(n\pi)$ e $\operatorname{sen}(2n\pi)$</td>
+                  <td>$\mathbf{0}$</td>
+                  <td>Em todo múltiplo inteiro de $\pi$ ($0, \pm\pi, \pm 2\pi, \dots$), a altura (seno) é zero!</td>
+                </tr>
+                <tr>
+                  <td>$\cos(0)$ e $\cos(2n\pi)$</td>
+                  <td>$\mathbf{1}$</td>
+                  <td>Voltas completas param no ponto $(1, 0)$. <strong>NUNCA escreva $\cos(0) = 0$!</strong></td>
+                </tr>
+                <tr>
+                  <td>$\cos(n\pi)$ e $\cos(-n\pi)$</td>
+                  <td>$\mathbf{(-1)^n}$</td>
+                  <td>$n=1 \implies -1$; $n=2 \implies +1$; $n=3 \implies -1$; etc. E $\cos$ é par!</td>
+                </tr>
+                <tr>
+                  <td>$1 - (-1)^n$</td>
+                  <td>$\begin{cases} 0, & n \text{ par} \\ 2, & n \text{ ímpar} \end{cases}$</td>
+                  <td>Aparece o tempo todo em ondas quadradas e funções ímpares! Só sobram os $n = 2k-1$ (ímpares).</td>
+                </tr>
+                <tr>
+                  <td>$1 + (-1)^n$</td>
+                  <td>$\begin{cases} 2, & n \text{ par} \\ 0, & n \text{ ímpar} \end{cases}$</td>
+                  <td>O contrário: zera nos ímpares e vale $2$ nos pares ($n = 2k$).</td>
+                </tr>
+                <tr>
+                  <td>$(-1)^{n+1}$ e $(-1)^{n-1}$</td>
+                  <td>$-(-1)^n$</td>
+                  <td>Mudar o expoente em $\pm 1$ simplesmente troca o sinal! Já $(-1)^{2n} = 1$ e $(-1)^{2n+1} = -1$.</td>
+                </tr>
+                <tr>
+                  <td>$\operatorname{sen}\!\left(\dfrac{n\pi}{2}\right)$</td>
+                  <td>$\begin{cases} 0, & n \text{ par} \\ (-1)^k, & n = 2k+1 \end{cases}$</td>
+                  <td>Para $n=1,2,3,4,5,\dots$ gera a sequência: $+1,\, 0,\, -1,\, 0,\, +1,\, \dots$</td>
+                </tr>
+                <tr>
+                  <td>$\cos\!\left(\dfrac{n\pi}{2}\right)$</td>
+                  <td>$\begin{cases} 0, & n \text{ ímpar} \\ (-1)^k, & n = 2k \end{cases}$</td>
+                  <td>Para $n=1,2,3,4,5,\dots$ gera a sequência: $0,\, -1,\, 0,\, +1,\, 0,\, \dots$</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="callout box-teorema">
+            <p class="callout-title">Identidades Trigonométricas Indispensáveis (Redução de Potência e Produto-em-Soma)</p>
+            <p><strong>1. Redução de potência (obrigatórias para provar ortogonalidade e calcular integrais de $\operatorname{sen}^2$ e $\cos^2$):</strong></p>
+            $$\operatorname{sen}^2(\theta) = \frac{1 - \cos(2\theta)}{2}, \qquad \cos^2(\theta) = \frac{1 + \cos(2\theta)}{2}.$$
+            <p><strong>2. Produto-em-soma (Prostaférese — a ferramenta usada na Aula 20 para mostrar que senos e cossenos de frequências diferentes são ortogonais):</strong></p>
+            $$\cos(A)\cos(B) = \frac{1}{2}\big[\cos(A - B) + \cos(A + B)\big]$$
+            $$\operatorname{sen}(A)\operatorname{sen}(B) = \frac{1}{2}\big[\cos(A - B) - \cos(A + B)\big]$$
+            $$\operatorname{sen}(A)\cos(B) = \frac{1}{2}\big[\operatorname{sen}(A + B) + \operatorname{sen}(A - B)\big]$$
+            <p><strong>3. Paridade fundamental:</strong> $\cos(-\theta) = \cos(\theta)$ (função <strong>par</strong>) e $\operatorname{sen}(-\theta) = -\operatorname{sen}(\theta)$ (função <strong>ímpar</strong>).</p>
+          </div>
+
+          <div class="callout box-receita">
+            <p class="callout-title">Receita de Bolo — Protocolo Anti-Erro para Integrais de Fourier</p>
+            <ol>
+              <li><strong>Dica de Ouro ($\omega$ auxiliar):</strong> Se o argumento for $\dfrac{n\pi x}{L}$, escreva <em>"Seja $\omega = \dfrac{n\pi}{L}$"</em> no rascunho. Faça toda a integração carregando apenas a letra $\omega$ — no final, substitua $\omega$ de volta! Isso reduz em 80% os erros de fração.</li>
+              <li><strong>Escolha a ferramenta:</strong> $x^k \cdot \text{trig}$ $\implies$ Método Tabular (DI). $e^{ax}\cdot \text{trig}$ $\implies$ Cíclica (2x partes). $\text{trig}^2$ ou $\text{trig}\cdot\text{trig}$ $\implies$ Redução de potência / Produto-em-soma.</li>
+              <li><strong>Colchetes gigantes nos limites:</strong> Ao avaliar $\Big[F(x)\Big]_{a}^{b}$, escreva sempre $\Big(\text{tudo em } b\Big) - \Big(\text{tudo em } a\Big)$ antes de distribuir o sinal de menos.</li>
+              <li><strong>Limpeza trigonométrica final:</strong> Zere todo $\operatorname{sen}(n\pi) = 0$ e $\operatorname{sen}(0) = 0$, troque $\cos(n\pi) = (-1)^n$ e lembre que $\cos(0) = 1$!</li>
+            </ol>
+          </div>
+
+          <h3 id="exemplos-0-3">Exemplos Resolvidos (Seção 0.3)</h3>
+
+          <!-- EXEMPLO 0.7 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 0.7 (Aquecimento de Fourier) — $\int_{0}^{\pi} x \operatorname{sen}(nx)\,dx$</h4>
+              <span class="badge badge-base">Nível Básico</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Para todo inteiro $n \ge 1$, calcule $\displaystyle \int_{0}^{\pi} x \operatorname{sen}(nx)\,dx$.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Integração por Partes (mostrando $u, du, dv, v$ completos)</span>
+                <p>Pela regra LIATE, escolhemos $u = x$ e $dv = \operatorname{sen}(nx)\,dx$. Calculando cada peça:</p>
+                $$u = x \implies du = 1\,dx, \qquad dv = \operatorname{sen}(nx)\,dx \implies v = \int \operatorname{sen}(nx)\,dx = -\frac{\cos(nx)}{n}.$$
+                <p>Aplicando $\int u\,dv = u\cdot v - \int v\,du$ (atenção ao sinal duplo "menos com menos"!):</p>
+                $$\int x \operatorname{sen}(nx)\,dx = x\left(-\frac{\cos(nx)}{n}\right) - \int \left(-\frac{\cos(nx)}{n}\right) dx = -\frac{x\cos(nx)}{n} + \frac{1}{n}\int \cos(nx)\,dx.$$
+                <p>Como $\displaystyle \int \cos(nx)\,dx = +\frac{\operatorname{sen}(nx)}{n}$, temos a primitiva completa:</p>
+                $$F(x) = -\frac{x\cos(nx)}{n} + \frac{\operatorname{sen}(nx)}{n^2}.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Aplicar os limites $0$ e $\pi$ com colchetes gigantes</span>
+                $$\int_{0}^{\pi} x \operatorname{sen}(nx)\,dx = \left[-\frac{x\cos(nx)}{n} + \frac{\operatorname{sen}(nx)}{n^2}\right]_{0}^{\pi}$$
+                $$= \left(-\frac{\pi\cos(n\pi)}{n} + \frac{\operatorname{sen}(n\pi)}{n^2}\right) - \left(-\frac{0 \cdot \cos(0)}{n} + \frac{\operatorname{sen}(0)}{n^2}\right).$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Simplificação trigonométrica (usando nossa tabela!)</span>
+                <p>Sabemos que $\operatorname{sen}(n\pi) = 0$, $\operatorname{sen}(0) = 0$, $0 \cdot \cos(0) = 0$ e $\cos(n\pi) = (-1)^n$:</p>
+                $$= \left(-\frac{\pi (-1)^n}{n} + 0\right) - (0 + 0) = -\frac{\pi (-1)^n}{n} = \frac{(-1) \cdot (-1)^n \cdot \pi}{n} = \frac{(-1)^{n+1}\pi}{n}.$$
+              </div>
+              <div class="result-highlight">
+                <strong>Resultado:</strong> $\displaystyle \int_{0}^{\pi} x \operatorname{sen}(nx)\,dx = \frac{(-1)^{n+1}\pi}{n}$ (para $n \ge 1$ inteiro).
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 0.8 -->
+          <div class="box-exemplo">
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 0.8 (Método Tabular com Período $L$) — $\int_{0}^{L} x^2 \cos\left(\frac{n\pi x}{L}\right)dx$</h4>
+              <span class="badge badge-high">Nível de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Seja $L > 0$ e $n \ge 1$ inteiro. Calcule $\displaystyle \int_{0}^{L} x^2 \cos\!\left(\frac{n\pi x}{L}\right) dx$ usando o Método Tabular e o truque de $\omega$.
+              </p>
+              <div class="math-step">
+                <span class="step-label">Passo 1 · Definir $\omega = \frac{n\pi}{L}$ e usar a primitiva da tabela DI</span>
+                <p>Com $\omega = \dfrac{n\pi}{L}$, já montamos a tabela DI para $\int x^2 \cos(\omega x)\,dx$ logo acima na teoria e obtivemos:</p>
+                $$\int_{0}^{L} x^2 \cos(\omega x)\,dx = \left[\frac{x^2 \operatorname{sen}(\omega x)}{\omega} + \frac{2x \cos(\omega x)}{\omega^2} - \frac{2\operatorname{sen}(\omega x)}{\omega^3}\right]_{0}^{L}.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 2 · Avaliar em $x = L$ e $x = 0$ antes de abrir $\omega$</span>
+                <p>Note que quando $x = L$, temos $\omega L = \dfrac{n\pi}{\cancel{L}} \cdot \cancel{L} = n\pi$! Que maravilha! Logo:</p>
+                <ul>
+                  <li>Em $x = L$: $\operatorname{sen}(\omega L) = \operatorname{sen}(n\pi) = 0$ e $\cos(\omega L) = \cos(n\pi) = (-1)^n$.</li>
+                  <li>Em $x = 0$: $\operatorname{sen}(0) = 0$, $0^2 = 0$ e $2(0)\cos(0) = 0$.</li>
+                </ul>
+                <p>Substituindo os limites com todo cuidado:</p>
+                $$= \left(\frac{L^2 \cdot \overbrace{\operatorname{sen}(n\pi)}^{0}}{\omega} + \frac{2L \cdot \overbrace{\cos(n\pi)}^{(-1)^n}}{\omega^2} - \frac{2 \cdot \overbrace{\operatorname{sen}(n\pi)}^{0}}{\omega^3}\right) - \left(0 + 0 - 0\right) = \frac{2L (-1)^n}{\omega^2}.$$
+              </div>
+              <div class="math-step">
+                <span class="step-label">Passo 3 · Devolver $\omega = \frac{n\pi}{L}$</span>
+                <p>Como $\omega^2 = \dfrac{n^2 \pi^2}{L^2}$, dividir por $\omega^2$ equivale a multiplicar por $\dfrac{L^2}{n^2 \pi^2}$:</p>
+                $$\frac{2L (-1)^n}{\frac{n^2 \pi^2}{L^2}} = 2L (-1)^n \cdot \frac{L^2}{n^2 \pi^2} = \frac{2L^3 (-1)^n}{n^2 \pi^2}.$$
+              </div>
+              <div class="result-highlight">
+                <strong>Resultado:</strong> $\displaystyle \int_{0}^{L} x^2 \cos\!\left(\frac{n\pi x}{L}\right) dx = \frac{2L^3 (-1)^n}{n^2 \pi^2}$. (Viu como usar $\omega$ evitou carregar $\frac{L^3}{n^3\pi^3}$ em três termos diferentes?!)
+              </div>
+            </div>
+          </div>
+
+          <!-- EXEMPLO 0.9 (AVANÇADO COM RESOLUÇÃO RECOLHÍVEL) -->
+          <div class="box-exemplo" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exemplo 0.9 (Integral Cíclica / Bumerangue) — $\int_{0}^{\pi} e^{x} \cos(nx)\,dx$</h4>
+              <span class="badge badge-max">Clássico de Prova</span>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Para qualquer inteiro $n \ge 0$, calcule $\displaystyle I = \int_{0}^{\pi} e^{x} \cos(nx)\,dx$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 4</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · 1ª Integração por Partes ($u = \cos(nx)$, $dv = e^x\,dx$)</span>
+                  <p>Escolher $dv = e^x\,dx$ é ótimo porque a integral de $e^x$ é o próprio $e^x$, e na derivação de $\cos(nx)$ não aparece divisão por $n$ (logo a conta vale inclusive para $n = 0$!):</p>
+                  $$u = \cos(nx) \implies du = -n\operatorname{sen}(nx)\,dx, \qquad dv = e^x\,dx \implies v = e^x.$$
+                  <p>Aplicando $\int_{0}^{\pi} u\,dv = [uv]_{0}^{\pi} - \int_{0}^{\pi} v\,du$:</p>
+                  $$I = \Big[e^x \cos(nx)\Big]_{0}^{\pi} - \int_{0}^{\pi} e^x \big(-n\operatorname{sen}(nx)\big)\,dx.$$
+                  <p>Avaliando o colchete ($\cos(n\pi) = (-1)^n$ e $\cos(0) = 1$, $e^0 = 1$) e tirando o $-n$ da integral:</p>
+                  $$I = \Big(e^{\pi}(-1)^n - e^0 \cdot 1\Big) + n \int_{0}^{\pi} e^x \operatorname{sen}(nx)\,dx = (-1)^n e^{\pi} - 1 + n \underbrace{\int_{0}^{\pi} e^x \operatorname{sen}(nx)\,dx}_{J}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · 2ª Integração por Partes em $J$ (mantendo $u = \text{trig}$, $dv = e^x\,dx$!)</span>
+                  <p>Calculamos $J = \displaystyle \int_{0}^{\pi} e^x \operatorname{sen}(nx)\,dx$ com $u = \operatorname{sen}(nx) \implies du = n\cos(nx)\,dx$ e $dv = e^x\,dx \implies v = e^x$:</p>
+                  $$J = \Big[e^x \operatorname{sen}(nx)\Big]_{0}^{\pi} - \int_{0}^{\pi} e^x \cdot n\cos(nx)\,dx.$$
+                  <p>Como $\operatorname{sen}(n\pi) = 0$ e $\operatorname{sen}(0) = 0$, o colchete inteiro zera ($0 - 0 = 0$)! E a integral que restou é exatamente a original $I$:</p>
+                  $$J = 0 - n \int_{0}^{\pi} e^x \cos(nx)\,dx = -n\,I.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Substituir $J = -n\,I$ na equação do Passo 1 (o bumerangue voltou!)</span>
+                  $$I = (-1)^n e^{\pi} - 1 + n(-n\,I)$$
+                  $$I = (-1)^n e^{\pi} - 1 - n^2 I.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 4 · Passar $-n^2 I$ para a esquerda e isolar $I$</span>
+                  $$I + n^2 I = (-1)^n e^{\pi} - 1 \iff (1 + n^2)I = (-1)^n e^{\pi} - 1.$$
+                  <p>Como $1 + n^2 \ge 1 > 0$, podemos dividir tranquilamente:</p>
+                  <div class="result-highlight">
+                    $$I = \int_{0}^{\pi} e^x \cos(nx)\,dx = \frac{(-1)^n e^{\pi} - 1}{1 + n^2}.$$
+                    <em>(Conferindo para $n = 0$: $\int_0^\pi e^x \cdot 1\,dx = e^\pi - 1$, e a fórmula dá $\frac{(-1)^0 e^\pi - 1}{1 + 0} = e^\pi - 1$ ✓!)</em>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="callout box-pegadinha">
+            <p class="callout-title">Alertas de Pegadinha — Seção 0.3</p>
+            <ul>
+              <li><strong>A pegadinha mortal do $\cos(0) = 1$:</strong> Quase todo mundo já cometeu o crime de achar que "quando $x = 0$, tudo no limite inferior zera". <strong>FALSO!</strong> Em termos como $\frac{\cos(nx)}{n^2}$ ou $e^x \cos(nx)$, substituir $x = 0$ dá $\frac{1}{n^2}$ e $1$ — e NÃO zero!</li>
+              <li><strong>Trocar a escolha de $u$ na integral cíclica:</strong> Se na 1ª parte você usou $u = \cos(nx)$ e $dv = e^x\,dx$, na 2ª parte você <em>precisa</em> usar $u = \operatorname{sen}(nx)$ e $dv = e^x\,dx$. Se inverter, você vai chegar em "$I = I$" e andar em círculos!</li>
+              <li><strong>Dividir por $n$ quando $n = 0$:</strong> Em Fourier, o coeficiente $a_0$ corresponde a $n = 0$ ($\cos(0) = 1$). Nunca jogue $n = 0$ numa fórmula que tenha $n$ no denominador; integre o caso $a_0$ separadamente.</li>
+            </ul>
+          </div>
+
+          <h3 id="exercicios-0-3">Exercícios de Fixação (Seção 0.3)</h3>
+
+          <!-- EXERCÍCIO 9 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 9 — Integral de Fourier $\int_{0}^{\pi} x \cos(nx)\,dx$ e Paridade de $n$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b0-ex9" data-track-type="exercise" data-block="bloco0">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Para $n \ge 1$ inteiro, calcule $\displaystyle \int_{0}^{\pi} x \cos(nx)\,dx$ e escreva o resultado separado para $n$ par e $n$ ímpar. <em>(Atenção especial ao limite inferior $x = 0$!)</em>
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Primitiva via Partes (ou Método Tabular)</span>
+                  <p>Usando $u = x \implies du = dx$ e $dv = \cos(nx)\,dx \implies v = \dfrac{\operatorname{sen}(nx)}{n}$:</p>
+                  $$\int x \cos(nx)\,dx = \frac{x\operatorname{sen}(nx)}{n} - \frac{1}{n}\int \operatorname{sen}(nx)\,dx = \frac{x\operatorname{sen}(nx)}{n} - \frac{1}{n}\left(-\frac{\cos(nx)}{n}\right) = \frac{x\operatorname{sen}(nx)}{n} + \frac{\cos(nx)}{n^2}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Aplicar limites $0$ e $\pi$ (cuidado com $\cos(0) = 1$!)</span>
+                  $$\left[\frac{x\operatorname{sen}(nx)}{n} + \frac{\cos(nx)}{n^2}\right]_{0}^{\pi} = \left(\frac{\pi\overbrace{\operatorname{sen}(n\pi)}^{0}}{n} + \frac{\overbrace{\cos(n\pi)}^{(-1)^n}}{n^2}\right) - \left(\frac{0 \cdot \operatorname{sen}(0)}{n} + \frac{\overbrace{\cos(0)}^{1}}{n^2}\right)$$
+                  $$= \frac{(-1)^n}{n^2} - \frac{1}{n^2} = \frac{(-1)^n - 1}{n^2}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Separar $n$ par e $n$ ímpar</span>
+                  <ul>
+                    <li>Se $n$ é <strong>par</strong>: $(-1)^n = +1 \implies \dfrac{1 - 1}{n^2} = 0$.</li>
+                    <li>Se $n$ é <strong>ímpar</strong>: $(-1)^n = -1 \implies \dfrac{-1 - 1}{n^2} = -\dfrac{2}{n^2}$.</li>
+                  </ul>
+                  <div class="result-highlight">
+                    $$\int_{0}^{\pi} x \cos(nx)\,dx = \frac{(-1)^n - 1}{n^2} = \begin{cases} 0, & n \text{ par}, \\[6pt] -\dfrac{2}{n^2}, & n \text{ ímpar}. \end{cases}$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 10 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 10 — Método Tabular com Grau 2: $\int_{0}^{1} x^2 \operatorname{sen}(n\pi x)\,dx$</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b0-ex10" data-track-type="exercise" data-block="bloco0">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Usando o Método Tabular e a constante auxiliar $\omega = n\pi$, calcule $\displaystyle \int_{0}^{1} x^2 \operatorname{sen}(n\pi x)\,dx$ para $n \ge 1$ inteiro.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Montar a tabela DI com $\omega = n\pi$</span>
+                  <div class="table-wrap">
+                    <table class="di-table">
+                      <thead>
+                        <tr><th>Sinal</th><th>D (Derivar)</th><th>I (Integrar)</th><th>Produto Diagonal</th></tr>
+                      </thead>
+                      <tbody>
+                        <tr><td class="di-sign">$+$</td><td>$x^2$</td><td>$\operatorname{sen}(\omega x)$</td><td>$(+)(x^2)\left(-\dfrac{\cos(\omega x)}{\omega}\right) = -\dfrac{x^2\cos(\omega x)}{\omega}$</td></tr>
+                        <tr><td class="di-sign">$-$</td><td>$2x$</td><td>$-\dfrac{\cos(\omega x)}{\omega}$</td><td>$(-)(2x)\left(-\dfrac{\operatorname{sen}(\omega x)}{\omega^2}\right) = +\dfrac{2x\operatorname{sen}(\omega x)}{\omega^2}$</td></tr>
+                        <tr><td class="di-sign">$+$</td><td>$2$</td><td>$-\dfrac{\operatorname{sen}(\omega x)}{\omega^2}$</td><td>$(+)(2)\left(+\dfrac{\cos(\omega x)}{\omega^3}\right) = +\dfrac{2\cos(\omega x)}{\omega^3}$</td></tr>
+                        <tr><td class="di-sign">$-$</td><td>$0$</td><td>$+\dfrac{\cos(\omega x)}{\omega^3}$</td><td><em>(pare)</em></td></tr>
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Avaliar nos limites $0$ e $1$ (lembrando que $\omega \cdot 1 = n\pi$)</span>
+                  $$\left[-\frac{x^2\cos(\omega x)}{\omega} + \frac{2x\operatorname{sen}(\omega x)}{\omega^2} + \frac{2\cos(\omega x)}{\omega^3}\right]_{0}^{1}$$
+                  $$= \left(-\frac{1^2 \cos(n\pi)}{\omega} + \frac{2\cdot 1 \cdot \overbrace{\operatorname{sen}(n\pi)}^{0}}{\omega^2} + \frac{2\cos(n\pi)}{\omega^3}\right) - \left(0 + 0 + \frac{2\overbrace{\cos(0)}^{1}}{\omega^3}\right)$$
+                  $$= -\frac{(-1)^n}{\omega} + \frac{2(-1)^n}{\omega^3} - \frac{2}{\omega^3} = \frac{(-1)^{n+1}}{\omega} + \frac{2\big((-1)^n - 1\big)}{\omega^3}.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Substituir $\omega = n\pi$ de volta</span>
+                  <div class="result-highlight">
+                    $$\int_{0}^{1} x^2 \operatorname{sen}(n\pi x)\,dx = \frac{(-1)^{n+1}}{n\pi} + \frac{2\big((-1)^n - 1\big)}{n^3\pi^3}.$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 11 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 11 — Integral Cíclica com Exponencial Negativa</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b0-ex11" data-track-type="exercise" data-block="bloco0">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Calcule a integral cíclica $\displaystyle I = \int_{0}^{\pi} e^{-x} \operatorname{sen}(nx)\,dx$ para todo inteiro $n \ge 1$.
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · 1ª Integração por Partes ($u = \operatorname{sen}(nx)$, $dv = e^{-x}\,dx$)</span>
+                  <p>Temos $du = n\cos(nx)\,dx$ e $v = \int e^{-x}\,dx = -e^{-x}$:</p>
+                  $$I = \Big[-e^{-x}\operatorname{sen}(nx)\Big]_{0}^{\pi} - \int_{0}^{\pi} (-e^{-x})\cdot n\cos(nx)\,dx.$$
+                  <p>Como $\operatorname{sen}(n\pi) = \operatorname{sen}(0) = 0$, o colchete dá $0$. E $-(-1) = +1$:</p>
+                  $$I = n \int_{0}^{\pi} e^{-x} \cos(nx)\,dx.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · 2ª Integração por Partes (mantendo $u = \cos(nx)$, $dv = e^{-x}\,dx$)</span>
+                  <p>Agora $du = -n\operatorname{sen}(nx)\,dx$ e $v = -e^{-x}$. Atenção redobrada aos três sinais de menos:</p>
+                  $$\int_{0}^{\pi} e^{-x}\cos(nx)\,dx = \Big[-e^{-x}\cos(nx)\Big]_{0}^{\pi} - \int_{0}^{\pi} (-e^{-x})(-n\operatorname{sen}(nx))\,dx.$$
+                  <p>Note que $(-e^{-x})(-n\operatorname{sen}(nx)) = +n\,e^{-x}\operatorname{sen}(nx)$, então com o "$-$" de fora fica $-n\,I$! E no colchete:</p>
+                  $$\Big[-e^{-x}\cos(nx)\Big]_{0}^{\pi} = \big(-e^{-\pi}\cos(n\pi)\big) - \big(-e^0 \cos(0)\big) = -(-1)^n e^{-\pi} + 1 = 1 - (-1)^n e^{-\pi}.$$
+                  <p>Logo, $\displaystyle \int_{0}^{\pi} e^{-x}\cos(nx)\,dx = 1 - (-1)^n e^{-\pi} - n\,I$.</p>
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Substituir de volta em $I$ e isolar</span>
+                  $$I = n\Big(1 - (-1)^n e^{-\pi} - n\,I\Big) = n\big(1 - (-1)^n e^{-\pi}\big) - n^2 I.$$
+                  $$I + n^2 I = n\big(1 - (-1)^n e^{-\pi}\big) \iff (1 + n^2)I = n\big(1 - (-1)^n e^{-\pi}\big).$$
+                  <div class="result-highlight">
+                    $$I = \int_{0}^{\pi} e^{-x}\operatorname{sen}(nx)\,dx = \frac{n\big(1 - (-1)^n e^{-\pi}\big)}{1 + n^2}.$$
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- EXERCÍCIO 12 -->
+          <div class="box-exercicio" data-solution-wrapper>
+            <div class="card-header">
+              <h4 class="card-title">Exercício 12 — Identidade de Redução de Potência (Aquecimento para Ortogonalidade!)</h4>
+              <label class="study-checkbox-label">
+                <input type="checkbox" data-track-id="b0-ex12" data-track-type="exercise" data-block="bloco0">
+                <span>Exercício resolvido</span>
+              </label>
+            </div>
+            <div class="card-body">
+              <p class="enunciado">
+                Usando a identidade $\cos^2(\theta) = \dfrac{1 + \cos(2\theta)}{2}$, mostre passo a passo que, para todo $L > 0$ e todo inteiro $n \ge 1$:
+                $$\int_{-L}^{L} \cos^2\!\left(\frac{n\pi x}{L}\right) dx = L.$$
+              </p>
+              <div class="solution-controls">
+                <button type="button" class="btn btn-primary" data-action="next-step">Revelar Passo 1 de 3</button>
+                <button type="button" class="btn btn-subtle" data-action="toggle-solution" aria-expanded="false">Mostrar Resolução Completa</button>
+              </div>
+              <div class="solution-panel">
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 1 · Aplicar a redução de potência</span>
+                  <p>Tomando $\theta = \dfrac{n\pi x}{L}$, temos $2\theta = \dfrac{2n\pi x}{L}$:</p>
+                  $$\int_{-L}^{L} \cos^2\!\left(\frac{n\pi x}{L}\right) dx = \int_{-L}^{L} \frac{1 + \cos\!\left(\frac{2n\pi x}{L}\right)}{2}\,dx = \frac{1}{2}\int_{-L}^{L} 1\,dx + \frac{1}{2}\int_{-L}^{L} \cos\!\left(\frac{2n\pi x}{L}\right) dx.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 2 · Calcular cada integral separadamente</span>
+                  <p><strong>Primeira integral:</strong></p>
+                  $$\frac{1}{2}\Big[x\Big]_{-L}^{L} = \frac{1}{2}\big(L - (-L)\big) = \frac{1}{2}(2L) = L.$$
+                  <p><strong>Segunda integral</strong> (usando $\omega = \dfrac{2n\pi}{L} \neq 0$, pois $n \ge 1$):</p>
+                  $$\frac{1}{2}\left[\frac{\operatorname{sen}\!\left(\frac{2n\pi x}{L}\right)}{\frac{2n\pi}{L}}\right]_{-L}^{L} = \frac{L}{4n\pi}\Big(\operatorname{sen}(2n\pi) - \operatorname{sen}(-2n\pi)\Big) = \frac{L}{4n\pi}(0 - 0) = 0.$$
+                </div>
+                <div class="math-step reveal-step">
+                  <span class="step-label">Passo 3 · Somar os dois pedaços</span>
+                  <div class="result-highlight">
+                    $$\int_{-L}^{L} \cos^2\!\left(\frac{n\pi x}{L}\right) dx = L + 0 = L.$$
+                    <em>(Na Aula 20 você vai ver que é EXATAMENTE esse "$L$" que faz aparecer o fator $\dfrac{1}{L}$ na fórmula dos coeficientes de Fourier $a_n$!)</em>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <nav class="chapter-footer-nav" aria-label="Navegação entre blocos">
+          <a href="index.html" class="chapter-nav-btn">
+            <span class="chapter-nav-dir">← Voltar</span>
+            <span class="chapter-nav-label">Painel Inicial da Apostila</span>
+          </a>
+          <a href="bloco1.html" class="chapter-nav-btn">
+            <span class="chapter-nav-dir">Próximo Bloco →</span>
+            <span class="chapter-nav-label">Bloco 1 · Motor das Séries de Potências</span>
+          </a>
+        </nav>
+      </article>
+    </main>
+  </div>
+
+  <!-- ======================================================================
+       SIMULADORES INTERATIVOS DO BLOCO 0 (JS Puro + Canvas HiDPI)
+       ====================================================================== -->
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const P = window.Calc4Plot;
+      if (!P) return;
+
+      /* ---------------- SIMULADOR 0.1: Somas Parciais ---------------- */
+      const selType = document.getElementById('sim01-type');
+      const paramGroup = document.getElementById('sim01-param-group');
+      const paramLabel = document.getElementById('sim01-param-label');
+      const paramSlider = document.getElementById('sim01-param');
+      const paramVal = document.getElementById('sim01-param-val');
+      const nSlider = document.getElementById('sim01-n');
+      const nVal = document.getElementById('sim01-n-val');
+      const canvas01 = document.getElementById('canvas-sim01');
+
+      const outAn = document.getElementById('sim01-an');
+      const outSn = document.getElementById('sim01-sn');
+      const outLim = document.getElementById('sim01-lim');
+      const outErrLabel = document.getElementById('sim01-err-label');
+      const outErr = document.getElementById('sim01-err');
+      const outMsg = document.getElementById('sim01-msg');
+
+      function configureSim01Controls() {
+        const mode = selType.value;
+        if (mode === 'geom') {
+          paramGroup.style.display = 'flex';
+          paramLabel.textContent = 'Razão r';
+          paramSlider.min = '-1.15';
+          paramSlider.max = '1.15';
+          paramSlider.step = '0.05';
+          paramSlider.value = '0.60';
+        } else if (mode === 'pseries') {
+          paramGroup.style.display = 'flex';
+          paramLabel.textContent = 'Expoente p';
+          paramSlider.min = '0.40';
+          paramSlider.max = '3.00';
+          paramSlider.step = '0.10';
+          paramSlider.value = '2.00';
+        } else {
+          paramGroup.style.display = 'none';
+        }
+      }
+
+      function approxZeta(p) {
+        if (p <= 1.0001) return null;
+        if (Math.abs(p - 2) < 1e-6) return (Math.PI * Math.PI) / 6;
+        let s = 0;
+        for (let k = 1; k <= 4000; k++) s += 1 / Math.pow(k, p);
+        /* Euler-Maclaurin tail approximation */
+        s += Math.pow(4000.5, 1 - p) / (p - 1);
+        return s;
+      }
+
+      function drawSim01() {
+        const mode = selType.value;
+        const param = parseFloat(paramSlider.value);
+        const N = parseInt(nSlider.value, 10);
+
+        paramVal.textContent = param.toFixed(2);
+        nVal.textContent = String(N);
+
+        const points = [];
+        let sum = 0;
+        let lastTerm = 0;
+        let nextTermAbs = 0;
+        let limit = null;
+        let converges = false;
+        let explanation = '';
+
+        if (mode === 'geom') {
+          const r = param;
+          for (let k = 0; k <= N; k++) {
+            lastTerm = Math.pow(r, k);
+            sum += lastTerm;
+            points.push({ x: k, y: sum });
+          }
+          if (Math.abs(r) < 0.9999) {
+            converges = true;
+            limit = 1 / (1 - r);
+            explanation = `Como |r| = ${Math.abs(r).toFixed(2)} < 1, a série geométrica <strong>CONVERGE</strong> para L = 1 / (1 − (${r.toFixed(2)})) = ${limit.toFixed(4)}. Note os pontos s<sub>n</sub> grudando na linha tracejada!`;
+          } else {
+            converges = false;
+            explanation = `Como |r| = ${Math.abs(r).toFixed(2)} ≥ 1, o termo geral r<sup>n</sup> NÃO tende a zero. A série <strong>DIVERGE</strong> (${r >= 1 ? 'cresce para +∞' : 'oscila sem nunca estabilizar'}).`;
+          }
+        } else if (mode === 'pseries') {
+          const p = param;
+          for (let k = 1; k <= N; k++) {
+            lastTerm = 1 / Math.pow(k, p);
+            sum += lastTerm;
+            points.push({ x: k, y: sum });
+          }
+          if (p > 1.0001) {
+            converges = true;
+            limit = approxZeta(p);
+            explanation = `Como p = ${p.toFixed(2)} > 1, a p-série <strong>CONVERGE</strong>! ${Math.abs(p - 2) < 1e-6 ? 'Para p = 2, o limite exato é π²/6 ≈ 1.6449 (você vai provar isso no Bloco 3 via Parseval!).' : `As somas parciais estabilizam em torno de L ≈ ${limit.toFixed(4)}.`}`;
+          } else {
+            converges = false;
+            explanation = `Como p = ${p.toFixed(2)} ≤ 1, a p-série <strong>DIVERGE</strong>! Mesmo com 1/n<sup>p</sup> → 0, a soma cresce devagar mas sem limite superior${Math.abs(p - 1) < 1e-6 ? ' (esta é a famosa Série Harmônica!).' : '.'}`;
+          }
+        } else {
+          /* Alternating harmonic series */
+          converges = true;
+          limit = Math.LN2;
+          for (let k = 1; k <= N; k++) {
+            lastTerm = (k % 2 === 1 ? 1 : -1) / k;
+            sum += lastTerm;
+            points.push({ x: k, y: sum });
+          }
+          nextTermAbs = 1 / (N + 1);
+          explanation = `Pelo Critério de Leibniz, as somas parciais alternam acima e abaixo de L = ln(2) ≈ 0.6931. A faixa azul mostra a janela [s<sub>N</sub> − a<sub>N+1</sub>, s<sub>N</sub> + a<sub>N+1</sub>] de meia-largura a<sub>N+1</sub> = 1/${N + 1} ≈ ${nextTermAbs.toFixed(4)} que SEMPRE enjaula o limite exato L!`;
+        }
+
+        /* Readouts */
+        outAn.textContent = Number.isFinite(lastTerm) ? lastTerm.toFixed(4) : '∞';
+        outSn.textContent = Number.isFinite(sum) ? sum.toFixed(4) : '∞';
+        outLim.textContent = converges && limit !== null ? limit.toFixed(4) : 'Diverge';
+
+        if (mode === 'leibniz') {
+          outErrLabel.innerHTML = 'Erro real / Cota a<sub>N+1</sub>';
+          outErr.textContent = `${Math.abs(limit - sum).toFixed(4)} ≤ ${nextTermAbs.toFixed(4)}`;
+        } else if (converges && limit !== null) {
+          outErrLabel.innerHTML = 'Erro |L − s<sub>N</sub>|';
+          outErr.textContent = Math.abs(limit - sum).toFixed(5);
+        } else {
+          outErrLabel.textContent = 'Comportamento';
+          outErr.textContent = 'Sem limite finito';
+        }
+        outMsg.innerHTML = explanation;
+
+        /* Determine Y range safely */
+        const finiteYs = points.map((pt) => pt.y).filter((y) => Number.isFinite(y) && Math.abs(y) < 1e5);
+        if (converges && limit !== null) finiteYs.push(limit);
+        let yMin = Math.min(0, ...finiteYs);
+        let yMax = Math.max(1, ...finiteYs);
+        if (yMax - yMin < 0.4) {
+          yMax += 0.3;
+          yMin -= 0.3;
+        }
+        const padY = (yMax - yMin) * 0.14;
+        yMin -= padY;
+        yMax += padY;
+
+        const { ctx, width, height } = P.setupCanvas(canvas01, 290);
+        const colors = P.getThemeColors();
+        const xStart = mode === 'geom' ? 0 : 1;
+        const map = P.createMapper(width, height, xStart, Math.max(N, xStart + 1), yMin, yMax);
+
+        P.drawGridAndAxes(ctx, map, colors, {
+          xTicks: Math.min(8, Math.max(2, N)),
+          yTicks: 5,
+          xLabel: 'Índice n',
+          yLabel: 'Soma parcial sₙ',
+          integerX: true
+        });
+
+        /* Error band for Leibniz around s_N */
+        if (mode === 'leibniz') {
+          const bandTop = map.toY(sum + nextTermAbs);
+          const bandBot = map.toY(sum - nextTermAbs);
+          ctx.save();
+          ctx.beginPath();
+          ctx.rect(map.pad.left, map.pad.top, map.plotW, map.plotH);
+          ctx.clip();
+          ctx.fillStyle = colors.band;
+          ctx.fillRect(map.pad.left, bandTop, map.plotW, Math.max(2, bandBot - bandTop));
+          ctx.restore();
+        }
+
+        /* Limit horizontal dashed line */
+        if (converges && limit !== null) {
+          const ly = map.toY(limit);
+          ctx.save();
+          ctx.strokeStyle = colors.success;
+          ctx.lineWidth = 1.8;
+          ctx.setLineDash([6, 4]);
+          ctx.beginPath();
+          ctx.moveTo(map.pad.left, ly);
+          ctx.lineTo(map.pad.left + map.plotW, ly);
+          ctx.stroke();
+          ctx.setLineDash([]);
+          ctx.fillStyle = colors.success;
+          ctx.font = `600 11px ${colors.monoFont}`;
+          ctx.textAlign = 'right';
+          ctx.textBaseline = 'bottom';
+          ctx.fillText(`L ≈ ${limit.toFixed(4)}`, map.pad.left + map.plotW - 6, Math.max(map.pad.top + 14, ly - 4));
+          ctx.restore();
+        }
+
+        /* Connecting polyline + dots */
+        ctx.save();
+        ctx.beginPath();
+        ctx.rect(map.pad.left, map.pad.top, map.plotW, map.plotH);
+        ctx.clip();
+
+        ctx.strokeStyle = converges ? colors.primary : colors.danger;
+        ctx.lineWidth = 1.8;
+        ctx.beginPath();
+        points.forEach((pt, idx) => {
+          const px = map.toX(pt.x);
+          const py = map.toY(pt.y);
+          if (idx === 0) ctx.moveTo(px, py);
+          else ctx.lineTo(px, py);
+        });
+        ctx.stroke();
+
+        points.forEach((pt, idx) => {
+          const px = map.toX(pt.x);
+          const py = map.toY(pt.y);
+          ctx.beginPath();
+          const isLast = idx === points.length - 1;
+          ctx.arc(px, py, isLast ? 5.2 : 3.3, 0, Math.PI * 2);
+          ctx.fillStyle = isLast ? colors.secondary : (converges ? colors.primary : colors.danger);
+          ctx.fill();
+        });
+        ctx.restore();
+      }
+
+      selType.addEventListener('change', () => {
+        configureSim01Controls();
+        drawSim01();
+      });
+      paramSlider.addEventListener('input', drawSim01);
+      nSlider.addEventListener('input', drawSim01);
+      configureSim01Controls();
+      P.registerChart(drawSim01);
+
+      /* ---------------- SIMULADOR 0.2: Raio de Convergência ---------------- */
+      const selSeries02 = document.getElementById('sim02-series');
+      const xSlider02 = document.getElementById('sim02-x');
+      const xVal02 = document.getElementById('sim02-x-val');
+      const canvas02 = document.getElementById('canvas-sim02');
+      const outX0 = document.getElementById('sim02-x0');
+      const outR = document.getElementById('sim02-r');
+      const outDist = document.getElementById('sim02-dist');
+      const outStatus = document.getElementById('sim02-status');
+      const outMsg02 = document.getElementById('sim02-msg');
+
+      const SERIES_DB = {
+        ex1: {
+          x0: 3, R: 2, leftClosed: true, rightClosed: false,
+          leftNote: 'Em x = 1 (extremo esquerdo), a série vira Σ (−1)ⁿ/n: CONVERGE condicionalmente pelo Critério de Leibniz! Bolinha FECHADA.',
+          rightNote: 'Em x = 5 (extremo direito), a série vira Σ 1/n (Harmônica, p = 1): DIVERGE! Bolinha ABERTA.'
+        },
+        ex2: {
+          x0: -1, R: 3, leftClosed: true, rightClosed: true,
+          leftNote: 'Em x = −4, a série vira Σ 1/n² (p = 2 > 1): CONVERGE absolutamente! Bolinha FECHADA.',
+          rightNote: 'Em x = 2, a série vira Σ (−1)ⁿ/n²: CONVERGE absolutamente! Bolinha FECHADA.'
+        },
+        ex3: {
+          x0: -4, R: 2, leftClosed: false, rightClosed: false,
+          leftNote: 'Em x = −6, o módulo do termo geral tende a √e ≠ 0: DIVERGE pelo Teste do Termo Geral! Bolinha ABERTA.',
+          rightNote: 'Em x = −2, o termo geral tende a √e ≠ 0: DIVERGE pelo Teste do Termo Geral! Bolinha ABERTA.'
+        },
+        ex4: {
+          x0: 0, R: 2, leftClosed: true, rightClosed: true,
+          leftNote: 'Em x = −2, como o expoente é 2n, (−2)²ⁿ = 4ⁿ cancela o denominador e sobra Σ 1/n²: CONVERGE! Bolinha FECHADA.',
+          rightNote: 'Em x = 2, temos 2²ⁿ = 4ⁿ, sobrando Σ 1/n² (p = 2 > 1): CONVERGE! Bolinha FECHADA.'
+        },
+        ex5: {
+          x0: 0, R: Infinity, leftClosed: true, rightClosed: true,
+          leftNote: '', rightNote: ''
+        }
+      };
+
+      function drawSim02() {
+        const cfg = SERIES_DB[selSeries02.value];
+        const x = parseFloat(xSlider02.value);
+        xVal02.textContent = x.toFixed(2);
+
+        const dist = Math.abs(x - cfg.x0);
+        outX0.textContent = String(cfg.x0);
+        outR.textContent = Number.isFinite(cfg.R) ? String(cfg.R) : '∞';
+        outDist.textContent = dist.toFixed(2);
+
+        let statusText = '';
+        let statusType = 'ok';
+        let msg = '';
+
+        if (!Number.isFinite(cfg.R)) {
+          statusText = 'Converge Abs.';
+          statusType = 'ok';
+          msg = `Para Σ xⁿ/n!, o raio de convergência é R = ∞. Qualquer x = ${x.toFixed(2)} escolhido na reta real faz a série convergir absolutamente (esta é a função eˣ!).`;
+        } else {
+          const left = cfg.x0 - cfg.R;
+          const right = cfg.x0 + cfg.R;
+          if (Math.abs(x - left) < 1e-6) {
+            statusText = cfg.leftClosed ? 'Converge (Extremo)' : 'Diverge (Extremo)';
+            statusType = cfg.leftClosed ? 'ok' : 'bad';
+            msg = cfg.leftNote;
+          } else if (Math.abs(x - right) < 1e-6) {
+            statusText = cfg.rightClosed ? 'Converge (Extremo)' : 'Diverge (Extremo)';
+            statusType = cfg.rightClosed ? 'ok' : 'bad';
+            msg = cfg.rightNote;
+          } else if (dist < cfg.R) {
+            statusText = 'Converge Abs.';
+            statusType = 'ok';
+            msg = `Como |x − (${cfg.x0})| = ${dist.toFixed(2)} < R = ${cfg.R}, o ponto está no interior do intervalo (${left}, ${right}): convergência absoluta garantida!`;
+          } else {
+            statusText = 'Diverge';
+            statusType = 'bad';
+            msg = `Como |x − (${cfg.x0})| = ${dist.toFixed(2)} > R = ${cfg.R}, o ponto está fora do raio de convergência: a série DIVERGE!`;
+          }
+        }
+
+        outStatus.textContent = statusText;
+        outMsg02.textContent = msg;
+
+        const { ctx, width, height } = P.setupCanvas(canvas02, 195);
+        const colors = P.getThemeColors();
+        const xMin = -8;
+        const xMax = 8;
+        const pad = { left: 28, right: 28, top: 24, bottom: 32 };
+        const plotW = width - pad.left - pad.right;
+        const toX = (v) => pad.left + ((v - xMin) / (xMax - xMin)) * plotW;
+        const midY = Math.round(height * 0.62);
+
+        ctx.fillStyle = colors.bg;
+        ctx.fillRect(0, 0, width, height);
+
+        /* Base real line (divergent background in subtle danger tint if finite R) */
+        ctx.lineWidth = 4;
+        ctx.strokeStyle = Number.isFinite(cfg.R) ? colors.danger : colors.success;
+        ctx.globalAlpha = 0.35;
+        ctx.beginPath();
+        ctx.moveTo(pad.left, midY);
+        ctx.lineTo(width - pad.right, midY);
+        ctx.stroke();
+        ctx.globalAlpha = 1;
+
+        /* Convergence interval highlight */
+        if (Number.isFinite(cfg.R)) {
+          const lx = toX(cfg.x0 - cfg.R);
+          const rx = toX(cfg.x0 + cfg.R);
+
+          ctx.strokeStyle = colors.success;
+          ctx.lineWidth = 7;
+          ctx.beginPath();
+          ctx.moveTo(lx, midY);
+          ctx.lineTo(rx, midY);
+          ctx.stroke();
+
+          /* Radius bracket high above so pin label never overlaps */
+          const cx = toX(cfg.x0);
+          const brY = midY - 64;
+          ctx.strokeStyle = colors.primary;
+          ctx.lineWidth = 1.6;
+          ctx.beginPath();
+          ctx.moveTo(cx, brY + 7);
+          ctx.lineTo(cx, brY);
+          ctx.lineTo(rx, brY);
+          ctx.lineTo(rx, brY + 7);
+          ctx.stroke();
+
+          ctx.fillStyle = colors.primary;
+          ctx.font = `700 12px ${colors.monoFont}`;
+          ctx.textAlign = 'center';
+          ctx.textBaseline = 'bottom';
+          ctx.fillText(`R = ${cfg.R}`, (cx + rx) / 2, brY - 4);
+
+          /* Endpoint circles (filled = closed, hollow = open) */
+          [
+            { px: lx, closed: cfg.leftClosed },
+            { px: rx, closed: cfg.rightClosed }
+          ].forEach((ep) => {
+            ctx.beginPath();
+            ctx.arc(ep.px, midY, 6.5, 0, Math.PI * 2);
+            ctx.fillStyle = ep.closed ? colors.success : colors.bg;
+            ctx.fill();
+            ctx.lineWidth = 2.4;
+            ctx.strokeStyle = ep.closed ? colors.success : colors.danger;
+            ctx.stroke();
+          });
+        } else {
+          ctx.strokeStyle = colors.success;
+          ctx.lineWidth = 7;
+          ctx.beginPath();
+          ctx.moveTo(pad.left, midY);
+          ctx.lineTo(width - pad.right, midY);
+          ctx.stroke();
+        }
+
+        /* Integer ticks */
+        ctx.strokeStyle = colors.axis;
+        ctx.fillStyle = colors.text;
+        ctx.font = `11px ${colors.monoFont}`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'top';
+        ctx.lineWidth = 1;
+        for (let t = xMin; t <= xMax; t += 1) {
+          const tx = toX(t);
+          ctx.beginPath();
+          ctx.moveTo(tx, midY - 5);
+          ctx.lineTo(tx, midY + 5);
+          ctx.stroke();
+          if (t % 2 === 0 || t === cfg.x0) {
+            ctx.fillText(String(t), tx, midY + 12);
+          }
+        }
+
+        /* Center marker x0 */
+        const cx0 = toX(cfg.x0);
+        ctx.fillStyle = colors.primary;
+        ctx.beginPath();
+        ctx.arc(cx0, midY, 4, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.font = `700 11px ${colors.sansFont}`;
+        ctx.textBaseline = 'top';
+        ctx.fillText(`x₀=${cfg.x0}`, cx0, midY + 29);
+
+        /* Draggable test point x as crisp downward pointer ABOVE the line (preserves open/closed circle visibility!) */
+        const px = toX(x);
+        const pinColor = statusType === 'ok' ? colors.primary : colors.danger;
+        ctx.fillStyle = pinColor;
+        ctx.beginPath();
+        ctx.moveTo(px, midY - 9);
+        ctx.lineTo(px - 6, midY - 21);
+        ctx.lineTo(px + 6, midY - 21);
+        ctx.closePath();
+        ctx.fill();
+
+        ctx.font = `700 12px ${colors.monoFont}`;
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'bottom';
+        ctx.fillText(`x = ${x.toFixed(2)}`, px, midY - 25);
+      }
+
+      selSeries02.addEventListener('change', () => {
+        const cfg = SERIES_DB[selSeries02.value];
+        xSlider02.value = String(cfg.x0);
+        drawSim02();
+      });
+      xSlider02.addEventListener('input', drawSim02);
+      P.registerChart(drawSim02);
+    });
+  </script>
+</body>
+</html>

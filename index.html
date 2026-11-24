@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apostila Interativa de Cálculo IV — SMA0356 (ICMC/USP)</title>
+  <meta name="description" content="Apostila web interativa completa do zero ao nível de prova P2 de Cálculo IV (SMA0356 - ICMC/USP), baseada nas Notas de Aula da Profa. Dra. Janete Crema Simal.">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css">
+  <link rel="stylesheet" href="css/styles.css">
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/contrib/auto-render.min.js"></script>
+  <script defer src="js/app.js"></script>
+</head>
+<body>
+  <div class="reading-progress-track" aria-hidden="true">
+    <div class="reading-progress-fill"></div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-left">
+      <button class="sidebar-toggle" type="button" data-sidebar-toggle aria-label="Abrir menu lateral" aria-expanded="false">☰</button>
+      <a href="index.html" class="brand-link">
+        <span class="brand-title">Cálculo IV · Apostila P2</span>
+        <span class="brand-code">SMA0356 · ICMC/USP</span>
+      </a>
+      <span class="header-breadcrumb">/ Mapa de Estudos</span>
+    </div>
+    <div class="header-right">
+      <div class="header-progress-pill" title="Progresso geral salvo neste navegador">
+        <span>Progresso Geral:</span>
+        <strong data-global-progress-pct>0%</strong>
+      </div>
+      <button class="theme-toggle" type="button" data-theme-toggle aria-pressed="false">
+        <span class="theme-icon" aria-hidden="true">☾</span>
+        <span class="theme-label">Modo Escuro</span>
+      </button>
+    </div>
+  </header>
+
+  <div class="sidebar-backdrop"></div>
+
+  <div class="page-shell">
+    <aside class="sidebar" aria-label="Navegação da Apostila">
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Roteiro dos Blocos</p>
+        <ul class="block-nav-list">
+          <li>
+            <a href="index.html" class="block-nav-link active">
+              <span>Painel Inicial</span>
+              <span class="nav-status-tag">Mapa</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloco0.html" class="block-nav-link">
+              <span>Bloco 0 · Nivelamento</span>
+              <span class="nav-status-tag done">Pronto</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloco1.html" class="block-nav-link">
+              <span>Bloco 1 · Séries de Potências</span>
+              <span class="nav-status-tag done">Pronto</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloco2.html" class="block-nav-link">
+              <span>Bloco 2 · Taylor, Binomial e EDOs</span>
+              <span class="nav-status-tag done">Pronto</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloco3.html" class="block-nav-link">
+              <span>Bloco 3 · Séries de Fourier</span>
+              <span class="nav-status-tag done">Pronto</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloco4.html" class="block-nav-link">
+              <span>Bloco 4 · Extensões Par/Ímpar</span>
+              <span class="nav-status-tag done">Pronto</span>
+            </a>
+          </li>
+          <li>
+            <a href="bloco5.html" class="block-nav-link">
+              <span>Bloco 5 · EDPs (Calor e Onda)</span>
+              <span class="nav-status-tag done">Pronto</span>
+            </a>
+          </li>
+          <li>
+            <a href="formulario.html" class="block-nav-link">
+              <span>Formulário de Bolso</span>
+              <span class="nav-status-tag done">Pronto</span>
+            </a>
+          </li>
+        </ul>
+      </div>
+
+      <div class="sidebar-section">
+        <p class="sidebar-heading">Nesta Página</p>
+        <ul class="toc-list">
+          <li><a href="#visao-geral" class="toc-link active">Visão Geral e Progresso</a></li>
+          <li><a href="#como-estudar" class="toc-link">Como Estudar do Zero</a></li>
+          <li><a href="#mapa-blocos" class="toc-link">Mapa Completo dos Blocos</a></li>
+          <li><a href="#legenda-caixas" class="toc-link">Legenda Pedagógica</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <div class="article-container wide">
+        <section id="visao-geral" class="hero-panel">
+          <div class="hero-top-grid">
+            <div>
+              <p class="chapter-kicker">SMA0356 · ICMC/USP · Notas da Profa. Dra. Janete Crema Simal</p>
+              <h1>Do Zero ao Nível de Prova: Cálculo IV (P2)</h1>
+              <p class="chapter-lead">
+                Uma apostila interativa escrita passo a passo, sem saltos algébricos e com intuição antes do rigor — construída especialmente para reconstruir sua base desde as séries numéricas até as equações do Calor e da Onda.
+              </p>
+              <div style="display: flex; flex-wrap: wrap; gap: 0.75rem;">
+                <a href="bloco0.html" class="btn btn-primary">Começar pelo Bloco 0 (Nivelamento) →</a>
+                <a href="#mapa-blocos" class="btn btn-subtle">Ver Mapa Completo da P2</a>
+              </div>
+            </div>
+
+            <div class="global-progress-card">
+              <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 0.5rem;">
+                <span style="font-size: 0.8rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.05em; color: var(--ink-muted);">Seu Progresso na P2</span>
+                <span class="progress-big-num" data-global-progress-pct>0%</span>
+              </div>
+              <div class="progress-bar-track" style="height: 10px;">
+                <div class="progress-bar-fill" data-global-progress-bar></div>
+              </div>
+              <p style="font-size: 0.84rem; color: var(--ink-secondary); margin: 0.75rem 0 0;" data-global-status-msg>
+                Comece pelo Bloco 0 — cada passo marcado fica salvo automaticamente neste navegador.
+              </p>
+              <div class="stats-row">
+                <div>
+                  <strong data-global-topics>0/19</strong>
+                  Tópicos estudados
+                </div>
+                <div>
+                  <strong data-global-exercises>0/68</strong>
+                  Exercícios resolvidos
+                </div>
+              </div>
+              <div style="margin-top: 0.9rem;">
+                <button type="button" class="btn btn-danger-ghost" style="font-size: 0.78rem; padding: 0.36rem 0.7rem;" data-reset-progress>
+                  Zerar progresso salvo
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="como-estudar">
+          <div class="callout box-intuicao">
+            <p class="callout-title">Plano de Resgate: Como usar esta apostila se você está travado</p>
+            <p>
+              Não tente pular direto para EDOs por séries ou para a Equação do Calor sem a fundação: a segunda metade de Cálculo IV é uma escada onde cada degrau apoia diretamente o próximo.
+            </p>
+            <ol>
+              <li><strong>Siga a ordem dos blocos (0 → 1 → 2 → 3 → 4 → 5).</strong> A ordem foi reorganizada pedagogicamente (por exemplo, trazendo a Aula 16 logo após a 14) para que você domine as ferramentas antes de usá-las em contas longas.</li>
+              <li><strong>Tente os exercícios antes de abrir a resolução.</strong> Todos os exercícios têm dois botões: você pode revelar <em>um passo por vez</em> (como uma dica) ou abrir a resolução completa comentada linha a linha.</li>
+              <li><strong>Mexa nos simuladores interativos.</strong> Arrastar o slider de $N$ ou do raio $R$ fixa visualmente o que as fórmulas querem dizer — isso impede que você confunda conceitos sob pressão na prova.</li>
+              <li><strong>Marque os checkboxes.</strong> Seu progresso fica salvo no <code>localStorage</code> do navegador para você retomar exatamente de onde parou.</li>
+            </ol>
+          </div>
+        </section>
+
+        <section id="mapa-blocos">
+          <h2>Mapa Completo dos Blocos da P2</h2>
+          <p>
+            Toda a apostila — do <strong>Bloco 0 (Nivelamento)</strong> até o <strong>Bloco 5 (EDPs: Calor e Onda)</strong> e o <strong>Formulário de Bolso</strong> — está 100% completa, com todos os simuladores interativos e resoluções passo a passo funcionando diretamente offline/local via <code>index.html</code>.
+          </p>
+
+          <div class="blocks-grid">
+            <!-- BLOCO 0 -->
+            <article class="block-card" id="bloco0-card" data-card-block="bloco0">
+              <div class="block-card-top">
+                <span class="block-num">Bloco 0</span>
+                <span class="badge badge-base">Base Obrigatória · Baixa</span>
+              </div>
+              <h3>Nivelamento Obrigatório (Base do Zero)</h3>
+              <p class="block-aulas">Aulas 6, 8, 11 e 12 + Kit de Integrais e Trigonometria</p>
+              <p class="block-desc">
+                Séries geométricas, $p$-séries, Critério de Leibniz, Raio e Intervalo de Convergência (Critérios Inversos da Razão e da Raiz), Integração por Partes (Método Tabular e cíclicas) e identidades trigonométricas de Fourier.
+              </p>
+              <div class="block-card-footer">
+                <div class="block-mini-progress">
+                  <span data-card-detail>0/15 concluídos</span>
+                  <strong data-card-pct>0%</strong>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill" data-card-bar></div>
+                </div>
+                <div class="block-card-actions">
+                  <span class="badge badge-done">2 Simuladores</span>
+                  <a href="bloco0.html" class="btn btn-primary" style="padding: 0.42rem 0.85rem;">Estudar Bloco 0 →</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- BLOCO 1 -->
+            <article class="block-card" id="bloco1-card" data-card-block="bloco1">
+              <div class="block-card-top">
+                <span class="block-num">Bloco 1</span>
+                <span class="badge badge-high">Prioridade Alta · Média</span>
+              </div>
+              <h3>O Motor das Séries de Potências</h3>
+              <p class="block-aulas">Aulas 13, 14 e 16</p>
+              <p class="block-desc">
+                Derivação e integração termo a termo ($\ln(1+x)$, $\arctan x$), Séries de Taylor e Maclaurin ($s_f(x)$), derivadas de ordem alta $f^{(n)}(0)$ sem derivar $n$ vezes e as 4 séries fundamentais + Fórmula de Euler.
+              </p>
+              <div class="block-card-footer">
+                <div class="block-mini-progress">
+                  <span data-card-detail>0/15 concluídos</span>
+                  <strong data-card-pct>0%</strong>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill" data-card-bar></div>
+                </div>
+                <div class="block-card-actions">
+                  <span class="badge badge-done">Simulador Taylor</span>
+                  <a href="bloco1.html" class="btn btn-primary" style="padding: 0.42rem 0.85rem;">Estudar Bloco 1 →</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- BLOCO 2 -->
+            <article class="block-card" id="bloco2-card" data-card-block="bloco2">
+              <div class="block-card-top">
+                <span class="block-num">Bloco 2</span>
+                <span class="badge badge-max">Prioridade Máxima · Alta</span>
+              </div>
+              <h3>Convergência, Erros, Binomiais e EDOs</h3>
+              <p class="block-aulas">Aulas 15, 18 e 17</p>
+              <p class="block-desc">
+                Polinômio $P_N(x)$ e Resto de Taylor, aproximação de integrais como $\int e^{-x^2}dx$, Séries Binomiais $(1+u)^\alpha$ e resolução passo a passo de EDOs por séries de potências (incluindo deslocamento de índices e Bessel).
+              </p>
+              <div class="block-card-footer">
+                <div class="block-mini-progress">
+                  <span data-card-detail>0/15 concluídos</span>
+                  <strong data-card-pct>0%</strong>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill" data-card-bar></div>
+                </div>
+                <div class="block-card-actions">
+                  <span class="badge badge-done">Simulador Dual</span>
+                  <a href="bloco2.html" class="btn btn-primary" style="padding: 0.42rem 0.85rem;">Estudar Bloco 2 →</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- BLOCO 3 -->
+            <article class="block-card" id="bloco3-card" data-card-block="bloco3">
+              <div class="block-card-top">
+                <span class="block-num">Bloco 3</span>
+                <span class="badge badge-max">Prioridade Máxima · Média-Alta</span>
+              </div>
+              <h3>Fundamentos e Cálculos de Séries de Fourier</h3>
+              <p class="block-aulas">Aulas 19, 20, 21 e 22</p>
+              <p class="block-desc">
+                Periodicidade, paridade, produto interno $\langle f,g \rangle$, ortogonalidade, coeficientes $a_0, a_n, b_n$ em $[-L, L]$, Teorema de Fourier nos saltos e Identidade de Parseval para somas numéricas.
+              </p>
+              <div class="block-card-footer">
+                <div class="block-mini-progress">
+                  <span data-card-detail>0/18 concluídos</span>
+                  <strong data-card-pct>0%</strong>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill" data-card-bar></div>
+                </div>
+                <div class="block-card-actions">
+                  <span class="badge badge-done">Simulador Fourier</span>
+                  <a href="bloco3.html" class="btn btn-primary" style="padding: 0.42rem 0.85rem;">Estudar Bloco 3 →</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- BLOCO 4 -->
+            <article class="block-card" id="bloco4-card" data-card-block="bloco4">
+              <div class="block-card-top">
+                <span class="block-num">Bloco 4</span>
+                <span class="badge badge-high">Prioridade Alta · Média</span>
+              </div>
+              <h3>Extensões Periódicas, Pares e Ímpares</h3>
+              <p class="block-aulas">Aula 23</p>
+              <p class="block-desc">
+                A ponte obrigatória para as EDPs: como pegar $f(x)$ em $[0, L]$ e construir visual e algebricamente sua extensão par (série de cossenos) ou ímpar (série de senos) com simulador gráfico em $[-2L, 2L]$.
+              </p>
+              <div class="block-card-footer">
+                <div class="block-mini-progress">
+                  <span data-card-detail>0/8 concluídos</span>
+                  <strong data-card-pct>0%</strong>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill" data-card-bar></div>
+                </div>
+                <div class="block-card-actions">
+                  <span class="badge badge-done">Sim. Extensões</span>
+                  <a href="bloco4.html" class="btn btn-primary" style="padding: 0.42rem 0.85rem;">Estudar Bloco 4 →</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- BLOCO 5 -->
+            <article class="block-card" id="bloco5-card" data-card-block="bloco5">
+              <div class="block-card-top">
+                <span class="block-num">Bloco 5</span>
+                <span class="badge badge-max">Prioridade Máxima · Alta</span>
+              </div>
+              <h3>Aplicações em EDPs: Calor e Onda</h3>
+              <p class="block-aulas">Aulas 24, 25, 26 e 27</p>
+              <p class="block-desc">
+                Separação de variáveis do início ao fim: Equação do Calor (Dirichlet Homogêneo, Não Homogêneo com estado estacionário e Barra Isolada Neumann) e Equação da Onda (corda vibrante e frequência fundamental).
+              </p>
+              <div class="block-card-footer">
+                <div class="block-mini-progress">
+                  <span data-card-detail>0/16 concluídos</span>
+                  <strong data-card-pct>0%</strong>
+                </div>
+                <div class="progress-bar-track">
+                  <div class="progress-bar-fill" data-card-bar></div>
+                </div>
+                <div class="block-card-actions">
+                  <span class="badge badge-done">2 Simuladores</span>
+                  <a href="bloco5.html" class="btn btn-primary" style="padding: 0.42rem 0.85rem;">Estudar Bloco 5 →</a>
+                </div>
+              </div>
+            </article>
+
+            <!-- FORMULÁRIO -->
+            <article class="block-card" id="formulario-card">
+              <div class="block-card-top">
+                <span class="block-num">Apêndice Final</span>
+                <span class="badge badge-base">Revisão · PDF</span>
+              </div>
+              <h3>Mapa de Sobrevivência da P2 (Formulário)</h3>
+              <p class="block-aulas">Resumo de Bolso · Otimizado para @media print</p>
+              <p class="block-desc">
+                Todas as séries fundamentais, checklist de métodos para Séries e EDOs, fórmulas completas de Fourier/Parseval e quadro comparativo das 4 EDPs clássicas em uma página pronta para imprimir.
+              </p>
+              <div class="block-card-footer">
+                <div class="block-card-actions" style="margin-top: 0;">
+                  <span class="badge badge-done">Pronto p/ Impressão</span>
+                  <a href="formulario.html" class="btn btn-primary" style="padding: 0.42rem 0.85rem;">Abrir Formulário →</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section id="legenda-caixas">
+          <h2>Legenda das Caixas Pedagógicas</h2>
+          <p>Para facilitar a leitura longa e a revisão rápida na véspera da prova, cada tipo de bloco visual tem sempre o mesmo significado ao longo de toda a apostila:</p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1rem;">
+            <div class="callout box-intuicao" style="margin: 0;">
+              <p class="callout-title">Intuição</p>
+              <p>Tradução em linguagem humana do que a ferramenta matemática faz antes de entrar nas fórmulas.</p>
+            </div>
+            <div class="callout box-teorema" style="margin: 0;">
+              <p class="callout-title">Teorema / Definição</p>
+              <p>Enunciados exatos alinhados à notação da Profa. Dra. Janete Crema Simal (SMA0356).</p>
+            </div>
+            <div class="callout box-receita" style="margin: 0;">
+              <p class="callout-title">Receita de Bolo</p>
+              <p>Algoritmo numerado, passo a passo, para você executar mecanicamente e com segurança na prova.</p>
+            </div>
+            <div class="callout box-pegadinha" style="margin: 0;">
+              <p class="callout-title">Alerta de Pegadinha</p>
+              <p>Os erros mais frequentes de sinal, índices ou extremos que fazem alunos perderem pontos fáceis.</p>
+            </div>
+          </div>
+        </section>
+      </div>
+    </main>
+  </div>
+</body>
+</html>

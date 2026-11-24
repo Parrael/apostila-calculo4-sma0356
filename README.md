@@ -4,6 +4,7 @@ Material de estudo interativo completo, **do zero ao nível de prova (P2)**, est
 
 Funciona **100% localmente** diretamente no navegador (protocolo `file://`), sem precisar instalar nada nem rodar servidor.
 
+> **Observação:** Repositório criado integralmente pelo _Google Antigravity_.
 ---
 
 ## Como abrir no seu computador
